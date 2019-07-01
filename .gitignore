@@ -1,10 +1,21 @@
-node_modules
-*.log
-.DS_Store
-dist
-lib
+# Don't check auto-generated stuff into git
 coverage
-.idea
-examples/bundle.js
-examples/style.css
+node_modules
+stats.json
+
+# Cruft
+.DS_Store
 npm-debug.log
+.idea
+
+# Logs
+yarn-error.log
+
+# built stuff
+build
+app/helpers
+helpers/helpers
+server/api/helpers
+
+# redis
+dump.rdb
