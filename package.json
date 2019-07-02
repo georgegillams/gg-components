@@ -8,11 +8,11 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "start-storybook -p 9009 -s public",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook": "yarn start",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
@@ -31,9 +31,14 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-links": "^5.1.9",
     "@storybook/addons": "^5.1.9",
-    "@storybook/react": "^5.1.9"
+    "@storybook/react": "^5.1.9",
+    "bpk-mixins": "^17.24.1",
+    "bpk-react-utils": "^2.7.9",
+    "node-sass": "^4.12.0",
+    "react-router-dom": "^5.0.1"
   }
 }
