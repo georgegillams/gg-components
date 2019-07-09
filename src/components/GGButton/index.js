@@ -1,6 +1,3 @@
-import GGButton from './GGButton';
-import ScrollerButton from './ScrollerButton';
-import BurgerButton from './BurgerButton';
-
-export default GGButton;
-export {ScrollerButton, BurgerButton}
+export { default } from './GGButton';
+export ScrollerButton from './ScrollerButton';
+export BurgerButton from './BurgerButton';

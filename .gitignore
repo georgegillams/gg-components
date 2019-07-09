@@ -18,6 +18,7 @@ npm-debug.log
 yarn-error.log
 
 # built stuff
+.sass-cache
 build
 app/helpers
 helpers/helpers
