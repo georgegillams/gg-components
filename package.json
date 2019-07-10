@@ -6,10 +6,6 @@
     "type": "git",
     "url": "git://github.com/georgegillams/gg-components.git"
   },
-  "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1"
-  },
   "author": "George Gillams",
   "license": "MIT",
   "scripts": {
@@ -49,20 +45,6 @@
     "babel-polyfill": "6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "bibtex-parse-js": "0.0.24",
-    "bpk-component-card": "^1.1.53",
-    "bpk-component-checkbox": "^1.4.52",
-    "bpk-component-code": "^1.1.27",
-    "bpk-component-horizontal-nav": "^2.4.3",
-    "bpk-component-icon": "^3.23.7",
-    "bpk-component-image": "^2.0.61",
-    "bpk-component-input": "^3.3.43",
-    "bpk-component-label": "^3.2.91",
-    "bpk-component-progress": "^1.0.91",
-    "bpk-component-text": "^1.0.87",
-    "bpk-component-textarea": "^1.1.0",
-    "bpk-mixins": "^17.11.18",
-    "bpk-theming": "^1.1.14",
-    "bpk-tokens": "^27.2.0",
     "chalk": "^2.3.2",
     "compression": "1.7.2",
     "conventional-redux": "^1.0.3",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../../helpers/cssModules';
 
 import STYLES from './gg-button.scss';
 
