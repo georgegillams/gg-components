@@ -9,6 +9,7 @@
   "author": "George Gillams",
   "license": "MIT",
   "scripts": {
+    "release": "release-it",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
     "transpile:js": "babel src -d build --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
@@ -152,6 +153,7 @@
     "plop": "2.0.0",
     "react-test-renderer": "^16.4.0",
     "redis-mock": "^0.43.0",
+    "release-it": "^12.3.3",
     "rimraf": "2.6.2",
     "sass": "^1.22.3",
     "sass-loader": "^7.0.1",
