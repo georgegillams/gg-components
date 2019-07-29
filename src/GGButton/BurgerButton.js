@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { cssModules } from '../../helpers/cssModules';
+import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './burger-button.scss';
 
