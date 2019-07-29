@@ -1,5 +1,8 @@
 .DS_Store
 *.log
+config
+node_modules
+scripts
 src
 test
 examples

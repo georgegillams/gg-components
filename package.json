@@ -9,9 +9,10 @@
   "author": "George Gillams",
   "license": "MIT",
   "scripts": {
-    "prerelease": "cd build && cp ../package.json ./",
+    "check-pristine": "node scripts/check-pristine-state",
+    "prerelease": "npm run check-pristine && cp -R ./build/* .",
     "release": "release-it",
-    "postrelease": "cd $(git rev-parse --show-toplevel) && cp ./build/package.json ./",
+    "postrelease": "git clean -fd",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
     "transpile:js": "babel src -d build --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
