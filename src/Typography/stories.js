@@ -1,7 +1,7 @@
 /*
  * Backpack - Skyscanner's Design System
  *
- * Copyright 2018 Skyscanner Ltd
+ * Copyright 2016-2019 Skyscanner Ltd
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React from 'react';
-import { configure, addDecorator } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-import { withA11y } from '@storybook/addon-a11y';
 
-addDecorator(withA11y);
-addDecorator(withKnobs);
-/* eslint-disable global-require */
-configure(() => {
-  require('../src/GGButton/stories.js');
-  require('../src/Typography/stories.js');
-}, module);
-/* eslint-enable */
+/* @flow strict */
+
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+
+import { ArticleDate, Quote } from './index';
+
+storiesOf('Quote', module).add('default', () => (
+  <Quote>Lorem ipse dolor sit amet.</Quote>
+));
+storiesOf('ArticleDate', module).add('default', () => (
+  <ArticleDate date={new Date()} />
+));

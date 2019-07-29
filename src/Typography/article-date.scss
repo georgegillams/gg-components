@@ -1,0 +1,16 @@
+@import '../helpers/tokens';
+
+.article-date {
+  &__date {
+    padding-bottom: 0.5rem;
+    color: $not-black;
+
+    @media (prefers-color-scheme: dark) {
+      color: rgb(179, 179, 179);
+    }
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+}
