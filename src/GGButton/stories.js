@@ -22,16 +22,38 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import GGButton from './index';
+import GGButton, { BurgerButton } from './index';
 
-const ButtonStory = ({ className, ...rest }: { className: ?string }) => (
-  <div>
+const ButtonStory = ({
+  className,
+  dark,
+  ...rest
+}: {
+  dark: boolean,
+  className: ?string,
+}) => (
+  <div
+    style={{
+      backgroundColor: dark ? '#1e1e1e' : 'transparent',
+    }}
+  >
     <GGButton onClick={action('button clicked')} {...rest}>
       Button
     </GGButton>
   </div>
 );
 
-ButtonStory.defaultProps = { className: null };
+ButtonStory.defaultProps = { className: null, dark: false };
 
-storiesOf('GGButton', module).add('Primary', () => <ButtonStory />);
+storiesOf('GGButton', module)
+  .add('Primary', () => <ButtonStory />)
+  .add('Large', () => <ButtonStory large />)
+  .add('Secondary', () => <ButtonStory secondary />)
+  .add('White', () => <ButtonStory dark white />)
+  .add('external href', () => (
+    <ButtonStory hrefExternal href="https://duckduckgo.com/" />
+  ));
+
+storiesOf('BurgerButton', module)
+  .add('closed', () => <BurgerButton />)
+  .add('open', () => <BurgerButton isOpen />);
