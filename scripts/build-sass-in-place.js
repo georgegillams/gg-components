@@ -8,10 +8,10 @@ const transpile = file => {
   execSync(`npx node-sass ${options} "${file}" --output="${outputFile}"`);
 };
 
-console.log('Transpiling build directory scss files...');
+console.log('Transpiling dist directory scss files...');
 console.log('');
 
-const scssFiles = execSync('find build -name "*.scss" | grep -v node_modules')
+const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
   .toString()
   .split('\n')
   .filter(s => s !== '');

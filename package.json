@@ -9,12 +9,9 @@
   "author": "George Gillams",
   "license": "MIT",
   "scripts": {
-    "check-pristine": "node scripts/check-pristine-state",
-    "prerelease": "npm run check-pristine && cp -R ./build/* .",
     "release": "release-it",
-    "postrelease": "git clean -fd",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
-    "transpile:js": "babel src -d build --copy-files",
+    "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
     "transpile:sass": "node scripts/build-sass-in-place.js",
     "clean": "npm run test:clean && npm run build:clean",
@@ -25,7 +22,7 @@
     "lint:js": "eslint . --ext .js,.jsx",
     "lint:js:fix": "eslint . --ext .js,.jsx --fix",
     "lint:scss": "stylelint 'packages/**/*.scss' --syntax scss",
-    "transpile:clean": "rimraf ./build",
+    "transpile:clean": "rimraf ./dist",
     "pretranspile": "npm run transpile:clean",
     "pretest": "npm run test:clean",
     "prettier": "prettier --config .prettierrc --write \"**/*.js\"",
@@ -35,7 +32,7 @@
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
-  "main": "build/components/index.js",
+  "main": "dist/index.js",
   "lint-staged": {
     "*.js": [
       "eslint --fix",
