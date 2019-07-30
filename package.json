@@ -9,6 +9,7 @@
   "author": "George Gillams",
   "license": "MIT",
   "scripts": {
+    "prerelease": "npm run transpile",
     "release": "release-it",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
     "transpile:js": "babel src -d dist --copy-files",
@@ -108,6 +109,7 @@
     "youtube-embed-video": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -118,6 +120,7 @@
     "add-asset-html-webpack-plugin": "2.1.3",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.0",
+    "bpk-mixins": "^17.24.7",
     "circular-dependency-plugin": "5.0.2",
     "css-loader": "0.28.11",
     "enzyme": "^3.3.0",
