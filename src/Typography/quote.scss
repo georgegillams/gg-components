@@ -11,5 +11,9 @@
     font-style: italic;
     font-weight: bold;
     box-shadow: 1rem 1rem 1rem #f3f2f5;
+    @media (prefers-color-scheme: dark) {
+      color: $not-black-invert;
+      box-shadow: 1rem 1rem 1rem black;
+    }
   }
 }

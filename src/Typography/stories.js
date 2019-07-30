@@ -21,10 +21,19 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { ArticleDate, Quote } from './index';
+import { ArticleDate, Quote, Section, SubSection, TextLink } from './index';
 
 storiesOf('Quote', module).add('default', () => (
   <Quote>Lorem ipse dolor sit amet.</Quote>
+));
+storiesOf('Section', module).add('default', () => <Section name="Test" />);
+storiesOf('SubSection', module).add('default', () => (
+  <SubSection name="Test" />
+));
+storiesOf('TextLink', module).add('default', () => (
+  <TextLink href="/lol" name="Test">
+    Test
+  </TextLink>
 ));
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date()} />

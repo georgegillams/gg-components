@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BpkSmallNewWindowIcon from 'bpk-component-icon/sm/new-window';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
 
@@ -46,9 +45,7 @@ const TextLink = props => {
     >
       {children}
       <div className={getClassName('typography__icon')}>
-        <BpkSmallNewWindowIcon
-          className={getClassName('typography__icon--inner')}
-        />
+        <div className={getClassName('typography__icon--inner')} />
       </div>
     </a>
   ) : (

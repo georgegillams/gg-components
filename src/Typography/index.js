@@ -11,6 +11,9 @@
 // export ContentWidthRestrictor from './ContentWidthRestrictor';
 import Quote from './Quote';
 import ArticleDate from './ArticleDate';
+import Section from './Section';
+import SubSection from './SubSection';
+import TextLink from './TextLink';
 
-export default Quote;
-export { ArticleDate, Quote };
+export default Section;
+export { ArticleDate, Quote, Section, SubSection, TextLink };

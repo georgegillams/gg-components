@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import BpkText from 'bpk-component-text';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
 
@@ -78,14 +77,9 @@ const Section = props => {
         </a>
       )}
       {name && (
-        <BpkText
-          id={anchorLink}
-          tagName="h2"
-          textStyle="xxl"
-          className={textClassNameFinal.join(' ')}
-        >
+        <h2 id={anchorLink} className={textClassNameFinal.join(' ')}>
           {name}
-        </BpkText>
+        </h2>
       )}
       {children}
     </div>

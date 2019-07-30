@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import BpkText from 'bpk-component-text';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../helpers/cssModules';
 
 import TextLink from './TextLink';
 import STYLES from './typography.scss';
@@ -77,14 +76,13 @@ const SubSection = props => {
         </TextLink>
       )}
       {name && (
-        <BpkText
-          tagName="h3"
+        <h3
           id={anchorLink}
           textStyle="lg"
           className={textClassNameFinal.join(' ')}
         >
           {name}
-        </BpkText>
+        </h3>
       )}
       {children}
     </div>

@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { configure, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
@@ -23,6 +24,16 @@ import { addParameters } from '@storybook/react'; // <- or your storybook framew
 
 addDecorator(withA11y);
 addDecorator(withKnobs);
+addDecorator(story => (
+  <BrowserRouter>
+    <Route
+      path="/"
+      component={() => {
+        return story();
+      }}
+    />
+  </BrowserRouter>
+));
 
 addParameters({
   backgrounds: [
