@@ -19,9 +19,19 @@ import React from 'react';
 import { configure, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
+import { addParameters } from '@storybook/react'; // <- or your storybook framework
 
 addDecorator(withA11y);
 addDecorator(withKnobs);
+
+addParameters({
+  backgrounds: [
+    { name: 'dark', value: '#1e1e1e', default: true },
+    { name: 'twitter', value: '#00aced' },
+    { name: 'facebook', value: '#3b5998' },
+  ],
+});
+
 /* eslint-disable global-require */
 configure(() => {
   require('../src/GGButton/stories.js');

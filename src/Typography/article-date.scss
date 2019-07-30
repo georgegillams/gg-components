@@ -1,3 +1,4 @@
+@import '~bpk-mixins';
 @import '../helpers/tokens';
 
 .article-date {
@@ -6,7 +7,7 @@
     color: $not-black;
 
     @media (prefers-color-scheme: dark) {
-      color: rgb(179, 179, 179);
+      color: $not-black-invert;
     }
 
     &--no-padding {
