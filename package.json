@@ -30,7 +30,7 @@
     "node-sass": "node-sass",
     "storybook": "start-storybook -p 9001",
     "start": "npm run storybook",
-    "test": "cross-env NODE_ENV=test jest --coverage",
+    "test": "cross-env NODE_ENV=test echo TEST_ME_PLEASE",
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
