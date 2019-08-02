@@ -55,5 +55,5 @@ storiesOf('GGButton', module)
   ));
 
 storiesOf('BurgerButton', module)
-  .add('closed', () => <BurgerButton />)
-  .add('open', () => <BurgerButton isOpen />);
+  .add('closed', () => <BurgerButton onClick={action('burger clicked')} />)
+  .add('open', () => <BurgerButton onClick={action('burger clicked')} open />);

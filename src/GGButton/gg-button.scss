@@ -56,12 +56,19 @@
       background-color: transparent;
       color: $not-black;
 
+      @media (prefers-color-scheme: dark) {
+        color: $not-black-invert;
+      }
+
       &--disabled {
         color: gray;
 
         &:focus,
         &:active,
         &:hover {
+        }
+        @media (prefers-color-scheme: dark) {
+          color: lightgray;
         }
       }
     }

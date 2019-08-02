@@ -13,7 +13,7 @@ const SubSection = props => {
     fancy,
     light,
     name,
-    noAnchor,
+    anchor,
     className,
     hover,
     noPadding,
@@ -34,7 +34,7 @@ const SubSection = props => {
       textClassNameFinal.push(getClassName('typography--hovering'));
     }
   }
-  if (!noAnchor) {
+  if (anchor) {
     textClassNameFinal.push(getClassName('typography__text--with-anchor-link'));
   }
   if (light) {
@@ -67,7 +67,7 @@ const SubSection = props => {
 
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
-      {!noAnchor && (
+      {anchor && (
         <TextLink
           href={`#${anchorLink}`}
           className={getClassName('typography__anchor-link')}
@@ -94,7 +94,7 @@ SubSection.propTypes = {
   link: PropTypes.bool,
   fancy: PropTypes.bool,
   light: PropTypes.bool,
-  noAnchor: PropTypes.bool,
+  anchor: PropTypes.bool,
   noPadding: PropTypes.bool,
   name: PropTypes.string.isRequired,
   className: PropTypes.string,
@@ -107,7 +107,7 @@ SubSection.defaultProps = {
   hover: false,
   link: false,
   fancy: false,
-  noAnchor: false,
+  anchor: true,
   light: false,
   noPadding: false,
   className: null,

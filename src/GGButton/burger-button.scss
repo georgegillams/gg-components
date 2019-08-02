@@ -5,6 +5,8 @@
     padding: 0.5rem;
     width: 2rem;
     height: 2rem;
+    background-color: transparent;
+    border: none;
   }
 
   &__inner {
@@ -19,6 +21,11 @@
     transition: all 0.4s ease;
     position: absolute;
     left: 0;
+    background-color: black;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: white;
+    }
 
     &__one {
       top: calc(25% - 0.05rem);

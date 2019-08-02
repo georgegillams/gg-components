@@ -20,16 +20,19 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import { ArticleDate, Quote, Section, SubSection, TextLink } from './index';
 
 storiesOf('Quote', module).add('default', () => (
   <Quote>Lorem ipse dolor sit amet.</Quote>
 ));
-storiesOf('Section', module).add('default', () => <Section name="Test" />);
-storiesOf('SubSection', module).add('default', () => (
-  <SubSection name="Test" />
-));
+storiesOf('Section', module)
+  .add('default', () => <Section name="Test" />)
+  .add('With anchor', () => <Section anchor name="Test" />);
+storiesOf('SubSection', module)
+  .add('default', () => <SubSection name="Test" />)
+  .add('Without anchor', () => <SubSection name="Test" anchor={false} />);
 storiesOf('TextLink', module).add('default', () => (
   <TextLink href="/lol" name="Test">
     Test

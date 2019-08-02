@@ -43,7 +43,12 @@ class BurgerButton extends Component {
     }
 
     return (
-      <button onClick={onClick} className={outerClassNames.join(' ')} {...rest}>
+      <button
+        aria-label="Menu"
+        onClick={onClick}
+        className={outerClassNames.join(' ')}
+        {...rest}
+      >
         <div className={innerClassNames.join(' ')}>
           <div className={lineClassNames1.join(' ')} />
           <div className={lineClassNames2.join(' ')} />

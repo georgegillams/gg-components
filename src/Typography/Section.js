@@ -12,7 +12,7 @@ const Section = props => {
     fancy,
     light,
     noPadding,
-    noAnchor,
+    anchor,
     name,
     className,
     textClassName,
@@ -32,7 +32,7 @@ const Section = props => {
       textClassNameFinal.push(getClassName('typography--hovering'));
     }
   }
-  if (!noAnchor) {
+  if (anchor) {
     textClassNameFinal.push(getClassName('typography__text--with-anchor-link'));
   }
   if (light) {
@@ -65,7 +65,7 @@ const Section = props => {
 
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
-      {!noAnchor && (
+      {anchor && (
         <a
           href={`#${anchorLink}`}
           className={getClassName(
@@ -87,7 +87,7 @@ const Section = props => {
 };
 
 Section.propTypes = {
-  noAnchor: PropTypes.bool,
+  anchor: PropTypes.bool,
   link: PropTypes.bool,
   fancy: PropTypes.bool,
   light: PropTypes.bool,
@@ -101,7 +101,7 @@ Section.propTypes = {
 };
 
 Section.defaultProps = {
-  noAnchor: true,
+  anchor: false,
   link: false,
   hover: false,
   fancy: false,
