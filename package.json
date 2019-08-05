@@ -1,6 +1,6 @@
 {
   "name": "gg-components",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Reusable transpiled React components",
   "repository": {
     "type": "git",
