@@ -30,11 +30,29 @@ storiesOf('Quote', module).add('default', () => (
 storiesOf('Section', module)
   .add('default', () => <Section name="Test" />)
   .add('With anchor', () => <Section anchor name="Test" />)
-  .add('no padding', () => <Section anchor noPadding name="Test" />);
+  .add('no padding', () => <Section anchor noPadding name="Test" />)
+  .add('With content and padding', () => (
+    <Section anchor name="Test">
+      Some content
+    </Section>
+  ))
+  .add('With content', () => (
+    <Section noPadding anchor name="Test">
+      Some content
+    </Section>
+  ));
 storiesOf('SubSection', module)
   .add('default', () => <SubSection name="Test" />)
   .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
-  .add('no padding', () => <SubSection noPadding name="Test" />);
+  .add('no padding', () => <SubSection noPadding name="Test" />)
+  .add('With content and padding', () => (
+    <SubSection name="Test">Some content</SubSection>
+  ))
+  .add('With content', () => (
+    <SubSection noPadding name="Test">
+      Some content
+    </SubSection>
+  ));
 storiesOf('TextLink', module)
   .add('default', () => (
     <TextLink href="/lol" name="Test">
@@ -42,9 +60,13 @@ storiesOf('TextLink', module)
     </TextLink>
   ))
   .add('external', () => (
-    <TextLink external href="/lol" name="Test">
-      Test
-    </TextLink>
+    <div>
+      This is an external link to{' '}
+      <TextLink external href="/lol" name="Test">
+        Test
+      </TextLink>{' '}
+      content on another site.
+    </div>
   ));
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date()} />

@@ -30,8 +30,8 @@
   }
 
   &__icon {
-    display: inline-block;
-    width: 0.65rem;
+    display: inline-flex;
+    width: 0.4rem;
     height: 1rem;
     margin-left: 0.55rem;
 
@@ -45,13 +45,17 @@
 
   &__anchor-link {
     position: absolute;
-    margin-top: -0.16rem;
+    margin-top: 0.3rem;
     margin-left: -1.2rem;
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     opacity: 0.4;
     color: orchid;
+
+    &--no-padding {
+      margin-top: -0.16rem;
+    }
 
     @media (prefers-color-scheme: dark) {
       opacity: 1;

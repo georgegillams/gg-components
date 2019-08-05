@@ -24,9 +24,9 @@ const SubSection = props => {
 
   const classNameFinal = [getClassName('typography__main')];
   const textClassNameFinal = [
-    'typography__text',
-    'typography__text--subsection',
+    getClassName('typography__text', 'typography__text--subsection'),
   ];
+  const anchorClassNames = [getClassName('typography__anchor-link')];
   if (hover) {
     if (light) {
       textClassNameFinal.push(getClassName('typography--hovering-light'));
@@ -48,6 +48,7 @@ const SubSection = props => {
   if (noPadding) {
     classNameFinal.push(getClassName('typography--no-padding'));
     textClassNameFinal.push(getClassName('typography--no-padding'));
+    anchorClassNames.push(getClassName('typography__anchor-link--no-padding'));
   }
   if (fancy) {
     classNameFinal.push(getClassName('typography--fancy'));
@@ -70,7 +71,7 @@ const SubSection = props => {
       {anchor && (
         <TextLink
           href={`#${anchorLink}`}
-          className={getClassName('typography__anchor-link')}
+          className={anchorClassNames.join(' ')}
         >
           §
         </TextLink>
