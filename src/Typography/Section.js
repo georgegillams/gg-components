@@ -25,6 +25,9 @@ const Section = props => {
   const textClassNameFinal = [
     getClassName('typography__text', 'typography__text--section'),
   ];
+  const anchorClassNames = [
+    getClassName('typography__anchor-link', 'typography__anchor-link--section'),
+  ];
   if (hover) {
     if (light) {
       textClassNameFinal.push(getClassName('typography--hovering-light'));
@@ -46,6 +49,9 @@ const Section = props => {
   if (noPadding) {
     classNameFinal.push(getClassName('typography--no-padding'));
     textClassNameFinal.push(getClassName('typography--no-padding'));
+    anchorClassNames.push(
+      getClassName('typography__anchor-link--section--no-padding'),
+    );
   }
   if (fancy) {
     classNameFinal.push(getClassName('typography--fancy'));
@@ -66,13 +72,7 @@ const Section = props => {
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
       {anchor && (
-        <a
-          href={`#${anchorLink}`}
-          className={getClassName(
-            'typography__anchor-link',
-            'typography__anchor-link--section',
-          )}
-        >
+        <a href={`#${anchorLink}`} className={anchorClassNames.join(' ')}>
           §
         </a>
       )}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
+import NewWindowIcon from './new-window.js';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -45,7 +46,7 @@ const TextLink = props => {
     >
       {children}
       <div className={getClassName('typography__icon')}>
-        <div className={getClassName('typography__icon--inner')} />
+        <NewWindowIcon className={getClassName('typography__icon--inner')} />
       </div>
     </a>
   ) : (

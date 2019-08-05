@@ -29,15 +29,23 @@ storiesOf('Quote', module).add('default', () => (
 ));
 storiesOf('Section', module)
   .add('default', () => <Section name="Test" />)
-  .add('With anchor', () => <Section anchor name="Test" />);
+  .add('With anchor', () => <Section anchor name="Test" />)
+  .add('no padding', () => <Section anchor noPadding name="Test" />);
 storiesOf('SubSection', module)
   .add('default', () => <SubSection name="Test" />)
-  .add('Without anchor', () => <SubSection name="Test" anchor={false} />);
-storiesOf('TextLink', module).add('default', () => (
-  <TextLink href="/lol" name="Test">
-    Test
-  </TextLink>
-));
+  .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
+  .add('no padding', () => <SubSection noPadding name="Test" />);
+storiesOf('TextLink', module)
+  .add('default', () => (
+    <TextLink href="/lol" name="Test">
+      Test
+    </TextLink>
+  ))
+  .add('external', () => (
+    <TextLink external href="/lol" name="Test">
+      Test
+    </TextLink>
+  ));
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date()} />
 ));
