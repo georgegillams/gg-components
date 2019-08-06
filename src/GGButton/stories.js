@@ -49,6 +49,8 @@ storiesOf('GGButton', module)
   .add('Primary', () => <ButtonStory />)
   .add('Large', () => <ButtonStory large />)
   .add('Secondary', () => <ButtonStory secondary />)
+  .add('Bouncy', () => <ButtonStory bouncy />)
+  .add('Destructive', () => <ButtonStory destructive />)
   .add('White', () => <ButtonStory dark white />)
   .add('external href', () => (
     <ButtonStory hrefExternal href="https://duckduckgo.com/" />

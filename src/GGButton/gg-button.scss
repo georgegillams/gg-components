@@ -17,7 +17,7 @@
     padding: 0.2rem 0.8rem;
     min-width: 5rem;
     font-weight: bold;
-    transition: all 0.3s;
+    transition: filter 0.3s;
     border: none;
     border-radius: 3rem;
     background-color: $primary-color;
@@ -31,6 +31,13 @@
     &:active,
     &:hover {
       filter: saturate(3);
+    }
+    &:active,
+    &:focus {
+      box-shadow: $focus-indicator;
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
     }
 
     &--large {
@@ -99,7 +106,6 @@
 
     &--bouncy {
       padding: 0.2rem 0.8rem;
-      transition: all 0.2s;
       background-color: transparent;
       color: $not-black;
       font-weight: normal;

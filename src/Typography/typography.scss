@@ -53,6 +53,14 @@
     opacity: 0.4;
     color: orchid;
 
+    &:active,
+    &:focus {
+      box-shadow: $focus-indicator;
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
+    }
+
     &--no-padding {
       margin-top: -0.16rem;
     }
@@ -150,10 +158,19 @@
       }
     }
 
+    &:focus,
+    &:active,
     &:hover {
       color: $primary-color !important;
       text-decoration: none;
       fill: $primary-color !important;
+    }
+    &:active,
+    &:focus {
+      box-shadow: $focus-indicator;
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
     }
   }
 

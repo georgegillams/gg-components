@@ -40,6 +40,12 @@ storiesOf('Section', module)
     <Section noPadding anchor name="Test">
       Some content
     </Section>
+  ))
+  .add('no padding no anchor', () => (
+    <Section anchor={false} noPadding name="Test" />
+  ))
+  .add('Link', () => (
+    <Section anchor={false} noPadding name="Test" link></Section>
   ));
 storiesOf('SubSection', module)
   .add('default', () => <SubSection name="Test" />)
