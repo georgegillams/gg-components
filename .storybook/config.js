@@ -37,16 +37,17 @@ addDecorator(story => (
 
 addParameters({
   backgrounds: [
-    { name: 'dark', value: '#1e1e1e', default: true },
-    { name: 'twitter', value: '#00aced' },
-    { name: 'facebook', value: '#3b5998' },
+    { name: 'Dark', value: '#1e1e1e', default: true },
+    { name: 'Skyscanner', value: '#00aacc' },
+    { name: 'Orange', value: '#ffbb00' },
   ],
 });
 
 /* eslint-disable global-require */
 configure(() => {
-  require('../src/GGButton/stories.js');
-  require('../src/Typography/stories.js');
   require('../src/CreativeCommons/stories.js');
+  require('../src/GGButton/stories.js');
+  require('../src/LoadingIndicator/stories.js');
+  require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */

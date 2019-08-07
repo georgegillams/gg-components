@@ -110,16 +110,22 @@ storiesOf('ArticleDate', module).add('default', () => (
 storiesOf('AnimatedContent', module)
   .add('In view', () => (
     <AnimatedContent inView>
-      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+      <div
+        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
+      />
     </AnimatedContent>
   ))
   .add('Out of view', () => (
     <AnimatedContent inView={false}>
-      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+      <div
+        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
+      />
     </AnimatedContent>
   ))
   .add('Stateful', () => (
     <StatefulAnimatedContent>
-      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+      <div
+        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
+      />
     </StatefulAnimatedContent>
   ));
