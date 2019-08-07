@@ -18,19 +18,49 @@
 
 /* @flow strict */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { ArticleDate, Quote, Section, SubSection, TextLink } from './index';
+import {
+  ArticleDate,
+  Quote,
+  Section,
+  SubSection,
+  AnimatedContent,
+  TextLink,
+} from './index';
+
+class StatefulAnimatedContent extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { inView: false };
+  }
+
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.setState({ inView: !this.state.inView });
+          }}
+        >
+          Toggle
+        </button>
+        <AnimatedContent inView={this.state.inView} {...this.props} />
+      </div>
+    );
+  }
+}
 
 storiesOf('Quote', module).add('default', () => (
   <Quote>Lorem ipse dolor sit amet.</Quote>
 ));
 storiesOf('Section', module)
-  .add('default', () => <Section name="Test" />)
+  .add('Default', () => <Section name="Test" />)
   .add('With anchor', () => <Section anchor name="Test" />)
-  .add('no padding', () => <Section anchor noPadding name="Test" />)
+  .add('No padding', () => <Section anchor noPadding name="Test" />)
   .add('With content and padding', () => (
     <Section anchor name="Test">
       Some content
@@ -41,16 +71,16 @@ storiesOf('Section', module)
       Some content
     </Section>
   ))
-  .add('no padding no anchor', () => (
+  .add('No padding no anchor', () => (
     <Section anchor={false} noPadding name="Test" />
   ))
   .add('Link', () => (
     <Section anchor={false} noPadding name="Test" link></Section>
   ));
 storiesOf('SubSection', module)
-  .add('default', () => <SubSection name="Test" />)
+  .add('Default', () => <SubSection name="Test" />)
   .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
-  .add('no padding', () => <SubSection noPadding name="Test" />)
+  .add('No padding', () => <SubSection noPadding name="Test" />)
   .add('With content and padding', () => (
     <SubSection name="Test">Some content</SubSection>
   ))
@@ -60,12 +90,12 @@ storiesOf('SubSection', module)
     </SubSection>
   ));
 storiesOf('TextLink', module)
-  .add('default', () => (
+  .add('Default', () => (
     <TextLink href="/lol" name="Test">
       Test
     </TextLink>
   ))
-  .add('external', () => (
+  .add('External', () => (
     <div>
       This is an external link to{' '}
       <TextLink external href="/lol" name="Test">
@@ -77,3 +107,19 @@ storiesOf('TextLink', module)
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date()} />
 ));
+storiesOf('AnimatedContent', module)
+  .add('In view', () => (
+    <AnimatedContent inView>
+      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+    </AnimatedContent>
+  ))
+  .add('Out of view', () => (
+    <AnimatedContent inView={false}>
+      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+    </AnimatedContent>
+  ))
+  .add('Stateful', () => (
+    <StatefulAnimatedContent>
+      <div style={{ width: '1rem', height: '1rem', backgroundColor: 'red' }} />
+    </StatefulAnimatedContent>
+  ));

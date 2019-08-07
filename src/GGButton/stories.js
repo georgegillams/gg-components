@@ -18,11 +18,32 @@
 
 /* @flow strict */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import GGButton, { BurgerButton } from './index';
+
+class StatefulBurger extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isOpen: false };
+  }
+
+  render() {
+    console.log(`open`, this.state.isOpen);
+    return (
+      <BurgerButton
+        onClick={() => {
+          this.setState({ isOpen: !this.state.isOpen });
+        }}
+        isOpen={this.state.isOpen}
+        {...this.props}
+      />
+    );
+  }
+}
 
 const ButtonStory = ({
   className,
@@ -52,10 +73,11 @@ storiesOf('GGButton', module)
   .add('Bouncy', () => <ButtonStory bouncy />)
   .add('Destructive', () => <ButtonStory destructive />)
   .add('White', () => <ButtonStory dark white />)
-  .add('external href', () => (
+  .add('External href', () => (
     <ButtonStory hrefExternal href="https://duckduckgo.com/" />
   ));
 
 storiesOf('BurgerButton', module)
-  .add('closed', () => <BurgerButton onClick={action('burger clicked')} />)
-  .add('open', () => <BurgerButton onClick={action('burger clicked')} open />);
+  .add('Closed', () => <BurgerButton onClick={action('burger clicked')} />)
+  .add('Open', () => <BurgerButton onClick={action('burger clicked')} isOpen />)
+  .add('Stateful', () => <StatefulBurger />);

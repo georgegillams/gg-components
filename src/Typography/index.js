@@ -14,6 +14,7 @@ import ArticleDate from './ArticleDate';
 import Section from './Section';
 import SubSection from './SubSection';
 import TextLink from './TextLink';
+import AnimatedContent from './AnimatedContent';
 
 export default Section;
-export { ArticleDate, Quote, Section, SubSection, TextLink };
+export { ArticleDate, Quote, Section, SubSection, AnimatedContent, TextLink };
