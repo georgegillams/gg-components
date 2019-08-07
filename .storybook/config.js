@@ -47,5 +47,6 @@ addParameters({
 configure(() => {
   require('../src/GGButton/stories.js');
   require('../src/Typography/stories.js');
+  require('../src/CreativeCommons/stories.js');
 }, module);
 /* eslint-enable */
