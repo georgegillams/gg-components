@@ -103,6 +103,11 @@ storiesOf('TextLink', module)
       </TextLink>{' '}
       content on another site.
     </div>
+  ))
+  .add('Light external', () => (
+    <TextLink light external href="/lol" name="Test">
+      Test
+    </TextLink>
   ));
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date()} />
