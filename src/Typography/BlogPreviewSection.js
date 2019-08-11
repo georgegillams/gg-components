@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../helpers/cssModules';
 
 import Section from './Section';
 import BlogPreviewSubSection from './BlogPreviewSubSection';

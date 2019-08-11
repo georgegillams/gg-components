@@ -12,7 +12,7 @@ import {
   References,
   REFERENCE_STYLES,
 } from 'react-component-academic-reference';
-import { cssModules } from 'bpk-react-utils';
+import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './blog-viewer.scss';
 
