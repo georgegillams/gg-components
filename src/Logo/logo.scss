@@ -38,7 +38,7 @@
     display: flex;
     padding-bottom: 1rem;
     flex-direction: column;
-    transition: all 0.2s;
+    transition: transform 0.2s;
 
     @include bpk-breakpoint-tablet {
       padding-right: 2rem;
@@ -53,18 +53,9 @@
     &--no-padding {
       padding: 0;
     }
-
-    &--animated {
-      &:focus,
-      &:active,
-      &:hover {
-        animation-name: example;
-        animation-duration: 0.4s;
-      }
-    }
   }
 
-  &__logo-base {
+  &__subheading {
     display: inline-block;
     color: #1e1e1e;
     font-family: 'Quattrocento Sans', sans-serif;
@@ -77,9 +68,26 @@
     &--no-padding {
       line-height: normal;
     }
+
+    &--animated {
+      &:focus,
+      &:active,
+      &:hover {
+        animation-name: example;
+        animation-duration: 0.4s;
+      }
+    }
+
+    &:active,
+    &:focus {
+      box-shadow: $focus-indicator;
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
+    }
   }
 
-  &__logo-large {
+  &__heading {
     display: inline-block;
     color: $primary-color;
     font-family: 'Quattrocento Sans', sans-serif;
@@ -101,6 +109,13 @@
 
     &--no-padding {
       line-height: normal;
+    }
+    &:active,
+    &:focus {
+      box-shadow: $focus-indicator;
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
     }
   }
 }

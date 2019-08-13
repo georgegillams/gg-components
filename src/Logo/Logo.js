@@ -24,23 +24,24 @@ const Logo = props => {
   if (alwaysCentered) {
     classNameFinal.push(getClassName('logo__container--centered'));
   }
+
+  const baseTextClassNameFinal = [getClassName('logo__subheading')];
+  const largeTextClassNameFinal = [getClassName('logo__heading')];
   if (animated) {
-    classNameFinal.push(getClassName('logo__container--animated'));
+    baseTextClassNameFinal.push(getClassName('logo__subheading--animated'));
+    largeTextClassNameFinal.push(getClassName('logo__subheading--animated'));
   }
-
-  const baseTextClassNameFinal = [getClassName('logo__logo-base')];
   if (light) {
-    baseTextClassNameFinal.push(getClassName('logo__logo-base--light'));
+    baseTextClassNameFinal.push(getClassName('logo__subheading--light'));
   }
 
-  const largeTextClassNameFinal = [getClassName('logo__logo-large')];
   if (small) {
-    largeTextClassNameFinal.push(getClassName('logo__logo-large--smaller'));
+    largeTextClassNameFinal.push(getClassName('logo__heading--smaller'));
   }
   if (noPadding) {
     classNameFinal.push(getClassName('logo__container--no-padding'));
-    largeTextClassNameFinal.push(getClassName('logo__logo-large--no-padding'));
-    baseTextClassNameFinal.push(getClassName('logo__logo-base--no-padding'));
+    largeTextClassNameFinal.push(getClassName('logo__heading--no-padding'));
+    baseTextClassNameFinal.push(getClassName('logo__subheading--no-padding'));
   }
 
   return (

@@ -29,4 +29,5 @@ storiesOf('Logo', module)
   .add('Light', () => <Logo light />)
   .add('Small', () => <Logo small />)
   .add('Small light', () => <Logo small light />)
+  .add('Small animated', () => <Logo small animated />)
   .add('Small without padding', () => <Logo small noPadding />);
