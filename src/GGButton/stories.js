@@ -32,7 +32,6 @@ class StatefulBurger extends Component {
   }
 
   render() {
-    console.log(`open`, this.state.isOpen);
     return (
       <BurgerButton
         onClick={() => {
