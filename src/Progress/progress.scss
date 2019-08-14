@@ -1,0 +1,25 @@
+@import '../helpers/tokens';
+
+.progress {
+  &__outer {
+    background-color: lightgray;
+    height: 0.5rem;
+    width: 100%;
+    border-radius: 5rem;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: gray;
+    }
+  }
+
+  &__inner {
+    background-color: $primary-color;
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+    border-radius: 5rem;
+
+    &--error {
+      background-color: $destructive-color;
+    }
+  }
+}

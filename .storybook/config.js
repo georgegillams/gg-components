@@ -50,6 +50,7 @@ configure(() => {
   require('../src/GGButton/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
+  require('../src/Progress/stories.js');
   require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */
