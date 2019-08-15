@@ -9,7 +9,7 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const Logo = props => {
   const {
-    noPadding,
+    padding,
     animated,
     small,
     className,
@@ -38,7 +38,7 @@ const Logo = props => {
   if (small) {
     largeTextClassNameFinal.push(getClassName('logo__heading--smaller'));
   }
-  if (noPadding) {
+  if (!padding) {
     classNameFinal.push(getClassName('logo__container--no-padding'));
     largeTextClassNameFinal.push(getClassName('logo__heading--no-padding'));
     baseTextClassNameFinal.push(getClassName('logo__subheading--no-padding'));
@@ -66,7 +66,7 @@ const Logo = props => {
 
 Logo.propTypes = {
   className: PropTypes.string,
-  noPadding: PropTypes.bool,
+  padding: PropTypes.bool,
   animated: PropTypes.bool,
   small: PropTypes.bool,
   light: PropTypes.bool,
@@ -75,7 +75,7 @@ Logo.propTypes = {
 
 Logo.defaultProps = {
   className: null,
-  noPadding: false,
+  padding: true,
   animated: false,
   small: false,
   light: false,
