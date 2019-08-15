@@ -32,7 +32,6 @@ class StatefulLoading extends Component {
   }
 
   render() {
-    console.log(`open`, this.state.isOpen);
     return (
       <div>
         <button

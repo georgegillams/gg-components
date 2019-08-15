@@ -26,7 +26,7 @@ import Progress from './index';
 
 const INTERACTIVE_INCREMENT = 33;
 
-class Statefulprogress extends Component {
+class StatefulProgress extends Component {
   constructor(props) {
     super(props);
 
@@ -67,4 +67,4 @@ class Statefulprogress extends Component {
 storiesOf('Progress', module)
   .add('Default', () => <Progress progress={50} />)
   .add('Error', () => <Progress error progress={50} />)
-  .add('Stateful', () => <Statefulprogress />);
+  .add('Stateful', () => <StatefulProgress />);
