@@ -1,4 +1,5 @@
 @import '~bpk-mixins';
+@import '../helpers/tokens';
 
 .money-pot {
   display: flex;
@@ -21,8 +22,13 @@
     height: 0.36rem;
     margin-left: calc(70% - 0.175rem);
     border-radius: 0.2rem;
-    background-color: #1e1e1e;
+    background-color: $not-black;
     opacity: 0.5;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $not-black-invert;
+      opacity: 0.8;
+    }
   }
 
   &--21-marker {
@@ -31,8 +37,13 @@
     width: 0.36rem;
     height: 0.36rem;
     border-radius: 0.2rem;
-    background-color: #1e1e1e;
+    background-color: $not-black;
     opacity: 0.15;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $not-black-invert;
+      opacity: 0.8;
+    }
   }
 
   &--percentage {
