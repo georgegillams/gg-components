@@ -8,6 +8,32 @@ import STYLES from './gg-button.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 class GGButton extends Component {
+  static propTypes = {
+    large: PropTypes.bool,
+    href: PropTypes.string,
+    hrefExternal: PropTypes.bool,
+    disabled: PropTypes.bool,
+    light: PropTypes.bool,
+    bouncy: PropTypes.bool,
+    destructive: PropTypes.bool,
+    onClick: PropTypes.func,
+    className: PropTypes.string,
+    children: PropTypes.node,
+  };
+
+  static defaultProps = {
+    large: false,
+    href: null,
+    hrefExternal: false,
+    light: false,
+    disabled: false,
+    bouncy: false,
+    destructive: false,
+    onClick: null,
+    className: null,
+    children: null,
+  };
+
   constructor(props) {
     super(props);
 
@@ -127,31 +153,5 @@ class GGButton extends Component {
     );
   };
 }
-
-GGButton.propTypes = {
-  large: PropTypes.bool,
-  href: PropTypes.string,
-  hrefExternal: PropTypes.bool,
-  disabled: PropTypes.bool,
-  light: PropTypes.bool,
-  bouncy: PropTypes.bool,
-  destructive: PropTypes.bool,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  children: PropTypes.node,
-};
-
-GGButton.defaultProps = {
-  large: false,
-  href: null,
-  hrefExternal: false,
-  light: false,
-  disabled: false,
-  bouncy: false,
-  destructive: false,
-  onClick: null,
-  className: null,
-  children: null,
-};
 
 export default GGButton;

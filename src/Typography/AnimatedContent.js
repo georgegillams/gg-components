@@ -7,6 +7,17 @@ import STYLES from './animated-content.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 class AnimatedContent extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    className: PropTypes.string,
+    inView: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    className: null,
+    inView: true,
+  };
+
   constructor(props) {
     super(props);
 
@@ -32,16 +43,5 @@ class AnimatedContent extends Component {
     );
   }
 }
-
-AnimatedContent.propTypes = {
-  children: PropTypes.element.isRequired,
-  className: PropTypes.string,
-  inView: PropTypes.bool,
-};
-
-AnimatedContent.defaultProps = {
-  className: null,
-  inView: true,
-};
 
 export default AnimatedContent;
