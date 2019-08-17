@@ -20,6 +20,13 @@ console.log('');
 const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
   .toString()
   .split('\n')
+  .filter(s => s !== '');
+
+const sourceScssFiles = execSync(
+  'find dist -name "*.scss" | grep -v node_modules',
+)
+  .toString()
+  .split('\n')
   .filter(f => {
     let res = true;
     auxilliaryFiles.forEach(aF => {
@@ -31,13 +38,12 @@ const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
   })
   .filter(s => s !== '');
 
-scssFiles.forEach(sF => {
+sourceScssFiles.forEach(sF => {
   transpile(sF);
-  deleteFile(sF);
 });
 
-auxilliaryFiles.forEach(aF => {
-  deleteFile(aF);
+scssFiles.forEach(sF => {
+  deleteFile(sF);
 });
 
 console.log('All good.  👍');
