@@ -29,7 +29,7 @@ const MoneyPot = props => {
     classNameFinal.push(className);
   }
 
-  let progress = (
+  const progress = (
     <Progress
       style={{ position: 'absolute', width: '100%', top: '-.2rem' }}
       small
@@ -54,7 +54,7 @@ const MoneyPot = props => {
           <div
             className={getClassName('money-pot--21-marker')}
             style={{
-              marginLeft: `calc(${markerDisplayPercentage}% - .175rem)`,
+              marginLeft: `calc(${markerDisplayPercentage}% - .1rem)`,
             }}
           />
         )}

@@ -18,10 +18,9 @@
   &--first-marker {
     position: absolute;
     top: -0.2rem;
-    width: 0.36rem;
-    height: 0.36rem;
+    width: 0.2rem;
+    height: 0.5rem;
     margin-left: calc(70% - 0.175rem);
-    border-radius: 0.2rem;
     background-color: $not-black;
     opacity: 0.5;
 
@@ -34,9 +33,8 @@
   &--21-marker {
     position: absolute;
     top: -0.2rem;
-    width: 0.36rem;
-    height: 0.36rem;
-    border-radius: 0.2rem;
+    width: 0.2rem;
+    height: 0.5rem;
     background-color: $not-black;
     opacity: 0.15;
 
