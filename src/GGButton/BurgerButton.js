@@ -7,6 +7,20 @@ import STYLES from './burger-button.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 class BurgerButton extends Component {
+  static propTypes = {
+    isOpen: PropTypes.bool,
+    onClick: PropTypes.func,
+    className: PropTypes.string,
+    lineClassName: PropTypes.string,
+  };
+
+  static defaultProps = {
+    isOpen: false,
+    onClick: null,
+    className: null,
+    lineClassName: null,
+  };
+
   constructor(props) {
     super(props);
 
@@ -58,19 +72,5 @@ class BurgerButton extends Component {
     );
   };
 }
-
-BurgerButton.propTypes = {
-  isOpen: PropTypes.bool,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  lineClassName: PropTypes.string,
-};
-
-BurgerButton.defaultProps = {
-  isOpen: false,
-  onClick: null,
-  className: null,
-  lineClassName: null,
-};
 
 export default BurgerButton;
