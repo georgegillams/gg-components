@@ -52,6 +52,7 @@ configure(() => {
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
   require('../src/MoneyPot/stories.js');
+  require('../src/NavigationBar/stories.js');
   require('../src/Progress/stories.js');
   require('../src/Typography/stories.js');
 }, module);

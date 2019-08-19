@@ -1,3 +1,5 @@
+@import '~bpk-mixins';
+
 $primary-color-light: lightblue;
 $primary-color-transparent: rgba(30, 50, 200, 0.15);
 $primary-color: #44aeff;
@@ -20,3 +22,23 @@ $navigation-bar-menu-z-index: 998;
 $navigation-bar-scrim-z-index: 997;
 $focus-indicator: 0 0 0 0.2rem #ad0000;
 $focus-indicator-invert: 0 0 0 0.2rem #ffdb65;
+
+@mixin page-container() {
+  margin-top: 1.5rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 60rem;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+
+  @include bpk-breakpoint-tablet {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+@mixin page-container-centered() {
+  @include page-container;
+
+  text-align: center;
+}
