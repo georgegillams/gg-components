@@ -47,6 +47,7 @@ addParameters({
 configure(() => {
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
+  require('../src/Degree/stories.js');
   require('../src/GGButton/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
