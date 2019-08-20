@@ -73,4 +73,4 @@ class HelperFunctions {
   }
 }
 
-module.exports = HelperFunctions;
+export default HelperFunctions;
