@@ -8,8 +8,8 @@ import Section from './Section';
 import SubSection from './SubSection';
 import STYLES from './blog-viewer.scss';
 
-import Tag from 'components/Tag';
-import { ArticleDate } from 'components/Typography';
+import Tag from '../Tag';
+import { ArticleDate } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 

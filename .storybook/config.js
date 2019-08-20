@@ -48,12 +48,17 @@ configure(() => {
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
+  require('../src/Design/stories.js');
+  require('../src/Footer/stories.js');
   require('../src/GGButton/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
   require('../src/MoneyPot/stories.js');
   require('../src/NavigationBar/stories.js');
+  require('../src/Notifications/stories.js');
   require('../src/Progress/stories.js');
+  require('../src/Redirect/stories.js');
+  require('../src/RequestStatus/stories.js');
   require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */

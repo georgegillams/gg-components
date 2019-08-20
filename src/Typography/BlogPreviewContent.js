@@ -16,8 +16,8 @@ import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './blog-viewer.scss';
 
-import CodeInline, { Code, CodeBashArrow } from 'components/Code';
-import { TextLink, Quote, SubSection } from 'components/Typography';
+import CodeInline, { Code, CodeBashArrow } from '../Code';
+import { TextLink, Quote, SubSection } from '../Typography';
 import HelperFunctions from 'helpers/HelperFunctions';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
