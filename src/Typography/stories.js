@@ -29,6 +29,7 @@ import {
   SubSection,
   AnimatedContent,
   TextLink,
+  BlogPreviewContent,
 } from './index';
 
 class StatefulAnimatedContent extends Component {
@@ -133,4 +134,64 @@ storiesOf('AnimatedContent', module)
         style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
       />
     </StatefulAnimatedContent>
+  ));
+storiesOf('BlogPreviewContent', module)
+  .add('Text only', () => (
+    <BlogPreviewContent content="This is a simple test"></BlogPreviewContent>
+  ))
+  .add('Text with link', () => (
+    <BlogPreviewContent content="This contains a [link](/test) to an internal page."></BlogPreviewContent>
+  ))
+  .add('Text with extenal link', () => (
+    <BlogPreviewContent content="This contains a [link](https://www.google.com/) to an internal page."></BlogPreviewContent>
+  ))
+  .add('Text with inline code', () => (
+    <BlogPreviewContent content="This contains a `code`."></BlogPreviewContent>
+  ))
+  .add('Text with strikethrough', () => (
+    <BlogPreviewContent content="This contains a ~striken~ section."></BlogPreviewContent>
+  ))
+  .add('Text with bold', () => (
+    <BlogPreviewContent content="This contains a **bold** section."></BlogPreviewContent>
+  ))
+  .add('Text with italic', () => (
+    <BlogPreviewContent content="This contains an _italic_ section."></BlogPreviewContent>
+  ))
+  .add('Text with code block', () => (
+    <BlogPreviewContent
+      content="This contains a block of code as follows:
+```(js)(https://www.github.com/)
+code block
+  code block
+```"
+    ></BlogPreviewContent>
+  ))
+  .add('Text with a big link', () => (
+    <BlogPreviewContent
+      content="This contains a large link:
+!ssLink[Massive link](https://www.google.com)"
+    ></BlogPreviewContent>
+  ))
+  .add('Youtube video', () => (
+    <BlogPreviewContent content="!yt[ytv](https://www.youtube.com/watch?v=Nozh1zDj8_o)"></BlogPreviewContent>
+  ))
+  .add('Text with a quotation', () => (
+    <BlogPreviewContent
+      content="This contains a quotation as follows:
+>This is a quote<"
+    ></BlogPreviewContent>
+  ))
+  .add('Sectioned text', () => (
+    <BlogPreviewContent
+      content="
+# Section
+This is some section content."
+    ></BlogPreviewContent>
+  ))
+  .add('Subsectioned text', () => (
+    <BlogPreviewContent
+      content="
+## Subsection
+This is some subsection content."
+    ></BlogPreviewContent>
   ));

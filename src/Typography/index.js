@@ -15,6 +15,15 @@ import Section from './Section';
 import SubSection from './SubSection';
 import TextLink from './TextLink';
 import AnimatedContent from './AnimatedContent';
+import BlogPreviewContent from './BlogPreviewContent';
 
 export default Section;
-export { ArticleDate, Quote, Section, SubSection, AnimatedContent, TextLink };
+export {
+  ArticleDate,
+  Quote,
+  Section,
+  SubSection,
+  BlogPreviewContent,
+  AnimatedContent,
+  TextLink,
+};

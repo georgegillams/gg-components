@@ -1,31 +1,30 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import BpkText from 'bpk-component-text';
 import YoutubeEmbedVideo from 'youtube-embed-video';
-import BpkImage, {
-  withLoadingBehavior,
-  withLazyLoading,
-} from 'bpk-component-image';
+// import BpkImage, {
+//   withLoadingBehavior,
+//   withLazyLoading,
+// } from 'bpk-component-image';
 import scrollIntoView from 'scroll-into-view';
-import {
-  citation,
-  References,
-  REFERENCE_STYLES,
-} from 'react-component-academic-reference';
+// import {
+//   citation,
+//   References,
+//   REFERENCE_STYLES,
+// } from 'react-component-academic-reference';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './blog-viewer.scss';
 
 import CodeInline, { Code, CodeBashArrow } from '../Code';
 import { TextLink, Quote, SubSection } from '../Typography';
-import HelperFunctions from 'helpers/HelperFunctions';
+import HelperFunctions from '../helpers/HelperFunctions';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-const documentIfExists = typeof window !== 'undefined' ? document : null;
-const FadingLazyLoadedImage = withLoadingBehavior(
-  withLazyLoading(BpkImage, documentIfExists),
-);
+// const documentIfExists = typeof window !== 'undefined' ? document : null;
+// const FadingLazyLoadedImage = withLoadingBehavior(
+//   withLazyLoading(BpkImage, documentIfExists),
+// );
 
 const MD_LINK_REGEX = /([^]*)\[([^\[\]]*)\]\(([^\(\)]*)\)([^]*)/gi;
 const MD_SECTION_REGEX = /([^]*)# ([^\n]+)\n([^]*)/gi;
@@ -39,6 +38,7 @@ const MD_YOUTUBE_REGEX = /([^]*)!yt\[([^\[\]]*)\]\(([^\(\)]*)\)([^]*)/gi;
 const MD_STRIKETHROUGH_REGEX = /([^]*)~([^~]*)~([^]*)/gi;
 const MD_INLINE_CODE_REGEX = /([^]*)`([^`]*)`([^]*)/gi;
 const MD_BOLD_REGEX = /([^]*)\*\*([^\*]*)\*\*([^]*)/gi;
+const MD_ITALIC_REGEX = /([^]*)\_([^\*]*)\_([^]*)/gi;
 const MD_QUOTATION_REGEX = /([^]*)\>([^\>\<]*)\<([^]*)/gi;
 const MD_CITATION_REGEX = /([^]*)!cite\(([^\(\)]*)\)([^]*)/gi;
 const MD_REFERENCES_REGEX = /([^]*)!printReferences\(\)([^]*)/gi;
@@ -121,7 +121,7 @@ class BlogPreviewContent extends Component {
       });
     };
 
-    const Cite = references ? citation(references, onSelection) : null;
+    // const Cite = references ? citation(references, onSelection) : null;
 
     // If it's a footnote ref, return a superscript number:
     const mdFootNote1 = content.split(MD_FOOTNOTE_1_REGEX);
@@ -135,9 +135,9 @@ class BlogPreviewContent extends Component {
       return (
         <span className={classNameFinal.join(' ')} {...rest}>
           <RecursiveWrapper {...this.props} content={preFootnoteText} />
-          <BpkText textStyle="xs">
+          <p textStyle="xs">
             <sup>{footnoteNumber}</sup>
-          </BpkText>
+          </p>
           <RecursiveWrapper {...this.props} content={postFootnoteText} />
         </span>
       );
@@ -157,10 +157,10 @@ class BlogPreviewContent extends Component {
       return (
         <span className={classNameFinal.join(' ')} {...rest}>
           <RecursiveWrapper {...this.props} content={preFootnoteText} />
-          <BpkText textStyle="xs">
+          <p textStyle="xs">
             <sup>{footnoteNumber}</sup>{' '}
             {<RecursiveWrapper {...this.props} content={footnoteValue} />}
-          </BpkText>
+          </p>
           <RecursiveWrapper {...this.props} content={postFootnoteText} />
         </span>
       );
@@ -226,13 +226,13 @@ class BlogPreviewContent extends Component {
       return (
         <span className={classNameFinal.join(' ')} {...rest}>
           <RecursiveWrapper {...this.props} content={preImageText} />
-          <FadingLazyLoadedImage
+          {/* <FadingLazyLoadedImage
             className={getClassName('pages__image')}
             altText={imageAltText}
             width={aspectX}
             height={aspectY}
             src={imageSrc}
-          />
+          />*/}
           <RecursiveWrapper {...this.props} content={postImageText} />
         </span>
       );
@@ -342,6 +342,29 @@ class BlogPreviewContent extends Component {
           </div>
           <br />
           <RecursiveWrapper {...this.props} content={postSsSectionText} />
+        </span>
+      );
+    }
+
+    // If it's italic, return a span with fontStyle: 'italic' component:
+    const mdItalic = content.split(MD_ITALIC_REGEX);
+    if (
+      HelperFunctions.includes(supportedFeatures, 'italic') &&
+      mdItalic.length > 2
+    ) {
+      const preItalicText = `${mdItalic.shift()}${mdItalic.shift()}`;
+      const italicText = mdItalic.shift();
+      const postItalicText = mdItalic.join('');
+      return (
+        <span className={classNameFinal.join(' ')} {...rest}>
+          <RecursiveWrapper {...this.props} content={preItalicText} />
+          <span
+            style={{ fontStyle: 'italic' }}
+            className={elementClassNameFinal.join(' ')}
+          >
+            <RecursiveWrapper {...this.props} content={italicText} />
+          </span>
+          <RecursiveWrapper {...this.props} content={postItalicText} />
         </span>
       );
     }
