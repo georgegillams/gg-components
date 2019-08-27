@@ -6,7 +6,7 @@
 // export Loading from './Loading';
 // export Quote from './Quote';
 // export LlAnimatedContent from './LlAnimatedContent';
-// export BlogPreviewContent from './BlogPreviewContent';
+// export MarkdownRenderer from './MarkdownRenderer';
 // export BlogRenderer from './BlogRenderer';
 // export ContentWidthRestrictor from './ContentWidthRestrictor';
 import Quote from './Quote';
@@ -15,7 +15,7 @@ import Section from './Section';
 import SubSection from './SubSection';
 import TextLink from './TextLink';
 import AnimatedContent from './AnimatedContent';
-import BlogPreviewContent from './BlogPreviewContent';
+import MarkdownRenderer from './MarkdownRenderer';
 
 export default Section;
 export {
@@ -23,7 +23,7 @@ export {
   Quote,
   Section,
   SubSection,
-  BlogPreviewContent,
+  MarkdownRenderer,
   AnimatedContent,
   TextLink,
 };
