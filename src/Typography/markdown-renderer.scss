@@ -6,6 +6,16 @@
 }
 
 .blog-viewer {
+  &__outer {
+    display: inline;
+    font-family: 'Quattrocento Sans', sans-serif;
+    color: $not-black;
+
+    @media (prefers-color-scheme: dark) {
+      color: $not-black-invert;
+    }
+  }
+
   &__element {
     display: inline;
     font-family: 'Quattrocento Sans', sans-serif;
