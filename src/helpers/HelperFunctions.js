@@ -8,6 +8,13 @@ class HelperFunctions {
     return returnValue;
   }
 
+  static isArray(obj) {
+    if (typeof obj !== 'object') {
+      return false;
+    }
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  }
+
   static isLocalHost(url) {
     let returnValue = false;
     const pos =

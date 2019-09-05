@@ -29,6 +29,7 @@ import {
   SubSection,
   AnimatedContent,
   TextLink,
+  MarkdownRenderer,
 } from './index';
 
 class StatefulAnimatedContent extends Component {
@@ -133,4 +134,255 @@ storiesOf('AnimatedContent', module)
         style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
       />
     </StatefulAnimatedContent>
+  ));
+storiesOf('MarkdownRenderer', module)
+  .add('Text only', () => (
+    <MarkdownRenderer content="This is a simple test"></MarkdownRenderer>
+  ))
+  .add('Text with link', () => (
+    <MarkdownRenderer content="This contains a [link](/test) to an internal page."></MarkdownRenderer>
+  ))
+  .add('Text with extenal link', () => (
+    <MarkdownRenderer content="This contains a [link](https://www.google.com/) to an external page."></MarkdownRenderer>
+  ))
+  .add('Text with inline code', () => (
+    <MarkdownRenderer content="This contains some `code`."></MarkdownRenderer>
+  ))
+  .add('Text with strikethrough', () => (
+    <MarkdownRenderer content="This contains a ~striken~ section."></MarkdownRenderer>
+  ))
+  .add('Text with bold', () => (
+    <MarkdownRenderer content="This contains a **bold** section."></MarkdownRenderer>
+  ))
+  .add('Text with italic', () => (
+    <MarkdownRenderer content="This contains an _italic_ section."></MarkdownRenderer>
+  ))
+  .add('Text with code block', () => (
+    <MarkdownRenderer
+      content="This contains a block of code as follows:
+``` js, github.com
+code block
+  code block
+```"
+    ></MarkdownRenderer>
+  ))
+  .add('Text with a big link', () => (
+    <MarkdownRenderer
+      content="This contains a large link:
+*[Massive link](https://www.google.com)"
+    ></MarkdownRenderer>
+  ))
+  .add('Youtube video', () => (
+    <MarkdownRenderer content="!yt[ytv](https://www.youtube.com/watch?v=Nozh1zDj8_o)"></MarkdownRenderer>
+  ))
+  .add('Text with a quotation', () => (
+    <MarkdownRenderer
+      content="This contains a quotation as follows:
+>This is a quote
+"
+    ></MarkdownRenderer>
+  ))
+  .add('Sectioned text', () => (
+    <MarkdownRenderer
+      content="
+# Section
+This is some section content.
+"
+    ></MarkdownRenderer>
+  ))
+  .add('Subsectioned text', () => (
+    <MarkdownRenderer
+      content="
+## Subsection
+This is some subsection content.
+"
+    ></MarkdownRenderer>
+  ))
+  .add('Linebreak', () => (
+    <MarkdownRenderer
+      content={`
+Text before linebreak...
+
+
+...text after linebreak.
+`}
+    ></MarkdownRenderer>
+  ))
+  .add('Sectioned text - long example', () => (
+    <MarkdownRenderer
+      content={`
+# Section
+This is some section content.
+## SubSection
+This is some text in a subsection
+
+Let's throw in some \`code\` for good measure.
+### SubSubSection
+This is some text in a subsubsection
+`}
+    ></MarkdownRenderer>
+  ))
+  .add('Link and italic', () => (
+    <MarkdownRenderer content="This contains a [link](/test) and _italics_"></MarkdownRenderer>
+  ))
+  .add('Link and italic (limited to just link)', () => (
+    <MarkdownRenderer
+      supportedFeatures={['link']}
+      content="This contains a [link](/test) and _italics_"
+    ></MarkdownRenderer>
+  ))
+  .add('Extreme', () => (
+    <MarkdownRenderer
+      content={`
+
+# h1 Heading 8-)
+
+paragraph 1
+
+## h2 Heading
+
+paragraph 2
+
+### h3 Heading
+
+paragraph 3
+
+**This is bold text**
+
+__This is italic text__
+
+~Strikethrough~
+
+
+## Quote
+
+
+> This is a quote
+
+
+## Blockquotes
+
+
+> Blockquotes are currently unsupported
+
+## Lists
+
+Lists are currently unsupported
+
+## Code
+
+Inline \`code\`
+
+Block code fences
+
+\`\`\`
+Sample text here...
+\`\`\`
+`}
+    />
+  ))
+  .add('More extreme', () => (
+    <MarkdownRenderer
+      content={`
+# h1 Heading 8-)
+
+paragraph 1
+
+## h2 Heading
+
+paragraph 2
+
+### h3 Heading
+
+paragraph 3
+
+## Horizontal Rules
+
+___
+
+---
+
+***
+
+
+## Typographic replacements
+
+(c) (C) (r) (R) (tm) (TM) (p) (P) +-
+
+test.. test... test..... test?..... test!....
+
+!!!!!! ???? ,,  -- ---
+
+
+## Emphasis
+
+**This is bold text**
+
+__This is bold text__
+
+~Strikethrough~
+
+
+## Quote
+
+
+> This is a quote
+
+
+## Blockquotes
+
+
+> Blockquotes are currently unsupported
+
+
+## Lists
+
+Lists are currently unsupported
+
+
+## Code
+
+Inline \`code\`
+
+Block code fences
+
+\`\`\`
+Sample text here...
+\`\`\`
+
+Language
+
+\`\`\` js
+var foo = function (bar) {
+  return bar++;
+};
+
+console.log(foo(5));
+\`\`\`
+
+## Tables
+
+| Option | Description |
+| ------ | ----------- |
+| data   | path to data files to supply the data that will be passed into templates. |
+| engine | engine to be used for processing templates. Handlebars is the default. |
+| ext    | extension to be used for dest files. |
+
+
+## Links
+
+[link text](http://google.com)
+
+[link with title](http://google.com/ title text!)
+
+
+## Images
+
+![Minion](https://octodex.github.com/images/minion.png)
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg)
+
+Like links, Images also have a footnote style syntax
+
+`}
+    />
   ));
