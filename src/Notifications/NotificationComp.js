@@ -4,10 +4,7 @@ import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './notification-comp.scss';
 
-// import { MarkdownRenderer } from '../Typography';
-//TODO Use blog content
-import { SubSection } from '../Typography';
-const MarkdownRenderer = SubSection;
+import { MarkdownRenderer } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -76,6 +73,13 @@ class NotificationComp extends Component {
     return (
       <div className={notificationClassName.join(' ')} {...rest}>
         <MarkdownRenderer
+          supportedFeatures={[
+            'code',
+            'bold',
+            'italic',
+            'strikethrough',
+            'link',
+          ]}
           elementClassName={elementClassName.join(' ')}
           content={`${children}${deleted ? ' (deleted)' : ''}`}
           anchor={false}

@@ -65,6 +65,10 @@ import NotificationCollection, { NotificationComp } from './index';
 //
 // ButtonStory.defaultProps = { className: null, dark: false };
 
-storiesOf('Notifications', module).add('NotificationComp', () => (
-  <NotificationComp type="success" message="hi" />
-));
+storiesOf('Notifications', module)
+  .add('NotificationComp - link', () => (
+    <NotificationComp type="success">{`Hi. Here\'s a [link](/test)`}</NotificationComp>
+  ))
+  .add('NotificationComp - extenal link', () => (
+    <NotificationComp type="success">{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
+  ));
