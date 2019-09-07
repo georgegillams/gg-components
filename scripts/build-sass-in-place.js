@@ -14,7 +14,7 @@ const deleteFile = file => {
   execSync(`rm "${file}"`);
 };
 
-console.log('Transpiling dist directory scss files...');
+console.log('Transpiling `dist` directory scss files...');
 console.log('');
 
 const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
@@ -22,21 +22,15 @@ const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
   .split('\n')
   .filter(s => s !== '');
 
-const sourceScssFiles = execSync(
-  'find dist -name "*.scss" | grep -v node_modules',
-)
-  .toString()
-  .split('\n')
-  .filter(f => {
-    let res = true;
-    auxilliaryFiles.forEach(aF => {
-      if (f === aF) {
-        res = false;
-      }
-    });
-    return res;
-  })
-  .filter(s => s !== '');
+const sourceScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
+  let res = true;
+  auxilliaryFiles.forEach(aF => {
+    if (f === aF) {
+      res = false;
+    }
+  });
+  return res;
+});
 
 sourceScssFiles.forEach(sF => {
   transpile(sF);
