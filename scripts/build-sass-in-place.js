@@ -7,7 +7,9 @@ const transpile = file => {
   const outputFile = path.dirname(file);
   const options =
     '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
-  execSync(`npx node-sass ${options} "${file}" --output="${outputFile}"`);
+  execSync(
+    `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
+  );
 };
 
 const deleteFile = file => {
