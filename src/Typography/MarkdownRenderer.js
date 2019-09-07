@@ -143,11 +143,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'link') {
     return (
-      <TextLink
-        className={elementClassName}
-        external={content.external}
-        href={content.ref}
-      >
+      <TextLink external={content.external} href={content.ref}>
         {childElement}
       </TextLink>
     );
