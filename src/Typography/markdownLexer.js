@@ -478,3 +478,4 @@ const lexRecursive = (content, depth, supportedFeatures) => {
 };
 
 export default markdownLexer;
+export { markdownLexer, DEFAULT_SUPPORTED_FEATURES };
