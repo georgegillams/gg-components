@@ -59,6 +59,7 @@ configure(() => {
   require('../src/Progress/stories.js');
   require('../src/Redirect/stories.js');
   require('../src/RequestStatus/stories.js');
+  require('../src/Tag/stories.js');
   require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */
