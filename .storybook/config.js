@@ -61,5 +61,6 @@ configure(() => {
   require('../src/RequestStatus/stories.js');
   require('../src/Tag/stories.js');
   require('../src/Typography/stories.js');
+  require('../src/Skeletons/stories.js');
 }, module);
 /* eslint-enable */
