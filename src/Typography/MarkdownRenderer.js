@@ -77,6 +77,7 @@ class MarkdownRenderer extends Component {
 
     const elementClassNames = [getClassName(`blog-viewer__element`)];
     if (elementClassName) {
+      classNames.push(elementClassName);
       elementClassNames.push(elementClassName);
     }
 
