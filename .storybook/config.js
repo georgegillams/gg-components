@@ -45,6 +45,7 @@ addParameters({
 
 /* eslint-disable global-require */
 configure(() => {
+  require('../src/Auth/stories.js');
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
@@ -59,8 +60,8 @@ configure(() => {
   require('../src/Progress/stories.js');
   require('../src/Redirect/stories.js');
   require('../src/RequestStatus/stories.js');
+  require('../src/Skeletons/stories.js');
   require('../src/Tag/stories.js');
   require('../src/Typography/stories.js');
-  require('../src/Skeletons/stories.js');
 }, module);
 /* eslint-enable */
