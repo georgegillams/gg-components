@@ -29,6 +29,7 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.js\"",
     "node-sass": "node-sass",
     "storybook": "start-storybook -p 9001",
+    "build": "build-storybook -c .storybook -o dist",
     "start": "npm run storybook",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:clean": "rimraf ./coverage",
