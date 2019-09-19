@@ -22,8 +22,58 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { CardSkeleton } from '../Skeletons';
 import { Section } from '../Typography';
-import { AdminOnly, LoggedInOnly, LoggedOutOnly, APIEntity } from './index';
+import {
+  APIEntity,
+  AdminOnly,
+  DebugObject,
+  EmailVerifiedOnly,
+  LoadingCover,
+  LoggedInOnly,
+  LoggedOutOnly,
+  ObjectAsList,
+} from './index';
+
+class StatefulLoadingCover extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { loading: true, error: false };
+  }
+
+  render() {
+    return (
+      <div>
+        <LoadingCover
+          loadingSkeleton={CardSkeleton}
+          loading={this.state.loading}
+          error={this.state.error}
+        >
+          <Section>This content is loading.</Section>
+        </LoadingCover>
+        <button
+          onClick={() => {
+            this.setState(prevState => ({
+              loading: !prevState.loading,
+            }));
+          }}
+        >
+          Toggle loading
+        </button>
+        <button
+          onClick={() => {
+            this.setState(prevState => ({
+              error: !prevState.error,
+            }));
+          }}
+        >
+          Toggle error
+        </button>
+      </div>
+    );
+  }
+}
 
 storiesOf('Auth', module)
   .add('Admin only - out', () => (
@@ -86,6 +136,16 @@ storiesOf('Auth', module)
       <Section>This is some logged-out-only content.</Section>
     </LoggedOutOnly>
   ))
+  .add('Email confirmed only - confirmed', () => (
+    <EmailVerifiedOnly user={{ uname: 'Test', emailVerified: true }}>
+      <Section>This is some email-confirmed-only content.</Section>
+    </EmailVerifiedOnly>
+  ))
+  .add('Email confirmed only - unconfirmed', () => (
+    <EmailVerifiedOnly user={{ uname: 'Test' }}>
+      <Section>This is some email-confirmed-only content.</Section>
+    </EmailVerifiedOnly>
+  ))
   .add('API entity', () => (
     <APIEntity
       entityType="Thing type"
@@ -99,4 +159,36 @@ storiesOf('Auth', module)
         unspecifiedObjectKey: { test1: '1', test2: '2' },
       }}
     />
-  ));
+  ))
+  .add('Object as list', () => (
+    <ObjectAsList
+      name="Geoff"
+      value={{
+        id: 'test-01',
+        timestamp: Date.now(),
+        lastUpdatedTimestamp: Date.now(),
+        authorId: 'Me',
+        unspecifiedKey: 'testValue',
+        unspecifiedObjectKey: { test1: '1', test2: '2' },
+      }}
+    />
+  ))
+  .add('Debug object', () => (
+    <div>
+      <Section>
+        Note this will only show if localStorage.showSessionDebugViews is true
+      </Section>
+      <DebugObject
+        debugTitle="Geoff"
+        debugObject={{
+          id: 'test-01',
+          timestamp: Date.now(),
+          lastUpdatedTimestamp: Date.now(),
+          authorId: 'Me',
+          unspecifiedKey: 'testValue',
+          unspecifiedObjectKey: { test1: '1', test2: '2' },
+        }}
+      />
+    </div>
+  ))
+  .add('Loading cover', () => <StatefulLoadingCover />);
