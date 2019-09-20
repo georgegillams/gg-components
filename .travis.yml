@@ -5,6 +5,7 @@ node_js:
 
 install:
   - npm i
+  - npm run build
   - npm run transpile
 
 script:
