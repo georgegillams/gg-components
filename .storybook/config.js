@@ -46,6 +46,7 @@ addParameters({
 /* eslint-disable global-require */
 configure(() => {
   require('../src/Auth/stories.js');
+  require('../src/Cards/stories.js');
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
