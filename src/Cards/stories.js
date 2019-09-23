@@ -23,7 +23,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Section from '../Typography';
-import { Card, ArticleCard } from './index';
+import { Card, ArticleCard, ARTICLE_CARD_LAYOUTS } from './index';
 
 storiesOf('Card', module)
   .add('Default', () => (
@@ -58,6 +58,28 @@ storiesOf('Card', module)
 storiesOf('ArticleCard', module)
   .add('Default', () => (
     <ArticleCard
+      day="23"
+      month="Jan"
+      linkUrl="/test"
+      title="Title here"
+      imageBorder="orchid"
+      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+    />
+  ))
+  .add('Narrow', () => (
+    <ArticleCard
+      layout={ARTICLE_CARD_LAYOUTS.narrow}
+      day="23"
+      month="Jan"
+      linkUrl="/test"
+      title="Title here"
+      imageBorder="orchid"
+      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+    />
+  ))
+  .add('Narrow compact', () => (
+    <ArticleCard
+      layout={ARTICLE_CARD_LAYOUTS.narrowCompact}
       day="23"
       month="Jan"
       linkUrl="/test"

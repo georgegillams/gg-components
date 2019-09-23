@@ -42,24 +42,6 @@
     }
   }
 
-  &__center-container {
-    display: flex;
-    min-width: 10rem;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    z-index: 3;
-
-    @include bpk-breakpoint-mobile {
-      min-width: 100%;
-      text-align: center;
-    }
-
-    &--narrow-compact {
-      justify-content: center;
-    }
-  }
-
   &__background {
     position: absolute;
     z-index: -1;
@@ -85,30 +67,6 @@
     }
   }
 
-  &__image-container {
-    display: block;
-    width: 6rem;
-    height: 6rem;
-    justify-self: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    border-radius: 50rem;
-    background-position: center;
-    background-size: cover;
-    overflow: hidden;
-    z-index: 3;
-  }
-
-  &__image {
-    width: 12rem;
-    height: 7rem;
-    margin-top: -0.5rem;
-    margin-left: -3rem;
-    z-index: 3;
-  }
-
   &__banner {
     width: 0;
     height: 0.2rem;
@@ -123,33 +81,6 @@
     &--hovered {
       width: 100%;
       margin-left: 0;
-    }
-  }
-
-  &__title {
-    grid-area: title;
-    align-items: center;
-  }
-
-  &__children {
-    display: flex;
-    grid-area: children;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none !important;
-    text-decoration-color: transparent !important;
-    text-decoration-line: none !important;
-  }
-
-  &__date {
-    width: 6.5rem;
-    grid-area: date;
-    align-items: center;
-    text-align: center;
-    z-index: 3;
-
-    &--narrow-compact {
-      display: none;
     }
   }
 }

@@ -35,7 +35,6 @@ class Card extends Component {
     } = this.props;
 
     const classNameFinal = [getClassName('card')];
-    const centerClassNames = [getClassName('card__center-container')];
 
     if (disabled) {
       classNameFinal.push(getClassName('card--disabled'));
@@ -68,11 +67,7 @@ class Card extends Component {
           className={backgroundImageClassNames.join(' ')}
           style={{ backgroundImage: `url(${fillImageSrc})` }}
         />
-        <div className={outerBannerClassNames.join(' ')}>
-          <div className={centerClassNames.join(' ')}>
-            <div className={getClassName('card__children')}>{children}</div>
-          </div>
-        </div>
+        <div className={outerBannerClassNames.join(' ')}>{children}</div>
         <div
           className={bannerClassNames.join(' ')}
           style={bannerColor ? { backgroundColor: bannerColor } : {}}

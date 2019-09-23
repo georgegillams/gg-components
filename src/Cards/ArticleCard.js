@@ -198,7 +198,7 @@ class ArticleCard extends Component {
         linkUrl={linkUrl}
         href={href}
         ariaLabel={ariaLabel}
-        className={className}
+        className={classNameFinal.join(' ')}
         backgroundImageClassName={backgroundImageClassName}
         disabled={disabled}
         onClick={onClick}
