@@ -53,6 +53,11 @@ storiesOf('Card', module)
     <Card linkUrl="/test" light>
       <Section noPadding name="Test" />
     </Card>
+  ))
+  .add('With href', () => (
+    <Card href="/test">
+      <Section noPadding name="Test" />
+    </Card>
   ));
 
 storiesOf('ArticleCard', module)
@@ -129,5 +134,15 @@ storiesOf('ArticleCard', module)
       imageBorder="orchid"
       imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
       light
+    />
+  ))
+  .add('Wtih href', () => (
+    <ArticleCard
+      day="23"
+      month="Jan"
+      href="/test"
+      title="Title here"
+      imageBorder="orchid"
+      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
     />
   ));

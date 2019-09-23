@@ -34,10 +34,10 @@ class Card extends Component {
       ...rest
     } = this.props;
 
-    const classNameFinal = [getClassName('card')];
+    const cardClassNames = [getClassName('card')];
 
     if (disabled) {
-      classNameFinal.push(getClassName('card--disabled'));
+      cardClassNames.push(getClassName('card--disabled'));
     }
 
     const bannerClassNames = [getClassName('card__banner')];
@@ -51,7 +51,6 @@ class Card extends Component {
     if (padded) {
       outerBannerClassNames.push(getClassName('card__outer-container--padded'));
     }
-    if (className) classNameFinal.push(className);
 
     const backgroundImageClassNames = [getClassName('card__background')];
     if (light) {
@@ -62,7 +61,7 @@ class Card extends Component {
     }
 
     let cardComponent = (
-      <div className={classNameFinal.join(' ')}>
+      <div className={cardClassNames.join(' ')}>
         <div
           className={backgroundImageClassNames.join(' ')}
           style={{ backgroundImage: `url(${fillImageSrc})` }}
@@ -86,8 +85,7 @@ class Card extends Component {
           {cardComponent}
         </Link>
       );
-    }
-    if (href && !disabled) {
+    } else if (href && !disabled) {
       cardComponent = (
         <a
           style={{ textDecoration: 'none' }}
@@ -124,7 +122,7 @@ class Card extends Component {
         onFocus={hoverStarted}
         onMouseLeave={hoverEnded}
         onBlur={hoverEnded}
-        className={classNameFinal.join(' ')}
+        className={className}
         onClick={disabled ? null : onClick}
         onKeyDown={disabled ? null : onClick}
         {...rest}
