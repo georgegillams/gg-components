@@ -1,4 +1,4 @@
-# gg-components
+## gg-components
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/georgegillams/gg-components.svg)](https://greenkeeper.io/)
 
@@ -8,10 +8,7 @@ A set of reusable React components, that are published as plain JS and CSS for m
 To develop components within Storybook, run `npm start`.
 
 ## Publishing
-To publish, first transpile files:
-`npm run transpile`
-
-Then use `release-it` to publish:
+The following publish process will transpile the code and then publish it using `release-it`:
 `npm run release`
 
 That's it!
