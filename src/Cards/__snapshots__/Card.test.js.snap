@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render correctly 1`] = `
+<div
+  className={null}
+  onBlur={[Function]}
+  onClick={null}
+  onFocus={[Function]}
+  onKeyDown={null}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  role="button"
+  tabIndex="0"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card__background"
+      style={
+        Object {
+          "backgroundImage": "url(null)",
+        }
+      }
+    />
+    <div
+      className="card__outer-container card__outer-container--padded"
+    >
+      Promociando
+    </div>
+    <div
+      className="card__banner"
+      style={Object {}}
+    />
+  </div>
+</div>
+`;

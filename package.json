@@ -11,10 +11,11 @@
   "scripts": {
     "prerelease": "npm run transpile",
     "release": "release-it",
-    "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
+    "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass && npm run transpile:prune",
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
     "transpile:sass": "node scripts/build-sass-in-place.js",
+    "transpile:prune": "find dist -name \"*.test.js\" -exec rm -rf {} \\; && find dist -name \"__snapshots__\" -exec rm -rf {} || true \\;",
     "clean": "npm run test:clean && npm run build:clean",
     "dev": "npm run start:dev",
     "fix:adapter-core-5": "cp ./scripts/adapter_core5.js node_modules/webrtc-adapter/src/js/adapter_core5.js",
@@ -133,6 +134,17 @@
     "webpack-cli": "^3.3.7",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testRegex": "src/.*\\.test\\.js$",
+    "testPathIgnorePatterns": [
+      "dist/"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.scss$": "<rootDir>/scripts/stubs/styleStub.js",
+      "^.+\\.svg$": "<rootDir>/scripts/stubs/fileStub.js"
+    }
   },
   "heroku-run-build-script": true
 }
