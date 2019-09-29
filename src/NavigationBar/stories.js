@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import NavigationBar, { NavigationItem } from './index';
+import { NavigationBar, NavigationItem } from './index';
 
 const menuItems = [
   <NavigationItem name="Test 1" />,
