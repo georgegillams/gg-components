@@ -19,24 +19,37 @@
     font-weight: bold;
     transition: filter 0.3s;
     border: none;
-    border-radius: 3rem;
-    background-color: $primary-color;
+    border-radius: 0.25rem;
     color: white;
     font-family: 'Quattrocento Sans', sans-serif;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration-color: transparent;
     text-decoration-line: none;
 
-    &:focus,
-    &:active,
-    &:hover {
-      filter: saturate(3);
-    }
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
       @media (prefers-color-scheme: dark) {
         box-shadow: $focus-indicator-invert;
+      }
+    }
+
+    &--regular {
+      background-color: $cta-color;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $cta-color-invert;
+      }
+
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: $cta-color-dark;
+        background-color: red;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: $cta-color-dark-invert;
+        }
       }
     }
 
@@ -49,13 +62,10 @@
       background-color: white;
       color: $not-black;
 
-      &--disabled {
-        color: gray;
-
-        &:focus,
-        &:active,
-        &:hover {
-        }
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: white;
       }
     }
 
@@ -67,15 +77,14 @@
         color: $not-black-invert;
       }
 
-      &--disabled {
-        color: gray;
+      &:focus,
+      &:active,
+      &:hover {
+        background-color: transparent;
+        color: $not-black;
 
-        &:focus,
-        &:active,
-        &:hover {
-        }
         @media (prefers-color-scheme: dark) {
-          color: lightgray;
+          color: $not-black-invert;
         }
       }
     }
@@ -86,7 +95,7 @@
       &:focus,
       &:active,
       &:hover {
-        filter: saturate(3);
+        background-color: $destructive-color-dark;
       }
     }
 
@@ -119,19 +128,10 @@
       &:hover {
         animation-name: example;
         animation-duration: 0.4s;
-        background-color: $primary-color;
+        background-color: $cta-color-dark;
         color: white;
         fill: white;
-        filter: saturate(1) brightness(1);
         font-weight: bold;
-      }
-
-      &--destructive {
-        &:focus,
-        &:active,
-        &:hover {
-          background-color: $destructive-color;
-        }
       }
     }
   }
