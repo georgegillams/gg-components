@@ -6,7 +6,15 @@ import TextLink from './TextLink';
 import AnimatedContent from './AnimatedContent';
 import MarkdownRenderer from './MarkdownRenderer';
 
-export default Section;
+export default {
+  ArticleDate,
+  Quote,
+  Section,
+  SubSection,
+  MarkdownRenderer,
+  AnimatedContent,
+  TextLink,
+};
 export {
   ArticleDate,
   Quote,

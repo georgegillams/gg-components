@@ -9,7 +9,18 @@ import LoggedOutOnly from './LoggedOutOnly';
 import Status from './Status';
 import User from './User';
 
-export default AdminOnly;
+export default {
+  APIEntity,
+  AdminOnly,
+  DebugObject,
+  LoadingCover,
+  EmailVerifiedOnly,
+  LoggedInOnly,
+  LoggedOutOnly,
+  ObjectAsList,
+  Status,
+  User,
+};
 export {
   APIEntity,
   AdminOnly,
