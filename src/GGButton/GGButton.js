@@ -59,6 +59,9 @@ class GGButton extends Component {
     } = this.props;
 
     const classNameFinal = [getClassName('smooth-button__outer')];
+    if (!destructive && !bouncy) {
+      classNameFinal.push(getClassName('smooth-button__outer--regular'));
+    }
     if (destructive) {
       classNameFinal.push(getClassName('smooth-button__outer--destructive'));
     }
@@ -91,20 +94,10 @@ class GGButton extends Component {
     }
     if (secondary) {
       classNameFinal.push(getClassName('smooth-button__outer--secondary'));
-      if (disabled) {
-        classNameFinal.push(
-          getClassName('smooth-button__outer--secondary--disabled'),
-        );
-      }
     }
 
     if (white) {
       classNameFinal.push(getClassName('smooth-button__outer--white'));
-      if (disabled) {
-        classNameFinal.push(
-          getClassName('smooth-button__outer--white--disabled'),
-        );
-      }
     }
 
     if (buttonClassName) classNameFinal.push(buttonClassName);
