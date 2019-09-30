@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Progress from '../Progress';
+import { Progress } from '../Progress';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './degree-module.scss';
