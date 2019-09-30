@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GGButton from '../GGButton';
+import { GGButton } from '../GGButton';
 
 const NavigationItem = props => {
   const { name, linkUrl, className, ...rest } = props;
