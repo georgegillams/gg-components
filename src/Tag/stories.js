@@ -21,7 +21,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Tag, { TagFilter, TAG_TYPES } from './index';
+import { Tag, TagFilter, TAG_TYPES } from './index';
 
 storiesOf('Tag filter', module).add('Default', () => (
   <TagFilter selectedTags={[]} />

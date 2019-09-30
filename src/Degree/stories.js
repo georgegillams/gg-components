@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import DegreeModule from './index';
+import { DegreeModule } from './index';
 
 const INTERACTIVE_INCREMENT = 33;
 

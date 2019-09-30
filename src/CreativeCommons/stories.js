@@ -21,7 +21,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import CreativeCommons from './index';
+import { CreativeCommons } from './index';
 
 storiesOf('Creative commons', module)
   .add('Default', () => <CreativeCommons />)

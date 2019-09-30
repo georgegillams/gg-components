@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import NotificationCollection, { NotificationComp } from './index';
+import { NotificationCollection, NotificationComp } from './index';
 
 // class StatefulBurger extends Component {
 //   constructor(props) {

@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Progress from './index';
+import { Progress } from './index';
 
 const INTERACTIVE_INCREMENT = 33;
 

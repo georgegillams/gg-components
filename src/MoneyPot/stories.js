@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import MoneyPot from './index';
+import { MoneyPot } from './index';
 
 const INTERACTIVE_INCREMENT = 1300;
 

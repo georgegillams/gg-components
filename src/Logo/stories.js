@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Logo from './index';
+import { Logo } from './index';
 
 storiesOf('Logo', module)
   .add('Default', () => <Logo />)

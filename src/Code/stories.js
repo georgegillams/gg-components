@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Section from '../Typography';
+import { Section } from '../Typography';
 import { Code, CodeInline, CodeBashArrow } from './index';
 
 storiesOf('CodeInline', module)

@@ -24,47 +24,6 @@ import { action } from '@storybook/addon-actions';
 
 import { RequestStatus, RequestStatusContainer } from './index';
 
-// class StatefulBurger extends Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = { isOpen: false };
-//   }
-//
-//   render() {
-//     return (
-//       <BurgerButton
-//         onClick={() => {
-//           this.setState({ isOpen: !this.state.isOpen });
-//         }}
-//         isOpen={this.state.isOpen}
-//         {...this.props}
-//       />
-//     );
-//   }
-// }
-//
-// const ButtonStory = ({
-//   className,
-//   dark,
-//   ...rest
-// }: {
-//   dark: boolean,
-//   className: ?string,
-// }) => (
-//   <div
-//     style={{
-//       backgroundColor: dark ? '#1e1e1e' : 'transparent',
-//     }}
-//   >
-//     <GGButton onClick={action('button clicked')} {...rest}>
-//       Button
-//     </GGButton>
-//   </div>
-// );
-//
-// ButtonStory.defaultProps = { className: null, dark: false };
-
 storiesOf('Request status', module)
   .add('Success', () => (
     <RequestStatusContainer
