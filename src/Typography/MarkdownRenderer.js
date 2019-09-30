@@ -16,7 +16,7 @@ import { cssModules } from '../helpers/cssModules';
 import STYLES from './markdown-renderer.scss';
 
 import markdownLexer, { DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
-import CodeInline, { Code, CodeBashArrow } from '../Code';
+import { CodeInline, Code, CodeBashArrow } from '../Code';
 import { TextLink, Quote, Section, SubSection } from '../Typography';
 import HelperFunctions from '../helpers/HelperFunctions';
 
