@@ -52,6 +52,7 @@
     text-decoration: none;
     opacity: 0.4;
     color: orchid;
+    border-radius: 0.25rem;
 
     &:active,
     &:focus {
@@ -146,6 +147,7 @@
     display: inline-block;
     font-weight: bold;
     text-decoration: none;
+    border-radius: 0.25rem;
 
     &--text-link {
       color: darkorchid;

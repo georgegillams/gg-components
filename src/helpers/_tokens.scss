@@ -7,11 +7,11 @@ $cta-color-dark: #004880;
 $cta-color-invert: #025ca2;
 $cta-color-dark-invert: #004479;
 $primary-color: #44aeff;
-$primary-color-dark: #6bc1ff;
+$primary-color-dark: #005da3;
 $primary-color-invert: white;
 $primary-color-dark-invert: white;
 $destructive-color: #e02626;
-$destructive-color-dark: #a01b1b;
+$destructive-color-dark: #9f1717;
 $not-black: #1e1e1e;
 $not-black-invert: white;
 $shadow-color: rgba(37, 32, 31, 0.3);
@@ -24,8 +24,8 @@ $navigation-bar-z-index: 999;
 $cookie-banner-z-index: 500;
 $navigation-bar-menu-z-index: 998;
 $navigation-bar-scrim-z-index: 997;
-$focus-indicator: 0 0 0 0.2rem #ad0000;
-$focus-indicator-invert: 0 0 0 0.2rem #ffdb65;
+$focus-indicator: 0 0 0 0.2rem gray;
+$focus-indicator-invert: 0 0 0 0.2rem #9f9f9f;
 
 @mixin page-container() {
   margin-top: 1.5rem;

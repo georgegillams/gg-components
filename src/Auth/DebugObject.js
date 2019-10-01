@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import ObjectAsList from './ObjectAsList';
 
 import { Section } from '../Typography';
+import { cssModules } from '../helpers/cssModules';
+
+import STYLES from './debug-object.scss';
+
+const getClassName = cssModules(STYLES);
 
 class DebugObject extends Component {
   constructor(props) {
@@ -28,7 +33,7 @@ class DebugObject extends Component {
 
     return (
       <Section
-        style={{ backgroundColor: '#ed75ff' }}
+        className={getClassName('debug-object__main')}
         name={`${debugTitle || 'Debug object'}`}
       >
         <ObjectAsList value={debugObject} />

@@ -1,0 +1,12 @@
+@import '~bpk-mixins';
+@import '../helpers/tokens';
+
+.debug-object {
+  &__main {
+    background-color: #ed75ff;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #740086;
+    }
+  }
+}

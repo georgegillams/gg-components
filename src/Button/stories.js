@@ -51,7 +51,7 @@ const ButtonStory = props => {
         backgroundColor: dark ? '#1e1e1e' : 'transparent',
       }}
     >
-      <Button onClick={action('button clicked')} {...rest}>
+      <Button onClick={action('Button clicked')} {...rest}>
         {'Button'}
       </Button>
     </div>
