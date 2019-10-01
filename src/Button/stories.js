@@ -16,13 +16,11 @@
  * limitations under the License.
  */
 
-/* @flow strict */
-
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { GGButton, BurgerButton } from './index';
+import { Button, BurgerButton } from './index';
 
 class StatefulBurger extends Component {
   constructor(props) {
@@ -44,28 +42,23 @@ class StatefulBurger extends Component {
   }
 }
 
-const ButtonStory = ({
-  className,
-  dark,
-  ...rest
-}: {
-  dark: boolean,
-  className: ?string,
-}) => (
-  <div
-    style={{
-      backgroundColor: dark ? '#1e1e1e' : 'transparent',
-    }}
-  >
-    <GGButton onClick={action('button clicked')} {...rest}>
-      Button
-    </GGButton>
-  </div>
-);
+const ButtonStory = props => {
+  const { className, dark, ...rest } = props;
 
-ButtonStory.defaultProps = { className: null, dark: false };
+  return (
+    <div
+      style={{
+        backgroundColor: dark ? '#1e1e1e' : 'transparent',
+      }}
+    >
+      <Button onClick={action('button clicked')} {...rest}>
+        {'Button'}
+      </Button>
+    </div>
+  );
+};
 
-storiesOf('GGButton', module)
+storiesOf('Button', module)
   .add('Primary', () => <ButtonStory />)
   .add('Large', () => <ButtonStory large />)
   .add('Secondary', () => <ButtonStory secondary />)

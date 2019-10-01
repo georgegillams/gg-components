@@ -7,7 +7,7 @@ import STYLES from './gg-button.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-class GGButton extends Component {
+class Button extends Component {
   static propTypes = {
     large: PropTypes.bool,
     href: PropTypes.string,
@@ -58,46 +58,46 @@ class GGButton extends Component {
       ...rest
     } = this.props;
 
-    const classNameFinal = [getClassName('smooth-button__outer')];
+    const classNameFinal = [getClassName('button__outer')];
     if (!destructive && !bouncy) {
-      classNameFinal.push(getClassName('smooth-button__outer--regular'));
+      classNameFinal.push(getClassName('button__outer--regular'));
     }
     if (destructive) {
-      classNameFinal.push(getClassName('smooth-button__outer--destructive'));
+      classNameFinal.push(getClassName('button__outer--destructive'));
     }
     if (bouncy) {
       if (!light) {
-        classNameFinal.push(getClassName('smooth-button__outer--dark-text'));
+        classNameFinal.push(getClassName('button__outer--dark-text'));
       }
-      classNameFinal.push(getClassName('smooth-button__outer--bouncy'));
+      classNameFinal.push(getClassName('button__outer--bouncy'));
       if (destructive) {
         classNameFinal.push(
-          getClassName('smooth-button__outer--bouncy--destructive'),
+          getClassName('button__outer--bouncy--destructive'),
         );
       }
       if (disabled) {
-        classNameFinal.push(getClassName('smooth-button__outer--disabled'));
+        classNameFinal.push(getClassName('button__outer--disabled'));
       }
     } else {
-      classNameFinal.push(getClassName('smooth-button__outer--no-bouncy'));
+      classNameFinal.push(getClassName('button__outer--no-bouncy'));
       if (destructive) {
         classNameFinal.push(
-          getClassName('smooth-button__outer--no-bouncy--destructive'),
+          getClassName('button__outer--no-bouncy--destructive'),
         );
       }
       if (disabled) {
-        classNameFinal.push(getClassName('smooth-button__outer--disabled'));
+        classNameFinal.push(getClassName('button__outer--disabled'));
       }
     }
     if (large) {
-      classNameFinal.push(getClassName('smooth-button__outer--large'));
+      classNameFinal.push(getClassName('button__outer--large'));
     }
     if (secondary) {
-      classNameFinal.push(getClassName('smooth-button__outer--secondary'));
+      classNameFinal.push(getClassName('button__outer--secondary'));
     }
 
     if (white) {
-      classNameFinal.push(getClassName('smooth-button__outer--white'));
+      classNameFinal.push(getClassName('button__outer--white'));
     }
 
     if (buttonClassName) classNameFinal.push(buttonClassName);
@@ -147,4 +147,4 @@ class GGButton extends Component {
   };
 }
 
-export default GGButton;
+export default Button;

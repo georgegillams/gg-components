@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { GGButton } from '../GGButton';
+import { Button } from '../Button';
 
 const NavigationItem = props => {
   const { name, linkUrl, className, ...rest } = props;
 
   return (
-    <GGButton href={linkUrl} bouncy buttonClassName={className} {...rest}>
+    <Button href={linkUrl} bouncy buttonClassName={className} {...rest}>
       {name}
-    </GGButton>
+    </Button>
   );
 };
 

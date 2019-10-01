@@ -57,9 +57,9 @@ import { NotificationCollection, NotificationComp } from './index';
 //       backgroundColor: dark ? '#1e1e1e' : 'transparent',
 //     }}
 //   >
-//     <GGButton onClick={action('button clicked')} {...rest}>
+//     <Button onClick={action('button clicked')} {...rest}>
 //       Button
-//     </GGButton>
+//     </Button>
 //   </div>
 // );
 //

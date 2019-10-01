@@ -46,13 +46,13 @@ addParameters({
 /* eslint-disable global-require */
 configure(() => {
   require('../src/Auth/stories.js');
+  require('../src/Button/stories.js');
   require('../src/Cards/stories.js');
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
   require('../src/Design/stories.js');
   require('../src/Footer/stories.js');
-  require('../src/GGButton/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
   require('../src/MoneyPot/stories.js');

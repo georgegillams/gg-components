@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { BurgerButton } from '../GGButton';
+import { BurgerButton } from '../Button';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './navigation-bar.scss';
