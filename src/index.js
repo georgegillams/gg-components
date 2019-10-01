@@ -16,7 +16,7 @@ import { CreativeCommons } from './CreativeCommons';
 import { DegreeModule } from './DegreeModule';
 import { ColourPalleteItem } from './ColourPalleteItem';
 import { Footer } from './Footer';
-import { GGButton, BurgerButton } from './GGButton';
+import { Button, BurgerButton } from './Button';
 import { LoadingIndicator } from './LoadingIndicator';
 import { Logo } from './Logo';
 import { MoneyPot } from './MoneyPot';
@@ -77,7 +77,7 @@ const exports = {
   DegreeModule,
   ColourPalleteItem,
   Footer,
-  GGButton,
+  Button,
   BurgerButton,
   LoadingIndicator,
   Logo,

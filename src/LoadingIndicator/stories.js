@@ -71,15 +71,15 @@ const ButtonStory = ({
       backgroundColor: dark ? '#1e1e1e' : 'transparent',
     }}
   >
-    <GGButton onClick={action('button clicked')} {...rest}>
+    <Button onClick={action('button clicked')} {...rest}>
       Button
-    </GGButton>
+    </Button>
   </div>
 );
 
 ButtonStory.defaultProps = { className: null, dark: false };
 
-storiesOf('GGButton', module)
+storiesOf('Button', module)
   .add('Primary', () => <ButtonStory />)
   .add('Large', () => <ButtonStory large />)
   .add('Secondary', () => <ButtonStory secondary />)
