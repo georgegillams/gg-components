@@ -152,8 +152,8 @@ storiesOf('Auth', module)
       name="Geoff"
       entity={{
         id: 'test-01',
-        timestamp: Date.now(),
-        lastUpdatedTimestamp: Date.now(),
+        timestamp: new Date(2019, 5, 4, 5, 6, 7),
+        lastUpdatedTimestamp: new Date(2019, 5, 5, 5, 6, 7),
         authorId: 'Me',
         unspecifiedKey: 'testValue',
         unspecifiedObjectKey: { test1: '1', test2: '2' },
@@ -165,8 +165,8 @@ storiesOf('Auth', module)
       name="Geoff"
       value={{
         id: 'test-01',
-        timestamp: Date.now(),
-        lastUpdatedTimestamp: Date.now(),
+        timestamp: new Date(2019, 10, 11, 5, 6, 7),
+        lastUpdatedTimestamp: new Date(2019, 10, 11, 5, 6, 7),
         authorId: 'Me',
         unspecifiedKey: 'testValue',
         unspecifiedObjectKey: { test1: '1', test2: '2' },
@@ -182,8 +182,8 @@ storiesOf('Auth', module)
         debugTitle="Geoff"
         debugObject={{
           id: 'test-01',
-          timestamp: Date.now(),
-          lastUpdatedTimestamp: Date.now(),
+          timestamp: new Date(2019, 10, 11, 5, 6, 7),
+          lastUpdatedTimestamp: new Date(2019, 10, 11, 5, 6, 7),
           authorId: 'Me',
           unspecifiedKey: 'testValue',
           unspecifiedObjectKey: { test1: '1', test2: '2' },

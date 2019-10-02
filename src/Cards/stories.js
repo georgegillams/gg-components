@@ -25,6 +25,9 @@ import { action } from '@storybook/addon-actions';
 import { Section } from '../Typography';
 import { Card, ArticleCard, ARTICLE_CARD_LAYOUTS } from './index';
 
+import backgroundImage from './backgroundImage.png';
+import image from './image.png';
+
 storiesOf('Card', module)
   .add('Default', () => (
     <Card linkUrl="/test">
@@ -37,10 +40,7 @@ storiesOf('Card', module)
     </Card>
   ))
   .add('With fill image', () => (
-    <Card
-      fillImageSrc="https://via.placeholder.com/550x90.png?text=Yo+yo+yo+yo+yo+yo+yo+yo+yo+yo+yo"
-      linkUrl="/test"
-    >
+    <Card fillImageSrc={backgroundImage} linkUrl="/test">
       <Section noPadding name="Test" />
     </Card>
   ))
@@ -68,7 +68,7 @@ storiesOf('ArticleCard', module)
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
     />
   ))
   .add('Narrow', () => (
@@ -79,7 +79,7 @@ storiesOf('ArticleCard', module)
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
     />
   ))
   .add('Narrow compact', () => (
@@ -90,18 +90,18 @@ storiesOf('ArticleCard', module)
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
     />
   ))
   .add('With fill image', () => (
     <ArticleCard
       day="23"
       month="Jan"
-      fillImageSrc="https://via.placeholder.com/550x90.png?text=Yo+yo+yo+yo+yo+yo+yo+yo+yo+yo+yo"
+      fillImageSrc={backgroundImage}
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
     />
   ))
   .add('With banner colour', () => (
@@ -111,7 +111,7 @@ storiesOf('ArticleCard', module)
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
       bannerColor="red"
     />
   ))
@@ -132,7 +132,7 @@ storiesOf('ArticleCard', module)
       linkUrl="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
       light
     />
   ))
@@ -143,6 +143,6 @@ storiesOf('ArticleCard', module)
       href="/test"
       title="Title here"
       imageBorder="orchid"
-      imageSrc="https://via.placeholder.com/90x90.png?text=Yo+yo+yo"
+      imageSrc={image}
     />
   ));
