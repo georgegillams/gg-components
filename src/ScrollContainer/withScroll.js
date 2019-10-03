@@ -21,10 +21,10 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import wrapDisplayName from 'recompose/wrapDisplayName';
 
-const withScroll = Component => {
+const withScroll = ComponentToScroll => {
   const documentRef = typeof window !== 'undefined' ? document : null;
   if (!documentRef) {
-    return <Component {...this.props} />;
+    return ComponentToScroll;
   }
 
   class WithScroll extends Component {
@@ -98,7 +98,6 @@ const withScroll = Component => {
     };
 
     checkPosition = throttle(() => {
-      // TODO More sophisticated logic needed here to set all state properties
       const elementRect = this.elementBoundingRect();
       const viewPortRect = this.viewPortRect();
       const inView = this.isInViewPort(elementRect, viewPortRect);
@@ -179,7 +178,7 @@ const withScroll = Component => {
           style={style}
           className={className}
         >
-          <Component
+          <ComponentToScroll
             inView={this.state.inView}
             scrollPosition={this.state.scrollPosition}
             outOfView={this.state.outOfView}
@@ -197,7 +196,7 @@ const withScroll = Component => {
       );
     }
   }
-  WithScroll.displayName = wrapDisplayName(Component, 'withScroll');
+  WithScroll.displayName = wrapDisplayName(ComponentToScroll, 'withScroll');
 
   WithScroll.propTypes = {
     style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
