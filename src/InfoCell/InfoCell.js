@@ -14,6 +14,7 @@ const InfoCell = props => {
     content,
     aux,
     hasBeenMostlyInView,
+    hasBeenFullyInView,
     className,
     ...rest
   } = props;
@@ -23,18 +24,20 @@ const InfoCell = props => {
     classNames.push(className);
   }
 
+  const showAux = hasBeenMostlyInView || hasBeenFullyInView;
+
   const auxClassNames = [getClassName('info-cell__aux')];
-  if (hasBeenMostlyInView) {
+  if (showAux) {
     auxClassNames.push(getClassName('info-cell__aux--visible'));
   }
 
   const auxInnerClassNames = [getClassName('info-cell__aux-inner')];
-  if (hasBeenMostlyInView) {
+  if (showAux) {
     auxInnerClassNames.push(getClassName('info-cell__aux-inner--visible'));
   }
 
   const auxOuterClassNames = [getClassName('info-cell__aux-outer')];
-  if (hasBeenMostlyInView) {
+  if (showAux) {
     auxOuterClassNames.push(getClassName('info-cell__aux-outer--visible'));
   }
 
