@@ -58,38 +58,6 @@ class StatefulLoading extends Component {
   }
 }
 
-const ButtonStory = ({
-  className,
-  dark,
-  ...rest
-}: {
-  dark: boolean,
-  className: ?string,
-}) => (
-  <div
-    style={{
-      backgroundColor: dark ? '#1e1e1e' : 'transparent',
-    }}
-  >
-    <Button onClick={action('button clicked')} {...rest}>
-      Button
-    </Button>
-  </div>
-);
-
-ButtonStory.defaultProps = { className: null, dark: false };
-
-storiesOf('Button', module)
-  .add('Primary', () => <ButtonStory />)
-  .add('Large', () => <ButtonStory large />)
-  .add('Secondary', () => <ButtonStory secondary />)
-  .add('Bouncy', () => <ButtonStory bouncy />)
-  .add('Destructive', () => <ButtonStory destructive />)
-  .add('White', () => <ButtonStory dark white />)
-  .add('External href', () => (
-    <ButtonStory hrefExternal href="https://duckduckgo.com/" />
-  ));
-
 storiesOf('LoadingIndicator', module)
   .add('Loading', () => (
     <LoadingIndicator loading>
