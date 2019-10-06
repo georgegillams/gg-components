@@ -111,7 +111,7 @@ storiesOf('TextLink', module)
     </TextLink>
   ));
 storiesOf('ArticleDate', module).add('default', () => (
-  <ArticleDate date={new Date()} />
+  <ArticleDate date={new Date(2019, 4, 5, 10, 11, 12)} />
 ));
 storiesOf('AnimatedContent', module)
   .add('In view', () => (
