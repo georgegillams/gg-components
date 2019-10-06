@@ -38,6 +38,8 @@
     "degreemodule--default",
     "design--colourpalleteitem",
     "footer--footer",
+    "info-cell--info-cell",
+    "info-cell--no-aux",
     "loadingindicator--loaded",
     "logo--default",
     "logo--light",
