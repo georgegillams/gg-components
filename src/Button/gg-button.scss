@@ -45,7 +45,6 @@
       &:active,
       &:hover {
         background-color: $cta-color-dark;
-        background-color: red;
 
         @media (prefers-color-scheme: dark) {
           background-color: $cta-color-dark-invert;
