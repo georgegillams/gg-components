@@ -22,7 +22,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { InfoCell } from './index';
+import { InfoCell, INFO_CELL_STYLES } from './index';
 import { TextLink, SubSection } from '../Typography';
 
 class StatefulStory extends Component {
@@ -69,6 +69,13 @@ storiesOf('Info cell', module)
   .add('No aux', () => (
     <InfoCell
       title="Title"
+      content={<TextLink href="/test">Content</TextLink>}
+    />
+  ))
+  .add('No aux dark', () => (
+    <InfoCell
+      title="Title"
+      cellStyle={INFO_CELL_STYLES.dark}
       content={<TextLink href="/test">Content</TextLink>}
     />
   ));

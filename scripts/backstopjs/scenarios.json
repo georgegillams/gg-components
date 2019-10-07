@@ -40,6 +40,7 @@
     "footer--footer",
     "info-cell--info-cell",
     "info-cell--no-aux",
+    "info-cell--no-aux-dark",
     "loadingindicator--loaded",
     "logo--default",
     "logo--light",
