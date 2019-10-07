@@ -7,3 +7,5 @@ src
 test
 examples
 coverage
+backstop_data
+storybook-dist
