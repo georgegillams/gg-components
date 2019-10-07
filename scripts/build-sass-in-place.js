@@ -4,12 +4,18 @@ const { execSync } = require('child_process');
 const auxilliaryFiles = ['dist/helpers/_tokens.scss'];
 
 const transpile = file => {
-  const outputFile = path.dirname(file);
-  const options =
-    '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
-  execSync(
-    `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
-  );
+  return new Promise(resolve => {
+    const outputFile = path.dirname(file);
+    const options =
+      '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
+    exec(
+      `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
+      null,
+      () => {
+        resolve();
+      },
+    );
+  });
 };
 
 const deleteFile = file => {
@@ -34,13 +40,13 @@ const sourceScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
   return res;
 });
 
-sourceScssFiles.forEach(sF => {
-  transpile(sF);
-});
+transpilationTasks = sourceScssFiles.map(sF => transpile(sF));
+// TODO Tasks.all
+Promise.all(transpilationTasks).then(() => {
+  scssFiles.forEach(sF => {
+    deleteFile(sF);
+  });
 
-scssFiles.forEach(sF => {
-  deleteFile(sF);
+  console.log('All good.  👍');
+  process.exit(0);
 });
-
-console.log('All good.  👍');
-process.exit(0);
