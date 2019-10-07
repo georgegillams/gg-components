@@ -1,5 +1,5 @@
 const path = require('path');
-const { execSync } = require('child_process');
+const { exec, execSync } = require('child_process');
 
 const auxilliaryFiles = ['dist/helpers/_tokens.scss'];
 
@@ -41,7 +41,7 @@ const sourceScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
 });
 
 transpilationTasks = sourceScssFiles.map(sF => transpile(sF));
-// TODO Tasks.all
+
 Promise.all(transpilationTasks).then(() => {
   scssFiles.forEach(sF => {
     deleteFile(sF);

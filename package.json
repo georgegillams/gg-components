@@ -15,7 +15,7 @@
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
     "transpile:sass": "node scripts/build-sass-in-place.js",
-    "transpile:prune": "find dist -name \"*.test.js\" -exec rm -rf {} \\; && find dist -name \"__snapshots__\" -exec rm -rf {} || true \\;",
+    "transpile:prune": "(find dist -name \"*.test.js\" -exec rm -rf {} \\; || true) && (find dist -name \"__snapshots__\" -exec rm -rf {} \\; || true)",
     "clean": "npm run test:clean && npm run build:clean",
     "dev": "npm run start:dev",
     "fix:adapter-core-5": "cp ./scripts/adapter_core5.js node_modules/webrtc-adapter/src/js/adapter_core5.js",
