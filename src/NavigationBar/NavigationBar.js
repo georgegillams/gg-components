@@ -85,7 +85,11 @@ class NavigationBar extends Component {
     return (
       <div>
         {this.state.show && (
-          <div aria-hidden="true" className={scrimClassNames.join(' ')} />
+          <div
+            aria-hidden="true"
+            className={scrimClassNames.join(' ')}
+            onClick={this.close}
+          />
         )}
 
         {this.state.show && (
@@ -119,7 +123,10 @@ class NavigationBar extends Component {
                 onClick={this.toggle}
               />
             </div>
-            <div className={getClassName('navigation-bar__logo-container')}>
+            <div
+              className={getClassName('navigation-bar__logo-container')}
+              onClick={this.close}
+            >
               {logo}
             </div>
             <div
@@ -127,6 +134,7 @@ class NavigationBar extends Component {
                 'navigation-bar__mobile-container',
                 'navigation-bar__mobile-container--rgt',
               )}
+              onClick={this.close}
             >
               {accountMenuItem}
             </div>
