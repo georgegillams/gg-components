@@ -15,6 +15,10 @@ class Skeleton extends Component {
   }
 
   adjustPositionsToAlign = () => {
+    if (!this.divElement) {
+      return;
+    }
+
     const left = this.divElement.getBoundingClientRect().x;
     this.setState({ left });
   };
@@ -28,7 +32,7 @@ class Skeleton extends Component {
 
   componentWillUnmount() {
     if (this.interval) {
-      this.interval = null;
+      clearInterval(this.interval);
     }
   }
 
