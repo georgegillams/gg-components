@@ -14,10 +14,22 @@ class Skeleton extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log(`this.divElement`, this.divElement);
+  adjustPositionsToAlign = () => {
     const left = this.divElement.getBoundingClientRect().x;
     this.setState({ left });
+  };
+
+  componentDidMount() {
+    this.adjustPositionsToAlign();
+    self.interval = setInterval(() => {
+      this.adjustPositionsToAlign();
+    }, 2000);
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      this.interval = null;
+    }
   }
 
   render() {
@@ -27,8 +39,6 @@ class Skeleton extends Component {
     if (className) {
       classNames.push(className);
     }
-
-    console.log(`left`, this.state.left);
 
     return (
       <div
