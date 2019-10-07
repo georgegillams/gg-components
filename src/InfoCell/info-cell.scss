@@ -10,6 +10,10 @@ $card-height: 14rem;
     color: $not-black;
     display: flex;
     justify-content: space-around;
+
+    &--dark {
+      background-color: #bbbbc6;
+    }
   }
 
   &__inner {
