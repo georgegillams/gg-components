@@ -11,8 +11,18 @@ $card-height: 14rem;
     display: flex;
     justify-content: space-around;
 
+    @media (prefers-color-scheme: dark) {
+      background-color: #222526;
+      color: white;
+    }
+
     &--dark {
       background-color: #bbbbc6;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: #2c2e30;
+        color: white;
+      }
     }
   }
 
