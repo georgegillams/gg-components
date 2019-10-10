@@ -5,6 +5,7 @@ import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
 import NewWindowIcon from './new-window.js';
+import { THEMES } from '../Theming';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -18,8 +19,10 @@ const TextLink = props => {
     textClassName,
     children,
     onClick,
+    theme,
     ...rest
   } = props;
+  console.log(`theme`, theme);
 
   const classNameFinal = [getClassName('typography__main')];
   classNameFinal.push(getClassName('typography__link'));
@@ -30,6 +33,9 @@ const TextLink = props => {
     classNameFinal.push(getClassName('typography--light--text-link'));
   }
   if (fancy) classNameFinal.push(getClassName('typography--fancy'));
+  if (theme === THEMES.allWhite) {
+    classNameFinal.push(getClassName('typography__link--text-link--all-white'));
+  }
   classNameFinal.push(getClassName('typography--inline'));
   if (className) {
     classNameFinal.push(className);

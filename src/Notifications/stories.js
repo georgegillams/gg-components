@@ -22,53 +22,33 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { NotificationCollection, NotificationComp } from './index';
-
-// class StatefulBurger extends Component {
-//   constructor(props) {
-//     super(props);
-//
-//     this.state = { isOpen: false };
-//   }
-//
-//   render() {
-//     return (
-//       <BurgerButton
-//         onClick={() => {
-//           this.setState({ isOpen: !this.state.isOpen });
-//         }}
-//         isOpen={this.state.isOpen}
-//         {...this.props}
-//       />
-//     );
-//   }
-// }
-//
-// const ButtonStory = ({
-//   className,
-//   dark,
-//   ...rest
-// }: {
-//   dark: boolean,
-//   className: ?string,
-// }) => (
-//   <div
-//     style={{
-//       backgroundColor: dark ? '#1e1e1e' : 'transparent',
-//     }}
-//   >
-//     <Button onClick={action('button clicked')} {...rest}>
-//       Button
-//     </Button>
-//   </div>
-// );
-//
-// ButtonStory.defaultProps = { className: null, dark: false };
+import {
+  NotificationCollection,
+  NotificationComp,
+  NOTIFICATION_TYPES,
+} from './index';
 
 storiesOf('Notifications', module)
   .add('NotificationComp - link', () => (
     <NotificationComp type="success">{`Hi. Here\'s a [link](/test)`}</NotificationComp>
   ))
   .add('NotificationComp - extenal link', () => (
-    <NotificationComp type="success">{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
+    <NotificationComp
+      type={NOTIFICATION_TYPES.success}
+    >{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
+  ))
+  .add('NotificationComp - extenal link - warning', () => (
+    <NotificationComp
+      type={NOTIFICATION_TYPES.warn}
+    >{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
+  ))
+  .add('NotificationComp - extenal link - error', () => (
+    <NotificationComp
+      type={NOTIFICATION_TYPES.error}
+    >{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
+  ))
+  .add('NotificationComp - extenal link - neutral', () => (
+    <NotificationComp
+      type={NOTIFICATION_TYPES.neutral}
+    >{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
   ));

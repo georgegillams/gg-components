@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
+import { ThemeProvider, THEMES } from '../Theming';
 
 import STYLES from './notification-comp.scss';
 
@@ -71,22 +72,24 @@ class NotificationComp extends Component {
     }
 
     return (
-      <div className={notificationClassName.join(' ')} {...rest}>
-        <MarkdownRenderer
-          supportedFeatures={[
-            'code',
-            'bold',
-            'italic',
-            'strikethrough',
-            'link',
-          ]}
-          elementClassName={elementClassName.join(' ')}
-          content={`${children}${deleted ? ' (deleted)' : ''}`}
-          anchor={false}
-        >
-          {children}
-        </MarkdownRenderer>
-      </div>
+      <ThemeProvider value={{ theme: THEMES.allWhite }}>
+        <div className={notificationClassName.join(' ')} {...rest}>
+          <MarkdownRenderer
+            supportedFeatures={[
+              'code',
+              'bold',
+              'italic',
+              'strikethrough',
+              'link',
+            ]}
+            elementClassName={elementClassName.join(' ')}
+            content={`${children}${deleted ? ' (deleted)' : ''}`}
+            anchor={false}
+          >
+            {children}
+          </MarkdownRenderer>
+        </div>
+      </ThemeProvider>
     );
   }
 }
