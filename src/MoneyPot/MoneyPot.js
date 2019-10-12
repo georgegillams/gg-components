@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import { Progress } from '../Progress';
 import { cssModules } from '../helpers/cssModules';
+import Marker from './Marker';
 
 import STYLES from './money-pot.scss';
 
@@ -41,26 +42,24 @@ const MoneyPot = props => {
 
   return (
     <span className={classNameFinal.join(' ')} {...rest}>
-      <span className={getClassName('money-pot--module-name')}>{name}</span>
+      <span className={getClassName('money-pot__name')}>{name}</span>
       {balance !== null && (
-        <span className={getClassName('money-pot--module-name')}>
+        <span className={getClassName('money-pot__name')}>
           {`£${balance}`}
           {goalAmount !== null ? ` of £${goalAmount}` : ''}
         </span>
       )}
-      <div className={getClassName('money-pot--module-bar')}>
+      <div className={getClassName('money-pot__bar')}>
         {progress}
         {markerPosition !== null && (
-          <div
-            className={getClassName('money-pot--21-marker')}
-            style={{
-              marginLeft: `calc(${markerDisplayPercentage}% - .1rem)`,
-            }}
+          <Marker
+            displayPercentage={markerDisplayPercentage}
+            hoverText={`£${(markerDisplayPercentage * goalAmount) / 100}`}
           />
         )}
       </div>
       <span
-        className={getClassName('money-pot--percentage')}
+        className={getClassName('money-pot__percentage')}
         style={{ opacity: showPercentageValue ? 1 : 0 }}
       >{`${percentage || '00'}%`}</span>
     </span>

@@ -1,0 +1,43 @@
+@import '~bpk-mixins';
+@import '../helpers/tokens';
+
+.marker {
+  &__outer {
+    position: absolute;
+    top: -1.2rem;
+    height: 2.5rem;
+    width: 2rem;
+  }
+
+  &__inner {
+    height: 0.5rem;
+    margin-top: 1rem;
+    margin-left: 0.9rem;
+    width: 0.2rem;
+    background-color: $not-black;
+    opacity: 0.15;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: $not-black-invert;
+      opacity: 0.8;
+    }
+  }
+  &__popover {
+    display: flex;
+    position: absolute;
+    top: 2rem;
+    width: 12rem;
+
+    &--label {
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      background-color: $not-black;
+      color: $not-black-invert;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $not-black-invert;
+        color: $not-black;
+      }
+    }
+  }
+}
