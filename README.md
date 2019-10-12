@@ -7,6 +7,13 @@ A set of reusable React components, that are published as plain JS and CSS for m
 ## Developing
 To develop components within Storybook, run `npm start`.
 
+If components have changed, snapshot tests may need to be updated. Backstop js visual regression tests may also need to be updated.
+
+To update jest snapshots: `npx jest -u`.
+To update backstopJS snapshots: `npm run build && npm run backstopjs:test`.
+
+Any changes resulting from these commands should be verified and checked in.
+
 ## Publishing
 The following publish process will transpile the code and then publish it using `release-it`:
 `npm run release`
