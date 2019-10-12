@@ -93,6 +93,16 @@ storiesOf('ArticleCard', module)
       imageSrc={image}
     />
   ))
+  .add('Narrow compact - no image', () => (
+    <ArticleCard
+      layout={ARTICLE_CARD_LAYOUTS.narrowCompact}
+      day="23"
+      month="Jan"
+      linkUrl="/test"
+      title="Title here"
+      imageBorder="orchid"
+    />
+  ))
   .add('With fill image', () => (
     <ArticleCard
       day="23"
