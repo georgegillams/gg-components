@@ -25,7 +25,7 @@ class Skeleton extends Component {
 
   componentDidMount() {
     this.adjustPositionsToAlign();
-    self.interval = setInterval(() => {
+    this.interval = setInterval(() => {
       this.adjustPositionsToAlign();
     }, 2000);
   }
