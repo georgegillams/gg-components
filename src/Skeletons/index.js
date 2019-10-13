@@ -13,22 +13,6 @@ import SubSectionSkeleton from './SubSectionSkeleton';
 import TextLinkSkeleton from './TextLinkSkeleton';
 import TicketStatusSkeleton from './TicketStatusSkeleton';
 
-export default {
-  Skeleton,
-  ButtonSkeleton,
-  CardSkeleton,
-  CheckboxSkeleton,
-  CompactCardSkeleton,
-  InputSkeleton,
-  NotificationSkeleton,
-  ProgressSkeleton,
-  SectionSkeleton,
-  SmallButtonSkeleton,
-  SmallProgressSkeleton,
-  SubSectionSkeleton,
-  TextLinkSkeleton,
-  TicketStatusSkeleton,
-};
 export {
   Skeleton,
   ButtonSkeleton,
