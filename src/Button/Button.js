@@ -102,15 +102,15 @@ class Button extends Component {
 
     if (buttonClassName) classNameFinal.push(buttonClassName);
 
+    if (className) classNameFinal.push(className);
+
     if (href && !hrefExternal && !disabled) {
       return (
-        <Link to={href} onClick={onClick} className={className} {...rest}>
+        <Link to={href} onClick={onClick} {...rest}>
           <button className={classNameFinal.join(' ')}>{children}</button>
         </Link>
       );
     }
-
-    if (className) classNameFinal.push(className);
 
     let onClickFinal = onClick;
     if (disabled) {
