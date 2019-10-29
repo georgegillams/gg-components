@@ -65,6 +65,7 @@ storiesOf('Button', module)
   .add('Bouncy', () => <ButtonStory bouncy />)
   .add('Destructive', () => <ButtonStory destructive />)
   .add('White', () => <ButtonStory dark white />)
+  .add('href', () => <ButtonStory href="/test" />)
   .add('External href', () => (
     <ButtonStory hrefExternal href="https://duckduckgo.com/" />
   ));
