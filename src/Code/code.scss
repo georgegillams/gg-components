@@ -13,7 +13,7 @@
     padding: 0.5rem;
     border-radius: 0.4rem;
     background-color: $not-black;
-    color: $bpk-color-gray-50;
+    color: $bpk-color-sky-gray-tint-07;
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     overflow: hidden;
@@ -46,7 +46,7 @@
     top: 0.5rem;
     left: 0.5rem;
     // width: 500rem;
-    color: $bpk-color-gray-50;
+    color: $bpk-color-sky-gray-tint-07;
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     overflow: scroll;
@@ -55,7 +55,7 @@
     &--light {
       padding: 0.1rem 0.3rem;
       border-radius: 0.2rem;
-      background-color: $bpk-color-gray-50;
+      background-color: $bpk-color-sky-gray-tint-07;
       color: $not-black;
     }
   }
