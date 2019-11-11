@@ -22,7 +22,6 @@ const TextLink = props => {
     theme,
     ...rest
   } = props;
-  console.log(`theme`, theme);
 
   const classNameFinal = [getClassName('typography__main')];
   classNameFinal.push(getClassName('typography__link'));
