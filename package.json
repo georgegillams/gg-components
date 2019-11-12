@@ -126,5 +126,8 @@
       "^.+\\.svg$": "<rootDir>/scripts/stubs/fileStub.js"
     }
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "heroku-run-build-script": true
 }
