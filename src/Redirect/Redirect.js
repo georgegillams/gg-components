@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import HelperFunctions from '../helpers/HelperFunctions';
 import { Redirect } from 'react-router-dom';
 
 import { Section, TextLink } from '../Typography';
 
-const GGRedirect = props => {
-  const { name, to, ...rest } = props;
+class GGRedirect extends Component {
+  constructor(props) {
+    super(props);
 
-  const externalRedirect = HelperFunctions.includes(to, 'http');
-
-  if (externalRedirect) {
-    document.location = to;
+    this.state = { isTimeToRedirect: false };
   }
 
-  return (
-    <div {...rest}>
-      {!externalRedirect && <Redirect to={to} />}
-      <Section name={props.name || 'Redirecting...'}>
-        <TextLink to={props.to}>Not been redirected? Click here.</TextLink>
-      </Section>
-    </div>
-  );
-};
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isTimeToRedirect: true });
+    }, 2000);
+  }
+
+  render() {
+    const { name, to, ...rest } = this.props;
+
+    const externalRedirect = HelperFunctions.includes(to, 'http');
+
+    if (externalRedirect && this.state.isTimeToRedirect) {
+      document.location = to;
+    }
+
+    return (
+      <div {...rest}>
+        {!externalRedirect && this.state.isTimeToRedirect && (
+          <Redirect to={to} />
+        )}
+        <Section name={name || 'Redirecting in 2 seconds...'}>
+          <TextLink to={to}>Not been redirected? Click here.</TextLink>
+        </Section>
+      </div>
+    );
+  }
+}
 
 GGRedirect.propTypes = {
   to: PropTypes.string.isRequired,
