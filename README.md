@@ -9,8 +9,17 @@ To develop components within Storybook, run `npm start`.
 
 If components have changed, snapshot tests may need to be updated. Backstop js visual regression tests may also need to be updated.
 
-To update jest snapshots: `npx jest -u`.
-To update backstopJS snapshots: `npm run build && npm run backstopjs:test`.
+To update jest snapshots:
+```
+npx jest -u
+```
+
+To update backstopJS snapshots:
+```
+docker build -t backstopjs-test -f Dockerfile.backstopjstest .
+docker run backstopjs-test
+docker cp DOCKER_CONTAINER_ID:/usr/src/tmp/backstop_data ./
+```
 
 Any changes resulting from these commands should be verified and checked in.
 
