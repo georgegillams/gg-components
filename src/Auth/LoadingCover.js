@@ -5,7 +5,7 @@ import { cssModules } from '../helpers/cssModules';
 import STYLES from './loading-cover.scss';
 
 import { SubSection } from '../Typography';
-import DefaultSkeleton from '../Skeletons';
+import { Skeleton } from '../Skeletons';
 
 const getClassName = cssModules(STYLES);
 
@@ -44,7 +44,7 @@ LoadingCover.propTypes = {
 
 LoadingCover.defaultProps = {
   loading: false,
-  loadingSkeleton: DefaultSkeleton,
+  loadingSkeleton: Skeleton,
   error: false,
 };
 
