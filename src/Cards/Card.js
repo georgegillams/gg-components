@@ -15,6 +15,21 @@ class Card extends Component {
     this.state = { hovering: false };
   }
 
+  setHover = newValue => {
+    this.setState({ hovering: newValue });
+    if (onHoverChanged) {
+      onHoverChanged(newValue);
+    }
+  };
+
+  hoverStarted = () => {
+    this.setHover(true);
+  };
+
+  hoverEnded = () => {
+    this.setHover(false);
+  };
+
   render() {
     const {
       linkUrl,
@@ -99,29 +114,14 @@ class Card extends Component {
       );
     }
 
-    const setHover = newValue => {
-      this.setState({ hovering: newValue });
-      if (onHoverChanged) {
-        onHoverChanged(newValue);
-      }
-    };
-
-    const hoverStarted = () => {
-      setHover(true);
-    };
-
-    const hoverEnded = () => {
-      setHover(false);
-    };
-
     return (
       <div
         tabIndex="0"
         role="button"
-        onMouseEnter={hoverStarted}
-        onFocus={hoverStarted}
-        onMouseLeave={hoverEnded}
-        onBlur={hoverEnded}
+        onMouseEnter={this.hoverStarted}
+        onFocus={this.hoverStarted}
+        onMouseLeave={this.hoverEnded}
+        onBlur={this.hoverEnded}
         className={className}
         onClick={disabled ? null : onClick}
         onKeyDown={disabled ? null : onClick}
