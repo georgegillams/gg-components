@@ -96,7 +96,7 @@
     "eslint-plugin-redux-saga": "^1.1.1",
     "eslint_d": "^8.0.0",
     "file-loader": "4.2.0",
-    "http-server": "^0.11.1",
+    "http-server": "^0.12.0",
     "image-webpack-loader": "^6.0.0",
     "jest-cli": "^24.9.0",
     "node-sass": "^4.13.0",
