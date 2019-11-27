@@ -37,6 +37,7 @@
     flex-grow: 1;
     font-size: 1rem;
     padding: 0.375rem 0.75rem;
+    outline: none;
 
     @media (prefers-color-scheme: dark) {
       color: $not-black-invert;
