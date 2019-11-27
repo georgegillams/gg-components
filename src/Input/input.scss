@@ -57,10 +57,12 @@
 
     &--valid {
       fill: $bpk-color-monteverde;
+      color: $bpk-color-monteverde;
     }
 
     &--invalid {
       fill: $bpk-color-panjin;
+      color: $bpk-color-panjin;
     }
   }
 }
