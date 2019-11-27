@@ -54,6 +54,7 @@ configure(() => {
   require('../src/Design/stories.js');
   require('../src/Footer/stories.js');
   require('../src/InfoCell/stories.js');
+  require('../src/Input/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/Logo/stories.js');
   require('../src/MoneyPot/stories.js');
