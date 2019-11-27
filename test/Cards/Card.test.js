@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { Card } from './index';
+import { Card } from '../../src/Card';
 
 describe('Card', () => {
   it('should render correctly', () => {
