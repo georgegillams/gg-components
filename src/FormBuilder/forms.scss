@@ -1,0 +1,35 @@
+@import '../Tokens/common';
+
+.forms {
+  &__component {
+    margin-bottom: 1rem !important;
+
+    &__text-box {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &__button {
+      margin-top: 1rem;
+    }
+
+    &--inline {
+      width: 15rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    &__label {
+      margin: 0 0 0 0.1rem;
+      font-weight: bold;
+      font-style: italic;
+      font-size: 0.8rem;
+      font-family: 'Quattrocento Sans', sans-serif;
+      color: $not-black;
+
+      @media (prefers-color-scheme: dark) {
+        color: $not-black-invert;
+      }
+    }
+  }
+}
