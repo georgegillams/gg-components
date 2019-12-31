@@ -11,10 +11,11 @@
   "scripts": {
     "prerelease": "npm run transpile",
     "release": "release-it",
-    "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass",
+    "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass && npm run transpile:copy-tokens",
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
     "transpile:sass": "node scripts/build-sass-in-place.js",
+    "transpile:copy-tokens": "cp -R ./src/Tokens/* ./dist/Tokens/",
     "clean": "npm run test:clean && npm run build:clean",
     "dev": "npm run start:dev",
     "fix:adapter-core-5": "cp ./scripts/adapter_core5.js node_modules/webrtc-adapter/src/js/adapter_core5.js",
