@@ -1,7 +1,7 @@
 const path = require('path');
 const { exec, execSync } = require('child_process');
 
-const auxilliaryFiles = ['dist/helpers/_tokens.scss'];
+const auxilliaryFiles = ['dist/tokens/_common.scss'];
 
 const transpile = file => {
   return new Promise(resolve => {
@@ -30,7 +30,7 @@ const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
   .split('\n')
   .filter(s => s !== '');
 
-const sourceScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
+const componentScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
   let res = true;
   auxilliaryFiles.forEach(aF => {
     if (f === aF) {
@@ -40,7 +40,7 @@ const sourceScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
   return res;
 });
 
-transpilationTasks = sourceScssFiles.map(sF => transpile(sF));
+transpilationTasks = componentScssFiles.map(sF => transpile(sF));
 
 Promise.all(transpilationTasks).then(() => {
   scssFiles.forEach(sF => {
