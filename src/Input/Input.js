@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import TickSvg from './tick';
-import ExclaimSvg from './exclamation-circle';
+import { Tick, ExclaimationCircle } from '../Icons';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './input.scss';
@@ -65,11 +64,11 @@ class Input extends Component {
     let IconComponent = null;
     if (valid && enabled) {
       iconClassNames.push(getClassName('input__icon--valid'));
-      IconComponent = TickSvg;
+      IconComponent = Tick;
     }
     if (valid == false && enabled) {
       iconClassNames.push(getClassName('input__icon--invalid'));
-      IconComponent = ExclaimSvg;
+      IconComponent = ExclaimationCircle;
     }
 
     return (

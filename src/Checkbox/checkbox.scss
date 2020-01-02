@@ -1,0 +1,68 @@
+@import '../Tokens/common';
+
+.checkbox {
+  display: flex;
+  align-items: center;
+
+  &__input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    height: 1.5rem;
+    width: 1.5rem;
+    background: $background-color;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0 1px #cdcdd7 inset;
+
+    @media (prefers-color-scheme: dark) {
+      background: $background-color-invert;
+    }
+
+    &--disabled {
+      background: #cdcdd7;
+    }
+    &--valid {
+      box-shadow: 0 0 0 1px $bpk-color-monteverde inset;
+    }
+    &--invalid {
+      box-shadow: 0 0 0 1px $bpk-color-panjin inset;
+    }
+  }
+
+  &__check {
+    display: none;
+    fill: $primary-color;
+    position: absolute;
+    left: 0.9rem;
+    top: 0.8rem;
+    pointer-events: none;
+
+    &--checked {
+      display: inherit;
+    }
+
+    &--valid {
+      fill: $bpk-color-monteverde;
+    }
+    &--invalid {
+      fill: $bpk-color-panjin;
+    }
+    &--disabled {
+      fill: $shadow-color;
+    }
+  }
+
+  &__label {
+    margin-left: 0.5rem;
+    color: $not-black;
+    font-size: 1.2rem;
+
+    @media (prefers-color-scheme: dark) {
+      color: $not-black-invert;
+    }
+
+    &--disabled {
+      color: #cdcdd7;
+    }
+  }
+}
