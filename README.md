@@ -1,5 +1,6 @@
 ## gg-components
 
+[![Build Status](https://travis-ci.org/georgegillams/gg-components.svg?branch=master)](https://travis-ci.org/georgegillams/gg-components)
 [![Greenkeeper badge](https://badges.greenkeeper.io/georgegillams/gg-components.svg)](https://greenkeeper.io/)
 
 A set of reusable React components, that are published as plain JS and CSS for maximum compatibility.
