@@ -48,6 +48,7 @@ configure(() => {
   require('../src/Auth/stories.js');
   require('../src/Button/stories.js');
   require('../src/Cards/stories.js');
+  require('../src/Checkbox/stories.js');
   require('../src/Code/stories.js');
   require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
