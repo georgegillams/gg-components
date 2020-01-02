@@ -12,22 +12,37 @@ class Card extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { hovering: false };
+    this.state = { hovering: false, focused: false };
   }
 
-  setHover = newValue => {
-    this.setState({ hovering: newValue });
+  propogate = newValue => {
     if (onHoverChanged) {
       onHoverChanged(newValue);
     }
   };
 
   hoverStarted = () => {
-    this.setHover(true);
+    const newValue = true;
+    this.setState({ hovering: newValue });
+    this.propgate(this.state.focused || newValue);
   };
 
   hoverEnded = () => {
-    this.setHover(false);
+    const newValue = false;
+    this.setState({ hovering: newValue });
+    this.propgate(this.state.focused || newValue);
+  };
+
+  focusStarted = () => {
+    const newValue = true;
+    this.setState({ focused: newValue });
+    this.propgate(this.state.hovering || newValue);
+  };
+
+  focusEnded = () => {
+    const newValue = false;
+    this.setState({ focused: newValue });
+    this.propgate(this.state.hovering || newValue);
   };
 
   render() {
@@ -35,7 +50,6 @@ class Card extends Component {
       linkUrl,
       href,
       onClick,
-
       padded,
       bannerColor,
       fillImageSrc,
@@ -48,6 +62,7 @@ class Card extends Component {
       onHoverChanged,
       ...rest
     } = this.props;
+    const focusedState = this.state.hovering || this.state.focused;
 
     const cardClassNames = [getClassName('card')];
 
@@ -59,7 +74,7 @@ class Card extends Component {
     if (light) {
       bannerClassNames.push(getClassName('card__banner--light'));
     }
-    if (this.state.hovering && !disabled) {
+    if (focusedState && !disabled) {
       bannerClassNames.push(getClassName('card__banner--hovered'));
     }
     const outerBannerClassNames = [getClassName('card__outer-container')];
@@ -119,9 +134,9 @@ class Card extends Component {
         tabIndex="0"
         role="button"
         onMouseEnter={this.hoverStarted}
-        onFocus={this.hoverStarted}
+        onFocus={this.focusStarted}
         onMouseLeave={this.hoverEnded}
-        onBlur={this.hoverEnded}
+        onBlur={this.focusEnded}
         className={className}
         onClick={disabled ? null : onClick}
         onKeyDown={disabled ? null : onClick}

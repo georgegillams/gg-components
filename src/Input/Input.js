@@ -13,7 +13,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { hovering: false };
+    this.state = { hovering: false, focused: false };
   }
 
   hoverStarted = () => {
@@ -22,6 +22,14 @@ class Input extends Component {
 
   hoverEnded = () => {
     this.setState({ hovering: false });
+  };
+
+  focusStarted = () => {
+    this.setState({ focused: true });
+  };
+
+  focusEnded = () => {
+    this.setState({ focused: false });
   };
 
   render = () => {
@@ -38,6 +46,8 @@ class Input extends Component {
       ...rest
     } = this.props;
 
+    const focusedState = this.state.hovering || this.state.focused;
+
     const classNames = [getClassName('input__outer')];
     const innerClassNames = [getClassName('input__inner')];
     const iconClassNames = [getClassName('input__icon')];
@@ -45,7 +55,7 @@ class Input extends Component {
       classNames.push(getClassName('input__outer--disabled'));
       innerClassNames.push(getClassName('input__inner--disabled'));
     }
-    if (this.state.hovering && enabled) {
+    if (focusedState && enabled) {
       classNames.push(getClassName('input__outer--hovering'));
     }
     if (className) {
@@ -68,9 +78,9 @@ class Input extends Component {
           aria-valid={valid}
           aria-enabled={enabled}
           onMouseEnter={this.hoverStarted}
-          onFocus={this.hoverStarted}
+          onFocus={this.focusStarted}
           onMouseLeave={this.hoverEnded}
-          onBlur={this.hoverEnded}
+          onBlur={this.focusEnded}
           value={value}
           type={type}
           name={name}
