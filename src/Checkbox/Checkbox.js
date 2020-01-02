@@ -45,7 +45,7 @@ const Checkbox = props => {
   }
 
   return (
-    <div className={getClassName('checkbox')} {...rest}>
+    <div className={getClassName('checkbox', className)} {...rest}>
       <input
         className={checkboxClassNames.join(' ')}
         name={name}
