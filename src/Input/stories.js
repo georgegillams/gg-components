@@ -28,20 +28,21 @@ class StatefulInput extends Component {
   constructor(props) {
     super(props);
 
+    this.InputComponent = props.component || Input;
     this.state = { value: props.value || '', valid: null, enabled: true };
   }
 
   render() {
-    const Component = this.props.component || Input;
+    const { component, ...rest } = this.props;
     return (
       <div>
-        <Component
+        <this.InputComponent
           name="Stateful_input"
           valid={this.state.valid}
           value={this.state.value}
           enabled={this.state.enabled}
           onChange={e => this.setState({ value: e.target.value })}
-          {...this.props}
+          {...rest}
         />
         {!this.state.enabled && (
           <button

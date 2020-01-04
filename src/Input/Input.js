@@ -12,6 +12,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
 
+    this.InputComponent = props.component;
     this.state = { hovering: false, focused: false };
   }
 
@@ -46,7 +47,6 @@ class Input extends Component {
       ...rest
     } = this.props;
 
-    const Component = component || (iProps => <input {...iProps} />);
     const focusedState = this.state.hovering || this.state.focused;
 
     const classNames = [getClassName('input__outer')];
@@ -75,7 +75,7 @@ class Input extends Component {
 
     return (
       <div className={classNames.join(' ')} {...rest}>
-        <Component
+        <this.InputComponent
           aria-valid={valid}
           aria-enabled={enabled}
           onMouseEnter={this.hoverStarted}
@@ -112,7 +112,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   className: null,
-  component: null,
+  component: iProps => <input {...iProps} />,
   enabled: true,
   iconProps: null,
   inputProps: null,
