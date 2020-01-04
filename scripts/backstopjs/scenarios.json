@@ -55,6 +55,7 @@
     "input--default",
     "input--disabled",
     "input--invalid",
+    "input--password",
     "input--valid",
     "loadingindicator--loaded",
     "logo--default",
@@ -88,6 +89,10 @@
     "subsection--with-content-and-padding",
     "subsection--without-anchor",
     "tag-filter--default",
+    "textarea--default",
+    "textarea--disabled",
+    "textarea--invalid",
+    "textarea--valid",
     "textlink--default",
     "textlink--external",
     "textlink--light-external"
