@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const { exec, execSync } = require('child_process');
 
 const auxilliaryFiles = ['dist/tokens/_common.scss'];
@@ -19,7 +20,7 @@ const transpile = file => {
 };
 
 const deleteFile = file => {
-  execSync(`rm "${file}"`);
+  fs.unlinkSync(file);
 };
 
 console.log('Transpiling `dist` directory scss files...');
@@ -42,11 +43,17 @@ const componentScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
 
 transpilationTasks = componentScssFiles.map(sF => transpile(sF));
 
-Promise.all(transpilationTasks).then(() => {
-  scssFiles.forEach(sF => {
-    deleteFile(sF);
-  });
+const sleep = milliseconds => {
+  return new Promise(resolve => setTimeout(resolve, milliseconds));
+};
 
-  console.log('All good.  👍');
-  process.exit(0);
+Promise.all(transpilationTasks).then(() => {
+  sleep(1000).then(() => {
+    scssFiles.forEach(sF => {
+      deleteFile(sF);
+    });
+
+    console.log('All good.  👍');
+    process.exit(0);
+  });
 });
