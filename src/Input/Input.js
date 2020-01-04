@@ -42,9 +42,11 @@ class Input extends Component {
       className,
       inputProps,
       iconProps,
+      component,
       ...rest
     } = this.props;
 
+    const Component = component || (iProps => <input {...iProps} />);
     const focusedState = this.state.hovering || this.state.focused;
 
     const classNames = [getClassName('input__outer')];
@@ -73,7 +75,7 @@ class Input extends Component {
 
     return (
       <div className={classNames.join(' ')} {...rest}>
-        <input
+        <Component
           aria-valid={valid}
           aria-enabled={enabled}
           onMouseEnter={this.hoverStarted}
@@ -100,6 +102,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
+  component: PropTypes.func,
   enabled: PropTypes.bool,
   iconProps: PropTypes.object,
   inputProps: PropTypes.object,
@@ -109,6 +112,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   className: null,
+  component: null,
   enabled: true,
   iconProps: null,
   inputProps: null,
