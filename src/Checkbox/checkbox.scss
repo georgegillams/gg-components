@@ -20,6 +20,14 @@
       background: $background-color-invert;
     }
 
+    &--hovering {
+      box-shadow: $focus-indicator;
+
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
+    }
+
     &--disabled {
       background: #cdcdd7;
     }

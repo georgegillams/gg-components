@@ -7,58 +7,94 @@ import STYLES from './checkbox.scss';
 
 const getClassName = cssModules(STYLES);
 
-const Checkbox = props => {
-  const {
-    onChange,
-    className,
-    name,
-    label,
-    checked,
-    enabled,
-    valid,
-    inputProps,
-    ...rest
-  } = props;
+class Checkbox extends Component {
+  constructor(props) {
+    super(props);
 
-  const checkClassNames = [getClassName('checkbox__check')];
-  const checkboxClassNames = [getClassName('checkbox__input')];
-  const labelClassNames = [getClassName('checkbox__label')];
-  const invalid = valid !== null && !valid;
-
-  if (checked) {
-    checkClassNames.push(getClassName('checkbox__check--checked'));
+    this.state = { hovering: false, focused: false };
   }
 
-  if (enabled) {
-    if (valid) {
-      checkClassNames.push(getClassName('checkbox__check--valid'));
-      checkboxClassNames.push(getClassName('checkbox__input--valid'));
-    }
-    if (invalid) {
-      checkClassNames.push(getClassName('checkbox__check--invalid'));
-      checkboxClassNames.push(getClassName('checkbox__input--invalid'));
-    }
-  } else {
-    checkClassNames.push(getClassName('checkbox__check--disabled'));
-    checkboxClassNames.push(getClassName('checkbox__input--disabled'));
-    labelClassNames.push(getClassName('checkbox__label--disabled'));
-  }
+  hoverStarted = () => {
+    this.setState({ hovering: true });
+  };
 
-  return (
-    <div className={getClassName('checkbox', className)} {...rest}>
-      <input
-        className={checkboxClassNames.join(' ')}
-        name={name}
-        type="checkbox"
-        checked={checked}
-        onChange={onChange}
-        {...inputProps}
-      />
-      <Tick className={checkClassNames.join(' ')} />
-      {label && <span className={labelClassNames.join(' ')}>{label}</span>}
-    </div>
-  );
-};
+  hoverEnded = () => {
+    this.setState({ hovering: false });
+  };
+
+  focusStarted = () => {
+    this.setState({ focused: true });
+  };
+
+  focusEnded = () => {
+    this.setState({ focused: false });
+  };
+
+  render = () => {
+    const {
+      onChange,
+      className,
+      name,
+      label,
+      checked,
+      enabled,
+      valid,
+      inputProps,
+      ...rest
+    } = this.props;
+
+    const focusedState = this.state.hovering || this.state.focused;
+
+    const checkClassNames = [getClassName('checkbox__check')];
+    const checkboxClassNames = [getClassName('checkbox__input')];
+    const labelClassNames = [getClassName('checkbox__label')];
+    const invalid = valid !== null && !valid;
+
+    if (checked) {
+      checkClassNames.push(getClassName('checkbox__check--checked'));
+    }
+
+    if (focusedState && enabled) {
+      checkboxClassNames.push(getClassName('checkbox__input--hovering'));
+    }
+
+    if (enabled) {
+      if (valid) {
+        checkClassNames.push(getClassName('checkbox__check--valid'));
+        checkboxClassNames.push(getClassName('checkbox__input--valid'));
+      }
+      if (invalid) {
+        checkClassNames.push(getClassName('checkbox__check--invalid'));
+        checkboxClassNames.push(getClassName('checkbox__input--invalid'));
+      }
+    } else {
+      checkClassNames.push(getClassName('checkbox__check--disabled'));
+      checkboxClassNames.push(getClassName('checkbox__input--disabled'));
+      labelClassNames.push(getClassName('checkbox__label--disabled'));
+    }
+
+    return (
+      <div className={getClassName('checkbox', className)} {...rest}>
+        <input
+          aria-valid={valid}
+          aria-enabled={enabled}
+          onMouseEnter={this.hoverStarted}
+          onFocus={this.focusStarted}
+          onMouseLeave={this.hoverEnded}
+          onBlur={this.focusEnded}
+          className={checkboxClassNames.join(' ')}
+          name={name}
+          type="checkbox"
+          checked={checked}
+          onChange={onChange}
+          {...inputProps}
+        />
+        <Tick className={checkClassNames.join(' ')} />
+        {label && <span className={labelClassNames.join(' ')}>{label}</span>}
+      </div>
+    );
+  };
+}
 
 Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
