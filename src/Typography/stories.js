@@ -26,6 +26,7 @@ import {
   ArticleDate,
   Quote,
   Section,
+  Paragraph,
   SubSection,
   AnimatedContent,
   TextLink,
@@ -90,6 +91,9 @@ storiesOf('SubSection', module)
       Some content
     </SubSection>
   ));
+storiesOf('Paragraph', module).add('Default', () => (
+  <Paragraph>Test</Paragraph>
+));
 storiesOf('TextLink', module)
   .add('Default', () => (
     <TextLink href="/lol" name="Test">

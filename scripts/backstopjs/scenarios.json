@@ -72,6 +72,7 @@
     "notifications--notificationcomp-extenal-link-neutral",
     "notifications--notificationcomp-extenal-link-warning",
     "notifications--notificationcomp-link",
+    "paragraph--default",
     "progress--default",
     "progress--error",
     "quote--default",
