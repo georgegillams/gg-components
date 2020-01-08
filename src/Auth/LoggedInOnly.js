@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { TextLink, Section } from '../Typography';
+import { Paragraph, TextLink, Section } from '../Typography';
 
 const LoggedInOnly = props => {
   const { user, activityName, children, setLoginRedirect } = props;
@@ -9,17 +9,17 @@ const LoggedInOnly = props => {
   if (!user) {
     return (
       <Section name="Logged out">
-        <span>
+        <Paragraph>
           You need to be logged in to {activityName || 'view this content'}
-        </span>
-        <br />
-        <TextLink to="/sign-up">
-          Register here - it&apos;s quick and easy.
-        </TextLink>
-        <br />
-        <TextLink onClick={setLoginRedirect} to="/login">
-          Already got an account? Log in here.
-        </TextLink>
+          <br />
+          <TextLink to="/sign-up">
+            Register here - it&apos;s quick and easy.
+          </TextLink>
+          <br />
+          <TextLink onClick={setLoginRedirect} to="/login">
+            Already got an account? Log in here.
+          </TextLink>
+        </Paragraph>
       </Section>
     );
   }
