@@ -33,6 +33,7 @@ class Checkbox extends Component {
   render = () => {
     const {
       onChange,
+      labelClassName,
       className,
       name,
       label,
@@ -47,7 +48,7 @@ class Checkbox extends Component {
 
     const checkClassNames = [getClassName('checkbox__check')];
     const checkboxClassNames = [getClassName('checkbox__input')];
-    const labelClassNames = [getClassName('checkbox__label')];
+    const labelClassNames = [getClassName('checkbox__label', labelClassName)];
     const invalid = valid !== null && !valid;
 
     if (checked) {
@@ -103,6 +104,7 @@ Checkbox.propTypes = {
   inputProps: PropTypes.object,
   checked: PropTypes.bool,
   className: PropTypes.string,
+  labelClassName: PropTypes.string,
   enabled: PropTypes.bool,
   valid: PropTypes.bool,
 };
@@ -111,6 +113,7 @@ Checkbox.defaultProps = {
   inputProps: {},
   label: null,
   className: null,
+  labelClassName: null,
   checked: false,
   enabled: true,
   valid: null,
