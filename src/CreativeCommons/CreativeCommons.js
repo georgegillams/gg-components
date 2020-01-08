@@ -3,7 +3,7 @@ import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './creative-commons.scss';
 
-import { TextLink, SubSection } from '../Typography';
+import { Paragraph, TextLink, SubSection } from '../Typography';
 
 const getClassName = cssModules(STYLES);
 
@@ -20,7 +20,7 @@ const CreativeCommons = props => {
         anchor={false}
         name="Copyright"
       >
-        <span>
+        <Paragraph>
           Most of my photos are licensed under{' '}
           <TextLink
             external
@@ -31,7 +31,7 @@ const CreativeCommons = props => {
           .<br />
           If you are unsure about your right to use them please{' '}
           <TextLink to="/contact">contact me</TextLink>.
-        </span>
+        </Paragraph>
       </SubSection>
     </div>
   );

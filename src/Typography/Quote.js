@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
+import { Paragraph } from '../Typography';
 
 import STYLES from './quote.scss';
 

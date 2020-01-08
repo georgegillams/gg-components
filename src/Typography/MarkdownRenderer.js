@@ -17,7 +17,7 @@ import STYLES from './markdown-renderer.scss';
 
 import markdownLexer, { DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
 import { CodeInline, Code, CodeBashArrow } from '../Code';
-import { TextLink, Quote, Section, SubSection } from '../Typography';
+import { Paragraph, TextLink, Quote, Section, SubSection } from '../Typography';
 import { withTheme } from '../Theming';
 import HelperFunctions from '../helpers/HelperFunctions';
 
@@ -114,7 +114,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
   }
 
   if (typeof content === 'string' || !content.type || content.type === 'text') {
-    return content;
+    return <Paragraph>content</Paragraph>;
   }
 
   if (content.type === 'footnote1') {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { TextLink, Section } from '../Typography';
+import { Paragraph, TextLink, Section } from '../Typography';
 
 const AdminOnly = props => {
   const { user, children, setLoginRedirect } = props;
@@ -12,13 +12,13 @@ const AdminOnly = props => {
 
   return (
     <Section name="Admin only">
-      <span>
+      <Paragraph>
         You need to be logged in with an admin account to view this content.
-      </span>
-      <br />
-      <TextLink onClick={setLoginRedirect} to="/login">
-        Got a different admin account? Log in here.
-      </TextLink>
+        <br />
+        <TextLink onClick={setLoginRedirect} to="/login">
+          Got a different admin account? Log in here.
+        </TextLink>
+      </Paragraph>
     </Section>
   );
 };
