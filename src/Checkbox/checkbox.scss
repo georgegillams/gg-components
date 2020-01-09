@@ -42,6 +42,7 @@
   &__check {
     display: none;
     fill: $primary-color;
+    color: $primary-color;
     position: absolute;
     left: 0.2rem;
     top: 0.2rem;
@@ -53,12 +54,15 @@
 
     &--valid {
       fill: $bpk-color-monteverde;
+      color: $bpk-color-monteverde;
     }
     &--invalid {
       fill: $bpk-color-panjin;
+      color: $bpk-color-panjin;
     }
     &--disabled {
       fill: $shadow-color;
+      color: $shadow-color;
     }
   }
 

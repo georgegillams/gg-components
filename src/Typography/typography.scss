@@ -136,6 +136,7 @@
     color: $primary-color !important;
     text-decoration: none;
     fill: $primary-color !important;
+    color: $primary-color;
   }
 
   &--hovering-light {
@@ -143,6 +144,7 @@
     color: $primary-color-light !important;
     text-decoration: none;
     fill: $primary-color-light !important;
+    color: $primary-color-light;
   }
 
   &--inline {
@@ -174,8 +176,8 @@
     &:active,
     &:hover {
       color: $primary-color !important;
-      text-decoration: none;
       fill: $primary-color !important;
+      text-decoration: none;
     }
     &:active,
     &:focus {
