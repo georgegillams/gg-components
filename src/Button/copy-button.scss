@@ -1,0 +1,25 @@
+@import '../Tokens/common';
+
+.copy-button {
+  &__outer {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: copy;
+  }
+
+  &__icon {
+    color: $primary-color;
+    fill: $primary-color;
+
+    @media (prefers-color-scheme: dark) {
+      color: orchid;
+      fill: orchid;
+    }
+  }
+}

@@ -20,7 +20,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Button, BurgerButton } from './index';
+import { Button, BurgerButton, CopyButton } from './index';
 
 class StatefulBurger extends Component {
   constructor(props) {
@@ -74,3 +74,7 @@ storiesOf('BurgerButton', module)
   .add('Closed', () => <BurgerButton onClick={action('burger clicked')} />)
   .add('Open', () => <BurgerButton onClick={action('burger clicked')} isOpen />)
   .add('Stateful', () => <StatefulBurger />);
+
+storiesOf('CopyButton', module).add('Default', () => (
+  <CopyButton text="This was a JS copy test." />
+));
