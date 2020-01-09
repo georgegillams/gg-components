@@ -39,6 +39,8 @@
     padding-bottom: 1rem;
     flex-direction: column;
     transition: transform 0.2s;
+    border-radius: 0.25rem;
+    outline: none;
 
     @include bpk-breakpoint-tablet {
       padding-right: 2rem;
@@ -60,6 +62,7 @@
     color: #1e1e1e;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1.6rem;
+    border-radius: 0.25rem;
 
     &--light {
       color: $bpk-color-sky-gray-tint-06;
@@ -69,20 +72,22 @@
       line-height: normal;
     }
 
+    &:focus,
+    &:active,
+    &:hover {
+      box-shadow: $focus-indicator;
+
+      @media (prefers-color-scheme: dark) {
+        box-shadow: $focus-indicator-invert;
+      }
+    }
+
     &--animated {
       &:focus,
       &:active,
       &:hover {
         animation-name: example;
         animation-duration: 0.4s;
-      }
-    }
-
-    &:active,
-    &:focus {
-      box-shadow: $focus-indicator;
-      @media (prefers-color-scheme: dark) {
-        box-shadow: $focus-indicator-invert;
       }
     }
   }
@@ -94,6 +99,7 @@
     font-size: 5.5rem;
     font-weight: bold;
     line-height: 6rem;
+    border-radius: 0.25rem;
 
     @media (prefers-color-scheme: dark) {
       color: $primary-color-invert;
@@ -111,6 +117,7 @@
       line-height: normal;
       margin: 0;
     }
+    &:hover,
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
