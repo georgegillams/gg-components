@@ -30,7 +30,7 @@ class StatefulDegreeModule extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { markerPosition: 70, percentage: 0 };
+    this.state = { markerPosition: 70, percentage: 0, filled: true };
   }
 
   render() {
@@ -40,6 +40,7 @@ class StatefulDegreeModule extends Component {
           name="Test"
           markerPosition={this.state.markerPosition}
           percentage={this.state.percentage}
+          filled={this.state.filled}
           {...this.props}
         />
         {this.state.markerPosition < 100 && (
@@ -54,6 +55,15 @@ class StatefulDegreeModule extends Component {
             Increment markerPosition amount
           </button>
         )}
+        <button
+          onClick={() => {
+            this.setState(prevState => ({
+              filled: !prevState.filled,
+            }));
+          }}
+        >
+          Toggle filled
+        </button>
         {this.state.markerPosition >= 100 && (
           <button
             onClick={() => {
@@ -95,5 +105,13 @@ class StatefulDegreeModule extends Component {
 storiesOf('DegreeModule', module)
   .add('Default', () => (
     <DegreeModule name="Test" percentage={50} markerPosition={70} />
+  ))
+  .add('Unfilled', () => (
+    <DegreeModule
+      name="Test"
+      filled={false}
+      percentage={50}
+      markerPosition={70}
+    />
   ))
   .add('Stateful', () => <StatefulDegreeModule />);
