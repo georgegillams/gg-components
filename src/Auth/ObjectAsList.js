@@ -9,11 +9,11 @@ class ObjectAsList extends Component {
   }
 
   render = () => {
-    const { name, value, depth } = this.props;
+    const { name, value, depth, rest } = this.props;
 
     if ((value && typeof value === 'object') || typeof value === 'array') {
       return (
-        <Fragment>
+        <Fragment {...rest}>
           <div
             style={{ marginLeft: `${depth}rem` }}
             role="button"
@@ -31,7 +31,10 @@ class ObjectAsList extends Component {
     }
 
     return (
-      <div style={{ marginLeft: `${depth}rem` }}>{`${name}: ${value}`}</div>
+      <div
+        style={{ marginLeft: `${depth}rem` }}
+        {...rest}
+      >{`${name}: ${value}`}</div>
     );
   };
 }

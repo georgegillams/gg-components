@@ -4,14 +4,17 @@ import PropTypes from 'prop-types';
 import { TextLink, Section } from '../Typography';
 
 const EmailVerifiedOnly = props => {
-  const { user, children } = props;
+  const { user, children, ...rest } = props;
 
   if (user && user.emailVerified) {
     return children;
   }
 
   return (
-    <Section name="You need to verify your email before completing this step.">
+    <Section
+      name="You need to verify your email before completing this step."
+      {...rest}
+    >
       <TextLink to="/account">Account</TextLink>
     </Section>
   );

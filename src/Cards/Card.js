@@ -24,25 +24,25 @@ class Card extends Component {
   hoverStarted = () => {
     const newValue = true;
     this.setState({ hovering: newValue });
-    this.propgate(this.state.focused || newValue);
+    this.propogate(this.state.focused || newValue);
   };
 
   hoverEnded = () => {
     const newValue = false;
     this.setState({ hovering: newValue });
-    this.propgate(this.state.focused || newValue);
+    this.propogate(this.state.focused || newValue);
   };
 
   focusStarted = () => {
     const newValue = true;
     this.setState({ focused: newValue });
-    this.propgate(this.state.hovering || newValue);
+    this.propogate(this.state.hovering || newValue);
   };
 
   focusEnded = () => {
     const newValue = false;
     this.setState({ focused: newValue });
-    this.propgate(this.state.hovering || newValue);
+    this.propogate(this.state.hovering || newValue);
   };
 
   render() {

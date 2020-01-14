@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { Paragraph, TextLink, Section } from '../Typography';
 
 const LoggedInOnly = props => {
-  const { user, activityName, children, setLoginRedirect } = props;
+  const { user, activityName, children, setLoginRedirect, ...rest } = props;
 
   if (!user) {
     return (
-      <Section name="Logged out">
+      <Section name="Logged out" {...rest}>
         <Paragraph>
           You need to be logged in to {activityName || 'view this content'}
           <br />

@@ -70,7 +70,7 @@ const Section = props => {
 
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
-      {anchor && (
+      {anchor && name && (
         <a href={`#${anchorLink}`} className={anchorClassNames.join(' ')}>
           §
         </a>
@@ -95,7 +95,7 @@ Section.propTypes = {
   className: PropTypes.string,
   hover: PropTypes.bool,
   textClassName: PropTypes.string,
-  style: PropTypes.style,
+  style: PropTypes.object,
   children: PropTypes.node,
 };
 

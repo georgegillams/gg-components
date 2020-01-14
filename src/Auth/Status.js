@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { Section } from '../Typography';
 
 const Status = props => {
-  const { success, error } = props;
+  const { success, error, ...rest } = props;
 
   if (success || error) {
     return (
-      <Section name="STATUS">
+      <Section name="STATUS" {...rest}>
         {success && <span>SUCCESS</span>}
         {error && <span>{error}</span>}
       </Section>
