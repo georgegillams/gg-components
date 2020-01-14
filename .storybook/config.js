@@ -37,7 +37,7 @@ addDecorator(story => (
 
 addParameters({
   backgrounds: [
-    { name: 'Dark', value: '#050d1b', default: true },
+    { name: 'Dark', value: '#050d1b' },
     { name: 'Skyscanner', value: '#0770E3' },
     { name: 'Orange', value: '#ffbb00' },
   ],
