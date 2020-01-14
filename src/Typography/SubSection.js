@@ -68,7 +68,7 @@ const SubSection = props => {
 
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
-      {anchor && (
+      {anchor && name && (
         <TextLink
           href={`#${anchorLink}`}
           className={anchorClassNames.join(' ')}
@@ -97,10 +97,10 @@ SubSection.propTypes = {
   light: PropTypes.bool,
   anchor: PropTypes.bool,
   noPadding: PropTypes.bool,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   className: PropTypes.string,
   textClassName: PropTypes.string,
-  style: PropTypes.style,
+  style: PropTypes.object,
   children: PropTypes.node,
 };
 
@@ -109,6 +109,7 @@ SubSection.defaultProps = {
   link: false,
   fancy: false,
   anchor: true,
+  name: null,
   light: false,
   noPadding: false,
   className: null,

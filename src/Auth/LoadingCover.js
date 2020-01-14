@@ -10,7 +10,13 @@ import { Skeleton } from '../Skeletons';
 const getClassName = cssModules(STYLES);
 
 const LoadingCover = props => {
-  const { loadingSkeleton: LoadingSkeleton, loading, error, children } = props;
+  const {
+    loadingSkeleton: LoadingSkeleton,
+    loading,
+    error,
+    children,
+    ...rest
+  } = props;
 
   const showLoadingMessage = loading || error;
 
@@ -19,7 +25,7 @@ const LoadingCover = props => {
   }
 
   return (
-    <div className={getClassName('loading-cover__outer-container')}>
+    <div className={getClassName('loading-cover__outer-container')} {...rest}>
       <div className={getClassName('loading-cover__overlay')}>
         {LoadingSkeleton && <LoadingSkeleton aria-label="Loading" />}
         {error && (

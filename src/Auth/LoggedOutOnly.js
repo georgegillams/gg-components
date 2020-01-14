@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import { TextLink, Section } from '../Typography';
 
 const LoggedOutOnly = props => {
-  const { user, children } = props;
+  const { user, children, ...rest } = props;
 
   if (user) {
     return (
-      <Section name="You're logged in">
+      <Section name="You're logged in" {...rest}>
         <TextLink to="/account">Go to your account.</TextLink>
       </Section>
     );

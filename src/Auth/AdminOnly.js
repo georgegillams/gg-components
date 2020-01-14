@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import { Paragraph, TextLink, Section } from '../Typography';
 
 const AdminOnly = props => {
-  const { user, children, setLoginRedirect } = props;
+  const { user, children, setLoginRedirect, ...rest } = props;
 
   if (user && user.admin) {
     return children;
   }
 
   return (
-    <Section name="Admin only">
+    <Section name="Admin only" {...rest}>
       <Paragraph>
         You need to be logged in with an admin account to view this content.
         <br />

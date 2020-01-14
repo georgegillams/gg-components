@@ -10,7 +10,7 @@ const Paragraph = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <p
+    <span
       className={getClassName(
         'typography__main',
         'typography__paragraph',
@@ -19,7 +19,7 @@ const Paragraph = props => {
       {...rest}
     >
       {children}
-    </p>
+    </span>
   );
 };
 
