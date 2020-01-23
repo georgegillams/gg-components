@@ -3,6 +3,7 @@ import ButtonSkeleton from './ButtonSkeleton';
 import CardSkeleton from './CardSkeleton';
 import CheckboxSkeleton from './CheckboxSkeleton';
 import CompactCardSkeleton from './CompactCardSkeleton';
+import InfoCellSkeleton from './InfoCellSkeleton';
 import InputSkeleton from './InputSkeleton';
 import NotificationSkeleton from './NotificationSkeleton';
 import ProgressSkeleton from './ProgressSkeleton';
@@ -19,6 +20,7 @@ export {
   CardSkeleton,
   CheckboxSkeleton,
   CompactCardSkeleton,
+  InfoCellSkeleton,
   InputSkeleton,
   NotificationSkeleton,
   ProgressSkeleton,
