@@ -28,6 +28,7 @@ import {
   CardSkeleton,
   CheckboxSkeleton,
   CompactCardSkeleton,
+  InfoCellSkeleton,
   InputSkeleton,
   NotificationSkeleton,
   ProgressSkeleton,
@@ -44,6 +45,7 @@ storiesOf('Skeletons', module)
   .add('CardSkeleton', () => <CardSkeleton />)
   .add('CheckboxSkeleton', () => <CheckboxSkeleton />)
   .add('CompactCardSkeleton', () => <CompactCardSkeleton />)
+  .add('InfoCellSkeleton', () => <InfoCellSkeleton />)
   .add('InputSkeleton', () => <InputSkeleton />)
   .add('NotificationSkeleton', () => <NotificationSkeleton />)
   .add('ProgressSkeleton', () => <ProgressSkeleton />)
