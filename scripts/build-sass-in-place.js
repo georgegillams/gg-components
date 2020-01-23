@@ -4,15 +4,21 @@ const { exec, execSync } = require('child_process');
 
 const auxilliaryFiles = ['dist/tokens/_common.scss'];
 
+const blue = s => '\033[0;34m' + s + '\033[0m';
+
 const transpile = file => {
-  return new Promise(resolve => {
+  return new Promise((resolve, reject) => {
     const outputFile = path.dirname(file);
     const options =
       '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
     exec(
       `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
-      null,
-      () => {
+      (error, stdout, stderr) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+        console.info(blue(file));
         resolve();
       },
     );
@@ -47,13 +53,18 @@ const sleep = milliseconds => {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 };
 
-Promise.all(transpilationTasks).then(() => {
-  sleep(1000).then(() => {
-    scssFiles.forEach(sF => {
-      deleteFile(sF);
-    });
+Promise.all(transpilationTasks)
+  .then(() => {
+    sleep(1000).then(() => {
+      scssFiles.forEach(sF => {
+        deleteFile(sF);
+      });
 
-    console.log('All good.  👍');
-    process.exit(0);
+      console.log('All good.  👍');
+      process.exit(0);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
   });
-});
