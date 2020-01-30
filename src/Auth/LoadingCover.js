@@ -43,7 +43,7 @@ const LoadingCover = props => {
 
 LoadingCover.propTypes = {
   loading: PropTypes.bool,
-  loadingSkeleton: PropTypes.class,
+  loadingSkeleton: PropTypes.elementType,
   error: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
