@@ -16,8 +16,8 @@ class Card extends Component {
   }
 
   propogate = newValue => {
-    if (onHoverChanged) {
-      onHoverChanged(newValue);
+    if (this.props.onHoverChanged) {
+      this.props.onHoverChanged(newValue);
     }
   };
 

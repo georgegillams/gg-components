@@ -66,9 +66,9 @@ const lexRecursive = (content, depth, supportedFeatures) => {
     const footnoteNumber = mdFootNote1.shift();
     const postFootnoteText = mdFootNote1.join('');
     return [
-      lexRecursive(preReferencesText, depth, supportedFeatures),
+      lexRecursive(preFootnoteText, depth, supportedFeatures),
       { type: 'mdFootNote1', number: footnoteNumber },
-      lexRecursive(postReferencesText, depth, supportedFeatures),
+      lexRecursive(postFootnoteText, depth, supportedFeatures),
     ];
   }
 
