@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
+import { getTimeDifference } from '../helpers/time';
+import { Paragraph } from '../Typography';
 
 import STYLES from './countdown.scss';
+import CountdownItem from './CountdownItem';
+import CountdownDivider from './CountdownDivider';
 
 const getClassName = cssModules(STYLES);
 
@@ -12,12 +16,26 @@ const MS_PER_HOUR = MS_PER_MINUTE * 60;
 const MS_PER_DAY = MS_PER_HOUR * 24;
 
 const CountdownDumb = props => {
-  const { millis, className, completeMessage, large, ...rest } = props;
+  const {
+    millis,
+    textClassName,
+    className,
+    completeMessage,
+    large,
+    paused,
+    ...rest
+  } = props;
 
   const classNames = [getClassName('countdown__outer', className)];
 
   if (millis <= 0 && completeMessage) {
-    return <p>{completeMessage}</p>;
+    classNames.push(getClassName('countdown__pausedLabel'));
+    if (textClassName) {
+      classNames.push(textClassName);
+    }
+    return (
+      <Paragraph className={classNames.join(' ')}>{completeMessage}</Paragraph>
+    );
   }
 
   const absFloor = num => {
@@ -37,12 +55,66 @@ const CountdownDumb = props => {
   const secondsLeft = absFloor(msLeft / MS_PER_SECOND);
   msLeft -= secondsLeft * MS_PER_SECOND;
 
+  const timeDifferenceFriendly = getTimeDifference(millis / 1000);
+  let accessibleLabel = `Timer with ${timeDifferenceFriendly} remaining`;
+  if (millis <= 0) {
+    accessibleLabel = `Timer ended ${timeDifferenceFriendly}`;
+  }
+
+  if (paused) {
+    classNames.push(getClassName('countdown__pausedLabel'));
+    if (textClassName) {
+      classNames.push(textClassName);
+    }
+    return (
+      <Paragraph className={classNames.join(' ')}>{accessibleLabel}</Paragraph>
+    );
+  }
+
   return (
-    <div className={classNames.join(' ')} {...rest}>
-      {daysLeft !== 0 && <p>DAYS: {daysLeft}</p>}
-      <p>HOURS: {hoursLeft}</p>
-      <p>MINUTES: {minutesLeft}</p>
-      <p>SECONDS: {secondsLeft}</p>
+    <div
+      role="paragraph"
+      aria-label={accessibleLabel}
+      className={classNames.join(' ')}
+      {...rest}
+    >
+      {millis <= 0 && (
+        <Paragraph
+          className={[
+            getClassName('countdown__itemNumber'),
+            textClassName,
+          ].join(' ')}
+        >
+          -
+        </Paragraph>
+      )}
+      {daysLeft !== 0 && (
+        <Fragment>
+          <CountdownItem
+            textClassName={textClassName}
+            name="DAYS"
+            number={Math.abs(daysLeft)}
+          />
+          <CountdownDivider textClassName={textClassName} />
+        </Fragment>
+      )}
+      <CountdownItem
+        textClassName={textClassName}
+        name="HOURS"
+        number={Math.abs(hoursLeft)}
+      />
+      <CountdownDivider textClassName={textClassName} />
+      <CountdownItem
+        textClassName={textClassName}
+        name="MINUTES"
+        number={Math.abs(minutesLeft)}
+      />
+      <CountdownDivider textClassName={textClassName} />
+      <CountdownItem
+        textClassName={textClassName}
+        name="SECONDS"
+        number={Math.abs(secondsLeft)}
+      />
     </div>
   );
 };
@@ -52,12 +124,14 @@ CountdownDumb.propTypes = {
   className: PropTypes.string,
   completeMessage: PropTypes.string,
   large: PropTypes.bool,
+  paused: PropTypes.bool,
 };
 
 CountdownDumb.defaultProps = {
   className: null,
   completeMessage: null,
   large: false,
+  paused: false,
 };
 
 export default CountdownDumb;

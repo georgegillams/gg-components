@@ -22,12 +22,35 @@ import { action } from '@storybook/addon-actions';
 
 import { Countdown, CountdownDumb } from './index';
 
+import { cssModules } from '../helpers/cssModules';
+
+import STYLES from './stories.scss';
+
+const getClassName = cssModules(STYLES);
+
 storiesOf('Countdown dumb', module)
   .add('Default - tomorrow', () => <CountdownDumb millis={86387125} />)
   .add('Default - oneWeek', () => <CountdownDumb millis={604766461} />)
   .add('Default - oneWeekAgo', () => <CountdownDumb millis={-604842403} />)
+  .add('Default - coloured', () => (
+    <CountdownDumb
+      textClassName={getClassName('stories__text')}
+      millis={604842403}
+    />
+  ))
   .add('CompleteMessage - oneWeekAgo', () => (
     <CountdownDumb millis={-604842403} completeMessage="Time finished!" />
+  ))
+  .add('Paused - oneWeekAgo', () => (
+    <CountdownDumb millis={-604766461} paused />
+  ))
+  .add('Paused - oneWeek', () => <CountdownDumb millis={604766461} paused />)
+  .add('Paused - oneWeek coloured', () => (
+    <CountdownDumb
+      textClassName={getClassName('stories__text')}
+      millis={604766461}
+      paused
+    />
   ));
 
 const tomorrow = new Date();
