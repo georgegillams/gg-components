@@ -39,7 +39,7 @@ storiesOf('Countdown dumb', module)
     />
   ))
   .add('CompleteMessage - oneWeekAgo', () => (
-    <CountdownDumb millis={-604842403} completeMessage="Time finished!" />
+    <CountdownDumb millis={-604842403} completeMessage="Timer finished!" />
   ))
   .add('Paused - oneWeekAgo', () => (
     <CountdownDumb millis={-604766461} paused />

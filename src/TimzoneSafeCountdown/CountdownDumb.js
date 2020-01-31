@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
-import { getTimeDifference } from '../helpers/time';
+import { getTimeDifferenceFromMillis } from '../helpers/time';
 import { Paragraph } from '../Typography';
 
 import STYLES from './countdown.scss';
@@ -55,8 +55,8 @@ const CountdownDumb = props => {
   const secondsLeft = absFloor(msLeft / MS_PER_SECOND);
   msLeft -= secondsLeft * MS_PER_SECOND;
 
-  const timeDifferenceFriendly = getTimeDifference(millis / 1000);
-  let accessibleLabel = `Timer with ${timeDifferenceFriendly} remaining`;
+  const timeDifferenceFriendly = getTimeDifferenceFromMillis(millis);
+  let accessibleLabel = `Timer ends ${timeDifferenceFriendly}`;
   if (millis <= 0) {
     accessibleLabel = `Timer ended ${timeDifferenceFriendly}`;
   }
