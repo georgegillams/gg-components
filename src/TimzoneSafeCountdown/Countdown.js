@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import prefersReducedMotion, {
+  motionPreferences,
+} from '@magica11y/prefers-reduced-motion';
+
 import { CountdownDumb } from './index';
 
 const MS_PER_SECOND = 1000;
@@ -15,10 +19,16 @@ class Countdown extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { lastUpdated: 0 };
+    this.state = {
+      paused: false,
+      lastUpdated: 0,
+    };
   }
 
   componentDidMount() {
+    this.setState({
+      paused: prefersReducedMotion() === motionPreferences.REDUCE,
+    });
     this.interval = setInterval(() => {
       this.setState({ lastUpdated: new Date().getTime() });
     }, 500);
@@ -36,7 +46,16 @@ class Countdown extends Component {
     const now = new Date();
     let msDiff = toUTCTimestamp - now.getTime();
 
-    return <CountdownDumb millis={msDiff} {...rest}></CountdownDumb>;
+    return (
+      <CountdownDumb
+        paused={this.state.paused}
+        onPauseChanged={newValue => {
+          this.setState({ paused: newValue });
+        }}
+        millis={msDiff}
+        {...rest}
+      ></CountdownDumb>
+    );
   };
 }
 
