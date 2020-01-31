@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
 import { getTimeDifferenceFromMillis } from '../helpers/time';
 import { Paragraph } from '../Typography';
+import { Checkbox } from '../Checkbox';
 
 import STYLES from './countdown.scss';
 import CountdownItem from './CountdownItem';
@@ -15,6 +16,13 @@ const MS_PER_MINUTE = MS_PER_SECOND * 60;
 const MS_PER_HOUR = MS_PER_MINUTE * 60;
 const MS_PER_DAY = MS_PER_HOUR * 24;
 
+const absFloor = num => {
+  if (num > 0) {
+    return Math.floor(num);
+  }
+  return Math.ceil(num);
+};
+
 const CountdownDumb = props => {
   const {
     millis,
@@ -23,27 +31,9 @@ const CountdownDumb = props => {
     completeMessage,
     large,
     paused,
+    onPauseChanged,
     ...rest
   } = props;
-
-  const classNames = [getClassName('countdown__outer', className)];
-
-  if (millis <= 0 && completeMessage) {
-    classNames.push(getClassName('countdown__pausedLabel'));
-    if (textClassName) {
-      classNames.push(textClassName);
-    }
-    return (
-      <Paragraph className={classNames.join(' ')}>{completeMessage}</Paragraph>
-    );
-  }
-
-  const absFloor = num => {
-    if (num > 0) {
-      return Math.floor(num);
-    }
-    return Math.ceil(num);
-  };
 
   let msLeft = millis;
   const daysLeft = absFloor(msLeft / MS_PER_DAY);
@@ -61,22 +51,11 @@ const CountdownDumb = props => {
     accessibleLabel = `Timer ended ${timeDifferenceFriendly}`;
   }
 
-  if (paused) {
-    classNames.push(getClassName('countdown__pausedLabel'));
-    if (textClassName) {
-      classNames.push(textClassName);
-    }
-    return (
-      <Paragraph className={classNames.join(' ')}>{accessibleLabel}</Paragraph>
-    );
-  }
-
-  return (
+  let component = (
     <div
       role="paragraph"
       aria-label={accessibleLabel}
-      className={classNames.join(' ')}
-      {...rest}
+      className={getClassName('countdown__clockOuter')}
     >
       {millis <= 0 && (
         <Paragraph
@@ -114,6 +93,42 @@ const CountdownDumb = props => {
         textClassName={textClassName}
         name="SECONDS"
         number={Math.abs(secondsLeft)}
+      />
+    </div>
+  );
+
+  if (paused) {
+    component = (
+      <Paragraph
+        className={getClassName('countdown__pausedLabel', textClassName)}
+      >
+        {accessibleLabel}
+      </Paragraph>
+    );
+  }
+
+  if (millis <= 0 && completeMessage) {
+    component = (
+      <Paragraph
+        className={getClassName('countdown__pausedLabel', textClassName)}
+      >
+        {completeMessage}
+      </Paragraph>
+    );
+  }
+
+  return (
+    <div className={getClassName('countdown__outer', className)} {...rest}>
+      {component}
+      <Checkbox
+        checked={paused}
+        name="pause_checkbox"
+        label="Reduce motion"
+        onChange={e => {
+          if (onPauseChanged) {
+            onPauseChanged(e.target.checked);
+          }
+        }}
       />
     </div>
   );
