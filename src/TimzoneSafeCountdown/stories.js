@@ -20,14 +20,38 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Countdown } from './index';
+import { Countdown, CountdownDumb } from './index';
+
+storiesOf('Countdown dumb', module)
+  .add('Default - tomorrow', () => <CountdownDumb millis={86387125} />)
+  .add('Default - oneWeek', () => <CountdownDumb millis={604766461} />)
+  .add('Default - oneWeekAgo', () => <CountdownDumb millis={-604842403} />)
+  .add('CompleteMessage - oneWeekAgo', () => (
+    <CountdownDumb millis={-604842403} completeMessage="Time finished!" />
+  ));
 
 const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 
 const oneWeek = new Date();
-oneWeek.setDate(oneWeek.getDate() + 1);
+oneWeek.setDate(oneWeek.getDate() + 7);
 
-  storiesOf('Countdown', module)
-  .add('Default - tomorrow', () => (<Countdown toTime={tomorrow} />))
-  .add('Default - oneWeek', () => (<Countdown toTime={oneWeek} />));
+const oneWeekAgo = new Date();
+oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+storiesOf('Countdown', module)
+  .add('Default - tomorrow', () => (
+    <Countdown toUTCTimestamp={tomorrow.getTime()} />
+  ))
+  .add('Default - oneWeek', () => (
+    <Countdown toUTCTimestamp={oneWeek.getTime()} />
+  ))
+  .add('Default - oneWeekAgo', () => (
+    <Countdown toUTCTimestamp={oneWeekAgo.getTime()} />
+  ))
+  .add('CompleteMessage - oneWeekAgo', () => (
+    <Countdown
+      toUTCTimestamp={oneWeekAgo.getTime()}
+      completeMessage="Time finished!"
+    />
+  ));

@@ -68,6 +68,7 @@ configure(() => {
   require('../src/ScrollContainer/stories.js');
   require('../src/Skeletons/stories.js');
   require('../src/Tag/stories.js');
+  require('../src/TimzoneSafeCountdown/stories.js');
   require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */

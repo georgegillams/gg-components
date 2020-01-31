@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { cssModules } from '../helpers/cssModules';
+import { CountdownDumb } from './index';
 
-import STYLES from './countdown.scss';
-
-const getClassName = cssModules(STYLES);
+const MS_PER_SECOND = 1000;
+const MS_PER_MINUTE = MS_PER_SECOND * 60;
+const MS_PER_HOUR = MS_PER_MINUTE * 60;
+const MS_PER_DAY = MS_PER_HOUR * 24;
 
 class Countdown extends Component {
   static propTypes = {
-    large: PropTypes.bool,
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    large: false,
-    className: null,
+    toUTCTimestamp: PropTypes.string.isRequired,
   };
 
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { lastUpdated: 0 };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      this.setState({ lastUpdated: new Date().getTime() });
+    }, 500);
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.timeInterval);
+    }
   }
 
   render = () => {
-    const {
-      className,
-      large,
-      ...rest
-    } = this.props;
+    const { toUTCTimestamp, ...rest } = this.props;
 
-    const classNames = [getClassName('countdown__outer', className)];
+    const now = new Date();
+    let msDiff = toUTCTimestamp - now.getTime();
 
-    return (
-      <div
-        className={classNames.join(' ')}
-        {...rest}
-      >
-        {COUNTDOWN HERE}
-      </div>
-    );
+    return <CountdownDumb millis={msDiff} {...rest}></CountdownDumb>;
   };
 }
 
