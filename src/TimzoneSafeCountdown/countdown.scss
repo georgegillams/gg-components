@@ -3,6 +3,17 @@
 .countdown {
   &__outer {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 17rem;
+    @include bpk-breakpoint-mobile {
+      height: 10rem;
+    }
+  }
+
+  &__clockOuter {
+    display: flex;
     justify-content: space-around;
   }
 
@@ -16,13 +27,16 @@
 
   &__itemNumber {
     width: auto;
+    auto-width: 9rem;
     font-size: 8rem;
     @include bpk-breakpoint-mobile {
+      auto-width: 4rem;
       font-size: 4rem;
     }
   }
 
   &__pausedLabel {
+    margin-top: 2rem;
     width: auto;
     font-size: 6rem;
     @include bpk-breakpoint-mobile {
