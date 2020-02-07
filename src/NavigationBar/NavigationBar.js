@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { BurgerButton } from '../Button';
+import BlurEffectView from './BlurEffectView';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './navigation-bar.scss';
@@ -106,6 +107,7 @@ class NavigationBar extends Component {
         )}
         <div className={getClassName('navigation-bar__bar-placeholder')} />
         <div className={outerClassNameFinal.join(' ')} {...rest}>
+          <BlurEffectView />
           <div className={getClassName('navigation-bar__bar')} {...rest}>
             <div
               className={getClassName(
