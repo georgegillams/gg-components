@@ -37,8 +37,12 @@
   }
 
   &__text-link {
-    color: orchid;
-    fill: orchid;
+    color: $link-color;
+    fill: $link-color;
+    @media (prefers-color-scheme: dark) {
+      color: $link-color-invert;
+      fill: $link-color-invert;
+    }
   }
 
   &__inner-container {

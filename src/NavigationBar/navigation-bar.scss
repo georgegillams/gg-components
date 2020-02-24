@@ -6,14 +6,14 @@
     padding: 0.8rem 0.2rem;
     position: fixed;
     width: 100%;
-    background-color: $background-color;
+    background-color: $background-color-elevated-colored;
     z-index: $navigation-bar-z-index;
     left: 0;
     top: 0;
     box-shadow: 0 0.05rem 0.5rem lightgray;
 
     @media (prefers-color-scheme: dark) {
-      background-color: $background-color-invert;
+      background-color: $background-color-elevated-colored-invert;
       border-bottom: 0.1rem white solid;
       box-shadow: unset;
     }
@@ -55,7 +55,7 @@
 
   &__animated-container {
     position: fixed;
-    background-color: $background-color;
+    background-color: $background-color-elevated-colored;
     left: -50rem;
     top: 0;
     height: 100vh;
@@ -67,7 +67,8 @@
     justify-content: center;
 
     @media (prefers-color-scheme: dark) {
-      background-color: $background-color-invert;
+      background-color: $background-color-elevated-colored-invert;
+
       border-right: 0.1rem white solid;
     }
 

@@ -57,7 +57,7 @@
     font-weight: bold;
     text-decoration: none;
     opacity: 0.4;
-    color: orchid;
+    color: $link-color;
     border-radius: 0.25rem;
 
     &:active,
@@ -158,12 +158,12 @@
     border-radius: 0.25rem;
 
     &--text-link {
-      color: darkorchid;
-      fill: darkorchid;
+      color: $link-color;
+      fill: $link-color;
 
       @media (prefers-color-scheme: dark) {
-        color: orchid;
-        fill: orchid;
+        color: $link-color-invert;
+        fill: $link-color-invert;
       }
 
       &--all-white {

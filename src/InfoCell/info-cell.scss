@@ -5,22 +5,22 @@ $card-height: 14rem;
 
 .info-cell {
   &__outer {
-    background-color: #dbdbe5;
+    background-color: $alternating-background-color-1;
     font-family: 'Quattrocento Sans', sans-serif;
     color: $not-black;
     display: flex;
     justify-content: space-around;
 
     @media (prefers-color-scheme: dark) {
-      background-color: #222526;
+      background-color: $alternating-background-color-1-invert;
       color: white;
     }
 
     &--dark {
-      background-color: #bbbbc6;
+      background-color: $alternating-background-color-2;
 
       @media (prefers-color-scheme: dark) {
-        background-color: #2c2e30;
+        background-color: $alternating-background-color-2-invert;
         color: white;
       }
     }
