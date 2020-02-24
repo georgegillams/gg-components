@@ -29,7 +29,7 @@
     }
 
     &--disabled {
-      background: #cdcdd7;
+      background: $background-disabled-color;
     }
     &--valid {
       box-shadow: 0 0 0 1px $bpk-color-monteverde inset;
@@ -76,7 +76,7 @@
     }
 
     &--disabled {
-      color: #cdcdd7;
+      color: $background-disabled-color;
     }
   }
 }

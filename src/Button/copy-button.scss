@@ -18,8 +18,8 @@
     fill: $primary-color;
 
     @media (prefers-color-scheme: dark) {
-      color: orchid;
-      fill: orchid;
+      color: $link-color-invert;
+      fill: $link-color-invert;
     }
   }
 }
