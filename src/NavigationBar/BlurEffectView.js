@@ -35,7 +35,7 @@ class BlurEffectView extends Component {
     }
 
     const newMainScrollElementClone = this.mainScrollElement.cloneNode(true);
-    newMainScrollElementClone.style.filter = 'blur(4rem)';
+    newMainScrollElementClone.style.filter = 'blur(10px)';
     newMainScrollElementClone.id += '_clone';
     if (this.mainScrollElementClone) {
       this.myRef.current.removeChild(this.mainScrollElementClone);
