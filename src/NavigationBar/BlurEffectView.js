@@ -36,6 +36,7 @@ class BlurEffectView extends Component {
 
     const newMainScrollElementClone = this.mainScrollElement.cloneNode(true);
     newMainScrollElementClone.style.filter = 'blur(10px)';
+    newMainScrollElementClone.style.opacity = '0.5';
     newMainScrollElementClone.id += '_clone';
     if (this.mainScrollElementClone) {
       this.myRef.current.removeChild(this.mainScrollElementClone);
@@ -48,7 +49,7 @@ class BlurEffectView extends Component {
   componentDidMount() {
     this.mainScrollElement = document.getElementById('mainScrollView');
     this.recreateBlurClone();
-    this.interval = setInterval(this.recreateBlurClone, 10000);
+    this.interval = setInterval(this.recreateBlurClone, 2000);
     window.addEventListener('scroll', e => {
       this.adjustCloneScroll();
     });
