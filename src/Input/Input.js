@@ -44,6 +44,7 @@ class Input extends Component {
       inputProps,
       iconProps,
       component,
+      id,
       ...rest
     } = this.props;
 
@@ -88,6 +89,7 @@ class Input extends Component {
           disabled={enabled === false}
           onChange={enabled ? onChange : null}
           className={innerClassNames.join(' ')}
+          id={id}
           {...inputProps}
         />
         {IconComponent && (
