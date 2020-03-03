@@ -18,7 +18,9 @@
     fill: $primary-color;
 
     @media (prefers-color-scheme: dark) {
+      color: var(--link-color-invert, $link-color-invert);
       color: $link-color-invert;
+      fill: var(--link-color-invert, $link-color-invert);
       fill: $link-color-invert;
     }
   }

@@ -63,10 +63,12 @@
     width: 0;
     height: 0.4rem;
     transition: all 0.4s;
+    background-color: var(--primary-color, $primary-color);
     background-color: $primary-color;
     z-index: 3;
 
     &--light {
+      background-color: var(--primary-color-light, $primary-color-light);
       background-color: $primary-color-light;
     }
 

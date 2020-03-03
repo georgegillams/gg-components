@@ -41,7 +41,9 @@
 
   &__check {
     display: none;
+    fill: var(--primary-color, $primary-color);
     fill: $primary-color;
+    color: var(--primary-color, $primary-color);
     color: $primary-color;
     position: absolute;
     left: 0.2rem;
