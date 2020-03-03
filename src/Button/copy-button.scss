@@ -15,13 +15,15 @@
 
   &__icon {
     color: $primary-color;
+    color: var(--primary-color, $primary-color);
     fill: $primary-color;
+    fill: var(--primary-color, $primary-color);
 
     @media (prefers-color-scheme: dark) {
-      color: var(--link-color-invert, $link-color-invert);
       color: $link-color-invert;
-      fill: var(--link-color-invert, $link-color-invert);
+      color: var(--link-color-invert, $link-color-invert);
       fill: $link-color-invert;
+      fill: var(--link-color-invert, $link-color-invert);
     }
   }
 }

@@ -158,16 +158,16 @@
     border-radius: 0.25rem;
 
     &--text-link {
-      color: var(--link-color, $link-color);
       color: $link-color;
-      fill: var(--link-color, $link-color);
+      color: var(--link-color, $link-color);
       fill: $link-color;
+      fill: var(--link-color, $link-color);
 
       @media (prefers-color-scheme: dark) {
-        color: var(--link-color-invert, $link-color-invert);
         color: $link-color-invert;
-        fill: var(--link-color-invert, $link-color-invert);
+        color: var(--link-color-invert, $link-color-invert);
         fill: $link-color-invert;
+        fill: var(--link-color-invert, $link-color-invert);
       }
 
       &--all-white {
