@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "prerelease": "npm run transpile",
-    "release": "(cd dist && release-it)",
+    "release": "(cd dist && npx release-it)",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass && npm run transpile:copy-tokens && npm run transpile:link-package.json",
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "node scripts/transform-js-scss-css-imports.js",
