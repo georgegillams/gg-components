@@ -134,17 +134,19 @@
   &--hovering {
     transition: all 0.4s;
     color: $primary-color !important;
+    color: var(--primary-color, $primary-color);
     text-decoration: none;
     fill: $primary-color !important;
-    color: $primary-color;
+    fill: var(--primary-color, $primary-color);
   }
 
   &--hovering-light {
     transition: all 0.4s;
     color: $primary-color-light !important;
+    color: var(--primary-color-light, $primary-color-light);
     text-decoration: none;
     fill: $primary-color-light !important;
-    color: $primary-color-light;
+    fill: var(--primary-color-light, $primary-color-light);
   }
 
   &--inline {
@@ -180,7 +182,9 @@
     &:active,
     &:hover {
       color: $primary-color !important;
+      color: var(--primary-color, $primary-color);
       fill: $primary-color !important;
+      fill: var(--primary-color, $primary-color);
       text-decoration: none;
     }
     &:active,
