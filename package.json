@@ -40,6 +40,11 @@
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
   "main": "dist/index.js",
+  "release-it": {
+    "git": {
+      "requireCleanWorkingDir": false
+    }
+  },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
