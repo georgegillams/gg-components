@@ -42,13 +42,20 @@
   &__check {
     display: none;
     fill: $primary-color;
-    fill: var(--primary-color, $primary-color);
+    fill: var(--checkbox-tick-color, $primary-color);
     color: $primary-color;
-    color: var(--primary-color, $primary-color);
+    color: var(--checkbox-tick-color, $primary-color);
     position: absolute;
     left: 0.2rem;
     top: 0.2rem;
     pointer-events: none;
+
+    @media (prefers-color-scheme: dark) {
+      fill: $primary-color-invert;
+      fill: var(--checkbox-tick-color-invert, $primary-color-invert);
+      color: $primary-color-invert;
+      color: var(--checkbox-tick-color-invert, $primary-color-invert);
+    }
 
     &--checked {
       display: inherit;

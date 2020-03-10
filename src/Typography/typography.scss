@@ -181,10 +181,10 @@
     &:focus,
     &:active,
     &:hover {
-      color: $primary-color !important;
-      color: var(--primary-color, $primary-color);
-      fill: $primary-color !important;
-      fill: var(--primary-color, $primary-color);
+      color: $primary-color;
+      color: var(--link-hover-color, $primary-color);
+      fill: $primary-color;
+      fill: var(--link-hover-color, $primary-color);
       text-decoration: none;
     }
     &:active,

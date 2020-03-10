@@ -4,6 +4,10 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import STYLES from './stories.scss';
+
+import { cssModules } from '../helpers/cssModules';
+
 import {
   ArticleDate,
   Quote,
@@ -14,6 +18,8 @@ import {
   TextLink,
   MarkdownRenderer,
 } from './index';
+
+const getClassName = cssModules(STYLES);
 
 class StatefulAnimatedContent extends Component {
   constructor(props) {
@@ -113,6 +119,13 @@ storiesOf('TextLink', module)
     <TextLink light external href="/lol" name="Test">
       Test
     </TextLink>
+  ))
+  .add('Themed', () => (
+    <div className={getClassName('stories__themed')}>
+      <TextLink external href="/lol" name="Test">
+        Test
+      </TextLink>
+    </div>
   ));
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date(2019, 4, 5, 10, 11, 12)} />

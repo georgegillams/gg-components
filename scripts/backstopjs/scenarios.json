@@ -38,6 +38,7 @@
     "checkbox--no-label-checked",
     "checkbox--valid",
     "checkbox--valid-checked",
+    "checkbox--themed",
     "code-block--default",
     "code-block--with-github-url",
     "code-block--with-github-url-and-lang",
@@ -110,6 +111,7 @@
     "textarea--valid",
     "textlink--default",
     "textlink--external",
-    "textlink--light-external"
+    "textlink--light-external",
+    "textlink--themed"
   ]
 }

@@ -4,7 +4,12 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import { cssModules } from '../helpers/cssModules';
+
 import { Checkbox } from './index';
+import STYLES from './stories.scss';
+
+const getClassName = cssModules(STYLES);
 
 class StatefulCheckbox extends Component {
   constructor(props) {
@@ -99,5 +104,10 @@ storiesOf('Checkbox', module)
   ))
   .add('Disabled checked', () => (
     <Checkbox checked label="Test" name="Test" enabled={false} />
+  ))
+  .add('Themed', () => (
+    <div className={getClassName('stories__themed')}>
+      <Checkbox checked label="Test" name="Test" />
+    </div>
   ))
   .add('Stateful', () => <StatefulCheckbox label="Test" />);
