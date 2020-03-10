@@ -99,6 +99,8 @@
     "section--with-anchor",
     "section--with-content",
     "section--with-content-and-padding",
+    "segmentedcontrol--default",
+    "segmentedcontrol--themed",
     "subsection--default",
     "subsection--no-padding",
     "subsection--with-content",

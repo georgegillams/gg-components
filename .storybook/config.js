@@ -66,6 +66,7 @@ configure(() => {
   require('../src/Redirect/stories.js');
   require('../src/RequestStatus/stories.js');
   require('../src/ScrollContainer/stories.js');
+  require('../src/SegmentedControl/stories.js');
   require('../src/Skeletons/stories.js');
   require('../src/Tag/stories.js');
   require('../src/TimzoneSafeCountdown/stories.js');

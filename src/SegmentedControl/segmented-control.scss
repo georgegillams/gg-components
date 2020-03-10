@@ -1,0 +1,48 @@
+@import '../Tokens/common';
+
+.segmented-control {
+  &__outer {
+  }
+
+  &__item {
+    overflow: hidden;
+    background-color: transparent;
+    border: 0.1rem solid gray;
+    border-left-width: 0.05rem;
+    border-right-width: 0.05rem;
+    border-radius: 0;
+    font-size: 1rem;
+
+    @media (prefers-color-scheme: dark) {
+      border-color: lightgray;
+    }
+
+    &--first {
+      border-top-left-radius: $bpk-spacing-xs;
+      border-bottom-left-radius: $bpk-spacing-xs;
+      border-left-width: 0.1rem;
+    }
+    &--last {
+      border-top-right-radius: $bpk-spacing-xs;
+      border-bottom-right-radius: $bpk-spacing-xs;
+      border-right-width: 0.1rem;
+    }
+    &--selected {
+      background-color: $link-color;
+      background-color: var(--segmented-control-selected-color, $link-color);
+      border-color: transparent;
+    }
+  }
+
+  &__item-text {
+    color: gray;
+
+    @media (prefers-color-scheme: dark) {
+      color: lightgray;
+    }
+
+    &--selected {
+      color: white;
+    }
+  }
+}
