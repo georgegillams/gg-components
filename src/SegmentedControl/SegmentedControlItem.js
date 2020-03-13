@@ -45,7 +45,12 @@ class SegmentedControlItem extends Component {
     }
 
     return (
-      <button selected={selected} className={classNames.join(' ')} {...rest}>
+      <button
+        aria-selected={selected}
+        selected={selected}
+        className={classNames.join(' ')}
+        {...rest}
+      >
         <Paragraph className={textClassNames.join(' ')}>{children}</Paragraph>
       </button>
     );

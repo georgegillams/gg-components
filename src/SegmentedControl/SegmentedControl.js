@@ -12,12 +12,14 @@ class SegmentedControl extends Component {
   static propTypes = {
     options: PropTypes.object.isRequired,
     onSelectionChanged: PropTypes.func.isRequired,
+    enableDeselection: PropTypes.bool,
     selectedIndex: PropTypes.number,
     className: PropTypes.string,
   };
 
   static defaultProps = {
     selectedIndex: null,
+    enableDeselection: false,
     className: null,
   };
 
@@ -26,6 +28,7 @@ class SegmentedControl extends Component {
       options,
       selectedIndex,
       onSelectionChanged,
+      enableDeselection,
       className,
       ...rest
     } = this.props;
@@ -40,7 +43,11 @@ class SegmentedControl extends Component {
             last={i === options.length - 1}
             key={o.key}
             onClick={e => {
-              onSelectionChanged(i);
+              if (enableDeselection && selectedIndex === i) {
+                onSelectionChanged(undefined);
+              } else {
+                onSelectionChanged(i);
+              }
             }}
             selected={selectedIndex === i}
           >
