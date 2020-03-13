@@ -12,7 +12,7 @@ const getClassName = cssModules(STYLES);
 const SegmentedControlStory = props => {
   const { className, ...rest } = props;
 
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(props.selectedIndex);
 
   const options = [
     {
@@ -37,8 +37,10 @@ const SegmentedControlStory = props => {
 
 storiesOf('SegmentedControl', module)
   .add('Default', () => <SegmentedControlStory />)
+  .add('With selection', () => <SegmentedControlStory selectedIndex={0} />)
+  .add('Deselection enabled', () => <SegmentedControlStory enableDeselection />)
   .add('Themed', () => (
     <div className={getClassName('stories__themed')}>
-      <SegmentedControlStory />
+      <SegmentedControlStory selectedIndex={0} />
     </div>
   ));
