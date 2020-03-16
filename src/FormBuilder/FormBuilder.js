@@ -38,7 +38,11 @@ class FormBuilder extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      formId: Math.random()
+        .toString(36)
+        .substring(7),
+    };
   }
 
   render() {
@@ -103,7 +107,7 @@ class FormBuilder extends React.Component {
             {!formField.long && formField.type !== 'CHECKBOX' && (
               <Fragment>
                 <label
-                  htmlFor={formField.id}
+                  htmlFor={`${formField.id}_${this.state.formId}`}
                   className={getClassName(
                     'forms__component',
                     'forms__component__label',
@@ -116,7 +120,7 @@ class FormBuilder extends React.Component {
                     'forms__component',
                     'forms__component__text-box',
                   )}
-                  id={formField.id}
+                  id={`${formField.id}_${this.state.formId}`}
                   name={formField.name}
                   value={entity[formField.id]}
                   valid={validity[index]}
@@ -138,7 +142,7 @@ class FormBuilder extends React.Component {
             {formField.long && formField.type !== 'CHECKBOX' && (
               <Fragment>
                 <label
-                  htmlFor={formField.id}
+                  htmlFor={`${formField.id}_${this.state.formId}`}
                   className={getClassName(
                     'forms__component',
                     'forms__component__label',
@@ -151,7 +155,7 @@ class FormBuilder extends React.Component {
                     'forms__component',
                     'forms__component__text-box',
                   )}
-                  id={formField.id}
+                  id={`${formField.id}_${this.state.formId}`}
                   name={formField.name}
                   value={entity[formField.id]}
                   valid={validity[index]}
