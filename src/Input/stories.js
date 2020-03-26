@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Input, TextArea } from './index';
+import { Input, TextArea, Select } from './index';
 
 class StatefulInput extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class StatefulInput extends Component {
   }
 
   render() {
-    const { component, ...rest } = this.props;
+    const { value, component, ...rest } = this.props;
     return (
       <div>
         <this.InputComponent
@@ -81,10 +81,18 @@ class StatefulInput extends Component {
             Reset validation
           </button>
         )}
+        <br />
+        <p>Current value: {this.state.value}</p>
       </div>
     );
   }
 }
+
+const selectOptions = [
+  { value: 'apple', name: 'Apple' },
+  { value: 'banana', name: 'Banana' },
+  { value: 'cranberry', name: 'Cranberry' },
+];
 
 storiesOf('Input', module)
   .add('Default', () => <Input value="Test" />)
@@ -100,3 +108,34 @@ storiesOf('TextArea', module)
   .add('Invalid', () => <TextArea value="Test" valid={false} />)
   .add('Disabled', () => <TextArea value="Test" enabled={false} />)
   .add('Stateful', () => <StatefulInput component={TextArea} />);
+
+storiesOf('Select', module)
+  .add('Default', () => <Select value="apple" options={selectOptions} />)
+  .add('Valid', () => (
+    <Select value="apple" valid={true} options={selectOptions} />
+  ))
+  .add('Invalid', () => (
+    <Select value="apple" valid={false} options={selectOptions} />
+  ))
+  .add('Disabled', () => (
+    <Select value="apple" enabled={false} options={selectOptions} />
+  ))
+  .add('With other', () => (
+    <Select
+      value="other value"
+      enabled={false}
+      options={selectOptions}
+      enableOther
+    />
+  ))
+  .add('Stateful', () => (
+    <StatefulInput value="apple" component={Select} options={selectOptions} />
+  ))
+  .add('Stateful with other', () => (
+    <StatefulInput
+      value="apple"
+      component={Select}
+      options={selectOptions}
+      enableOther
+    />
+  ));
