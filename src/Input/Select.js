@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Tick, ExclaimationCircle } from '../Icons';
@@ -41,7 +41,6 @@ class Select extends Component {
       enabled,
       enableOther,
       valid,
-      className,
       options,
       inputProps,
       iconProps,
@@ -63,9 +62,6 @@ class Select extends Component {
     if (focusedState && enabled) {
       classNames.push(getClassName('input__outer--hovering'));
     }
-    if (className) {
-      classNames.push(className);
-    }
 
     let IconComponent = null;
     if (valid && enabled) {
@@ -82,8 +78,8 @@ class Select extends Component {
       enableOther && !options.map(o => o.value).includes(value);
 
     return (
-      <Fragment>
-        <div className={classNames.join(' ')} {...rest}>
+      <div {...rest}>
+        <div className={classNames.join(' ')}>
           <select
             aria-valid={valid}
             aria-enabled={enabled}
@@ -119,7 +115,7 @@ class Select extends Component {
             onChange={enabled ? onChange : null}
           />
         )}
-      </Fragment>
+      </div>
     );
   };
 }

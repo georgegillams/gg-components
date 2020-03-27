@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Input, TextArea } from '../Input';
+import { Input, TextArea, Select } from '../Input';
 import { Checkbox } from '../Checkbox';
 import { cssModules } from '../helpers/cssModules';
 
@@ -104,7 +104,80 @@ class FormBuilder extends React.Component {
                 <br />
               </Fragment>
             )}
-            {!formField.long && formField.type !== 'CHECKBOX' && (
+            {!formField.long &&
+              formField.type !== 'CHECKBOX' &&
+              formField.type !== 'SELECT' && (
+                <Fragment>
+                  <label
+                    htmlFor={`${formField.id}_${this.state.formId}`}
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__label',
+                    )}
+                  >
+                    {formField.name}
+                  </label>
+                  <Input
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__text-box',
+                    )}
+                    id={`${formField.id}_${this.state.formId}`}
+                    name={formField.name}
+                    value={entity[formField.id]}
+                    valid={validity[index]}
+                    type={formField.type === 'password' ? 'password' : null}
+                    onChange={event => {
+                      formValueChanged(
+                        entity,
+                        formField.id,
+                        event,
+                        onDataChanged,
+                        submitOnChange ? onSubmit : null,
+                      );
+                    }}
+                    disabled={formField.disabled}
+                    placeholder={formField.name}
+                  />
+                </Fragment>
+              )}
+            {formField.long &&
+              formField.type !== 'CHECKBOX' &&
+              formField.type !== 'SELECT' && (
+                <Fragment>
+                  <label
+                    htmlFor={`${formField.id}_${this.state.formId}`}
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__label',
+                    )}
+                  >
+                    {formField.name}
+                  </label>
+                  <TextArea
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__text-box',
+                    )}
+                    id={`${formField.id}_${this.state.formId}`}
+                    name={formField.name}
+                    value={entity[formField.id]}
+                    valid={validity[index]}
+                    onChange={event => {
+                      formValueChanged(
+                        entity,
+                        formField.id,
+                        event,
+                        onDataChanged,
+                        submitOnChange ? onSubmit : null,
+                      );
+                    }}
+                    disabled={formField.disabled}
+                    placeholder={formField.name}
+                  />
+                </Fragment>
+              )}
+            {formField.type === 'SELECT' && (
               <Fragment>
                 <label
                   htmlFor={`${formField.id}_${this.state.formId}`}
@@ -115,42 +188,7 @@ class FormBuilder extends React.Component {
                 >
                   {formField.name}
                 </label>
-                <Input
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__text-box',
-                  )}
-                  id={`${formField.id}_${this.state.formId}`}
-                  name={formField.name}
-                  value={entity[formField.id]}
-                  valid={validity[index]}
-                  type={formField.type === 'password' ? 'password' : null}
-                  onChange={event => {
-                    formValueChanged(
-                      entity,
-                      formField.id,
-                      event,
-                      onDataChanged,
-                      submitOnChange ? onSubmit : null,
-                    );
-                  }}
-                  disabled={formField.disabled}
-                  placeholder={formField.name}
-                />
-              </Fragment>
-            )}
-            {formField.long && formField.type !== 'CHECKBOX' && (
-              <Fragment>
-                <label
-                  htmlFor={`${formField.id}_${this.state.formId}`}
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__label',
-                  )}
-                >
-                  {formField.name}
-                </label>
-                <TextArea
+                <Select
                   className={getClassName(
                     'forms__component',
                     'forms__component__text-box',
@@ -168,6 +206,8 @@ class FormBuilder extends React.Component {
                       submitOnChange ? onSubmit : null,
                     );
                   }}
+                  options={formField.options}
+                  enableOther={formField.enableOther}
                   disabled={formField.disabled}
                   placeholder={formField.name}
                 />

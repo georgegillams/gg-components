@@ -6,6 +6,12 @@ import { action } from '@storybook/addon-actions';
 
 import { FormBuilder } from './index';
 
+const selectOptions = [
+  { value: 'apple', name: 'Apple' },
+  { value: 'banana', name: 'Banana' },
+  { value: 'cranberry', name: 'Cranberry' },
+];
+
 const formFields = [
   { id: 'field1', name: 'Field 1', validationRegex: null, show: true },
   { id: 'field2', name: 'Field 2', validationRegex: null, show: true },
@@ -20,6 +26,15 @@ const formFields = [
   {
     id: 'field5',
     name: 'Field 5',
+    validationRegex: null,
+    type: 'SELECT',
+    options: selectOptions,
+    enableOther: true,
+    show: true,
+  },
+  {
+    id: 'field6',
+    name: 'Field 6',
     validationRegex: null,
     long: true,
     show: true,
@@ -38,7 +53,8 @@ storiesOf('FormBuilder', module)
         field2: 'test2',
         field3: 'test3',
         field4: true,
-        field5: 'test5',
+        field5: 'banana',
+        field6: 'test5',
       }}
       submitLabel="Submit"
     />

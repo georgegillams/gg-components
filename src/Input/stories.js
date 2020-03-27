@@ -121,12 +121,7 @@ storiesOf('Select', module)
     <Select value="apple" enabled={false} options={selectOptions} />
   ))
   .add('With other', () => (
-    <Select
-      value="other value"
-      enabled={false}
-      options={selectOptions}
-      enableOther
-    />
+    <Select value="other value" options={selectOptions} enableOther />
   ))
   .add('Stateful', () => (
     <StatefulInput value="apple" component={Select} options={selectOptions} />
