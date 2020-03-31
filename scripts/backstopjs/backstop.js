@@ -12,12 +12,13 @@ scenarioData.scenarioIds.forEach(sI => {
   scenarios.push({
     label: sI,
     url: `${BASE_URL}${sI}`,
+    delay: 1000,
   });
 });
 
 const config = {
   id: 'gg-components-default',
-  misMatchThreshold: 3,
+  misMatchThreshold: 5,
   viewports: [
     {
       label: 'phone',
