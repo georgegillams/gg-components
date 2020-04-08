@@ -9,7 +9,7 @@ import { Section } from '../Typography';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TechSpecs = props => {
-  const { light, fancy, className, children, ...rest } = props;
+  const { aws, light, fancy, className, children, ...rest } = props;
   const outerClassNameFinal = [];
   if (className) {
     outerClassNameFinal.push(className);
@@ -46,16 +46,21 @@ const TechSpecs = props => {
         </a>
         Hosted on
         <a
-          href="https://www.heroku.com/"
+          href={aws ? 'https://aws.amazon.com/' : 'https://www.heroku.com/'}
           rel="noopener noreferrer"
           target="_blank"
         >
           <img
-            alt="heroku"
+            alt={aws ? 'aws' : 'heroku'}
             width={5}
             height={5}
             className={darkIconClassNameFinal.join(' ')}
-            src="https://i.imgur.com/4bHAQnH.png"
+            style={aws ? { marginTop: '.9rem', maxWidth: '1.8rem' } : {}}
+            src={
+              aws
+                ? 'https://i.imgur.com/g3B7ODy.png'
+                : 'https://i.imgur.com/4bHAQnH.png'
+            }
           />
         </a>
       </Section>
@@ -64,6 +69,7 @@ const TechSpecs = props => {
 };
 
 TechSpecs.propTypes = {
+  aws: PropTypes.bool,
   light: PropTypes.bool,
   fancy: PropTypes.bool,
   children: PropTypes.node,
@@ -71,7 +77,7 @@ TechSpecs.propTypes = {
 };
 
 TechSpecs.defaultProps = {
-  light: false,
+  aws: false,
   fancy: false,
   children: null,
   className: null,

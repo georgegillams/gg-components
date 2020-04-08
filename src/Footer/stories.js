@@ -6,4 +6,6 @@ import { action } from '@storybook/addon-actions';
 
 import { Footer } from './index';
 
-storiesOf('Footer', module).add('Footer', () => <Footer />);
+storiesOf('Footer', module)
+  .add('default', () => <Footer />)
+  .add('aws', () => <Footer aws />);

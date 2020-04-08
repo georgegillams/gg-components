@@ -32,6 +32,7 @@
     "node-sass": "node-sass",
     "storybook": "start-storybook -p 9001",
     "build": "build-storybook -c .storybook -o storybook-dist",
+    "build:test": "npm run build",
     "backstopjs:test": "node ./node_modules/http-server/bin/http-server ./storybook-dist -p 9001 -a 127.0.0.1 & (sleep 2 && node ./scripts/backstopjs/backstop.js)",
     "backstopjs:test:allow-failure": "node ./node_modules/http-server/bin/http-server ./storybook-dist -p 9001 -a 127.0.0.1 & (sleep 2 && node ./scripts/backstopjs/backstop.js --allowFailure)",
     "start": "npm run storybook",
