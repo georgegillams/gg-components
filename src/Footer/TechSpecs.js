@@ -55,7 +55,7 @@ const TechSpecs = props => {
             width={5}
             height={5}
             className={darkIconClassNameFinal.join(' ')}
-            style={aws ? { marginTop: '.9rem', maxWidth: '1.8rem' } : {}}
+            style={aws ? { marginTop: '.8rem', maxWidth: '2.9rem' } : {}}
             src={
               aws
                 ? 'https://i.imgur.com/g3B7ODy.png'
