@@ -32,7 +32,7 @@ class BlurEffectView extends Component {
   dedupeIds = htmlNode => {
     htmlNode.id += '_clone';
 
-    if (htmlNode.children) {
+    if (htmlNode.children && htmlNode.children.forEach) {
       htmlNode.children.forEach(cN => {
         this.dedupeIds(cN);
       });
