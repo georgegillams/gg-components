@@ -73,7 +73,10 @@ storiesOf('NavigationBar', module)
           Dolor, dollor 💵
         </Paragraph>
         <br />
-        <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
+        <Paragraph
+          id="emojiParagraph"
+          style={{ display: 'block', marginBottom: '2rem' }}
+        >
           👍 👋 🏈 🎉 😂 ✅ 🤷‍♀️ 🤪
         </Paragraph>
         <br />
