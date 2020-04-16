@@ -29,6 +29,16 @@ class BlurEffectView extends Component {
     this.mainScrollElementClone.style.transform = `translatey(${yValue}px)`;
   };
 
+  dedupeIds = htmlNode => {
+    htmlNode.id += '_clone';
+
+    if (htmlNode.children) {
+      htmlNode.children.forEach(cN => {
+        this.dedupeIds(cN);
+      });
+    }
+  };
+
   recreateBlurClone = () => {
     if (!this.mainScrollElement || !this.myRef || !this.myRef.current) {
       return;
@@ -37,7 +47,7 @@ class BlurEffectView extends Component {
     const newMainScrollElementClone = this.mainScrollElement.cloneNode(true);
     newMainScrollElementClone.style.filter = 'blur(10px)';
     newMainScrollElementClone.style.opacity = '0.5';
-    newMainScrollElementClone.id += '_clone';
+    this.dedupeIds(newMainScrollElementClone);
     if (this.mainScrollElementClone) {
       this.myRef.current.removeChild(this.mainScrollElementClone);
     }
