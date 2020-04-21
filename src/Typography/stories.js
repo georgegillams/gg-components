@@ -19,6 +19,9 @@ import {
   MarkdownRenderer,
 } from './index';
 
+const LONG_TEXT =
+  'LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT, SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA.';
+
 const getClassName = cssModules(STYLES);
 
 class StatefulAnimatedContent extends Component {
@@ -49,6 +52,7 @@ storiesOf('Quote', module).add('default', () => (
 ));
 storiesOf('Section', module)
   .add('Default', () => <Section name="Test" />)
+  .add('Long', () => <Section name={LONG_TEXT} />)
   .add('With anchor', () => <Section anchor name="Test" />)
   .add('No padding', () => <Section anchor noPadding name="Test" />)
   .add('With content and padding', () => (
@@ -69,6 +73,7 @@ storiesOf('Section', module)
   ));
 storiesOf('SubSection', module)
   .add('Default', () => <SubSection name="Test" />)
+  .add('Long', () => <SubSection name={LONG_TEXT} />)
   .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
   .add('No padding', () => <SubSection noPadding name="Test" />)
   .add('With content and padding', () => (
