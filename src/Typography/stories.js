@@ -16,6 +16,7 @@ import {
   SubSection,
   AnimatedContent,
   TextLink,
+  PageTitle,
   MarkdownRenderer,
 } from './index';
 
@@ -50,6 +51,7 @@ class StatefulAnimatedContent extends Component {
 storiesOf('Quote', module).add('default', () => (
   <Quote>Lorem ipse dolor sit amet.</Quote>
 ));
+
 storiesOf('Section', module)
   .add('Default', () => <Section name="Test" />)
   .add('Long', () => <Section name={LONG_TEXT} />)
@@ -71,6 +73,7 @@ storiesOf('Section', module)
   .add('Link', () => (
     <Section anchor={false} noPadding name="Test" link></Section>
   ));
+
 storiesOf('SubSection', module)
   .add('Default', () => <SubSection name="Test" />)
   .add('Long', () => <SubSection name={LONG_TEXT} />)
@@ -84,6 +87,7 @@ storiesOf('SubSection', module)
       Some content
     </SubSection>
   ));
+
 storiesOf('Paragraph', module)
   .add('Single', () => (
     <Paragraph>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Consectetur a erat nam at lectus urna duis convallis convallis. Commodo ullamcorper a lacus vestibulum sed. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Viverra justo nec ultrices dui sapien eget. Blandit aliquam etiam erat velit scelerisque. Consequat mauris nunc congue nisi vitae. Aenean pharetra magna ac placerat vestibulum lectus mauris. Viverra justo nec ultrices dui sapien eget. In nulla posuere sollicitudin aliquam. Viverra suspendisse potenti nullam ac tortor vitae purus. Eu consequat ac felis donec. Fringilla est ullamcorper eget nulla facilisi. Convallis convallis tellus id interdum. Enim tortor at auctor urna nunc id cursus metus.
@@ -105,6 +109,7 @@ Nisi scelerisque eu ultrices vitae auctor eu augue ut. Mauris cursus mattis mole
       </Paragraph>
     </div>
   ));
+
 storiesOf('TextLink', module)
   .add('Default', () => (
     <TextLink href="/lol" name="Test">
@@ -132,9 +137,11 @@ storiesOf('TextLink', module)
       </TextLink>
     </div>
   ));
+
 storiesOf('ArticleDate', module).add('default', () => (
   <ArticleDate date={new Date(2019, 4, 5, 10, 11, 12)} />
 ));
+
 storiesOf('AnimatedContent', module)
   .add('In view', () => (
     <AnimatedContent inView>
@@ -157,6 +164,23 @@ storiesOf('AnimatedContent', module)
       />
     </StatefulAnimatedContent>
   ));
+
+storiesOf('PageTitle', module)
+  .add('Title', () => (
+    <PageTitle name="Test">
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ))
+  .add('With link', () => (
+    <PageTitle link={{ to: '/test', text: 'Back' }} name="Test">
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ));
+
 storiesOf('MarkdownRenderer', module)
   .add('Text only', () => (
     <MarkdownRenderer content="This is a simple test"></MarkdownRenderer>
