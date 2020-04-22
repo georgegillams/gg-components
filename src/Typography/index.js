@@ -5,6 +5,7 @@ import SubSection from './SubSection';
 import Paragraph from './Paragraph';
 import TextLink from './TextLink';
 import AnimatedContent from './AnimatedContent';
+import PageTitle from './PageTitle';
 import MarkdownRenderer from './MarkdownRenderer';
 
 export {
@@ -14,6 +15,7 @@ export {
   SubSection,
   MarkdownRenderer,
   AnimatedContent,
+  PageTitle,
   TextLink,
   Paragraph,
 };

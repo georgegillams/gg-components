@@ -1,0 +1,14 @@
+@import '~bpk-mixins';
+
+.page-title {
+  &__section {
+    &--with-link {
+      padding: 0 0 0.2rem 0;
+      margin-top: 0;
+    }
+  }
+
+  &__link {
+    margin: 1.5rem 0;
+  }
+}
