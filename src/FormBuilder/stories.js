@@ -45,6 +45,31 @@ storiesOf('FormBuilder', module)
   .add('Default', () => (
     <FormBuilder formFields={formFields} entity={{}} submitLabel="Submit" />
   ))
+  .add('No autocomplete', () => (
+    <FormBuilder
+      formFields={[
+        {
+          id: 'ff1',
+          name: 'Input no autocomplete',
+          show: true,
+          autocomplete: 'off',
+          autosuggest: 'off',
+          autofill: 'off',
+        },
+        {
+          id: 'ff2',
+          name: 'Text area no autocomplete',
+          long: true,
+          show: true,
+          autocomplete: 'off',
+          autosuggest: 'off',
+          autofill: 'off',
+        },
+      ]}
+      entity={{}}
+      submitLabel="Submit"
+    />
+  ))
   .add('With values', () => (
     <FormBuilder
       formFields={formFields}
