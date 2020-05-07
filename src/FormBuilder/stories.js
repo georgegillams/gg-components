@@ -52,20 +52,24 @@ storiesOf('FormBuilder', module)
           id: 'ff1',
           name: 'Input no autocomplete',
           show: true,
-          autocomplete: 'off',
-          autosuggest: 'off',
-          autofill: 'off',
-          spellcheck: 'false',
+          inputProps: {
+            autocomplete: 'off',
+            autosuggest: 'off',
+            autofill: 'off',
+            spellcheck: 'false',
+          },
         },
         {
           id: 'ff2',
           name: 'Text area no autocomplete',
           long: true,
           show: true,
-          autocomplete: 'off',
-          autosuggest: 'off',
-          autofill: 'off',
-          spellcheck: 'false',
+          inputProps: {
+            autocomplete: 'off',
+            autosuggest: 'off',
+            autofill: 'off',
+            spellcheck: 'false',
+          },
         },
       ]}
       entity={{}}

@@ -136,12 +136,7 @@ class FormBuilder extends React.Component {
                         submitOnChange ? onSubmit : null,
                       );
                     }}
-                    inputProps={{
-                      autocomplete: formField.autocomplete,
-                      autosuggest: formField.autosuggest,
-                      autofill: formField.autofill,
-                      spellcheck: formField.spellcheck,
-                    }}
+                    inputProps={formField.inputProps}
                     disabled={formField.disabled}
                     placeholder={formField.name}
                   />
@@ -178,12 +173,7 @@ class FormBuilder extends React.Component {
                         submitOnChange ? onSubmit : null,
                       );
                     }}
-                    inputProps={{
-                      autocomplete: formField.autocomplete || formField.id,
-                      autosuggest: formField.autosuggest,
-                      autofill: formField.autofill,
-                      spellcheck: formField.spellcheck,
-                    }}
+                    inputProps={formField.inputProps}
                     disabled={formField.disabled}
                     placeholder={formField.name}
                   />
