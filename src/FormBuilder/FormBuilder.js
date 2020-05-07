@@ -140,6 +140,7 @@ class FormBuilder extends React.Component {
                       autocomplete: formField.autocomplete,
                       autosuggest: formField.autosuggest,
                       autofill: formField.autofill,
+                      spellcheck: formField.spellcheck,
                     }}
                     disabled={formField.disabled}
                     placeholder={formField.name}
@@ -178,9 +179,10 @@ class FormBuilder extends React.Component {
                       );
                     }}
                     inputProps={{
-                      autocomplete: formField.autocomplete,
+                      autocomplete: formField.autocomplete || formField.id,
                       autosuggest: formField.autosuggest,
                       autofill: formField.autofill,
+                      spellcheck: formField.spellcheck,
                     }}
                     disabled={formField.disabled}
                     placeholder={formField.name}

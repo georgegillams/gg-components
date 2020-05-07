@@ -55,6 +55,7 @@ storiesOf('FormBuilder', module)
           autocomplete: 'off',
           autosuggest: 'off',
           autofill: 'off',
+          spellcheck: 'false',
         },
         {
           id: 'ff2',
@@ -64,6 +65,7 @@ storiesOf('FormBuilder', module)
           autocomplete: 'off',
           autosuggest: 'off',
           autofill: 'off',
+          spellcheck: 'false',
         },
       ]}
       entity={{}}
