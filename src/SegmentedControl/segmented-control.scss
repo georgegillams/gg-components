@@ -28,8 +28,11 @@
       border-right-width: 0.1rem;
     }
     &--selected {
-      background-color: $link-color;
-      background-color: var(--segmented-control-selected-color, $link-color);
+      background-color: $segmented-control-selected-color;
+      background-color: var(
+        --segmented-control-selected-color,
+        $segmented-control-selected-color
+      );
       border-color: transparent;
     }
   }

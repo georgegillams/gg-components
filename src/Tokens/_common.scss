@@ -1,19 +1,19 @@
 @import '~bpk-mixins';
 
-$primary-color: #44aeff;
+$primary-color-dark-invert: white;
 $primary-color-dark: #005da3;
 $primary-color-invert: white;
-$primary-color-dark-invert: white;
+$primary-color-light: lightblue;
+$primary-color-transparent: rgba(30, 50, 200, 0.15);
+$primary-color: #44aeff;
+
 $destructive-color: #e02626;
 $destructive-color-dark: #9f1717;
 
-$primary-color-light: lightblue;
-$primary-color-transparent: rgba(30, 50, 200, 0.15);
-
-$cta-color: #0067b7;
+$cta-color-dark-invert: #004479;
 $cta-color-dark: #004880;
 $cta-color-invert: #025ca2;
-$cta-color-dark-invert: #004479;
+$cta-color: #0067b7;
 
 $not-black: #1e1e1e;
 $not-black-invert: white;
@@ -36,6 +36,10 @@ $alternating-background-color-2-invert: #191a1b;
 
 $link-color: darkorchid;
 $link-color-invert: orchid;
+$link-color-hover: $primary-color;
+
+$checkbox-tick-color: $primary-color;
+$segmented-control-selected-color: $link-color;
 
 $mobile-navigation-unfolded-height: 24rem;
 

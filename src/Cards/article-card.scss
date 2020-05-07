@@ -38,6 +38,7 @@
 
     &--highlighted {
       background-color: $primary-color-transparent;
+      background-color: var(--primary-color-transparent, $primary-color-transparent);
     }
     &--disabled {
       background-color: gray;

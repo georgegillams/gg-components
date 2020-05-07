@@ -79,6 +79,7 @@
 
   &__bash-arrow {
     color: $primary-color-dark;
+    color: var(--primary-color-dark, $primary-color-dark);
     font-family: 'Space Mono', monospace;
     font-size: 0.6rem;
   }
