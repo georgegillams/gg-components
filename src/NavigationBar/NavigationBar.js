@@ -84,7 +84,7 @@ class NavigationBar extends Component {
       );
 
     return (
-      <div>
+      <banner>
         {this.state.show && (
           <div
             aria-hidden="true"
@@ -98,11 +98,11 @@ class NavigationBar extends Component {
             aria-hidden={this.state.show ? null : 'true'}
             className={animatedContainerClassNameFinal.join(' ')}
           >
-            <div
+            <nav
               className={getClassName('navigation-bar__mobile-menu-container')}
             >
               {menuItemsWithClickBehaviour}
-            </div>
+            </nav>
           </div>
         )}
         <div className={getClassName('navigation-bar__bar-placeholder')} />
@@ -142,7 +142,7 @@ class NavigationBar extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </banner>
     );
   }
 }
