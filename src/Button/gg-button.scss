@@ -36,18 +36,25 @@
 
     &--regular {
       background-color: $cta-color;
+      background-color: var(--cta-color, $cta-color);
 
       @media (prefers-color-scheme: dark) {
         background-color: $cta-color-invert;
+        background-color: var(--cta-color-invert, $cta-color-invert);
       }
 
       &:focus,
       &:active,
       &:hover {
         background-color: $cta-color-dark;
+        background-color: var(--cta-color-dark, $cta-color-dark);
 
         @media (prefers-color-scheme: dark) {
           background-color: $cta-color-dark-invert;
+          background-color: var(
+            --cta-color-dark-invert,
+            $cta-color-dark-invert
+          );
         }
       }
     }
@@ -128,6 +135,7 @@
         animation-name: example;
         animation-duration: 0.4s;
         background-color: $cta-color-dark;
+        background-color: var(--cta-color-dark, $cta-color-dark);
         color: white;
         fill: white;
         font-weight: bold;

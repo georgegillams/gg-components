@@ -58,6 +58,7 @@
     text-decoration: none;
     opacity: 0.4;
     color: $link-color;
+    color: var(--link-color, $link-color);
     border-radius: 0.25rem;
 
     &:active,
@@ -136,19 +137,19 @@
   &--hovering {
     transition: all 0.4s;
     color: $primary-color !important;
-    color: var(--primary-color, $primary-color);
+    color: var(--primary-color, $primary-color) !important;
     text-decoration: none;
     fill: $primary-color !important;
-    fill: var(--primary-color, $primary-color);
+    fill: var(--primary-color, $primary-color) !important;
   }
 
   &--hovering-light {
     transition: all 0.4s;
     color: $primary-color-light !important;
-    color: var(--primary-color-light, $primary-color-light);
+    color: var(--primary-color-light, $primary-color-light) !important;
     text-decoration: none;
     fill: $primary-color-light !important;
-    fill: var(--primary-color-light, $primary-color-light);
+    fill: var(--primary-color-light, $primary-color-light) !important;
   }
 
   &--inline {
@@ -183,10 +184,10 @@
     &:focus,
     &:active,
     &:hover {
-      color: $primary-color;
-      color: var(--link-hover-color, $primary-color);
-      fill: $primary-color;
-      fill: var(--link-hover-color, $primary-color);
+      color: $link-color-hover;
+      color: var(--link-color-hover, $link-color-hover);
+      fill: $link-color-hover;
+      fill: var(--link-color-hover, $link-color-hover);
       text-decoration: none;
     }
     &:active,

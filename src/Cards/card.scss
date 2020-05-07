@@ -68,8 +68,8 @@
     z-index: 3;
 
     &--light {
-      background-color: var(--primary-color-light, $primary-color-light);
       background-color: $primary-color-light;
+      background-color: var(--primary-color-light, $primary-color-light);
     }
 
     &--hovered {

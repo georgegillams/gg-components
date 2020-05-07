@@ -41,10 +41,10 @@
 
   &__check {
     display: none;
-    fill: $primary-color;
-    fill: var(--checkbox-tick-color, $primary-color);
-    color: $primary-color;
-    color: var(--checkbox-tick-color, $primary-color);
+    fill: $checkbox-tick-color;
+    fill: var(--checkbox-tick-color, $checkbox-tick-color);
+    color: $checkbox-tick-color;
+    color: var(--checkbox-tick-color, $checkbox-tick-color);
     position: absolute;
     left: 0.2rem;
     top: 0.2rem;
