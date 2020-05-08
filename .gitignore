@@ -20,7 +20,7 @@ yarn-error.log
 # built stuff
 .sass-cache
 dist
-storybook-dist
+build
 app/helpers
 helpers/helpers
 server/api/helpers
