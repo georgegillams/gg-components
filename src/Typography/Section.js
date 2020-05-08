@@ -71,7 +71,11 @@ const Section = props => {
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
       {anchor && name && (
-        <a href={`#${anchorLink}`} className={anchorClassNames.join(' ')}>
+        <a
+          aria-label={name}
+          href={`#${anchorLink}`}
+          className={anchorClassNames.join(' ')}
+        >
           §
         </a>
       )}

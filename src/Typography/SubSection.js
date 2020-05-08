@@ -70,6 +70,7 @@ const SubSection = props => {
     <div className={classNameFinal.join(' ')} {...rest}>
       {anchor && name && (
         <TextLink
+          aria-label={name}
           href={`#${anchorLink}`}
           className={anchorClassNames.join(' ')}
         >

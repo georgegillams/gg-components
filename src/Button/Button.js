@@ -71,9 +71,7 @@ class Button extends Component {
       }
       classNameFinal.push(getClassName('button__outer--bouncy'));
       if (destructive) {
-        classNameFinal.push(
-          getClassName('button__outer--bouncy--destructive'),
-        );
+        classNameFinal.push(getClassName('button__outer--bouncy--destructive'));
       }
       if (disabled) {
         classNameFinal.push(getClassName('button__outer--disabled'));
@@ -106,8 +104,10 @@ class Button extends Component {
 
     if (href && !hrefExternal && !disabled) {
       return (
-        <Link to={href} onClick={onClick} {...rest}>
-          <button className={classNameFinal.join(' ')}>{children}</button>
+        <Link aria-label={children} to={href} onClick={onClick} {...rest}>
+          <button aria-hidden="true" className={classNameFinal.join(' ')}>
+            {children}
+          </button>
         </Link>
       );
     }

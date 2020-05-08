@@ -79,6 +79,7 @@ class Checkbox extends Component {
         <input
           aria-valid={valid}
           aria-enabled={enabled}
+          aria-label={label}
           onMouseEnter={this.hoverStarted}
           onFocus={this.focusStarted}
           onMouseLeave={this.hoverEnded}
@@ -91,7 +92,12 @@ class Checkbox extends Component {
           {...inputProps}
         />
         <Tick className={checkClassNames.join(' ')} />
-        {label && <span className={labelClassNames.join(' ')}>{label}</span>}
+        {label && (
+          <span aria-hidden="true" className={labelClassNames.join(' ')}>
+            {' '}
+            {label}{' '}
+          </span>
+        )}
       </div>
     );
   };

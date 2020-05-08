@@ -31,6 +31,19 @@ class NavigationBar extends Component {
     this.state = { isOpen: false, show: false };
   }
 
+  componentDidMount() {
+    this.escEventListener = event => {
+      if (event.isComposing || event.keyCode === 27) {
+        this.close();
+      }
+    };
+    document.addEventListener('keydown', this.escEventListener);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escEventListener);
+  }
+
   toggle = () => {
     if (this.state.isOpen) {
       this.close();
