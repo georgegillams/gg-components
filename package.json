@@ -36,6 +36,7 @@
     "backstopjs:test": "node ./node_modules/http-server/bin/http-server ./build -p 9001 -a 127.0.0.1 & (sleep 2 && node ./scripts/backstopjs/backstop.js)",
     "backstopjs:test:allow-failure": "node ./node_modules/http-server/bin/http-server ./build -p 9001 -a 127.0.0.1 & (sleep 2 && node ./scripts/backstopjs/backstop.js --allowFailure)",
     "start": "npm run storybook",
+    "start:aws": "npm run storybook",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
