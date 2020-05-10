@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Section from './Section';
 import TextLink from './TextLink';
@@ -8,34 +8,67 @@ import STYLES from './page-title.scss';
 
 const getClassName = cssModules(STYLES);
 
-const PageTitle = props => {
-  const { link, ...rest } = props;
+class PageTitle extends Component {
+  constructor(props) {
+    super(props);
 
-  const sectionClassNames = [getClassName('page-title__section')];
-
-  if (link) {
-    sectionClassNames.push(getClassName('page-title__section--with-link'));
+    this.sectionRef = React.createRef();
+    this.linkRef = React.createRef();
+    this.firstFocusDone = !props.autoFocus;
   }
 
-  return (
-    <Fragment>
-      {link && (
-        <TextLink
-          className={getClassName('page-title__link')}
-          to={link.to}
-        >{`⇠ ${link.text}`}</TextLink>
-      )}
-      <Section textClassName={sectionClassNames.join(' ')} {...rest} />
-    </Fragment>
-  );
-};
+  render() {
+    if (!this.firstFocusDone) {
+      if (this.props.link && this.linkRef && this.linkRef.current) {
+        this.linkRef.current.focusLink();
+        this.firstFocusDone = true;
+      } else if (this.sectionRef && this.sectionRef.current) {
+        this.sectionRef.current.focusTitle();
+        this.firstFocusDone = true;
+      }
+
+      // Force rerenders until the focus has been achieved
+      this.setState({ plzRerender: true });
+    }
+
+    const { link, ...rest } = this.props;
+
+    const sectionClassNames = [getClassName('page-title__section')];
+
+    if (link) {
+      sectionClassNames.push(getClassName('page-title__section--with-link'));
+    }
+
+    return (
+      <Fragment>
+        {link && (
+          <TextLink
+            ref={this.linkRef}
+            className={getClassName('page-title__link')}
+            to={link.to}
+          >{`⇠ ${link.text}`}</TextLink>
+        )}
+        <Section
+          ref={this.sectionRef}
+          headingProps={{ tabIndex: this.firstFocusDone ? -1 : 0 }}
+          textClassName={sectionClassNames.join(' ')}
+          {...rest}
+        />
+      </Fragment>
+    );
+  }
+}
 
 PageTitle.propTypes = {
   name: PropTypes.string,
+  link: PropTypes.object,
+  autoFocus: PropTypes.string,
 };
 
 PageTitle.defaultProps = {
   name: null,
+  link: null,
+  autoFocus: false,
 };
 
 export default PageTitle;

@@ -179,6 +179,20 @@ storiesOf('PageTitle', module)
         style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
       />
     </PageTitle>
+  ))
+  .add('Title with autoFocus', () => (
+    <PageTitle autoFocus name="Test">
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ))
+  .add('With link and autoFocus', () => (
+    <PageTitle autoFocus link={{ to: '/test', text: 'Back' }} name="Test">
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
   ));
 
 storiesOf('MarkdownRenderer', module)
