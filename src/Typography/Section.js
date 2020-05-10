@@ -1,93 +1,120 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-const Section = props => {
-  const {
-    link,
-    fancy,
-    light,
-    noPadding,
-    anchor,
-    name,
-    className,
-    textClassName,
-    children,
-    hover,
-    ...rest
-  } = props;
+// Needs to be Component to enable refs
+class Section extends Component {
+  constructor(props) {
+    super(props);
 
-  const classNameFinal = [getClassName('typography__main')];
-  const textClassNameFinal = [
-    getClassName('typography__text', 'typography__text--section'),
-  ];
-  const anchorClassNames = [
-    getClassName('typography__anchor-link', 'typography__anchor-link--section'),
-  ];
-  if (hover) {
-    if (light) {
-      textClassNameFinal.push(getClassName('typography--hovering-light'));
-    } else {
-      textClassNameFinal.push(getClassName('typography--hovering'));
+    this.titleRef = React.createRef();
+  }
+
+  focusTitle = () => {
+    if (this.titleRef && this.titleRef.current) {
+      this.titleRef.current.focus();
     }
-  }
-  if (anchor) {
-    textClassNameFinal.push(getClassName('typography__text--with-anchor-link'));
-  }
-  if (light) {
-    classNameFinal.push(getClassName('typography--light'));
-    textClassNameFinal.push(getClassName('typography--light'));
-  }
-  if (link) {
-    textClassNameFinal.push(getClassName('typography__link'));
-  }
-  if (noPadding) {
-    classNameFinal.push(getClassName('typography--no-padding'));
-    textClassNameFinal.push(getClassName('typography--no-padding'));
-    anchorClassNames.push(
-      getClassName('typography__anchor-link--section--no-padding'),
+  };
+
+  render() {
+    const {
+      link,
+      fancy,
+      light,
+      noPadding,
+      anchor,
+      name,
+      className,
+      textClassName,
+      children,
+      hover,
+      headingProps,
+      ...rest
+    } = this.props;
+
+    const classNameFinal = [getClassName('typography__main')];
+    const textClassNameFinal = [
+      getClassName('typography__text', 'typography__text--section'),
+    ];
+    const anchorClassNames = [
+      getClassName(
+        'typography__anchor-link',
+        'typography__anchor-link--section',
+      ),
+    ];
+    if (hover) {
+      if (light) {
+        textClassNameFinal.push(getClassName('typography--hovering-light'));
+      } else {
+        textClassNameFinal.push(getClassName('typography--hovering'));
+      }
+    }
+    if (anchor) {
+      textClassNameFinal.push(
+        getClassName('typography__text--with-anchor-link'),
+      );
+    }
+    if (light) {
+      classNameFinal.push(getClassName('typography--light'));
+      textClassNameFinal.push(getClassName('typography--light'));
+    }
+    if (link) {
+      textClassNameFinal.push(getClassName('typography__link'));
+    }
+    if (noPadding) {
+      classNameFinal.push(getClassName('typography--no-padding'));
+      textClassNameFinal.push(getClassName('typography--no-padding'));
+      anchorClassNames.push(
+        getClassName('typography__anchor-link--section--no-padding'),
+      );
+    }
+    if (fancy) {
+      classNameFinal.push(getClassName('typography--fancy'));
+      textClassNameFinal.push(getClassName('typography--fancy'));
+    }
+    if (className) {
+      classNameFinal.push(className);
+    }
+    if (textClassName) {
+      textClassNameFinal.push(textClassName);
+    }
+
+    const anchorLink = `${name}`
+      .toLowerCase()
+      .split(' ')
+      .join('-');
+
+    return (
+      <div className={classNameFinal.join(' ')} {...rest}>
+        {anchor && name && (
+          <a
+            aria-label={name}
+            href={`#${anchorLink}`}
+            className={anchorClassNames.join(' ')}
+          >
+            §
+          </a>
+        )}
+        {name && (
+          <h2
+            tabIndex={0}
+            ref={this.titleRef}
+            id={anchorLink}
+            className={textClassNameFinal.join(' ')}
+            {...headingProps}
+          >
+            {name}
+          </h2>
+        )}
+        {children}
+      </div>
     );
   }
-  if (fancy) {
-    classNameFinal.push(getClassName('typography--fancy'));
-    textClassNameFinal.push(getClassName('typography--fancy'));
-  }
-  if (className) {
-    classNameFinal.push(className);
-  }
-  if (textClassName) {
-    textClassNameFinal.push(textClassName);
-  }
-
-  const anchorLink = `${name}`
-    .toLowerCase()
-    .split(' ')
-    .join('-');
-
-  return (
-    <div className={classNameFinal.join(' ')} {...rest}>
-      {anchor && name && (
-        <a
-          aria-label={name}
-          href={`#${anchorLink}`}
-          className={anchorClassNames.join(' ')}
-        >
-          §
-        </a>
-      )}
-      {name && (
-        <h2 id={anchorLink} className={textClassNameFinal.join(' ')}>
-          {name}
-        </h2>
-      )}
-      {children}
-    </div>
-  );
-};
+}
 
 Section.propTypes = {
   anchor: PropTypes.bool,
