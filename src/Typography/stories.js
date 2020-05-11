@@ -180,15 +180,19 @@ storiesOf('PageTitle', module)
       />
     </PageTitle>
   ))
-  .add('Title with autoFocus', () => (
-    <PageTitle autoFocus name="Test">
+  .add('Title with custom headingProps', () => (
+    <PageTitle headingProps={{ id: 'test-this' }} name="Test">
       <div
         style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
       />
     </PageTitle>
   ))
-  .add('With link and autoFocus', () => (
-    <PageTitle autoFocus link={{ to: '/test', text: 'Back' }} name="Test">
+  .add('With link and custom linkProps', () => (
+    <PageTitle
+      linkProps={{ id: 'test-this' }}
+      link={{ to: '/test', text: 'Back' }}
+      name="Test"
+    >
       <div
         style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
       />
