@@ -36,7 +36,7 @@ class SegmentedControl extends Component {
     const classNames = [getClassName('segmented-control__outer', className)];
 
     return (
-      <div className={classNames.join(' ')} {...rest}>
+      <div role="radiogroup" className={classNames.join(' ')} {...rest}>
         {options.map((o, i) => (
           <SegmentedControlItem
             first={i === 0}

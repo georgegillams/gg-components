@@ -40,6 +40,21 @@ storiesOf('Card', module)
     <Card href="/test">
       <Section noPadding name="Test" />
     </Card>
+  ))
+  .add('Disabled', () => (
+    <Card disabled>
+      <Section noPadding name="Test" />
+    </Card>
+  ))
+  .add('Disabled with href', () => (
+    <Card disabled href="/test">
+      <Section noPadding name="Test" />
+    </Card>
+  ))
+  .add('Disabled with linkUrl', () => (
+    <Card disabled linkUrl="/test">
+      <Section noPadding name="Test" />
+    </Card>
   ));
 
 storiesOf('ArticleCard', module)

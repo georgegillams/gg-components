@@ -46,8 +46,8 @@ class SegmentedControlItem extends Component {
 
     return (
       <button
-        aria-selected={selected}
-        selected={selected}
+        role="radio"
+        aria-checked={selected}
         className={classNames.join(' ')}
         {...rest}
       >

@@ -107,10 +107,11 @@ class Card extends Component {
     if (linkUrl) {
       cardComponent = (
         <Link
+          aria-disabled={disabled ? 'true' : null}
           style={{ textDecoration: 'none' }}
           role="button"
           aria-label={ariaLabel}
-          to={disabled ? null : linkUrl}
+          to={disabled ? 'false' : linkUrl}
         >
           {cardComponent}
         </Link>
@@ -118,6 +119,7 @@ class Card extends Component {
     } else if (href && !disabled) {
       cardComponent = (
         <a
+          aria-disabled={disabled ? 'true' : null}
           style={{ textDecoration: 'none' }}
           role="button"
           rel="noopener noreferrer"
@@ -133,6 +135,7 @@ class Card extends Component {
       <div
         tabIndex="0"
         role="button"
+        aria-disabled={disabled ? 'true' : null}
         onMouseEnter={this.hoverStarted}
         onFocus={this.focusStarted}
         onMouseLeave={this.hoverEnded}
