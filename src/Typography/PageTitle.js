@@ -39,6 +39,8 @@ class PageTitle extends Component {
       sectionClassNames.push(getClassName('page-title__section--with-link'));
     }
 
+    // tabindex -1 ensures that the element is programatically focusable
+    // tabindex null reverts the state to unfocusable
     return (
       <Fragment>
         {link && (
@@ -50,7 +52,7 @@ class PageTitle extends Component {
         )}
         <Section
           ref={this.sectionRef}
-          headingProps={{ tabIndex: this.firstFocusDone ? -1 : 0 }}
+          headingProps={{ tabIndex: this.firstFocusDone ? null : -1 }}
           textClassName={sectionClassNames.join(' ')}
           {...rest}
         />
