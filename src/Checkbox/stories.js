@@ -15,7 +15,7 @@ class StatefulCheckbox extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { checked: props.checked, valid: null, enabled: true };
+    this.state = { checked: props.checked, valid: null, disabled: false };
   }
 
   render() {
@@ -25,30 +25,30 @@ class StatefulCheckbox extends Component {
           name="Stateful_checkbox"
           valid={this.state.valid}
           checked={this.state.checked}
-          enabled={this.state.enabled}
+          disabled={this.state.disabled}
           onChange={e => this.setState({ checked: e.target.checked })}
           {...this.props}
         />
-        {!this.state.enabled && (
+        {!this.state.disabled && (
           <button
             onClick={() => {
               this.setState({
-                enabled: true,
-              });
-            }}
-          >
-            Enable
-          </button>
-        )}
-        {this.state.enabled && (
-          <button
-            onClick={() => {
-              this.setState({
-                enabled: false,
+                disabled: true,
               });
             }}
           >
             Disable
+          </button>
+        )}
+        {this.state.disabled && (
+          <button
+            onClick={() => {
+              this.setState({
+                disabled: false,
+              });
+            }}
+          >
+            Enable
           </button>
         )}
         {this.state.valid !== true && (
@@ -94,7 +94,7 @@ storiesOf('Checkbox', module)
   .add('No label', () => <Checkbox name="Test" />)
   .add('Valid', () => <Checkbox label="Test" name="Test" valid={true} />)
   .add('Invalid', () => <Checkbox label="Test" name="Test" valid={false} />)
-  .add('Disabled', () => <Checkbox label="Test" name="Test" enabled={false} />)
+  .add('Disabled', () => <Checkbox label="Test" name="Test" disabled />)
   .add('No label checked', () => <Checkbox checked name="Test" />)
   .add('Valid checked', () => (
     <Checkbox checked label="Test" name="Test" valid={true} />
@@ -103,7 +103,7 @@ storiesOf('Checkbox', module)
     <Checkbox checked label="Test" name="Test" valid={false} />
   ))
   .add('Disabled checked', () => (
-    <Checkbox checked label="Test" name="Test" enabled={false} />
+    <Checkbox checked label="Test" name="Test" disabled />
   ))
   .add('Themed', () => (
     <div className={getClassName('stories__themed')}>

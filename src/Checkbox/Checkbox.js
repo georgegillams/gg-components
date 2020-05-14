@@ -38,13 +38,14 @@ class Checkbox extends Component {
       name,
       label,
       checked,
-      enabled,
+      disabled,
       valid,
       inputProps,
       ...rest
     } = this.props;
 
     const focusedState = this.state.hovering || this.state.focused;
+    const enabled = disabled !== true;
 
     const checkClassNames = [getClassName('checkbox__check')];
     const checkboxClassNames = [getClassName('checkbox__input')];
@@ -78,7 +79,7 @@ class Checkbox extends Component {
       <div className={getClassName('checkbox', className)} {...rest}>
         <input
           aria-valid={valid}
-          aria-enabled={enabled}
+          aria-disabled={disabled ? true : null}
           aria-label={label}
           onMouseEnter={this.hoverStarted}
           onFocus={this.focusStarted}
@@ -88,7 +89,7 @@ class Checkbox extends Component {
           name={name}
           type="checkbox"
           checked={checked}
-          onChange={onChange}
+          onChange={enabled ? onChange : null}
           {...inputProps}
         />
         <Tick className={checkClassNames.join(' ')} />
@@ -111,7 +112,7 @@ Checkbox.propTypes = {
   checked: PropTypes.bool,
   className: PropTypes.string,
   labelClassName: PropTypes.string,
-  enabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   valid: PropTypes.bool,
 };
 
@@ -121,7 +122,7 @@ Checkbox.defaultProps = {
   className: null,
   labelClassName: null,
   checked: false,
-  enabled: true,
+  disabled: false,
   valid: null,
 };
 
