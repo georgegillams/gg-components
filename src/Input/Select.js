@@ -48,6 +48,7 @@ class Select extends Component {
       ...rest
     } = this.props;
 
+    const disabled = enabled === false;
     const focusedState = this.state.hovering || this.state.focused;
 
     const classNames = [getClassName('input__outer')];
@@ -55,7 +56,7 @@ class Select extends Component {
       getClassName('input__inner', 'input__inner--select'),
     ];
     const iconClassNames = [getClassName('input__icon')];
-    if (!enabled) {
+    if (disabled) {
       classNames.push(getClassName('input__outer--disabled'));
       innerClassNames.push(getClassName('input__inner--disabled'));
     }
@@ -82,14 +83,14 @@ class Select extends Component {
         <div className={classNames.join(' ')}>
           <select
             aria-valid={valid}
-            aria-enabled={enabled}
+            aria-disabled={disabled}
             onMouseEnter={this.hoverStarted}
             onFocus={this.focusStarted}
             onMouseLeave={this.hoverEnded}
             onBlur={this.focusEnded}
             value={showOtherFreeTextField ? OTHER_VALUE : value}
             name={name}
-            disabled={enabled === false}
+            disabled={disabled}
             onChange={enabled ? onChange : null}
             className={innerClassNames.join(' ')}
             id={id}

@@ -48,12 +48,13 @@ class Input extends Component {
       ...rest
     } = this.props;
 
+    const disabled = enabled === false;
     const focusedState = this.state.hovering || this.state.focused;
 
     const classNames = [getClassName('input__outer')];
     const innerClassNames = [getClassName('input__inner')];
     const iconClassNames = [getClassName('input__icon')];
-    if (!enabled) {
+    if (disabled) {
       classNames.push(getClassName('input__outer--disabled'));
       innerClassNames.push(getClassName('input__inner--disabled'));
     }
@@ -78,7 +79,7 @@ class Input extends Component {
       <div className={classNames.join(' ')} {...rest}>
         <this.InputComponent
           aria-valid={valid}
-          aria-enabled={enabled}
+          aria-disabled={disabled}
           onMouseEnter={this.hoverStarted}
           onFocus={this.focusStarted}
           onMouseLeave={this.hoverEnded}
@@ -86,7 +87,7 @@ class Input extends Component {
           value={value}
           type={type}
           name={name}
-          disabled={enabled === false}
+          disabled={disabled}
           onChange={enabled ? onChange : null}
           className={innerClassNames.join(' ')}
           id={id}
