@@ -44,9 +44,9 @@ class SegmentedControl extends Component {
             key={o.key}
             onClick={e => {
               if (enableDeselection && selectedIndex === i) {
-                onSelectionChanged(undefined);
+                onSelectionChanged(undefined, null);
               } else {
-                onSelectionChanged(i);
+                onSelectionChanged(i, o.key);
               }
             }}
             selected={selectedIndex === i}
