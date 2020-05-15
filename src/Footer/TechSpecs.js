@@ -9,7 +9,7 @@ import { Section } from '../Typography';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TechSpecs = props => {
-  const { aws, light, fancy, className, children, ...rest } = props;
+  const { light, fancy, className, children, ...rest } = props;
   const outerClassNameFinal = [];
   if (className) {
     outerClassNameFinal.push(className);
@@ -46,21 +46,17 @@ const TechSpecs = props => {
         </a>
         Hosted on
         <a
-          href={aws ? 'https://aws.amazon.com/' : 'https://www.heroku.com/'}
+          href="https://aws.amazon.com/"
           rel="noopener noreferrer"
           target="_blank"
         >
           <img
-            alt={aws ? 'aws' : 'heroku'}
+            alt="Amazon Web Services"
             width={5}
             height={5}
             className={darkIconClassNameFinal.join(' ')}
-            style={aws ? { marginTop: '.8rem', maxWidth: '2.9rem' } : {}}
-            src={
-              aws
-                ? 'https://i.imgur.com/g3B7ODy.png'
-                : 'https://i.imgur.com/4bHAQnH.png'
-            }
+            style={{ marginTop: '.8rem', maxWidth: '2.9rem' }}
+            src="https://i.imgur.com/g3B7ODy.png"
           />
         </a>
       </Section>
@@ -69,7 +65,6 @@ const TechSpecs = props => {
 };
 
 TechSpecs.propTypes = {
-  aws: PropTypes.bool,
   light: PropTypes.bool,
   fancy: PropTypes.bool,
   children: PropTypes.node,
@@ -77,7 +72,6 @@ TechSpecs.propTypes = {
 };
 
 TechSpecs.defaultProps = {
-  aws: false,
   fancy: false,
   children: null,
   className: null,

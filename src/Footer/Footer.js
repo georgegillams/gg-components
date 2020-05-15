@@ -10,7 +10,7 @@ import { Logo } from '../Logo';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const Footer = props => {
-  const { aws, className, ...rest } = props;
+  const { className, ...rest } = props;
   const outerClassNameFinal = [getClassName('footer__container')];
   if (className) {
     outerClassNameFinal.push(className);
@@ -24,18 +24,16 @@ const Footer = props => {
         className={getClassName('footer__logo')}
         padding={false}
       />
-      <TechSpecs aws={aws} className={getClassName('footer__tech')} light />
+      <TechSpecs className={getClassName('footer__tech')} light />
     </footer>
   );
 };
 
 Footer.propTypes = {
-  aws: PropTypes.bool,
   className: PropTypes.string,
 };
 
 Footer.defaultProps = {
-  aws: false,
   className: null,
 };
 
