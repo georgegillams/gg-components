@@ -89,7 +89,7 @@
     "backstopjs": "^4.3.2",
     "bpk-mixins": "^19.0.16",
     "cross-env": "^7.0.1",
-    "css-loader": "3.5.2",
+    "css-loader": "3.5.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.6.0",
