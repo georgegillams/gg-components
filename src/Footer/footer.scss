@@ -1,21 +1,20 @@
-@import '~bpk-mixins';
 @import '../Tokens/common';
 
 .footer {
   &__container {
-    justify-content: space-around;
-    height: 13rem;
     display: flex;
-    flex-direction: column;
+    height: 13rem;
     padding: 2rem 4rem;
-    color: $not-black-invert;
+    flex-direction: column;
+    justify-content: space-around;
     background-color: $not-black;
     background-position: center;
     background-size: cover;
+    color: $not-black-invert;
 
     @media (prefers-color-scheme: dark) {
-      background-color: $background-color-elevated-colored-invert;
       border-top: solid white 0.15rem;
+      background-color: $background-color-elevated-colored-invert;
     }
   }
 

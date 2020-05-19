@@ -49,6 +49,7 @@ class Input extends Component {
     } = this.props;
 
     const disabled = enabled === false;
+    const invalid = valid === false;
     const focusedState = this.state.hovering || this.state.focused;
 
     const classNames = [getClassName('input__outer')];
@@ -78,7 +79,7 @@ class Input extends Component {
     return (
       <div className={classNames.join(' ')} {...rest}>
         <this.InputComponent
-          aria-valid={valid}
+          aria-invalid={invalid}
           aria-disabled={disabled}
           onMouseEnter={this.hoverStarted}
           onFocus={this.focusStarted}

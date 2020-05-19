@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 import { Copy } from '../Icons';
 import { cssModules } from '../helpers/cssModules';
 
@@ -8,39 +8,32 @@ import STYLES from './copy-button.scss';
 
 const getClassName = cssModules(STYLES);
 
-class CopyButton extends Component {
-  static propTypes = {
-    text: PropTypes.string.isRequired,
-    className: PropTypes.string,
-  };
+const CopyButton = props => {
+  const { text, className, ...rest } = props;
 
-  static defaultProps = {
-    className: null,
-  };
+  const classNames = [getClassName('copy-button__outer', className)];
 
-  constructor(props) {
-    super(props);
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        navigator.clipboard.writeText(text);
+      }}
+      className={classNames.join(' ')}
+      {...rest}
+    >
+      <Copy className={getClassName('copy-button__icon')} />
+    </button>
+  );
+};
 
-    this.state = {};
-  }
+CopyButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
 
-  render = () => {
-    const { text, className, ...rest } = this.props;
-
-    const classNames = [getClassName('copy-button__outer', className)];
-
-    return (
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText(text);
-        }}
-        className={classNames.join(' ')}
-        {...rest}
-      >
-        <Copy className={getClassName('copy-button__icon')} />
-      </button>
-    );
-  };
-}
+CopyButton.defaultProps = {
+  className: null,
+};
 
 export default CopyButton;

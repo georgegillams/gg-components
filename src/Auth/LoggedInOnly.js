@@ -29,9 +29,15 @@ const LoggedInOnly = props => {
 
 LoggedInOnly.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  user: PropTypes.object.isRequired,
-  activityName: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  activityName: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  user: PropTypes.object,
+};
+
+LoggedInOnly.defaultProps = {
+  activityName: null,
+  user: null,
 };
 
 export default LoggedInOnly;

@@ -19,7 +19,7 @@ class FormBuilder extends React.Component {
     onDataChanged: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     submitLabel: PropTypes.string.isRequired,
-    presubmitText: PropTypes.string,
+    preSubmitText: PropTypes.string,
     formFields: PropTypes.arrayOf(PropTypes.object).isRequired,
     submitOnChange: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -32,7 +32,7 @@ class FormBuilder extends React.Component {
     submitOnChange: false,
     disabled: false,
     centered: false,
-    presubmitText: null,
+    preSubmitText: null,
   };
 
   constructor(props) {
@@ -54,7 +54,7 @@ class FormBuilder extends React.Component {
       onDataChanged,
       submitOnChange,
       onSubmit,
-      presubmitText,
+      preSubmitText,
       submitLabel,
       formFields,
       ...rest
@@ -86,6 +86,7 @@ class FormBuilder extends React.Component {
             {formField.type === 'CHECKBOX' && (
               <Fragment>
                 <Checkbox
+                  id={`${formField.id}_${this.state.formId}`}
                   className={getClassName('forms__component')}
                   name={formField.name}
                   label={formField.name}
@@ -118,11 +119,11 @@ class FormBuilder extends React.Component {
                     {formField.name}
                   </label>
                   <Input
+                    id={`${formField.id}_${this.state.formId}`}
                     className={getClassName(
                       'forms__component',
                       'forms__component__text-box',
                     )}
-                    id={`${formField.id}_${this.state.formId}`}
                     name={formField.name}
                     value={entity[formField.id]}
                     valid={validity[index]}
@@ -156,11 +157,11 @@ class FormBuilder extends React.Component {
                     {formField.name}
                   </label>
                   <TextArea
+                    id={`${formField.id}_${this.state.formId}`}
                     className={getClassName(
                       'forms__component',
                       'forms__component__text-box',
                     )}
-                    id={`${formField.id}_${this.state.formId}`}
                     name={formField.name}
                     value={entity[formField.id]}
                     valid={validity[index]}
@@ -191,11 +192,11 @@ class FormBuilder extends React.Component {
                   {formField.name}
                 </label>
                 <Select
+                  id={`${formField.id}_${this.state.formId}`}
                   className={getClassName(
                     'forms__component',
                     'forms__component__text-box',
                   )}
-                  id={`${formField.id}_${this.state.formId}`}
                   name={formField.name}
                   value={entity[formField.id]}
                   valid={validity[index]}
@@ -217,10 +218,10 @@ class FormBuilder extends React.Component {
             )}
           </Fragment>
         ))}
-        {presubmitText && (
+        {preSubmitText && (
           <Fragment>
             <div className={getClassName('forms__component')}>
-              {presubmitText}
+              {preSubmitText}
             </div>
           </Fragment>
         )}

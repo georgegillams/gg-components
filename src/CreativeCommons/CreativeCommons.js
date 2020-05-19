@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
+import { Paragraph, TextLink, SubSection } from '../Typography';
 
 import STYLES from './creative-commons.scss';
-
-import { Paragraph, TextLink, SubSection } from '../Typography';
 
 const getClassName = cssModules(STYLES);
 
@@ -35,6 +36,14 @@ const CreativeCommons = props => {
       </SubSection>
     </div>
   );
+};
+
+CreativeCommons.propTypes = {
+  className: PropTypes.string,
+};
+
+CreativeCommons.defaultProps = {
+  className: null,
 };
 
 export default CreativeCommons;

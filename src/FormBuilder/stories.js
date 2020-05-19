@@ -95,6 +95,6 @@ storiesOf('FormBuilder', module)
       formFields={formFields}
       entity={{}}
       submitLabel="Submit"
-      presubmitText="By clicking submit, you agree to have your soul split in two."
+      preSubmitText="By clicking submit, you agree to have your soul split in two."
     />
   ));

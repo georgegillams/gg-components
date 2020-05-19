@@ -1,46 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import ObjectAsList from './ObjectAsList';
 
 import { Section } from '../Typography';
 import { cssModules } from '../helpers/cssModules';
 
+import ObjectAsList from './ObjectAsList';
 import STYLES from './debug-object.scss';
 
 const getClassName = cssModules(STYLES);
 
-class DebugObject extends Component {
-  constructor(props) {
-    super(props);
+const DebugObject = props => {
+  const [showDebug, setShowDebug] = useState(false);
 
-    this.state = { showDebug: false };
+  useEffect(() => {
+    setShowDebug(
+      window.localStorage.getItem('showSessionDebugViews') === 'true',
+    );
+  });
+
+  if (!showDebug) {
+    return null;
   }
 
-  componentDidMount = () => {
-    this.setState({
-      showDebug:
-        window.localStorage.getItem('showSessionDebugViews') === 'true',
-    });
-  };
+  const { debugTitle, debugObject } = props;
 
-  render = () => {
-    if (!this.state.showDebug) {
-      return null;
-    }
-
-    const { debugTitle, debugObject } = this.props;
-
-    return (
-      <Section
-        className={getClassName('debug-object__main')}
-        name={`${debugTitle || 'Debug object'}`}
-      >
-        <ObjectAsList value={debugObject} />
-      </Section>
-    );
-  };
-}
+  return (
+    <Section
+      className={getClassName('debug-object__main')}
+      name={`${debugTitle || 'Debug object'}`}
+    >
+      <ObjectAsList value={debugObject} />
+    </Section>
+  );
+};
 
 DebugObject.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types

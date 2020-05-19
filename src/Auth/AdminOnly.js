@@ -25,12 +25,13 @@ const AdminOnly = props => {
 
 AdminOnly.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   children: PropTypes.node.isRequired,
   setLoginRedirect: PropTypes.func,
 };
 
 AdminOnly.defaultProps = {
+  user: null,
   setLoginRedirect: null,
 };
 

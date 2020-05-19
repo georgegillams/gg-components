@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
+import { Section } from '../Typography';
 
 import STYLES from './tech-specs.scss';
-
-import { Section } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TechSpecs = props => {
   const { light, fancy, className, children, ...rest } = props;
+
   const outerClassNameFinal = [];
   if (className) {
     outerClassNameFinal.push(className);
@@ -72,6 +73,7 @@ TechSpecs.propTypes = {
 };
 
 TechSpecs.defaultProps = {
+  light: false,
   fancy: false,
   children: null,
   className: null,

@@ -1,11 +1,11 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { CardSkeleton } from '../Skeletons';
 import { Section } from '../Typography';
+
 import {
   APIEntity,
   AdminOnly,
@@ -17,45 +17,44 @@ import {
   ObjectAsList,
 } from './index';
 
-class StatefulLoadingCover extends Component {
-  constructor(props) {
-    super(props);
+const StatefulLoadingCover = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-    this.state = { loading: true, error: false };
-  }
-
-  render() {
-    return (
-      <div>
-        <LoadingCover
-          loadingSkeleton={CardSkeleton}
-          loading={this.state.loading}
-          error={this.state.error}
-        >
-          <Section>This content is loading.</Section>
-        </LoadingCover>
-        <button
-          onClick={() => {
-            this.setState(prevState => ({
-              loading: !prevState.loading,
-            }));
-          }}
-        >
-          Toggle loading
-        </button>
-        <button
-          onClick={() => {
-            this.setState(prevState => ({
-              error: !prevState.error,
-            }));
-          }}
-        >
-          Toggle error
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <LoadingCover
+        loadingSkeleton={CardSkeleton}
+        loading={loading}
+        error={error}
+      >
+        <Section>This content is loading.</Section>
+      </LoadingCover>
+      <button
+        type="button"
+        onClick={() => {
+          setLoading(!loading);
+        }}
+        onKeyPress={() => {
+          setLoading(!loading);
+        }}
+      >
+        Toggle loading
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setError(!error);
+        }}
+        onKeyPress={() => {
+          setError(!error);
+        }}
+      >
+        Toggle error
+      </button>
+    </div>
+  );
+};
 
 storiesOf('Auth', module)
   .add('Admin only - out', () => (
@@ -99,22 +98,12 @@ storiesOf('Auth', module)
     </LoggedInOnly>
   ))
   .add('Logged out only - out', () => (
-    <LoggedOutOnly
-      user={null}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
+    <LoggedOutOnly user={null}>
       <Section>This is some logged-out-only content.</Section>
     </LoggedOutOnly>
   ))
   .add('Logged out only - in', () => (
-    <LoggedOutOnly
-      user={{ uname: 'Test' }}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
+    <LoggedOutOnly user={{ uname: 'Test' }}>
       <Section>This is some logged-out-only content.</Section>
     </LoggedOutOnly>
   ))

@@ -19,8 +19,13 @@ const LoggedOutOnly = props => {
 
 LoggedOutOnly.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  user: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  user: PropTypes.object,
+};
+
+LoggedOutOnly.defaultProps = {
+  user: null,
 };
 
 export default LoggedOutOnly;

@@ -1,18 +1,18 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
-import { Section } from '../Typography';
-import { Code, CodeInline, CodeBashArrow } from './index';
+import { Paragraph } from '../Typography';
+
+import { Code, CodeInline } from './index';
 
 storiesOf('CodeInline', module)
   .add('Default', () => <CodeInline>This is some code.</CodeInline>)
   .add('In text', () => (
-    <Section padding={false}>
+    <Paragraph>
       This is a sentence containing <CodeInline>some</CodeInline> code.
-    </Section>
+    </Paragraph>
   ));
 
 storiesOf('Code block', module)

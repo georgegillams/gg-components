@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { ColourPalleteItem } from './index';
+import { ColourPalletteItem } from './index';
 
-storiesOf('Design', module).add('ColourPalleteItem', () => (
-  <ColourPalleteItem colourName="Red" colour="red" />
+storiesOf('Design', module).add('ColourPalletteItem', () => (
+  <ColourPalletteItem colourName="Red" colour="red" />
 ));

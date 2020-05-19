@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
-
-import STYLES from './loading-cover.scss';
-
 import { SubSection } from '../Typography';
 import { Skeleton } from '../Skeletons';
+
+import STYLES from './loading-cover.scss';
 
 const getClassName = cssModules(STYLES);
 

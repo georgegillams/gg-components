@@ -97,7 +97,7 @@ class NavigationBar extends Component {
       );
 
     return (
-      <banner>
+      <header role="banner">
         {this.state.show && (
           <div
             aria-hidden="true"
@@ -155,7 +155,7 @@ class NavigationBar extends Component {
             </div>
           </div>
         </div>
-      </banner>
+      </header>
     );
   }
 }
