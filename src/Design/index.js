@@ -1,3 +1,4 @@
-import ColourPalleteItem from './ColourPalleteItem';
+import ColourPalletteItem from './ColourPalletteItem';
 
-export { ColourPalleteItem };
+export default ColourPalletteItem;
+export { ColourPalletteItem };

@@ -1,53 +1,52 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-class ObjectAsList extends Component {
-  constructor(props) {
-    super(props);
+const ObjectAsList = props => {
+  const { name, value, depth, ...rest } = props;
 
-    this.state = { expanded: false };
+  const [expanded, setExpanded] = useState(false);
+
+  if ((value && typeof value === 'object') || typeof value === 'array') {
+    return (
+      <>
+        <div
+          style={{ marginLeft: `${depth}rem` }}
+          role="button"
+          tabIndex={0}
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
+          onKeyPress={() => {
+            setExpanded(!expanded);
+          }}
+          {...rest}
+        >{`${expanded ? '🔽' : '▶️'} ${name || 'top-level'}:`}</div>
+        {expanded &&
+          Object.keys(value).map(k => (
+            <ObjectAsList key={k} name={k} value={value[k]} depth={depth + 1} />
+          ))}
+      </>
+    );
   }
 
-  render = () => {
-    const { name, value, depth, rest } = this.props;
-
-    if ((value && typeof value === 'object') || typeof value === 'array') {
-      return (
-        <Fragment {...rest}>
-          <div
-            style={{ marginLeft: `${depth}rem` }}
-            role="button"
-            onClick={() => {
-              this.setState({ expanded: !this.state.expanded });
-            }}
-          >{`${this.state.expanded ? '🔽' : '▶️'} ${name ||
-            'top-level'}:`}</div>
-          {this.state.expanded &&
-            Object.keys(value).map(k => (
-              <ObjectAsList name={k} value={value[k]} depth={depth + 1} />
-            ))}
-        </Fragment>
-      );
-    }
-
-    return (
-      <div
-        style={{ marginLeft: `${depth}rem` }}
-        {...rest}
-      >{`${name}: ${value}`}</div>
-    );
-  };
-}
+  return (
+    <div
+      style={{ marginLeft: `${depth}rem` }}
+      {...rest}
+    >{`${name}: ${value}`}</div>
+  );
+};
 
 ObjectAsList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  value: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  name: PropTypes.string,
   depth: PropTypes.number,
 };
 
 ObjectAsList.defaultProps = {
   depth: 0,
+  name: null,
 };
 
 export default ObjectAsList;

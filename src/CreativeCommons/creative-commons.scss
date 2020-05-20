@@ -1,15 +1,14 @@
-@import '~bpk-mixins';
 @import '../Tokens/common';
 
 .creative-commons {
   &__wrapper {
-    background-color: $alternating-background-color-1;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
     display: flex;
+    width: 100vw;
+    margin-top: 2rem;
+    margin-left: calc(-50vw + 50%);
+    padding-top: 1rem;
     justify-content: center;
+    background-color: $alternating-background-color-1;
 
     @media (prefers-color-scheme: dark) {
       background-color: $alternating-background-color-1-invert;
@@ -17,15 +16,15 @@
   }
 
   &__inner {
-    max-width: 60rem;
-    padding-left: 30px;
-    padding-right: 30px;
     width: auto;
+    max-width: 60rem;
+    padding-right: 30px;
     padding-bottom: 3rem;
+    padding-left: 30px;
 
     @include bpk-breakpoint-tablet {
-      padding-left: 15px;
       padding-right: 15px;
+      padding-left: 15px;
     }
   }
 }

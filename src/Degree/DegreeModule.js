@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 import { Progress } from '../Progress';
 import { cssModules } from '../helpers/cssModules';
 

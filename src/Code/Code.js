@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cssModules } from '../helpers/cssModules';
 
-import { TextLink } from '../Typography';
+import TextLink from '../Typography/TextLink';
+import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './code.scss';
 
@@ -20,7 +20,6 @@ const Code = props => {
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
       <code>
-        {/* <div className={"code__inner-container"}>{children}</div> */}
         {children}
         {showTag && (
           <span className={getClassName('code__lang')}>

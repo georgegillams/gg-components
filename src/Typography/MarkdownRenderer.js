@@ -119,7 +119,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'footnote1') {
     return (
-      <p textStyle="xs">
+      <p>
         <sup>content.number</sup>
       </p>
     );
@@ -131,7 +131,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'footnote2') {
     return (
-      <p textStyle="xs">
+      <p>
         <sup>{content.footnoteNumber}</sup> {childElement}
       </p>
     );

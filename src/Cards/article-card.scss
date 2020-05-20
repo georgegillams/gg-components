@@ -1,10 +1,9 @@
-@import '~bpk-mixins';
 @import '../Tokens/common';
 
 .article-card {
   &--narrow-compact {
-    max-width: 25rem;
     width: 25rem;
+    max-width: 25rem;
   }
 
   &__outer-container {
@@ -30,15 +29,18 @@
 
   &__inner-container {
     position: relative;
+    z-index: 3;
     width: 100%;
     border-radius: 0.35rem;
     overflow: hidden;
     box-sizing: border-box;
-    z-index: 3;
 
     &--highlighted {
       background-color: $primary-color-transparent;
-      background-color: var(--primary-color-transparent, $primary-color-transparent);
+      background-color: var(
+        --primary-color-transparent,
+        $primary-color-transparent
+      );
     }
     &--disabled {
       background-color: gray;
@@ -65,6 +67,7 @@
 
   &__image-container {
     display: block;
+    z-index: 3;
     width: 6rem;
     height: 6rem;
     justify-self: center;
@@ -76,15 +79,14 @@
     background-position: center;
     background-size: cover;
     overflow: hidden;
-    z-index: 3;
   }
 
   &__image {
+    z-index: 3;
     width: 12rem;
     height: 7rem;
     margin-top: -0.5rem;
     margin-left: -3rem;
-    z-index: 3;
   }
 
   &__title {
@@ -103,11 +105,11 @@
   }
 
   &__date {
+    z-index: 3;
     width: 6.5rem;
     grid-area: date;
     align-items: center;
     text-align: center;
-    z-index: 3;
 
     &--narrow-compact {
       display: none;

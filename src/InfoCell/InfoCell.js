@@ -25,6 +25,17 @@ const InfoCell = props => {
     ...rest
   } = props;
 
+  // remove props provided by `withScroll` which we don't need to prevent warnings
+  delete rest.inView;
+  delete rest.scrollPosition;
+  delete rest.outOfView;
+  delete rest.justInView;
+  delete rest.mostlyInView;
+  delete rest.fullyInView;
+  delete rest.hasBeenInView;
+  delete rest.hasBeenOutOfView;
+  delete rest.hasBeenJustInView;
+
   const classNames = [getClassName('info-cell__outer')];
   if (cellStyle === INFO_CELL_STYLES.dark) {
     classNames.push(getClassName('info-cell__outer--dark'));

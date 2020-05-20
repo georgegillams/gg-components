@@ -14,15 +14,15 @@
 
 .button {
   &__outer {
-    padding: 0.2rem 0.8rem;
     min-width: 5rem;
-    font-weight: bold;
+    padding: 0.2rem 0.8rem;
     transition: filter 0.3s;
     border: none;
     border-radius: 0.25rem;
     color: white;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1.2rem;
+    font-weight: bold;
     text-decoration-color: transparent;
     text-decoration-line: none;
 
@@ -60,8 +60,8 @@
     }
 
     &--large {
-      padding: 0.6rem 1.2rem;
       min-width: 7rem;
+      padding: 0.6rem 1.2rem;
     }
 
     &--white {
@@ -132,13 +132,13 @@
       &:focus,
       &:active,
       &:hover {
-        animation-name: example;
-        animation-duration: 0.4s;
         background-color: $cta-color-dark;
         background-color: var(--cta-color-dark, $cta-color-dark);
         color: white;
-        fill: white;
         font-weight: bold;
+        animation-duration: 0.4s;
+        animation-name: example;
+        fill: white;
       }
     }
   }

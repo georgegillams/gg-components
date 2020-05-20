@@ -47,14 +47,12 @@ const Logo = props => {
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
       <Link role="button" aria-label="Home page" to="/">
-        <h1 textStyle="xxl" className={largeTextClassNameFinal.join(' ')}>
-          {'<G/>'}
-        </h1>
+        <h1 className={largeTextClassNameFinal.join(' ')}>{'<G/>'}</h1>
         {!small && (
           <div>
             <br />
             <br />
-            <h2 textStyle="lg" className={baseTextClassNameFinal.join(' ')}>
+            <h2 className={baseTextClassNameFinal.join(' ')}>
               {'George Gillams'}
             </h2>
           </div>

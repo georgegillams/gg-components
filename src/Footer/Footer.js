@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { Logo } from '../Logo';
 import { cssModules } from '../helpers/cssModules';
 
 import TechSpecs from './TechSpecs';
 import STYLES from './footer.scss';
-
-import { Logo } from '../Logo';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 

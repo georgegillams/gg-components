@@ -14,7 +14,7 @@ import { Card, ArticleCard, ARTICLE_CARD_LAYOUTS } from './Cards';
 import { Code, CodeInline, CodeBashArrow } from './Code';
 import { CreativeCommons } from './CreativeCommons';
 import { DegreeModule } from './Degree';
-import { ColourPalleteItem } from './Design';
+import { ColourPalletteItem } from './Design';
 import { Footer } from './Footer';
 import { Button, BurgerButton } from './Button';
 import { LoadingIndicator } from './LoadingIndicator';
@@ -73,7 +73,7 @@ export {
   Code,
   CodeBashArrow,
   CodeInline,
-  ColourPalleteItem,
+  ColourPalletteItem,
   CompactCardSkeleton,
   CreativeCommons,
   DebugObject,

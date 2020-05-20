@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CodeInline } from '../Code';
 import { SubSection } from '../Typography';
 
-const ColourPalleteItem = props => {
+const ColourPalletteItem = props => {
   const { colourName, colour, ...rest } = props;
 
   return (
@@ -35,9 +35,9 @@ const ColourPalleteItem = props => {
   );
 };
 
-ColourPalleteItem.propTypes = {
+ColourPalletteItem.propTypes = {
   colourName: PropTypes.string.isRequired,
   colour: PropTypes.string.isRequired,
 };
 
-export default ColourPalleteItem;
+export default ColourPalletteItem;

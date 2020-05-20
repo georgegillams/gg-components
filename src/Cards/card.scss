@@ -1,22 +1,21 @@
-@import '~bpk-mixins';
 @import '../Tokens/common';
 
 .card {
-  transition: all 0.4s;
-  box-shadow: 0.2rem 0.2rem 0.5rem 0 $shadow-color;
   position: relative;
+  z-index: 3;
   width: 100%;
+  transition: all 0.4s;
   border-radius: 0.35rem;
+  box-shadow: 0.2rem 0.2rem 0.5rem 0 $shadow-color;
   overflow: hidden;
   box-sizing: border-box;
-  z-index: 3;
-
-  &--disabled {
-    background-color: gray;
-  }
 
   @media (prefers-color-scheme: dark) {
     box-shadow: 0.44rem 0.44rem 1rem 0 $shadow-color-invert;
+  }
+
+  &--disabled {
+    background-color: gray;
   }
 
   &:focus,
@@ -42,9 +41,9 @@
     height: calc(100% + 2rem);
     margin-top: -1rem;
     margin-left: -1rem;
+    background-color: $not-black-invert;
     background-position: center;
     background-size: cover;
-    background-color: $not-black-invert;
 
     @media (prefers-color-scheme: dark) {
       background-color: $not-black;
@@ -60,12 +59,12 @@
   }
 
   &__banner {
+    z-index: 3;
     width: 0;
     height: 0.4rem;
     transition: all 0.4s;
     background-color: $primary-color;
     background-color: var(--primary-color, $primary-color);
-    z-index: 3;
 
     &--light {
       background-color: $primary-color-light;

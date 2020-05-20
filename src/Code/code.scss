@@ -1,4 +1,3 @@
-@import '~bpk-mixins';
 @import '../Tokens/common';
 
 @fontface {
@@ -39,6 +38,7 @@
   &__text-link {
     color: $link-color;
     fill: $link-color;
+
     @media (prefers-color-scheme: dark) {
       color: $link-color-invert;
       fill: $link-color-invert;

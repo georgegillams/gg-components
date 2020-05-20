@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// import LazyLoadImage from 'react-lazy-load-image-component';
-import { Link } from 'react-router-dom';
+
 import { cssModules } from '../helpers/cssModules';
+import { Section, SubSection } from '../Typography';
+import HelperFunctions from '../helpers/HelperFunctions';
 
 import STYLES from './article-card.scss';
-
-import { Section, SubSection } from '../Typography';
 import Card from './Card';
-import HelperFunctions from '../helpers/HelperFunctions';
 
 const getClassName = cssModules(STYLES);
 
@@ -33,184 +31,171 @@ const MONTH_MAPPINGS = {
   11: 'Dec',
 };
 
-class ArticleCard extends Component {
-  constructor(props) {
-    super(props);
+const ArticleCard = props => {
+  const [hovering, setHovering] = useState(false);
 
-    this.state = { hovering: false };
+  const {
+    day,
+    month,
+    imageBorder,
+    imageSrc,
+    title,
+    imageClassName,
+    layout,
+    highlighted,
+    children,
+
+    bannerColor,
+    fillImageSrc,
+    light,
+    linkUrl,
+    href,
+    ariaLabel,
+    className,
+    backgroundImageClassName,
+    disabled,
+    onClick,
+
+    ...rest
+  } = props;
+
+  const classNameFinal = [getClassName('article-card')];
+  const centerClassNames = [getClassName('article-card__center-container')];
+  const contentContainerClassNames = [
+    getClassName('article-card__inner-container'),
+  ];
+  const dateContainerClassNames = [getClassName('article-card__date')];
+
+  if (highlighted) {
+    contentContainerClassNames.push(
+      getClassName('article-card__inner-container--highlighted'),
+    );
   }
 
-  render() {
-    const {
-      day,
-      month,
-      imageBorder,
-      imageSrc,
-      title,
-      imageClassName,
-      layout,
-      highlighted,
-      children,
+  if (disabled) {
+    contentContainerClassNames.push(
+      getClassName('article-card__inner-container--disabled'),
+    );
+  }
 
-      bannerColor,
-      fillImageSrc,
-      light,
-      linkUrl,
-      href,
-      ariaLabel,
-      className,
-      backgroundImageClassName,
-      disabled,
-      onClick,
+  const bannerClassNames = [getClassName('article-card__banner')];
+  if (light) {
+    bannerClassNames.push(getClassName('article-card__banner--light'));
+  }
+  if (hovering && !disabled) {
+    bannerClassNames.push(getClassName('article-card__banner--hovered'));
+  }
+  const outerBannerClassNames = [getClassName('article-card__outer-container')];
+  if (layout === ARTICLE_CARD_LAYOUTS.narrowCompact) {
+    classNameFinal.push(getClassName('article-card--narrow-compact'));
+    outerBannerClassNames.push(
+      getClassName('article-card__outer-container--narrow-compact'),
+    );
+    centerClassNames.push(
+      getClassName('article-card__center-container--narrow-compact'),
+    );
+    dateContainerClassNames.push(
+      getClassName('article-card__date--narrow-compact'),
+    );
+  } else if (layout === ARTICLE_CARD_LAYOUTS.auto) {
+    outerBannerClassNames.push(
+      getClassName('article-card__outer-container--auto'),
+    );
+  }
+  if (className) classNameFinal.push(className);
 
-      ...rest
-    } = this.props;
+  const imageContainerClassNames = [
+    getClassName('article-card__image-container'),
+  ];
 
-    const classNameFinal = [getClassName('article-card')];
-    const centerClassNames = [getClassName('article-card__center-container')];
-    const contentContainerClassNames = [
-      getClassName('article-card__inner-container'),
-    ];
-    const dateContainerClassNames = [getClassName('article-card__date')];
+  const imageClassNames = [getClassName('article-card__image')];
+  if (imageClassName) {
+    imageClassNames.push(imageClassName);
+  }
 
-    if (highlighted) {
-      contentContainerClassNames.push(
-        getClassName('article-card__inner-container--highlighted'),
-      );
-    }
+  const backgroundImageClassNames = [getClassName('article-card__background')];
+  if (light) {
+    backgroundImageClassNames.push(
+      getClassName('article-card__background--light'),
+    );
+  }
+  if (backgroundImageClassName) {
+    backgroundImageClassNames.push(backgroundImageClassName);
+  }
 
-    if (disabled) {
-      contentContainerClassNames.push(
-        getClassName('article-card__inner-container--disabled'),
-      );
-    }
-
-    const bannerClassNames = [getClassName('article-card__banner')];
-    if (light) {
-      bannerClassNames.push(getClassName('article-card__banner--light'));
-    }
-    if (this.state.hovering && !disabled) {
-      bannerClassNames.push(getClassName('article-card__banner--hovered'));
-    }
-    const outerBannerClassNames = [
-      getClassName('article-card__outer-container'),
-    ];
-    if (layout === ARTICLE_CARD_LAYOUTS.narrowCompact) {
-      classNameFinal.push(getClassName('article-card--narrow-compact'));
-      outerBannerClassNames.push(
-        getClassName('article-card__outer-container--narrow-compact'),
-      );
-      centerClassNames.push(
-        getClassName('article-card__center-container--narrow-compact'),
-      );
-      dateContainerClassNames.push(
-        getClassName('article-card__date--narrow-compact'),
-      );
-    } else if (layout === ARTICLE_CARD_LAYOUTS.auto) {
-      outerBannerClassNames.push(
-        getClassName('article-card__outer-container--auto'),
-      );
-    }
-    if (className) classNameFinal.push(className);
-
-    const imageContainerClassNames = [
-      getClassName('article-card__image-container'),
-    ];
-
-    const imageClassNames = [getClassName('article-card__image')];
-    if (imageClassName) {
-      imageClassNames.push(imageClassName);
-    }
-
-    const backgroundImageClassNames = [
-      getClassName('article-card__background'),
-    ];
-    if (light) {
-      backgroundImageClassNames.push(
-        getClassName('article-card__background--light'),
-      );
-    }
-    if (backgroundImageClassName) {
-      backgroundImageClassNames.push(backgroundImageClassName);
-    }
-
-    let cardContent = (
-      <div className={outerBannerClassNames.join(' ')}>
-        <div className={dateContainerClassNames.join(' ')}>
-          <SubSection
-            hover={this.state.hovering && !disabled}
-            anchor={false}
-            noPadding
-            link
-            light={light}
-            name={
-              HelperFunctions.includes(Object.keys(MONTH_MAPPINGS), `${month}`)
-                ? MONTH_MAPPINGS[`${month}`]
-                : month
-            }
-          />
-          <SubSection
-            hover={this.state.hovering && !disabled}
-            anchor={false}
-            noPadding
-            link
-            light={light}
-            name={day}
-          />
-        </div>
-        <div className={centerClassNames.join(' ')}>
-          <Section
-            noPadding
-            hover={this.state.hovering && !disabled}
-            light={light}
-            name={title}
-            link={!disabled}
-            className={getClassName('article-card__title')}
-          />
-          <div className={getClassName('article-card__children')}>
-            {children}
-          </div>
-        </div>
-        {imageSrc && (
-          <div
-            className={imageContainerClassNames.join(' ')}
-            style={{
-              border: imageBorder ? `solid ${imageBorder} 0.1rem` : 'none',
-            }}
-          >
-            <img
-              className={imageClassNames.join(' ')}
-              altText="Card image"
-              width={987}
-              height={575}
-              src={imageSrc}
-            />
-          </div>
-        )}
+  const cardContent = (
+    <div className={outerBannerClassNames.join(' ')}>
+      <div className={dateContainerClassNames.join(' ')}>
+        <SubSection
+          hover={hovering && !disabled}
+          anchor={false}
+          noPadding
+          link
+          light={light}
+          name={
+            HelperFunctions.includes(Object.keys(MONTH_MAPPINGS), `${month}`)
+              ? MONTH_MAPPINGS[`${month}`]
+              : month
+          }
+        />
+        <SubSection
+          hover={hovering && !disabled}
+          anchor={false}
+          noPadding
+          link
+          light={light}
+          name={day}
+        />
       </div>
-    );
+      <div className={centerClassNames.join(' ')}>
+        <Section
+          noPadding
+          hover={hovering && !disabled}
+          light={light}
+          name={title}
+          link={!disabled}
+          className={getClassName('article-card__title')}
+        />
+        <div className={getClassName('article-card__children')}>{children}</div>
+      </div>
+      {imageSrc && (
+        <div
+          className={imageContainerClassNames.join(' ')}
+          style={{
+            border: imageBorder ? `solid ${imageBorder} 0.1rem` : 'none',
+          }}
+        >
+          <img
+            className={imageClassNames.join(' ')}
+            alt="card"
+            width={987}
+            height={575}
+            src={imageSrc}
+          />
+        </div>
+      )}
+    </div>
+  );
 
-    return (
-      <Card
-        bannerColor={bannerColor}
-        fillImageSrc={fillImageSrc}
-        light={light}
-        linkUrl={linkUrl}
-        href={href}
-        ariaLabel={ariaLabel}
-        className={classNameFinal.join(' ')}
-        backgroundImageClassName={backgroundImageClassName}
-        disabled={disabled}
-        onClick={onClick}
-        onHoverChanged={hovering => {
-          this.setState({ hovering: hovering });
-        }}
-      >
-        {cardContent}
-      </Card>
-    );
-  }
-}
+  return (
+    <Card
+      bannerColor={bannerColor}
+      fillImageSrc={fillImageSrc}
+      light={light}
+      linkUrl={linkUrl}
+      href={href}
+      ariaLabel={ariaLabel}
+      className={classNameFinal.join(' ')}
+      backgroundImageClassName={backgroundImageClassName}
+      disabled={disabled}
+      onClick={onClick}
+      onHoverChanged={setHovering}
+      {...rest}
+    >
+      {cardContent}
+    </Card>
+  );
+};
 
 ArticleCard.propTypes = {
   ariaLabel: PropTypes.string,
@@ -218,12 +203,12 @@ ArticleCard.propTypes = {
   bannerColor: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
-  day: PropTypes.number,
+  day: PropTypes.string,
   disabled: PropTypes.bool,
   fillImageSrc: PropTypes.node,
   highlighted: PropTypes.bool,
   href: PropTypes.string,
-  imageBorder: PropTypes.bool,
+  imageBorder: PropTypes.string,
   imageClassName: PropTypes.string,
   imageSrc: PropTypes.node,
   layout: PropTypes.oneOf(Object.keys(ARTICLE_CARD_LAYOUTS)),

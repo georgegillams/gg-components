@@ -48,6 +48,7 @@ class Select extends Component {
       ...rest
     } = this.props;
 
+    const invalid = valid === false;
     const disabled = enabled === false;
     const focusedState = this.state.hovering || this.state.focused;
 
@@ -82,7 +83,7 @@ class Select extends Component {
       <div {...rest}>
         <div className={classNames.join(' ')}>
           <select
-            aria-valid={valid}
+            aria-invalid={invalid}
             aria-disabled={disabled}
             onMouseEnter={this.hoverStarted}
             onFocus={this.focusStarted}
