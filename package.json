@@ -117,7 +117,7 @@
     "sass": "^1.23.3",
     "sass-lint": "^1.13.1",
     "sass-loader": "^8.0.0",
-    "storybook-dark-mode": "^0.4.0",
+    "storybook-dark-mode": "^0.5.0",
     "style-loader": "^1.0.0",
     "stylelint": "^13.1.0",
     "stylelint-config-skyscanner": "^2.1.0",
