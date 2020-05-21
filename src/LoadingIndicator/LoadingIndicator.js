@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
+import { SubSection } from '../Typography';
 
 import STYLES from './style.scss';
-
-import { SubSection } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -39,6 +39,7 @@ const LoadingIndicator = props => {
 
 LoadingIndicator.propTypes = {
   loading: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
   error: PropTypes.object,
   children: PropTypes.node,
 };

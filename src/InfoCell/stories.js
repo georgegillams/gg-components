@@ -1,40 +1,29 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+
+import { TextLink } from '../Typography';
 
 import { InfoCell, INFO_CELL_STYLES } from './index';
-import { TextLink, SubSection } from '../Typography';
 
-class StatefulStory extends Component {
-  constructor() {
-    super();
+const StatefulStory = props => {
+  const [hasBeenMostlyInView, setHasBeenMostlyInView] = useState(false);
 
-    this.state = { hasBeenMostlyInView: false };
-  }
-
-  render() {
-    const { ...rest } = this.props;
-    return (
-      <div>
-        <button
-          onClick={() => {
-            this.setState({
-              hasBeenMostlyInView: !this.state.hasBeenMostlyInView,
-            });
-          }}
-        >
-          Toggle
-        </button>
-        <InfoCell
-          hasBeenMostlyInView={this.state.hasBeenMostlyInView}
-          {...rest}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => {
+          setHasBeenMostlyInView(!hasBeenMostlyInView);
+        }}
+      >
+        Toggle
+      </button>
+      <InfoCell hasBeenMostlyInView={hasBeenMostlyInView} {...props} />
+    </div>
+  );
+};
 
 storiesOf('Info cell', module)
   .add('Info cell', () => (

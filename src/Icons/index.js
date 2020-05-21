@@ -1,5 +1,5 @@
 import Tick from './tick';
-import ExclaimationCircle from './exclamation-circle';
+import ExclamationCircle from './exclamation-circle';
 import Copy from './copy';
 
-export { Tick, ExclaimationCircle, Copy };
+export { Tick, ExclamationCircle, Copy };

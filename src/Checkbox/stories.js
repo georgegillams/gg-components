@@ -2,12 +2,12 @@
 
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { cssModules } from '../helpers/cssModules';
 
-import { Checkbox } from './index';
 import STYLES from './stories.scss';
+
+import { Checkbox } from './index';
 
 const getClassName = cssModules(STYLES);
 
@@ -31,6 +31,7 @@ class StatefulCheckbox extends Component {
         />
         {!this.state.disabled && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 disabled: true,
@@ -42,6 +43,7 @@ class StatefulCheckbox extends Component {
         )}
         {this.state.disabled && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 disabled: false,
@@ -53,6 +55,7 @@ class StatefulCheckbox extends Component {
         )}
         {this.state.valid !== true && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 valid: true,
@@ -64,6 +67,7 @@ class StatefulCheckbox extends Component {
         )}
         {this.state.valid !== false && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 valid: false,
@@ -75,6 +79,7 @@ class StatefulCheckbox extends Component {
         )}
         {this.state.valid !== null && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 valid: null,
@@ -92,12 +97,12 @@ class StatefulCheckbox extends Component {
 storiesOf('Checkbox', module)
   .add('Default', () => <Checkbox label="Test" name="Test" />)
   .add('No label', () => <Checkbox name="Test" />)
-  .add('Valid', () => <Checkbox label="Test" name="Test" valid={true} />)
+  .add('Valid', () => <Checkbox label="Test" name="Test" valid />)
   .add('Invalid', () => <Checkbox label="Test" name="Test" valid={false} />)
   .add('Disabled', () => <Checkbox label="Test" name="Test" disabled />)
   .add('No label checked', () => <Checkbox checked name="Test" />)
   .add('Valid checked', () => (
-    <Checkbox checked label="Test" name="Test" valid={true} />
+    <Checkbox checked label="Test" name="Test" valid />
   ))
   .add('Invalid checked', () => (
     <Checkbox checked label="Test" name="Test" valid={false} />

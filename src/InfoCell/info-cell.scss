@@ -4,11 +4,11 @@ $card-height: 14rem;
 
 .info-cell {
   &__outer {
-    background-color: $alternating-background-color-1;
-    font-family: 'Quattrocento Sans', sans-serif;
-    color: $not-black;
     display: flex;
     justify-content: space-around;
+    background-color: $alternating-background-color-1;
+    color: $not-black;
+    font-family: 'Quattrocento Sans', sans-serif;
 
     @media (prefers-color-scheme: dark) {
       background-color: $alternating-background-color-1-invert;
@@ -27,20 +27,20 @@ $card-height: 14rem;
 
   &__inner {
     display: flex;
-    justify-content: space-around;
     width: 100%;
     max-width: 70rem;
+    justify-content: space-around;
   }
 
   &__title {
-    font-size: 3rem;
     margin: 0;
+    font-size: 3rem;
     font-weight: inherit;
   }
 
   &__text-container {
-    padding: 1rem;
     display: flex;
+    padding: 1rem;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
@@ -57,15 +57,15 @@ $card-height: 14rem;
     opacity: 0;
 
     &--visible {
-      padding-top: 0rem;
+      padding-top: 0;
       opacity: 1;
     }
   }
 
   &__aux {
     display: flex;
-    justify-content: end;
-    flex-direction: column;
     height: $card-height;
+    flex-direction: column;
+    justify-content: end;
   }
 }

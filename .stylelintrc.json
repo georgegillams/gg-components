@@ -11,7 +11,7 @@
       ["px"],
       {
         "ignoreProperties": {
-          "px": ["box-shadow"]
+          "px": ["box-shadow", "border"]
         }
       }
     ],
@@ -20,6 +20,7 @@
       {
         "ignorePseudoClasses": ["global"]
       }
-    ]
+    ],
+    "scale-unlimited/declaration-strict-value": "off"
   }
 }

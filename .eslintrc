@@ -19,6 +19,8 @@
     "prettier/prettier": "error",
     "react/jsx-filename-extension": 0,
     "react/jsx-props-no-spreading": "off",
+    "backpack/use-components": "off",
+    "backpack/use-tokens": "off",
     "import/no-extraneous-dependencies": "off",
     // This is superceded by jsx-a11y/label-has-associated-control
     "jsx-a11y/label-has-for": "off",

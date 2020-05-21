@@ -2,11 +2,11 @@
 
 .input {
   &__outer {
-    background-color: $background-color;
-    border: 1px #b2b2bf solid;
-    border-radius: 0.25rem;
     display: flex;
     align-items: center;
+    border: 1px #b2b2bf solid;
+    border-radius: 0.25rem;
+    background-color: $background-color;
 
     @media (prefers-color-scheme: dark) {
       border-color: white;
@@ -31,13 +31,13 @@
   }
 
   &__inner {
+    padding: 0.375rem 0.75rem;
+    flex-grow: 1;
+    border: none;
+    outline: none;
     background-color: transparent;
     color: $not-black;
-    border: none;
-    flex-grow: 1;
     font-size: 1rem;
-    padding: 0.375rem 0.75rem;
-    outline: none;
 
     @media (prefers-color-scheme: dark) {
       color: $not-black-invert;
@@ -52,13 +52,13 @@
     }
 
     &--select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       border-radius: 0.25rem;
       background: #0000
         url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4Ij48c3R5bGU+PC9zdHlsZT48cGF0aCBkPSJNMTkuNyAxMC4zTDEyIDE3LjRsLTcuNy03LjFjLS42LS42LS4yLTEuNy43LTEuN2gxNGMuOSAwIDEuMyAxLjEuNyAxLjd6IiBmaWxsPSIjNDQ0NTYwIi8+PC9zdmc+')
         no-repeat right 0.75rem center;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
 
       @media (prefers-color-scheme: dark) {
         background: #0000
@@ -72,13 +72,13 @@
     margin-right: 0.5rem;
 
     &--valid {
-      fill: $bpk-color-monteverde;
       color: $bpk-color-monteverde;
+      fill: $bpk-color-monteverde;
     }
 
     &--invalid {
-      fill: $bpk-color-panjin;
       color: $bpk-color-panjin;
+      fill: $bpk-color-panjin;
     }
   }
 }

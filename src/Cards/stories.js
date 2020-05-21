@@ -1,14 +1,14 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { Section } from '../Typography';
-import { Card, ArticleCard, ARTICLE_CARD_LAYOUTS } from './index';
 
 import backgroundImage from './backgroundImage.png';
 import image from './image.png';
+
+import { Card, ArticleCard, ARTICLE_CARD_LAYOUTS } from './index';
 
 storiesOf('Card', module)
   .add('Default', () => (
@@ -143,7 +143,7 @@ storiesOf('ArticleCard', module)
       light
     />
   ))
-  .add('Wtih href', () => (
+  .add('With href', () => (
     <ArticleCard
       day="23"
       month="Jan"

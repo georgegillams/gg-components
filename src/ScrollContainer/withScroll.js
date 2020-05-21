@@ -14,17 +14,17 @@ const withScroll = ComponentToScroll => {
       super();
 
       this.state = {
-        inView: false,
-        scrollPosition: 0,
-        outOfView: false,
-        justInView: false,
-        mostlyInView: false,
         fullyInView: false,
+        hasBeenFullyInView: false,
         hasBeenInView: false,
-        hasBeenOutOfView: false,
         hasBeenJustInView: false,
         hasBeenMostlyInView: false,
-        hasBeenFullyInView: false,
+        hasBeenOutOfView: false,
+        inView: false,
+        justInView: false,
+        mostlyInView: false,
+        outOfView: false,
+        scrollPosition: 0,
       };
     }
 
@@ -52,17 +52,17 @@ const withScroll = ComponentToScroll => {
     updateStateValues = (inView, scrollPosition) => {
       const outOfView = !inView;
       const justInView = scrollPosition < 25.0;
-      const mostlyInView = 25.0 <= scrollPosition && scrollPosition < 100;
+      const mostlyInView = scrollPosition >= 25.0 && scrollPosition < 100;
       const fullyInView = scrollPosition >= 100;
       this.setState(prevState => ({
-        inView: inView,
+        inView,
         hasBeenInView: inView || prevState.hasBeenInView,
-        outOfView: outOfView,
+        outOfView,
         hasBeenOutOfView: outOfView || prevState.hasBeenOutOfView,
-        scrollPosition: scrollPosition,
-        justInView: justInView,
-        mostlyInView: mostlyInView,
-        fullyInView: fullyInView,
+        scrollPosition,
+        justInView,
+        mostlyInView,
+        fullyInView,
         hasBeenJustInView: justInView || prevState.hasBeenJustInView,
         hasBeenMostlyInView: mostlyInView || prevState.hasBeenMostlyInView,
         hasBeenFullyInView: fullyInView || prevState.hasBeenFullyInView,
@@ -127,14 +127,11 @@ const withScroll = ComponentToScroll => {
       return { x: 0, y: 0, width: viewPortWidth, height: viewPortHeight };
     };
 
-    isInViewPort = (elementRect, viewPortRect) => {
-      return (
-        elementRect.bottom >= viewPortRect.y &&
-        elementRect.right >= viewPortRect.x &&
-        elementRect.top < viewPortRect.height &&
-        elementRect.left < viewPortRect.width
-      );
-    };
+    isInViewPort = (elementRect, viewPortRect) =>
+      elementRect.bottom >= viewPortRect.y &&
+      elementRect.right >= viewPortRect.x &&
+      elementRect.top < viewPortRect.height &&
+      elementRect.left < viewPortRect.width;
 
     scrollPosition = (elementRect, viewPortRect) => {
       const elementHeight = elementRect.height;
