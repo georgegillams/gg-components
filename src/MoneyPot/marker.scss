@@ -4,15 +4,15 @@
   &__outer {
     position: absolute;
     top: -1.2rem;
-    height: 2.5rem;
     width: 2rem;
+    height: 2.5rem;
   }
 
   &__inner {
+    width: 0.2rem;
     height: 0.5rem;
     margin-top: 1rem;
     margin-left: 0.9rem;
-    width: 0.2rem;
     background-color: $not-black;
     opacity: 0.15;
 
@@ -22,9 +22,9 @@
     }
   }
   &__popover {
-    display: flex;
     position: absolute;
     top: 2rem;
+    display: flex;
     width: 12rem;
 
     &--label {

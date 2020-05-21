@@ -11,88 +11,74 @@ import { Checkbox } from './index';
 
 const getClassName = cssModules(STYLES);
 
-class StatefulCheckbox extends Component {
-  constructor(props) {
-    super(props);
+const StatefulCheckbox = props => {
+  const [checked, setChecked] = useState(props.checked);
+  const [valid, setValid] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
-    this.state = { checked: props.checked, valid: null, disabled: false };
-  }
-
-  render() {
-    return (
-      <div>
-        <Checkbox
-          name="Stateful_checkbox"
-          valid={this.state.valid}
-          checked={this.state.checked}
-          disabled={this.state.disabled}
-          onChange={e => this.setState({ checked: e.target.checked })}
-          {...this.props}
-        />
-        {!this.state.disabled && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({
-                disabled: true,
-              });
-            }}
-          >
-            Disable
-          </button>
-        )}
-        {this.state.disabled && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({
-                disabled: false,
-              });
-            }}
-          >
-            Enable
-          </button>
-        )}
-        {this.state.valid !== true && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({
-                valid: true,
-              });
-            }}
-          >
-            Valid
-          </button>
-        )}
-        {this.state.valid !== false && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({
-                valid: false,
-              });
-            }}
-          >
-            Invalid
-          </button>
-        )}
-        {this.state.valid !== null && (
-          <button
-            type="button"
-            onClick={() => {
-              this.setState({
-                valid: null,
-              });
-            }}
-          >
-            Reset validation
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Checkbox
+        name="Stateful_checkbox"
+        valid={valid}
+        checked={checked}
+        disabled={disabled}
+        onChange={e => setChecked(e.target.checked)}
+        {...props}
+      />
+      {!disabled && (
+        <button
+          type="button"
+          onClick={() => {
+            setDisabled(true);
+          }}
+        >
+          Disable
+        </button>
+      )}
+      {disabled && (
+        <button
+          type="button"
+          onClick={() => {
+            setDisabled(false);
+          }}
+        >
+          Enable
+        </button>
+      )}
+      {valid !== true && (
+        <button
+          type="button"
+          onClick={() => {
+            setValid(true);
+          }}
+        >
+          Valid
+        </button>
+      )}
+      {valid !== false && (
+        <button
+          type="button"
+          onClick={() => {
+            setValid(false);
+          }}
+        >
+          Invalid
+        </button>
+      )}
+      {valid !== null && (
+        <button
+          type="button"
+          onClick={() => {
+            setValid(null);
+          }}
+        >
+          Reset validation
+        </button>
+      )}
+    </div>
+  );
+};
 
 storiesOf('Checkbox', module)
   .add('Default', () => <Checkbox label="Test" name="Test" />)

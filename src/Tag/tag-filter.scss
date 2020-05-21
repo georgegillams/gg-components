@@ -1,4 +1,4 @@
-@import "~bpk-mixins";
+@import '../Tokens/common';
 
 .tag-filter {
   &__outer {
@@ -8,7 +8,6 @@
   }
 
   &__tag {
-    // position: relative;
     display: inline-block;
     margin: 0 0.7rem 0.5rem 0;
 

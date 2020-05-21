@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { Input, TextArea, Select } from './index';
 
@@ -96,24 +95,22 @@ const selectOptions = [
 
 storiesOf('Input', module)
   .add('Default', () => <Input value="Test" />)
-  .add('Valid', () => <Input value="Test" valid={true} />)
+  .add('Valid', () => <Input value="Test" valid />)
   .add('Invalid', () => <Input value="Test" valid={false} />)
   .add('Disabled', () => <Input value="Test" enabled={false} />)
-  .add('Password', () => <Input type="password" value="Test" valid={true} />)
+  .add('Password', () => <Input type="password" value="Test" valid />)
   .add('Stateful', () => <StatefulInput />);
 
 storiesOf('TextArea', module)
   .add('Default', () => <TextArea value="Test" />)
-  .add('Valid', () => <TextArea value="Test" valid={true} />)
+  .add('Valid', () => <TextArea value="Test" valid />)
   .add('Invalid', () => <TextArea value="Test" valid={false} />)
   .add('Disabled', () => <TextArea value="Test" enabled={false} />)
   .add('Stateful', () => <StatefulInput component={TextArea} />);
 
 storiesOf('Select', module)
   .add('Default', () => <Select value="apple" options={selectOptions} />)
-  .add('Valid', () => (
-    <Select value="apple" valid={true} options={selectOptions} />
-  ))
+  .add('Valid', () => <Select value="apple" valid options={selectOptions} />)
   .add('Invalid', () => (
     <Select value="apple" valid={false} options={selectOptions} />
   ))

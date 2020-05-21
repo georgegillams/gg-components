@@ -2,18 +2,18 @@
 
 .navigation-bar {
   &__container {
-    padding: 0.8rem 0.2rem;
     position: fixed;
-    width: 100%;
-    background-color: $background-color-elevated-colored;
-    z-index: $navigation-bar-z-index;
-    left: 0;
     top: 0;
+    left: 0;
+    z-index: $navigation-bar-z-index;
+    width: 100%;
+    padding: 0.8rem 0.2rem;
+    background-color: $background-color-elevated-colored;
     box-shadow: 0 0.05rem 0.5rem lightgray;
 
     @media (prefers-color-scheme: dark) {
-      background-color: $background-color-elevated-colored-invert;
       border-bottom: 0.1rem white solid;
+      background-color: $background-color-elevated-colored-invert;
       box-shadow: unset;
     }
   }
@@ -22,12 +22,13 @@
     @include page-container;
     @include page-container-centered;
 
+    /* stylelint-disable-next-line order/order */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__bar-placeholder {
@@ -54,25 +55,24 @@
 
   &__animated-container {
     position: fixed;
-    background-color: $background-color-elevated-colored;
-    left: -50rem;
     top: 0;
-    height: 100vh;
-    width: 25rem;
-    transition: left 0.4s;
-    overflow: hidden;
-    z-index: $navigation-bar-menu-z-index;
+    left: -50rem;
     display: flex;
+    z-index: $navigation-bar-menu-z-index;
+    width: 25rem;
+    height: 100vh;
     justify-content: center;
-
-    @media (prefers-color-scheme: dark) {
-      background-color: $background-color-elevated-colored-invert;
-
-      border-right: 0.1rem white solid;
-    }
+    transition: left 0.4s;
+    background-color: $background-color-elevated-colored;
+    overflow: hidden;
 
     @include bpk-breakpoint-mobile {
       width: 100vw;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      border-right: 0.1rem white solid;
+      background-color: $background-color-elevated-colored-invert;
     }
 
     &--open {
@@ -82,14 +82,14 @@
 
   &__scrim {
     position: fixed;
-    background-color: $background-color-invert;
-    left: 0;
     top: 0;
-    height: 100vh;
-    width: 100vw;
-    opacity: 0;
-    transition: opacity 0.4s;
+    left: 0;
     z-index: $navigation-bar-scrim-z-index;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 0.4s;
+    background-color: $background-color-invert;
+    opacity: 0;
 
     @media (prefers-color-scheme: dark) {
       background-color: black;
@@ -101,16 +101,16 @@
   }
 
   &__mobile-menu-container {
-    margin: 8rem 0 0 0;
-    text-align: left;
     display: flex;
+    margin: 8rem 0 0 0;
     flex-direction: column;
     align-items: start;
+    text-align: left;
   }
 
   &__sidebar-menu-item {
-    margin-bottom: 1rem;
     min-width: 0;
+    margin-bottom: 1rem;
   }
 
   &__burger-button {

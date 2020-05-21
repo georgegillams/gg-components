@@ -1,25 +1,5 @@
 @import '../Tokens/common';
 
-@fontface {
-  font-family: 'Bungee Inline', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Bungee+Inline');
-}
-
-@fontface {
-  font-family: 'Neuton', serif;
-  src: url('https://fonts.googleapis.com/css?family=Neuton');
-}
-
-@fontface {
-  font-family: 'Quattrocento Sans', sans-serif;
-  src: url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
-}
-
-@fontface {
-  font-family: 'Iceland', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Iceland');
-}
-
 @keyframes example {
   0% {
     transform: scale(1);
@@ -58,10 +38,10 @@
 
   &__subheading {
     display: inline-block;
+    border-radius: 0.25rem;
     color: #1e1e1e;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 1.6rem;
-    border-radius: 0.25rem;
 
     &--light {
       color: $bpk-color-sky-gray-tint-06;
@@ -85,20 +65,20 @@
       &:focus,
       &:active,
       &:hover {
-        animation-name: example;
         animation-duration: 0.4s;
+        animation-name: example;
       }
     }
   }
 
   &__heading {
     display: inline-block;
+    border-radius: 0.25rem;
     color: $primary-color;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 5.5rem;
     font-weight: bold;
     line-height: 6rem;
-    border-radius: 0.25rem;
 
     @media (prefers-color-scheme: dark) {
       color: $primary-color-invert;
@@ -113,13 +93,14 @@
     }
 
     &--no-padding {
-      line-height: normal;
       margin: 0;
+      line-height: normal;
     }
     &:hover,
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
+
       @media (prefers-color-scheme: dark) {
         box-shadow: $focus-indicator-invert;
       }

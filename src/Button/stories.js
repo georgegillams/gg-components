@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Button, BurgerButton, CopyButton } from './index';
 
-class StatefulBurger extends Component {
-  constructor(props) {
-    super(props);
+const StatefulBurger = props => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    this.state = { isOpen: false };
-  }
-
-  render() {
-    return (
-      <BurgerButton
-        onClick={() => {
-          this.setState({ isOpen: !this.state.isOpen });
-        }}
-        isOpen={this.state.isOpen}
-        {...this.props}
-      />
-    );
-  }
-}
+  return (
+    <BurgerButton
+      onClick={() => {
+        setIsOpen(!isOpen);
+      }}
+      isOpen={isOpen}
+      {...props}
+    />
+  );
+};
 
 const ButtonStory = props => {
   const { className, dark, ...rest } = props;

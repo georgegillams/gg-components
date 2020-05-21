@@ -1,79 +1,69 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { MoneyPot } from './index';
 
 const INTERACTIVE_INCREMENT = 1300;
 
-class StatefulMoneyPot extends Component {
-  constructor(props) {
-    super(props);
+const StatefulMoneyPot = props => {
+  const [expected, setExpected] = useState(0);
+  const [balance, setBalance] = useState(0);
 
-    this.state = { expected: 0, balance: 0 };
-  }
-
-  render() {
-    return (
-      <div>
-        <MoneyPot
-          name="Test"
-          balance={this.state.balance}
-          goalAmount={6000}
-          markerPosition={this.state.expected}
-          shortfall={this.state.balance < this.state.expected}
-          {...this.props}
-        />
-        {this.state.expected < 100 && (
-          <button
-            onClick={() => {
-              this.setState({
-                expected: this.state.expected + 30,
-              });
-            }}
-          >
-            Increment expected amount
-          </button>
-        )}
-        {this.state.expected >= 100 && (
-          <button
-            onClick={() => {
-              this.setState({
-                expected: 0,
-              });
-            }}
-          >
-            Reset expected amount
-          </button>
-        )}
-        {this.state.balance < 6500 && (
-          <button
-            onClick={() => {
-              this.setState({
-                balance: this.state.balance + INTERACTIVE_INCREMENT,
-              });
-            }}
-          >
-            Increment balance
-          </button>
-        )}
-        {this.state.balance >= 6500 && (
-          <button
-            onClick={() => {
-              this.setState({
-                balance: 0,
-              });
-            }}
-          >
-            Reset balance
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <MoneyPot
+        name="Test"
+        balance={balance}
+        goalAmount={6000}
+        markerPosition={expected}
+        shortfall={balance < expected}
+        {...props}
+      />
+      {expected < 100 && (
+        <button
+          type="button"
+          onClick={() => {
+            setExpected(expected + 30);
+          }}
+        >
+          Increment expected amount
+        </button>
+      )}
+      {expected >= 100 && (
+        <button
+          type="button"
+          onClick={() => {
+            setExpected(0);
+          }}
+        >
+          Reset expected amount
+        </button>
+      )}
+      {balance < 6500 && (
+        <button
+          type="button"
+          onClick={() => {
+            setBalance(balance + INTERACTIVE_INCREMENT);
+          }}
+        >
+          Increment balance
+        </button>
+      )}
+      {balance >= 6500 && (
+        <button
+          type="button"
+          onClick={() => {
+            setBalance(0);
+          }}
+        >
+          Reset balance
+        </button>
+      )}
+    </div>
+  );
+};
 
 storiesOf('MoneyPot', module)
   .add('Default', () => (

@@ -52,21 +52,22 @@ $focus-indicator: 0 0 0 0.2rem gray;
 $focus-indicator-invert: 0 0 0 0.2rem #9f9f9f;
 
 @mixin page-container() {
+  width: 100%;
+  max-width: 60rem;
   margin-top: 1.5rem;
   margin-right: auto;
   margin-left: auto;
-  max-width: 60rem;
-  padding-left: 30px;
-  padding-right: 30px;
-  width: 100%;
+  padding-right: 1.875rem;
+  padding-left: 1.875rem;
 
   @include bpk-breakpoint-tablet {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
   }
 }
-@mixin page-container-centered() {
-  @include page-container;
 
+@mixin page-container-centered() {
   text-align: center;
+
+  @include page-container;
 }

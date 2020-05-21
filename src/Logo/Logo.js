@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './logo.scss';
@@ -52,9 +53,7 @@ const Logo = props => {
           <div>
             <br />
             <br />
-            <h2 className={baseTextClassNameFinal.join(' ')}>
-              {'George Gillams'}
-            </h2>
+            <h2 className={baseTextClassNameFinal.join(' ')}>George Gillams</h2>
           </div>
         )}
       </Link>

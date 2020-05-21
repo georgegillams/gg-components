@@ -1,20 +1,19 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
-import { GGRedirect } from './index';
+import { Redirect } from './index';
 
-storiesOf('GGRedirect', module)
+storiesOf('Redirect', module)
   .add('Default', () => (
-    <GGRedirect
+    <Redirect
       name="You are now being redirected to our contact page"
       to="/contact"
     />
   ))
   .add('External', () => (
-    <GGRedirect
+    <Redirect
       name="You are now being redirected to Flickr"
       to="https://flickr.com/"
     />

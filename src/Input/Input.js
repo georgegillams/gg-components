@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Tick, ExclamationCircle } from '../Icons';
@@ -8,102 +8,100 @@ import STYLES from './input.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-class Input extends Component {
-  constructor(props) {
-    super(props);
+const Input = props => {
+  const [hovering, setHovering] = useState(false);
+  const [focused, setFocused] = useState(false);
 
-    this.InputComponent = props.component;
-    this.state = { hovering: false, focused: false };
+  const InputComponent = props.component;
+
+  const hoverStarted = () => {
+    setHovering(true);
+  };
+
+  const hoverEnded = () => {
+    setHovering(false);
+  };
+
+  const focusStarted = () => {
+    setFocused(true);
+  };
+
+  const focusEnded = () => {
+    setFocused(false);
+  };
+
+  const {
+    name,
+    value,
+    onChange,
+    enabled,
+    type,
+    valid,
+    className,
+    inputProps,
+    iconProps,
+    component,
+    id,
+    ...rest
+  } = props;
+
+  const disabled = enabled === false;
+  const invalid = valid === false;
+  const focusedState = hovering || focused;
+
+  const classNames = [getClassName('input__outer')];
+  const innerClassNames = [getClassName('input__inner')];
+  const iconClassNames = [getClassName('input__icon')];
+  if (disabled) {
+    classNames.push(getClassName('input__outer--disabled'));
+    innerClassNames.push(getClassName('input__inner--disabled'));
+  }
+  if (focusedState && enabled) {
+    classNames.push(getClassName('input__outer--hovering'));
+  }
+  if (className) {
+    classNames.push(className);
   }
 
-  hoverStarted = () => {
-    this.setState({ hovering: true });
-  };
+  let IconComponent = null;
+  if (valid && enabled) {
+    iconClassNames.push(getClassName('input__icon--valid'));
+    IconComponent = Tick;
+  }
+  if (valid === false && enabled) {
+    iconClassNames.push(getClassName('input__icon--invalid'));
+    IconComponent = ExclamationCircle;
+  }
 
-  hoverEnded = () => {
-    this.setState({ hovering: false });
-  };
-
-  focusStarted = () => {
-    this.setState({ focused: true });
-  };
-
-  focusEnded = () => {
-    this.setState({ focused: false });
-  };
-
-  render = () => {
-    const {
-      name,
-      value,
-      onChange,
-      enabled,
-      type,
-      valid,
-      className,
-      inputProps,
-      iconProps,
-      component,
-      id,
-      ...rest
-    } = this.props;
-
-    const disabled = enabled === false;
-    const invalid = valid === false;
-    const focusedState = this.state.hovering || this.state.focused;
-
-    const classNames = [getClassName('input__outer')];
-    const innerClassNames = [getClassName('input__inner')];
-    const iconClassNames = [getClassName('input__icon')];
-    if (disabled) {
-      classNames.push(getClassName('input__outer--disabled'));
-      innerClassNames.push(getClassName('input__inner--disabled'));
-    }
-    if (focusedState && enabled) {
-      classNames.push(getClassName('input__outer--hovering'));
-    }
-    if (className) {
-      classNames.push(className);
-    }
-
-    let IconComponent = null;
-    if (valid && enabled) {
-      iconClassNames.push(getClassName('input__icon--valid'));
-      IconComponent = Tick;
-    }
-    if (valid === false && enabled) {
-      iconClassNames.push(getClassName('input__icon--invalid'));
-      IconComponent = ExclamationCircle;
-    }
-
-    return (
-      <div className={classNames.join(' ')} {...rest}>
-        <this.InputComponent
-          aria-invalid={invalid}
-          aria-disabled={disabled}
-          onMouseEnter={this.hoverStarted}
-          onFocus={this.focusStarted}
-          onMouseLeave={this.hoverEnded}
-          onBlur={this.focusEnded}
-          value={value || ''}
-          type={type}
-          name={name}
-          disabled={disabled}
-          readOnly={!onChange}
-          onChange={enabled ? onChange : null}
-          className={innerClassNames.join(' ')}
-          id={id}
-          {...inputProps}
-        />
-        {IconComponent && (
-          <IconComponent className={iconClassNames.join(' ')} {...iconProps} />
-        )}
-      </div>
-    );
-  };
-}
+  return (
+    <div className={classNames.join(' ')} {...rest}>
+      <InputComponent
+        aria-invalid={invalid}
+        aria-disabled={disabled}
+        onMouseEnter={hoverStarted}
+        onFocus={focusStarted}
+        onMouseLeave={hoverEnded}
+        onBlur={focusEnded}
+        value={value || ''}
+        type={type}
+        name={name}
+        disabled={disabled}
+        readOnly={!onChange}
+        onChange={enabled ? onChange : null}
+        className={innerClassNames.join(' ')}
+        id={id}
+        {...inputProps}
+      />
+      {IconComponent && (
+        <IconComponent className={iconClassNames.join(' ')} {...iconProps} />
+      )}
+    </div>
+  );
+};
 
 Input.propTypes = {
+  id: PropTypes.string,
+  value: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
   className: PropTypes.string,
@@ -118,6 +116,8 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  id: null,
+  value: null,
   name: null,
   onChange: null,
   className: null,

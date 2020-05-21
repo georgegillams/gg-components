@@ -1,3 +1,4 @@
-import GGRedirect from './Redirect';
+import Redirect from './Redirect';
 
-export { GGRedirect };
+export default Redirect;
+export { Redirect };

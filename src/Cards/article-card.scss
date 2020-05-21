@@ -49,11 +49,11 @@
 
   &__center-container {
     display: flex;
+    z-index: 3;
     min-width: 10rem;
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    z-index: 3;
 
     @include bpk-breakpoint-mobile {
       min-width: 100%;
@@ -99,8 +99,11 @@
     grid-area: children;
     flex-direction: row;
     align-items: center;
+    /* stylelint-disable-next-line declaration-no-important */
     text-decoration: none !important;
+    /* stylelint-disable-next-line declaration-no-important */
     text-decoration-color: transparent !important;
+    /* stylelint-disable-next-line declaration-no-important */
     text-decoration-line: none !important;
   }
 

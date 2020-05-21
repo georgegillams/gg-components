@@ -1,9 +1,10 @@
-const fs = require('fs');
-const { execSync } = require('child_process');
+/* eslint-disable no-console */
+import { readFile, writeFile } from 'fs';
+import { execSync } from 'child_process';
 
 const updateImports = (file, findReplaces) =>
   new Promise((resolve, reject) => {
-    fs.readFile(file, 'utf8', (err, data) => {
+    readFile(file, 'utf8', (err, data) => {
       if (err) {
         reject(err);
       }
@@ -16,9 +17,10 @@ const updateImports = (file, findReplaces) =>
         result = splitFile.join(fr.replace);
       });
 
-      fs.writeFile(file, result, 'utf8', err2 => {
+      writeFile(file, result, 'utf8', err2 => {
         if (err2) return reject(err2);
         resolve();
+        return null;
       });
     });
   });

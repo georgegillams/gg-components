@@ -1,11 +1,17 @@
-const fs = require('fs');
-const semver = require('semver');
-const { execSync } = require('child_process');
-const packageData = require('../package.json');
+/* eslint-disable no-console */
+import { writeFileSync } from 'fs';
+import { execSync } from 'child_process';
 
-const blue = s => '\033[0;34m' + s + '\033[0m';
-const yellow = s => '\033[0;33m' + s + '\033[0m';
-const red = s => '\033[0;31m' + s + '\033[0m';
+import { inc } from 'semver';
+
+import packageData, { version } from '../package.json';
+
+const BLUE_START = '\x1B[0;34m';
+const YELLOW_START = '\x1B[0;33m';
+const COLOR_END = '\x1B[0m';
+
+const blue = s => `${BLUE_START}${s}${COLOR_END}`;
+const yellow = s => `${YELLOW_START}${s}${COLOR_END}`;
 
 console.log('Starting release');
 console.log('');
@@ -13,9 +19,11 @@ console.log('');
 const getBumpType = () => {
   if (process.argv.includes('--major')) {
     return 'major';
-  } else if (process.argv.includes('--minor')) {
+  }
+  if (process.argv.includes('--minor')) {
     return 'minor';
-  } else if (process.argv.includes('--patch')) {
+  }
+  if (process.argv.includes('--patch')) {
     return 'patch';
   }
 
@@ -24,9 +32,9 @@ const getBumpType = () => {
 };
 
 const updatePackageFile = newVersion => {
-  packageData.version = newVersion;
-  const fileContent = JSON.stringify(packageData, null, 2) + '\n';
-  fs.writeFileSync('package.json', fileContent, 'utf8');
+  version = newVersion;
+  const fileContent = `${JSON.stringify(packageData, null, 2)}\n`;
+  writeFileSync('package.json', fileContent, 'utf8');
   execSync('cp package.json ./dist/ && cp package-lock.json ./dist/');
   console.log(blue('package.json updated'));
 };
@@ -48,14 +56,13 @@ const publishPackage = () => {
   console.log(blue('Package published'));
 };
 
-const getCurrentPublishedVersion = () => {
-  return execSync(`npm view gg-components version`)
+const getCurrentPublishedVersion = () =>
+  execSync(`npm view gg-components version`)
     .toString()
     .split('\n')[0];
-};
 
 const bumpType = getBumpType();
-const currentVersion = packageData.version;
+const currentVersion = version;
 const currentVersionPublished = getCurrentPublishedVersion();
 if (currentVersion !== currentVersionPublished) {
   console.warn(
@@ -64,7 +71,7 @@ if (currentVersion !== currentVersionPublished) {
     ),
   );
 }
-const newVersion = semver.inc(currentVersion, bumpType);
+const newVersion = inc(currentVersion, bumpType);
 console.log(`Publishing version ${newVersion}`);
 
 updatePackageFile(newVersion);
