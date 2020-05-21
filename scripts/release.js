@@ -32,8 +32,9 @@ const getBumpType = () => {
 };
 
 const updatePackageFile = newVersion => {
-  version = newVersion;
-  const fileContent = `${JSON.stringify(packageData, null, 2)}\n`;
+  const newPackageData = JSON.parse(JSON.stringify(packageData));
+  newPackageData.version = newVersion;
+  const fileContent = `${JSON.stringify(newPackageData, null, 2)}\n`;
   writeFileSync('package.json', fileContent, 'utf8');
   execSync('cp package.json ./dist/ && cp package-lock.json ./dist/');
   console.log(blue('package.json updated'));
