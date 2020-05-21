@@ -1,4 +1,6 @@
+/* eslint-disable no-console */
 const backstop = require('backstopjs');
+
 const scenarioData = require('./scenarios.json');
 
 const PORT = 9001;
@@ -6,7 +8,7 @@ const BASE_URL = `http://127.0.0.1:${PORT}/iframe.html?id=`;
 
 const allowFailure = process.argv.includes('--allowFailure');
 
-let scenarios = [];
+const scenarios = [];
 
 scenarioData.scenarioIds.forEach(sI => {
   scenarios.push({
@@ -33,7 +35,7 @@ const config = {
   ],
   onBeforeScript: 'puppet/onBefore.js',
   onReadyScript: 'puppet/onReady.js',
-  scenarios: scenarios,
+  scenarios,
   paths: {
     bitmaps_reference: 'backstop_data/bitmaps_reference',
     bitmaps_test: 'backstop_data/bitmaps_test',
@@ -54,7 +56,7 @@ const config = {
 
 console.log(`config.misMatchThreshold`, config.misMatchThreshold);
 
-backstop('test', { config: config })
+backstop('test', { config })
   .then(() => {
     // test successful
     console.log(`All good 👍`);
@@ -62,7 +64,7 @@ backstop('test', { config: config })
   })
   .catch(() => {
     //       // test failed
-    backstop('approve', { config: config }).then(() =>
+    backstop('approve', { config }).then(() =>
       process.exit(allowFailure ? 0 : 1),
     );
   });

@@ -27,7 +27,7 @@ import {
   NotificationComp,
 } from './Notifications';
 import { Progress } from './Progress';
-import { GGRedirect } from './Redirect';
+import { Redirect } from './Redirect';
 import { RequestStatusContainer, RequestStatus } from './RequestStatus';
 import {
   Skeleton,
@@ -80,7 +80,7 @@ export {
   DegreeModule,
   EmailVerifiedOnly,
   Footer,
-  GGRedirect,
+  Redirect,
   InputSkeleton,
   LoadingCover,
   LoadingIndicator,

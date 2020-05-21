@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0
+
+- Components no longer provide font-faces. This is now left up to the consuming site.
+- Renamed `GGRedirect` to `Redirect`
+- Fixed errors and warnings in Input components
+- Fixed style errors and warnings in all components
+
 ## 2.0.1
 
 - Renamed `getTimeDifferenceFromMillis` to `getTimeDifferenceFromMilliseconds`

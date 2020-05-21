@@ -1,10 +1,5 @@
 @import '../Tokens/common';
 
-@fontface {
-  font-family: 'Space Mono', monospace;
-  src: url('https://fonts.googleapis.com/css?family=Space Mono');
-}
-
 .code {
   &__outer-container {
     position: relative;

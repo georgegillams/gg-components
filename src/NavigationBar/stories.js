@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+
+import { Paragraph } from '../Typography';
 
 import { NavigationBar, NavigationItem } from './index';
-import { Paragraph } from '../Typography';
 
 const menuItems = [
   <NavigationItem name="Test 1" />,
@@ -14,7 +15,7 @@ const menuItems = [
   <NavigationItem name="Test 4" />,
 ];
 
-const accountMenuItem = <button>account</button>;
+const accountMenuItem = <button type="button">account</button>;
 const logo = <span style={{ color: 'hotpink' }}>LOGO</span>;
 
 storiesOf('NavigationBar', module)
@@ -84,9 +85,9 @@ storiesOf('NavigationBar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
-          Lorem ipse
-        </Paragraph>
+        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+          OPEN IN FULL WINDOW MODE TO TEST SCROLL
+        </a>
         <br />
         <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
           Lorem ipse
@@ -116,9 +117,9 @@ storiesOf('NavigationBar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
-          Lorem ipse
-        </Paragraph>
+        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+          OPEN IN FULL WINDOW MODE TO TEST SCROLL
+        </a>
         <br />
         <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
           Lorem ipse
@@ -135,6 +136,18 @@ storiesOf('NavigationBar', module)
         <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
           Lorem ipse
         </Paragraph>
+        <br />
+        <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
+          Lorem ipse
+        </Paragraph>
+        <br />
+        <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
+          Lorem ipse
+        </Paragraph>
+        <br />
+        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+          OPEN IN FULL WINDOW MODE TO TEST SCROLL
+        </a>
         <br />
         <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
           Lorem ipse

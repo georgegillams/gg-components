@@ -1,19 +1,23 @@
-const path = require('path');
-const fs = require('fs');
-const { exec, execSync } = require('child_process');
+/* eslint-disable no-console */
+import { dirname } from 'path';
+import { unlinkSync } from 'fs';
+import { exec, execSync } from 'child_process';
 
-const auxilliaryFiles = ['dist/tokens/_common.scss'];
+const auxillaryFiles = ['dist/tokens/_common.scss'];
 
-const blue = s => '\033[0;34m' + s + '\033[0m';
+const BLUE_START = '\x1B[0;34m';
+const COLOR_END = '\x1B[0m';
 
-const transpile = file => {
-  return new Promise((resolve, reject) => {
-    const outputFile = path.dirname(file);
+const blue = s => `${BLUE_START}${s}${COLOR_END}`;
+
+const transpile = file =>
+  new Promise((resolve, reject) => {
+    const outputFile = dirname(file);
     const options =
       '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
     exec(
       `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
-      (error, stdout, stderr) => {
+      error => {
         if (error) {
           reject(error);
           return;
@@ -23,10 +27,9 @@ const transpile = file => {
       },
     );
   });
-};
 
 const deleteFile = file => {
-  fs.unlinkSync(file);
+  unlinkSync(file);
 };
 
 console.log('Transpiling `dist` directory scss files...');
@@ -39,7 +42,7 @@ const scssFiles = execSync('find dist -name "*.scss" | grep -v node_modules')
 
 const componentScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
   let res = true;
-  auxilliaryFiles.forEach(aF => {
+  auxillaryFiles.forEach(aF => {
     if (f === aF) {
       res = false;
     }
@@ -47,11 +50,10 @@ const componentScssFiles = JSON.parse(JSON.stringify(scssFiles)).filter(f => {
   return res;
 });
 
-transpilationTasks = componentScssFiles.map(sF => transpile(sF));
+const transpilationTasks = componentScssFiles.map(sF => transpile(sF));
 
-const sleep = milliseconds => {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
-};
+const sleep = milliseconds =>
+  new Promise(resolve => setTimeout(resolve, milliseconds));
 
 Promise.all(transpilationTasks)
   .then(() => {

@@ -26,7 +26,7 @@ exports[`Card should render correctly 1`] = `
     <div
       className="card__outer-container card__outer-container--padded"
     >
-      Promociando
+      Some content
     </div>
     <div
       className="card__banner"

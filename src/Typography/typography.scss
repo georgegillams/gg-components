@@ -1,20 +1,5 @@
 @import '../Tokens/common';
 
-@fontface {
-  font-family: 'Quattrocento Sans', sans-serif;
-  src: url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
-}
-
-@fontface {
-  font-family: 'Tangerine', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Tangerine');
-}
-
-@fontface {
-  font-family: 'Iceland', cursive;
-  src: url('https://fonts.googleapis.com/css?family=Iceland');
-}
-
 .typography {
   &__main {
     width: 100%;
@@ -29,8 +14,8 @@
   }
 
   &__paragraph {
-    padding-bottom: 0;
     margin-bottom: 0;
+    padding-bottom: 0;
     line-height: 1.5;
   }
 
@@ -52,17 +37,26 @@
     position: absolute;
     margin-top: 0.6rem;
     margin-left: -1.2rem;
+    border-radius: 0.25rem;
+    color: $link-color;
+    color: var(--link-color, $link-color);
     font-size: 1.5rem;
     font-weight: bold;
     text-decoration: none;
     opacity: 0.4;
-    color: $link-color;
-    color: var(--link-color, $link-color);
-    border-radius: 0.25rem;
+
+    @include bpk-breakpoint-tablet {
+      margin-left: 0;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      opacity: 1;
+    }
 
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
+
       @media (prefers-color-scheme: dark) {
         box-shadow: $focus-indicator-invert;
       }
@@ -72,19 +66,11 @@
       margin-top: -0.16rem;
     }
 
-    @media (prefers-color-scheme: dark) {
-      opacity: 1;
-    }
-
-    @include bpk-breakpoint-tablet {
-      margin-left: 0;
-    }
-
     &--section {
-      line-height: 2.8rem;
-      font-size: 2.2rem;
-      line-height: 2.2rem;
       margin-top: 1.7rem;
+      font-size: 2.2rem;
+      line-height: 2.8rem;
+      line-height: 2.2rem;
 
       &--no-padding {
         margin-top: 0.1rem;
@@ -110,14 +96,14 @@
     &--subsection {
       padding-top: 0.6rem;
       padding-bottom: 0.6rem;
-      text-decoration: none;
       line-height: 1.6rem;
+      text-decoration: none;
     }
 
     &--section {
-      border-radius: 1rem;
       padding-top: 1.5rem;
       padding-bottom: 1rem;
+      border-radius: 1rem;
       font-size: 2.2rem;
       font-weight: bold;
       line-height: 2.8rem;
@@ -126,7 +112,7 @@
   }
 
   &--fancy {
-    font-family: 'Tangerine', cursive;
+    font-family: Tangerine, cursive;
   }
 
   &--no-padding {
@@ -136,19 +122,27 @@
 
   &--hovering {
     transition: all 0.4s;
+    /* stylelint-disable-next-line declaration-no-important */
     color: $primary-color !important;
+    /* stylelint-disable-next-line declaration-no-important */
     color: var(--primary-color, $primary-color) !important;
     text-decoration: none;
+    /* stylelint-disable-next-line declaration-no-important */
     fill: $primary-color !important;
+    /* stylelint-disable-next-line declaration-no-important */
     fill: var(--primary-color, $primary-color) !important;
   }
 
   &--hovering-light {
     transition: all 0.4s;
+    /* stylelint-disable-next-line declaration-no-important */
     color: $primary-color-light !important;
+    /* stylelint-disable-next-line declaration-no-important */
     color: var(--primary-color-light, $primary-color-light) !important;
     text-decoration: none;
+    /* stylelint-disable-next-line declaration-no-important */
     fill: $primary-color-light !important;
+    /* stylelint-disable-next-line declaration-no-important */
     fill: var(--primary-color-light, $primary-color-light) !important;
   }
 
@@ -158,9 +152,9 @@
 
   &__link {
     display: inline-block;
+    border-radius: 0.25rem;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 0.25rem;
 
     &--text-link {
       color: $link-color;
@@ -186,13 +180,14 @@
     &:hover {
       color: $link-color-hover;
       color: var(--link-color-hover, $link-color-hover);
+      text-decoration: none;
       fill: $link-color-hover;
       fill: var(--link-color-hover, $link-color-hover);
-      text-decoration: none;
     }
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
+
       @media (prefers-color-scheme: dark) {
         box-shadow: $focus-indicator-invert;
       }

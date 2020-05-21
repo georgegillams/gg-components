@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+
 import { Progress } from '../Progress';
 import { cssModules } from '../helpers/cssModules';
-import Marker from './Marker';
 
+import Marker from './Marker';
 import STYLES from './money-pot.scss';
 
 const getClassName = cssModules(STYLES);

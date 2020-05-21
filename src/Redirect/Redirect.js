@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import HelperFunctions from '../helpers/HelperFunctions';
-import { Redirect } from 'react-router-dom';
+import { Redirect as RRDRedirect } from 'react-router-dom';
 
+import HelperFunctions from '../helpers/HelperFunctions';
 import { Section, TextLink } from '../Typography';
 
-class GGRedirect extends Component {
+class Redirect extends Component {
   constructor(props) {
     super(props);
 
@@ -30,7 +30,7 @@ class GGRedirect extends Component {
     return (
       <div {...rest}>
         {!externalRedirect && this.state.isTimeToRedirect && (
-          <Redirect to={to} />
+          <RRDRedirect to={to} />
         )}
         <Section name={name || 'Redirecting in 2 seconds...'}>
           <TextLink to={to}>Not been redirected? Click here.</TextLink>
@@ -40,13 +40,13 @@ class GGRedirect extends Component {
   }
 }
 
-GGRedirect.propTypes = {
+Redirect.propTypes = {
   to: PropTypes.string.isRequired,
   name: PropTypes.string,
 };
 
-GGRedirect.defaultProps = {
+Redirect.defaultProps = {
   name: null,
 };
 
-export default GGRedirect;
+export default Redirect;

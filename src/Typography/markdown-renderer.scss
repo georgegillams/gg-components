@@ -1,15 +1,10 @@
 @import '../Tokens/common';
 
-@fontface {
-  font-family: 'Quattrocento Sans', sans-serif;
-  src: url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
-}
-
 .blog-viewer {
   &__outer {
     display: inline;
-    font-family: 'Quattrocento Sans', sans-serif;
     color: $not-black;
+    font-family: 'Quattrocento Sans', sans-serif;
 
     @media (prefers-color-scheme: dark) {
       color: $not-black-invert;

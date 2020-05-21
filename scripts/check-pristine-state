@@ -1,7 +1,7 @@
-#!/usr/bin/env node
+/* eslint-disable no-console */
 
-const { promisify } = require('util');
-const { exec } = require('child_process');
+import { promisify } from 'util';
+import { exec } from 'child_process';
 
 const execAsync = promisify(exec);
 
@@ -11,7 +11,7 @@ const [...filesToIgnore] = process.argv;
 const exists = item => !!item;
 
 const isNotInList = list => item => {
-  const filtered = list.filter((pathToIgnore) => item.endsWith(pathToIgnore));
+  const filtered = list.filter(pathToIgnore => item.endsWith(pathToIgnore));
   return filtered.length === 0;
 };
 

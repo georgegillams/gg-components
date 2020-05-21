@@ -29,6 +29,7 @@
     &:active,
     &:focus {
       box-shadow: $focus-indicator;
+
       @media (prefers-color-scheme: dark) {
         box-shadow: $focus-indicator-invert;
       }
