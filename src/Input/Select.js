@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Tick, ExclaimationCircle } from '../Icons';
-import { cssModules } from '../helpers/cssModules';
-import Input from './Input';
 
+import { Tick, ExclamationCircle } from '../Icons';
+import { cssModules } from '../helpers/cssModules';
+
+import Input from './Input';
 import STYLES from './input.scss';
+
 const OTHER_VALUE = '';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
@@ -70,12 +71,11 @@ class Select extends Component {
       iconClassNames.push(getClassName('input__icon--valid'));
       IconComponent = Tick;
     }
-    if (valid == false && enabled) {
+    if (valid === false && enabled) {
       iconClassNames.push(getClassName('input__icon--invalid'));
-      IconComponent = ExclaimationCircle;
+      IconComponent = ExclamationCircle;
     }
 
-    console.log(`value`, value);
     const showOtherFreeTextField =
       enableOther && !options.map(o => o.value).includes(value);
 
@@ -92,14 +92,23 @@ class Select extends Component {
             value={showOtherFreeTextField ? OTHER_VALUE : value}
             name={name}
             disabled={disabled}
+            readOnly={!onChange}
             onChange={enabled ? onChange : null}
             className={innerClassNames.join(' ')}
             id={id}
             {...inputProps}
           >
             {options &&
-              options.map(o => <option value={o.value}>{o.name}</option>)}
-            {enableOther && <option value={OTHER_VALUE}>Other</option>}
+              options.map(o => (
+                <option key={o.value} value={o.value}>
+                  {o.name}
+                </option>
+              ))}
+            {enableOther && (
+              <option key="other" value={OTHER_VALUE}>
+                Other
+              </option>
+            )}
           </select>
           {IconComponent && (
             <IconComponent
@@ -111,9 +120,11 @@ class Select extends Component {
         {showOtherFreeTextField && (
           <Input
             style={{ marginTop: '1rem' }}
+            name={name}
             value={value}
             enabled={enabled}
             valid={valid}
+            readOnly={!onChange}
             onChange={enabled ? onChange : null}
           />
         )}
@@ -123,18 +134,26 @@ class Select extends Component {
 }
 
 Select.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  id: PropTypes.string,
+  onChange: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
   enabled: PropTypes.bool,
   enableOther: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
   iconProps: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
   inputProps: PropTypes.object,
   valid: PropTypes.bool,
 };
 
 Select.defaultProps = {
+  onChange: null,
+  name: null,
+  value: null,
+  id: null,
   className: null,
   enabled: true,
   enableOther: false,

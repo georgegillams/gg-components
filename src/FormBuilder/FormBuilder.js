@@ -1,96 +1,104 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
+
+import { Button } from '../Button';
 import { Input, TextArea, Select } from '../Input';
 import { Checkbox } from '../Checkbox';
 import { cssModules } from '../helpers/cssModules';
-
-import STYLES from './forms.scss';
-
-import { Button } from '../Button';
-import { TextLink } from '../Typography';
 import { formValueChanged } from '../helpers/objects';
 import HelperFunctions from '../helpers/HelperFunctions';
 
+import STYLES from './forms.scss';
+
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-class FormBuilder extends React.Component {
-  static propTypes = {
-    entity: PropTypes.object.isRequired,
-    onDataChanged: PropTypes.func.isRequired,
-    onSubmit: PropTypes.func.isRequired,
-    submitLabel: PropTypes.string.isRequired,
-    preSubmitText: PropTypes.string,
-    formFields: PropTypes.arrayOf(PropTypes.object).isRequired,
-    submitOnChange: PropTypes.bool,
-    disabled: PropTypes.bool,
-    centered: PropTypes.bool,
-    className: PropTypes.string,
-  };
+const FormBuilder = props => {
+  const [formId] = useState(
+    Math.random()
+      .toString(36)
+      .substring(7),
+  );
 
-  static defaultProps = {
-    className: null,
-    submitOnChange: false,
-    disabled: false,
-    centered: false,
-    preSubmitText: null,
-  };
+  const {
+    className,
+    centered,
+    disabled,
+    entity,
+    onDataChanged,
+    submitOnChange,
+    onSubmit,
+    preSubmitText,
+    submitLabel,
+    formFields,
+    ...rest
+  } = props;
 
-  constructor(props) {
-    super(props);
+  const classNameFinal = [];
+  if (className) classNameFinal.push(className);
 
-    this.state = {
-      formId: Math.random()
-        .toString(36)
-        .substring(7),
-    };
+  const validity = [];
+  for (let i = 0; i < formFields.length; i += 1) {
+    const field = formFields[i];
+    const fieldId = field.id;
+    const fieldRegex = field.validationRegex;
+    validity[i] =
+      !(entity[fieldId] && entity[fieldId].match) ||
+      (!!entity[fieldId] && !!entity[fieldId].match(fieldRegex));
   }
 
-  render() {
-    const {
-      className,
-      centered,
-      disabled,
-      entity,
-      onDataChanged,
-      submitOnChange,
-      onSubmit,
-      preSubmitText,
-      submitLabel,
-      formFields,
-      ...rest
-    } = this.props;
+  const filteredFormFields = formFields.filter(
+    field => HelperFunctions.includes(Object.keys(field), 'show') && field.show,
+  );
 
-    const classNameFinal = [];
-    if (className) classNameFinal.push(className);
-
-    const validity = [];
-    for (let i = 0; i < formFields.length; i += 1) {
-      const field = formFields[i];
-      const fieldId = field.id;
-      const fieldName = field.name;
-      const fieldRegex = field.validationRegex;
-      validity[i] =
-        !(entity[fieldId] && entity[fieldId].match) ||
-        (!!entity[fieldId] && !!entity[fieldId].match(fieldRegex));
-    }
-
-    const filteredFormFields = formFields.filter(
-      field =>
-        HelperFunctions.includes(Object.keys(field), 'show') && field.show,
-    );
-
-    return (
-      <div className={classNameFinal.join(' ')} {...rest}>
-        {filteredFormFields.map((formField, index) => (
-          <Fragment>
-            {formField.type === 'CHECKBOX' && (
-              <Fragment>
-                <Checkbox
-                  id={`${formField.id}_${this.state.formId}`}
-                  className={getClassName('forms__component')}
+  return (
+    <div className={classNameFinal.join(' ')} {...rest}>
+      {filteredFormFields.map((formField, index) => (
+        <Fragment key={`${formField.id}_${formId}`}>
+          {formField.type === 'CHECKBOX' && (
+            <>
+              <Checkbox
+                id={`${formField.id}_${formId}`}
+                className={getClassName('forms__component')}
+                name={formField.name}
+                label={formField.name}
+                checked={entity[formField.id]}
+                onChange={event => {
+                  formValueChanged(
+                    entity,
+                    formField.id,
+                    event,
+                    onDataChanged,
+                    submitOnChange ? onSubmit : null,
+                  );
+                }}
+                disabled={formField.disabled}
+              />
+              <br />
+            </>
+          )}
+          {!formField.long &&
+            formField.type !== 'CHECKBOX' &&
+            formField.type !== 'SELECT' && (
+              <>
+                <label
+                  htmlFor={`${formField.id}_${formId}`}
+                  className={getClassName(
+                    'forms__component',
+                    'forms__component__label',
+                  )}
+                >
+                  {formField.name}
+                </label>
+                <Input
+                  id={`${formField.id}_${formId}`}
+                  className={getClassName(
+                    'forms__component',
+                    'forms__component__text-box',
+                  )}
                   name={formField.name}
-                  label={formField.name}
-                  checked={entity[formField.id]}
+                  value={entity[formField.id]}
+                  valid={validity[index]}
+                  type={formField.type === 'password' ? 'password' : null}
                   onChange={event => {
                     formValueChanged(
                       entity,
@@ -100,90 +108,18 @@ class FormBuilder extends React.Component {
                       submitOnChange ? onSubmit : null,
                     );
                   }}
-                  enabled={formField.disabled !== null && !formField.disabled}
+                  inputProps={formField.inputProps}
+                  disabled={formField.disabled}
+                  placeholder={formField.name}
                 />
-                <br />
-              </Fragment>
+              </>
             )}
-            {!formField.long &&
-              formField.type !== 'CHECKBOX' &&
-              formField.type !== 'SELECT' && (
-                <Fragment>
-                  <label
-                    htmlFor={`${formField.id}_${this.state.formId}`}
-                    className={getClassName(
-                      'forms__component',
-                      'forms__component__label',
-                    )}
-                  >
-                    {formField.name}
-                  </label>
-                  <Input
-                    id={`${formField.id}_${this.state.formId}`}
-                    className={getClassName(
-                      'forms__component',
-                      'forms__component__text-box',
-                    )}
-                    name={formField.name}
-                    value={entity[formField.id]}
-                    valid={validity[index]}
-                    type={formField.type === 'password' ? 'password' : null}
-                    onChange={event => {
-                      formValueChanged(
-                        entity,
-                        formField.id,
-                        event,
-                        onDataChanged,
-                        submitOnChange ? onSubmit : null,
-                      );
-                    }}
-                    inputProps={formField.inputProps}
-                    disabled={formField.disabled}
-                    placeholder={formField.name}
-                  />
-                </Fragment>
-              )}
-            {formField.long &&
-              formField.type !== 'CHECKBOX' &&
-              formField.type !== 'SELECT' && (
-                <Fragment>
-                  <label
-                    htmlFor={`${formField.id}_${this.state.formId}`}
-                    className={getClassName(
-                      'forms__component',
-                      'forms__component__label',
-                    )}
-                  >
-                    {formField.name}
-                  </label>
-                  <TextArea
-                    id={`${formField.id}_${this.state.formId}`}
-                    className={getClassName(
-                      'forms__component',
-                      'forms__component__text-box',
-                    )}
-                    name={formField.name}
-                    value={entity[formField.id]}
-                    valid={validity[index]}
-                    onChange={event => {
-                      formValueChanged(
-                        entity,
-                        formField.id,
-                        event,
-                        onDataChanged,
-                        submitOnChange ? onSubmit : null,
-                      );
-                    }}
-                    inputProps={formField.inputProps}
-                    disabled={formField.disabled}
-                    placeholder={formField.name}
-                  />
-                </Fragment>
-              )}
-            {formField.type === 'SELECT' && (
-              <Fragment>
+          {formField.long &&
+            formField.type !== 'CHECKBOX' &&
+            formField.type !== 'SELECT' && (
+              <>
                 <label
-                  htmlFor={`${formField.id}_${this.state.formId}`}
+                  htmlFor={`${formField.id}_${formId}`}
                   className={getClassName(
                     'forms__component',
                     'forms__component__label',
@@ -191,8 +127,8 @@ class FormBuilder extends React.Component {
                 >
                   {formField.name}
                 </label>
-                <Select
-                  id={`${formField.id}_${this.state.formId}`}
+                <TextArea
+                  id={`${formField.id}_${formId}`}
                   className={getClassName(
                     'forms__component',
                     'forms__component__text-box',
@@ -209,38 +145,96 @@ class FormBuilder extends React.Component {
                       submitOnChange ? onSubmit : null,
                     );
                   }}
-                  options={formField.options}
-                  enableOther={formField.enableOther}
+                  inputProps={formField.inputProps}
                   disabled={formField.disabled}
                   placeholder={formField.name}
                 />
-              </Fragment>
+              </>
             )}
-          </Fragment>
-        ))}
-        {preSubmitText && (
-          <Fragment>
-            <div className={getClassName('forms__component')}>
-              {preSubmitText}
-            </div>
-          </Fragment>
-        )}
-        {!submitOnChange && (
-          <Button
-            className={getClassName(
-              'forms__component',
-              'forms__component__button',
-            )}
-            large
-            onClick={onSubmit}
-            disabled={disabled || !validity.every(v => v)}
-          >
-            {submitLabel}
-          </Button>
-        )}
-      </div>
-    );
-  }
-}
+          {formField.type === 'SELECT' && (
+            <>
+              <label
+                htmlFor={`${formField.id}_${formId}`}
+                className={getClassName(
+                  'forms__component',
+                  'forms__component__label',
+                )}
+              >
+                {formField.name}
+              </label>
+              <Select
+                id={`${formField.id}_${formId}`}
+                className={getClassName(
+                  'forms__component',
+                  'forms__component__text-box',
+                )}
+                name={formField.name}
+                value={entity[formField.id]}
+                valid={validity[index]}
+                onChange={event => {
+                  formValueChanged(
+                    entity,
+                    formField.id,
+                    event,
+                    onDataChanged,
+                    submitOnChange ? onSubmit : null,
+                  );
+                }}
+                options={formField.options}
+                enableOther={formField.enableOther}
+                disabled={formField.disabled}
+                placeholder={formField.name}
+              />
+            </>
+          )}
+        </Fragment>
+      ))}
+      {preSubmitText && (
+        <>
+          <div className={getClassName('forms__component')}>
+            {preSubmitText}
+          </div>
+        </>
+      )}
+      {!submitOnChange && (
+        <Button
+          className={getClassName(
+            'forms__component',
+            'forms__component__button',
+          )}
+          large
+          onClick={onSubmit}
+          disabled={disabled || !validity.every(v => v)}
+        >
+          {submitLabel}
+        </Button>
+      )}
+    </div>
+  );
+};
+
+FormBuilder.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  entity: PropTypes.object.isRequired,
+  onDataChanged: PropTypes.func,
+  onSubmit: PropTypes.func,
+  submitLabel: PropTypes.string.isRequired,
+  preSubmitText: PropTypes.string,
+  formFields: PropTypes.arrayOf(PropTypes.object).isRequired,
+  submitOnChange: PropTypes.bool,
+  disabled: PropTypes.bool,
+  centered: PropTypes.bool,
+  className: PropTypes.string,
+};
+
+FormBuilder.defaultProps = {
+  className: null,
+  onSubmit: null,
+  onDataChanged: null,
+  submitOnChange: false,
+  disabled: false,
+  centered: false,
+  preSubmitText: null,
+};
 
 export default FormBuilder;

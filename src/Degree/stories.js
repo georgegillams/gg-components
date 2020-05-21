@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { DegreeModule } from './index';
 
@@ -27,6 +26,7 @@ class StatefulDegreeModule extends Component {
         />
         {this.state.markerPosition < 100 && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 markerPosition:
@@ -38,6 +38,7 @@ class StatefulDegreeModule extends Component {
           </button>
         )}
         <button
+          type="button"
           onClick={() => {
             this.setState(prevState => ({
               filled: !prevState.filled,
@@ -48,6 +49,7 @@ class StatefulDegreeModule extends Component {
         </button>
         {this.state.markerPosition >= 100 && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 markerPosition: 0,
@@ -59,6 +61,7 @@ class StatefulDegreeModule extends Component {
         )}
         {this.state.percentage < 100 && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 percentage: this.state.percentage + INTERACTIVE_INCREMENT,
@@ -70,6 +73,7 @@ class StatefulDegreeModule extends Component {
         )}
         {this.state.percentage >= 100 && (
           <button
+            type="button"
             onClick={() => {
               this.setState({
                 percentage: 0,

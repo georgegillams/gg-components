@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Tick, ExclaimationCircle } from '../Icons';
+
+import { Tick, ExclamationCircle } from '../Icons';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './input.scss';
@@ -71,9 +71,9 @@ class Input extends Component {
       iconClassNames.push(getClassName('input__icon--valid'));
       IconComponent = Tick;
     }
-    if (valid == false && enabled) {
+    if (valid === false && enabled) {
       iconClassNames.push(getClassName('input__icon--invalid'));
-      IconComponent = ExclaimationCircle;
+      IconComponent = ExclamationCircle;
     }
 
     return (
@@ -85,10 +85,11 @@ class Input extends Component {
           onFocus={this.focusStarted}
           onMouseLeave={this.hoverEnded}
           onBlur={this.focusEnded}
-          value={value}
+          value={value || ''}
           type={type}
           name={name}
           disabled={disabled}
+          readOnly={!onChange}
           onChange={enabled ? onChange : null}
           className={innerClassNames.join(' ')}
           id={id}
@@ -103,18 +104,22 @@ class Input extends Component {
 }
 
 Input.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
   className: PropTypes.string,
   component: PropTypes.func,
   enabled: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
   iconProps: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
   inputProps: PropTypes.object,
   type: PropTypes.string,
   valid: PropTypes.bool,
 };
 
 Input.defaultProps = {
+  name: null,
+  onChange: null,
   className: null,
   component: iProps => <input {...iProps} />,
   enabled: true,

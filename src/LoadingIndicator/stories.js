@@ -1,44 +1,36 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { LoadingIndicator } from './index';
 
-class StatefulLoading extends Component {
-  constructor(props) {
-    super(props);
+const StatefulLoading = props => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    this.state = { loading: true, error: false };
-  }
-
-  render() {
-    return (
-      <div>
-        <button
-          onClick={() => {
-            this.setState({ error: !this.state.error });
-          }}
-        >
-          Toggle error
-        </button>
-        <button
-          onClick={() => {
-            this.setState({ loading: !this.state.loading });
-          }}
-        >
-          Toggle loading
-        </button>
-        <LoadingIndicator
-          loading={this.state.loading}
-          error={this.state.error}
-          {...this.props}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => {
+          setError(error ? null : { errorType: 'auth' });
+        }}
+      >
+        Toggle error
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setLoading(!loading);
+        }}
+      >
+        Toggle loading
+      </button>
+      <LoadingIndicator loading={loading} error={error} {...props} />
+    </div>
+  );
+};
 
 storiesOf('LoadingIndicator', module)
   .add('Loading', () => (

@@ -8,7 +8,9 @@ const formValueChanged = (
   const newValue = JSON.parse(JSON.stringify(object));
   newValue[attributeName] =
     event.target.value === 'on' ? event.target.checked : event.target.value;
-  action(newValue);
+  if (action) {
+    action(newValue);
+  }
   if (callback) {
     callback(newValue);
   }

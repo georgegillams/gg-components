@@ -2,7 +2,7 @@
 
 .forms {
   &__component {
-    margin-bottom: 1rem !important;
+    margin-bottom: 1rem;
 
     &__text-box {
       width: 100%;
@@ -15,17 +15,17 @@
 
     &--inline {
       width: 15rem;
-      margin-left: 1rem;
       margin-right: 1rem;
+      margin-left: 1rem;
     }
 
     &__label {
       margin: 0 0 0 0.1rem;
-      font-weight: bold;
-      font-style: italic;
-      font-size: 0.8rem;
-      font-family: 'Quattrocento Sans', sans-serif;
       color: $not-black;
+      font-family: 'Quattrocento Sans', sans-serif;
+      font-size: 0.8rem;
+      font-style: italic;
+      font-weight: bold;
 
       @media (prefers-color-scheme: dark) {
         color: $not-black-invert;

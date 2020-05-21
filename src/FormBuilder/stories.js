@@ -1,8 +1,7 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { FormBuilder } from './index';
 
@@ -90,7 +89,7 @@ storiesOf('FormBuilder', module)
       submitLabel="Submit"
     />
   ))
-  .add('With presubmit text', () => (
+  .add('With pre-submit text', () => (
     <FormBuilder
       formFields={formFields}
       entity={{}}

@@ -27,12 +27,14 @@ class HelperFunctions {
     }
     return returnValue;
   }
+
   static evalCompat(code) {
     if (typeof window === 'undefined' || this.getBrowser(window).ie) {
       return () => null;
     }
     return eval(code); // eslint-disable-line
   }
+
   static getBrowser(window) {
     const ua = window.navigator.userAgent;
 
@@ -73,7 +75,8 @@ class HelperFunctions {
 
     if (browser === false) {
       return { good: true, ie: false, edge: false };
-    } else if (browser >= 12) {
+    }
+    if (browser >= 12) {
       return { good: false, ie: false, edge: true };
     }
     return { good: false, ie: true, edge: false };
