@@ -1,86 +1,91 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
+
 import STYLES from './blur-effect.scss';
 
 const getClassName = cssModules(STYLES);
 
-class BlurEffectView extends Component {
-  constructor(props) {
-    super(props);
-    this.myRef = React.createRef();
-    this.mainScrollElement;
-    this.mainScrollElementClone;
-  }
+const BlurEffectView = props => {
+  const myRef = useRef(null);
+  let mainScrollElement = null;
+  let mainScrollElementClone = null;
 
-  static propTypes = {
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: null,
-  };
-
-  adjustCloneScroll = () => {
-    if (!this.mainScrollElement || !this.mainScrollElementClone) {
+  const adjustCloneScroll = () => {
+    if (!mainScrollElement || !mainScrollElementClone) {
       return;
     }
-    const yValue = this.mainScrollElement.offsetTop - window.pageYOffset;
-    this.mainScrollElementClone.style.transform = `translatey(${yValue}px)`;
+    const yValue = mainScrollElement.offsetTop - window.pageYOffset;
+    mainScrollElementClone.style.transform = `translatey(${yValue}px)`;
   };
 
-  cleanUpElements = htmlNode => {
+  const cleanUpElements = htmlNode => {
     if (!htmlNode) {
       return;
     }
+    /* eslint-disable no-param-reassign */
     htmlNode.id += '_clone';
     htmlNode.ariaHidden = true;
     htmlNode.tabIndex = -1;
+    /* eslint-enable no-param-reassign */
 
     if (htmlNode.children && htmlNode.children.length) {
       for (let i = 0; i <= htmlNode.children.length; i += 1) {
-        this.cleanUpElements(htmlNode.children[i]);
+        cleanUpElements(htmlNode.children[i]);
       }
     }
   };
 
-  recreateBlurClone = () => {
-    if (!this.mainScrollElement || !this.myRef || !this.myRef.current) {
+  const recreateBlurClone = () => {
+    if (!mainScrollElement || !myRef || !myRef.current) {
       return;
     }
 
-    const newMainScrollElementClone = this.mainScrollElement.cloneNode(true);
+    const newMainScrollElementClone = mainScrollElement.cloneNode(true);
     newMainScrollElementClone.style.filter = 'blur(10px)';
     newMainScrollElementClone.style.opacity = '0.5';
-    this.cleanUpElements(newMainScrollElementClone);
-    if (this.mainScrollElementClone) {
-      this.myRef.current.removeChild(this.mainScrollElementClone);
+    cleanUpElements(newMainScrollElementClone);
+    if (mainScrollElementClone) {
+      myRef.current.removeChild(mainScrollElementClone);
     }
-    this.mainScrollElementClone = newMainScrollElementClone;
-    this.myRef.current.append(this.mainScrollElementClone);
-    this.adjustCloneScroll();
+    mainScrollElementClone = newMainScrollElementClone;
+    myRef.current.append(mainScrollElementClone);
+    adjustCloneScroll();
   };
 
-  componentDidMount() {
-    this.mainScrollElement = document.getElementById('mainScrollView');
-    this.recreateBlurClone();
-    this.interval = setInterval(this.recreateBlurClone, 2000);
+  useEffect(() => {
+    mainScrollElement = document.getElementById('mainScrollView');
+    recreateBlurClone();
+    const interval = setInterval(recreateBlurClone, 2000);
     window.addEventListener('scroll', e => {
-      this.adjustCloneScroll();
+      adjustCloneScroll();
     });
-  }
 
-  render() {
-    const { className, ...rest } = this.props;
+    const cleanUp = () => {
+      clearInterval(interval);
+    };
+    return cleanUp;
+  });
 
-    return (
-      <div
-        ref={this.myRef}
-        aria-hidden="true"
-        className={getClassName('blur-effect__outer', className)}
-      />
-    );
-  }
-}
+  const { className, ...rest } = props;
+
+  return (
+    <div
+      ref={myRef}
+      aria-hidden="true"
+      className={getClassName('blur-effect__outer', className)}
+      {...rest}
+    />
+  );
+};
+
+BlurEffectView.propTypes = {
+  className: PropTypes.string,
+};
+
+BlurEffectView.defaultProps = {
+  className: null,
+};
 
 export default BlurEffectView;

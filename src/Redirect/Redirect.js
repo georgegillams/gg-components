@@ -1,44 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect as RRDRedirect } from 'react-router-dom';
 
 import HelperFunctions from '../helpers/HelperFunctions';
 import { Section, TextLink } from '../Typography';
 
-class Redirect extends Component {
-  constructor(props) {
-    super(props);
+const Redirect = props => {
+  const [isTimeToRedirect, setIsTimeToRedirect] = useState(false);
 
-    this.state = { isTimeToRedirect: false };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isTimeToRedirect: true });
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsTimeToRedirect(true);
     }, 2000);
+
+    const cleanUp = () => {
+      clearTimeout(timeout);
+    };
+    return cleanUp;
+  });
+
+  const { name, to, ...rest } = props;
+
+  const externalRedirect = HelperFunctions.includes(to, 'http');
+
+  if (externalRedirect && isTimeToRedirect) {
+    document.location = to;
   }
 
-  render() {
-    const { name, to, ...rest } = this.props;
-
-    const externalRedirect = HelperFunctions.includes(to, 'http');
-
-    if (externalRedirect && this.state.isTimeToRedirect) {
-      document.location = to;
-    }
-
-    return (
-      <div {...rest}>
-        {!externalRedirect && this.state.isTimeToRedirect && (
-          <RRDRedirect to={to} />
-        )}
-        <Section name={name || 'Redirecting in 2 seconds...'}>
-          <TextLink to={to}>Not been redirected? Click here.</TextLink>
-        </Section>
-      </div>
-    );
-  }
-}
+  return (
+    <div {...rest}>
+      {!externalRedirect && isTimeToRedirect && <RRDRedirect to={to} />}
+      <Section name={name || 'Redirecting in 2 seconds...'}>
+        <TextLink to={to}>Not been redirected? Click here.</TextLink>
+      </Section>
+    </div>
+  );
+};
 
 Redirect.propTypes = {
   to: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Paragraph } from '../Typography';
@@ -8,53 +8,52 @@ import STYLES from './segmented-control.scss';
 
 const getClassName = cssModules(STYLES);
 
-class SegmentedControlItem extends Component {
-  static propTypes = {
-    first: PropTypes.boolean,
-    last: PropTypes.boolean,
-    selected: PropTypes.boolean,
-    className: PropTypes.string,
-  };
+const SegmentedControlItem = props => {
+  const { first, last, selected, children, className, ...rest } = props;
 
-  static defaultProps = {
-    first: false,
-    last: false,
-    selected: false,
-    className: null,
-  };
+  const classNames = [getClassName('segmented-control__item', className)];
+  const textClassNames = [getClassName('segmented-control__item-text')];
 
-  render = () => {
-    const { first, last, selected, children, className, ...rest } = this.props;
+  if (first) {
+    classNames.push(getClassName('segmented-control__item--first'));
+  }
 
-    const classNames = [getClassName('segmented-control__item', className)];
-    const textClassNames = [getClassName('segmented-control__item-text')];
+  if (last) {
+    classNames.push(getClassName('segmented-control__item--last'));
+  }
 
-    if (first) {
-      classNames.push(getClassName('segmented-control__item--first'));
-    }
+  if (selected) {
+    classNames.push(getClassName('segmented-control__item--selected'));
+    textClassNames.push(getClassName('segmented-control__item-text--selected'));
+  }
 
-    if (last) {
-      classNames.push(getClassName('segmented-control__item--last'));
-    }
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={selected}
+      className={classNames.join(' ')}
+      {...rest}
+    >
+      <Paragraph className={textClassNames.join(' ')}>{children}</Paragraph>
+    </button>
+  );
+};
 
-    if (selected) {
-      classNames.push(getClassName('segmented-control__item--selected'));
-      textClassNames.push(
-        getClassName('segmented-control__item-text--selected'),
-      );
-    }
+SegmentedControlItem.propTypes = {
+  first: PropTypes.boolean,
+  last: PropTypes.boolean,
+  selected: PropTypes.boolean,
+  className: PropTypes.string,
+  children: PropTypes.node,
+};
 
-    return (
-      <button
-        role="radio"
-        aria-checked={selected}
-        className={classNames.join(' ')}
-        {...rest}
-      >
-        <Paragraph className={textClassNames.join(' ')}>{children}</Paragraph>
-      </button>
-    );
-  };
-}
+SegmentedControlItem.defaultProps = {
+  first: false,
+  last: false,
+  selected: false,
+  className: null,
+  children: null,
+};
 
 export default SegmentedControlItem;

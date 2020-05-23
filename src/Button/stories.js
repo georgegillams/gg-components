@@ -1,4 +1,5 @@
-import React, { Component, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
@@ -28,7 +29,7 @@ const ButtonStory = props => {
       }}
     >
       <Button onClick={action('Button clicked')} {...rest}>
-        {'Button'}
+        Button
       </Button>
     </div>
   );

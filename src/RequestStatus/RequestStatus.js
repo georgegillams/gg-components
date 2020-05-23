@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './request-status.scss';
@@ -34,6 +35,7 @@ const RequestStatus = props => {
 };
 
 RequestStatus.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   status: PropTypes.object.isRequired,
   className: PropTypes.string,
 };
