@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './article-date.scss';

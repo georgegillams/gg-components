@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Section from './Section';
-import TextLink from './TextLink';
+
 import { cssModules } from '../helpers/cssModules';
 
+import Section from './Section';
+import TextLink from './TextLink';
 import STYLES from './page-title.scss';
 
 const getClassName = cssModules(STYLES);
@@ -18,7 +19,7 @@ const PageTitle = props => {
   }
 
   return (
-    <Fragment>
+    <>
       {link && (
         <TextLink
           className={getClassName('page-title__link')}
@@ -31,18 +32,25 @@ const PageTitle = props => {
         textClassName={sectionClassNames.join(' ')}
         {...rest}
       />
-    </Fragment>
+    </>
   );
 };
 
 PageTitle.propTypes = {
   name: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
   link: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
+  headingProps: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
+  linkProps: PropTypes.object,
 };
 
 PageTitle.defaultProps = {
   name: null,
   link: null,
+  headingProps: null,
+  linkProps: null,
 };
 
 export default PageTitle;

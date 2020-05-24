@@ -1,11 +1,12 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import { cssModules } from '../helpers/cssModules';
+import { NewWindow } from '../Icons';
+import { THEMES } from '../Theming';
 
 import STYLES from './typography.scss';
-import NewWindowIcon from './new-window.js';
-import { THEMES } from '../Theming';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -51,7 +52,7 @@ const TextLink = props => {
     >
       {children}
       <div className={getClassName('typography__icon')}>
-        <NewWindowIcon className={getClassName('typography__icon--inner')} />
+        <NewWindow className={getClassName('typography__icon--inner')} />
       </div>
     </a>
   ) : (

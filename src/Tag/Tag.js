@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './tag.scss';
@@ -30,93 +31,89 @@ const tagText = {
   [TAG_TYPES.security]: 'Security',
 };
 
-class Tag extends Component {
-  constructor(props) {
-    super(props);
+const Tag = props => {
+  const [hovering, setHovering] = useState(false);
+  const [focused, setFocused] = useState(false);
 
-    this.state = { hovering: false };
+  const {
+    className,
+    disabled,
+    ariaLabel,
+    type,
+    children,
+    onClick,
+    link,
+    ...rest
+  } = props;
+
+  const outerClassNameFinal = [getClassName('tag__outer')];
+  if (className) {
+    outerClassNameFinal.push(className);
   }
 
-  render() {
-    const {
-      className,
-      disabled,
-      ariaLabel,
-      type,
-      children,
-      onClick,
-      link,
-      ...rest
-    } = this.props;
+  const tagClassName = [getClassName('tag')];
+  if (type) {
+    tagClassName.push(getClassName(tagTypeClassNames[type]));
+  }
 
-    const outerClassNameFinal = [getClassName('tag__outer')];
-    if (className) {
-      outerClassNameFinal.push(className);
-    }
+  if ((hovering || focused) && (link || onClick)) {
+    tagClassName.push(getClassName('tag--hovered'));
+  }
 
-    const tagClassName = [getClassName('tag')];
-    if (type) {
-      tagClassName.push(getClassName(tagTypeClassNames[type]));
-    }
+  if (disabled) {
+    outerClassNameFinal.push(getClassName('tag--disabled'));
+  }
 
-    if (this.state.hovering && (link || onClick)) {
-      tagClassName.push(getClassName('tag--hovered'));
-    }
+  const tagComponent = (
+    <span className={tagClassName.join(' ')}>{`${tagText[type]}`}</span>
+  );
 
-    if (disabled) {
-      outerClassNameFinal.push(getClassName('tag--disabled'));
-    }
-
-    const tagComponent = (
-      <span className={tagClassName.join(' ')}>{`${tagText[type]}`}</span>
-    );
-
-    if (link) {
-      return (
-        <a
-          role="button"
-          aria-label={ariaLabel}
-          className={outerClassNameFinal.join(' ')}
-          to={`/blog?filter=${type}`}
-        >
-          {tagComponent}
-        </a>
-      );
-    } else if (onClick) {
-      return (
-        <div
-          role="button"
-          aria-label={ariaLabel}
-          onKeyPress={onClick}
-          onMouseEnter={() => {
-            this.setState({ hovering: true });
-          }}
-          tabIndex="0"
-          onFocus={() => {
-            this.setState({ hovering: true });
-          }}
-          onMouseLeave={() => {
-            this.setState({ hovering: false });
-          }}
-          onBlur={() => {
-            this.setState({ hovering: false });
-          }}
-          onClick={onClick}
-          className={outerClassNameFinal.join(' ')}
-          {...rest}
-        >
-          {tagComponent}
-        </div>
-      );
-    }
-
+  if (link) {
     return (
-      <div className={outerClassNameFinal.join(' ')} {...rest}>
+      <a
+        role="button"
+        aria-label={ariaLabel}
+        className={outerClassNameFinal.join(' ')}
+        to={`/blog?filter=${type}`}
+      >
+        {tagComponent}
+      </a>
+    );
+  }
+  if (onClick) {
+    return (
+      <div
+        role="button"
+        aria-label={ariaLabel}
+        onKeyPress={onClick}
+        onMouseEnter={() => {
+          setHovering(true);
+        }}
+        tabIndex="0"
+        onFocus={() => {
+          setFocused(true);
+        }}
+        onMouseLeave={() => {
+          setHovering(false);
+        }}
+        onBlur={() => {
+          setFocused(false);
+        }}
+        onClick={onClick}
+        className={outerClassNameFinal.join(' ')}
+        {...rest}
+      >
         {tagComponent}
       </div>
     );
   }
-}
+
+  return (
+    <div className={outerClassNameFinal.join(' ')} {...rest}>
+      {tagComponent}
+    </div>
+  );
+};
 
 Tag.propTypes = {
   disabled: PropTypes.bool,

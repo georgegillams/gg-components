@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Paragraph } from '../Typography';
 import { cssModules } from '../helpers/cssModules';
 
@@ -30,10 +31,12 @@ CountdownItem.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
   className: PropTypes.string,
+  textClassName: PropTypes.string,
 };
 
 CountdownItem.defaultProps = {
   className: null,
+  textClassName: null,
 };
 
 export default CountdownItem;

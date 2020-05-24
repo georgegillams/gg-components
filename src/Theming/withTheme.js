@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
 import { ThemeContext } from './themeContext';
 
 const withTheme = Component => {
-  class ThemedComponent extends React.Component {
-    render() {
-      let { theme } = this.context;
-      return <Component theme={theme} {...this.props} />;
-    }
-  }
-
-  ThemedComponent.contextType = ThemeContext;
+  const ThemedComponent = props => {
+    const { theme } = useContext(ThemeContext);
+    return <Component theme={theme} {...props} />;
+  };
 
   return ThemedComponent;
 };

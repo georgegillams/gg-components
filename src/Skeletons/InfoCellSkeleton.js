@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import Skeleton from './Skeleton';
@@ -15,6 +17,13 @@ const InfoCellSkeleton = props => {
   }
 
   return <Skeleton className={classNames.join(' ')} {...rest} />;
+};
+InfoCellSkeleton.propTypes = {
+  className: PropTypes.string,
+};
+
+InfoCellSkeleton.defaultProps = {
+  className: null,
 };
 
 export default InfoCellSkeleton;

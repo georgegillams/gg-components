@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 import { getTimeDifferenceFromMilliseconds } from '../helpers/time';
 import { Paragraph } from '../Typography';
@@ -53,7 +54,6 @@ const CountdownDumb = props => {
 
   let component = (
     <div
-      role="paragraph"
       aria-label={accessibleLabel}
       className={getClassName('countdown__clockOuter')}
     >
@@ -68,14 +68,14 @@ const CountdownDumb = props => {
         </Paragraph>
       )}
       {daysLeft !== 0 && (
-        <Fragment>
+        <>
           <CountdownItem
             textClassName={textClassName}
             name="DAYS"
             number={Math.abs(daysLeft)}
           />
           <CountdownDivider textClassName={textClassName} />
-        </Fragment>
+        </>
       )}
       <CountdownItem
         textClassName={textClassName}
@@ -138,6 +138,8 @@ CountdownDumb.propTypes = {
   millis: PropTypes.string.isRequired,
   className: PropTypes.string,
   completeMessage: PropTypes.string,
+  textClassName: PropTypes.string,
+  onPauseChanged: PropTypes.func,
   large: PropTypes.bool,
   paused: PropTypes.bool,
 };
@@ -147,6 +149,8 @@ CountdownDumb.defaultProps = {
   completeMessage: null,
   large: false,
   paused: false,
+  onPauseChanged: null,
+  textClassName: null,
 };
 
 export default CountdownDumb;

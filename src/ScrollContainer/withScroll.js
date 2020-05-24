@@ -3,6 +3,20 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import wrapDisplayName from 'recompose/wrapDisplayName';
 
+const withScrollProps = {
+  fullyInView: PropTypes.bool,
+  hasBeenFullyInView: PropTypes.bool,
+  hasBeenInView: PropTypes.bool,
+  hasBeenJustInView: PropTypes.bool,
+  hasBeenMostlyInView: PropTypes.bool,
+  hasBeenOutOfView: PropTypes.bool,
+  inView: PropTypes.bool,
+  justInView: PropTypes.bool,
+  mostlyInView: PropTypes.bool,
+  outOfView: PropTypes.bool,
+  scrollPosition: PropTypes.number,
+};
+
 const withScroll = ComponentToScroll => {
   const documentRef = typeof window !== 'undefined' ? document : null;
   if (!documentRef) {
@@ -191,3 +205,4 @@ const withScroll = ComponentToScroll => {
 };
 
 export default withScroll;
+export { withScrollProps };

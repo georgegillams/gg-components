@@ -1,25 +1,28 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import YoutubeEmbedVideo from 'youtube-embed-video';
+
 // import BpkImage, {
 //   withLoadingBehavior,
 //   withLazyLoading,
 // } from 'bpk-component-image';
-import scrollIntoView from 'scroll-into-view';
 // import {
 //   citation,
 //   References,
 //   REFERENCE_STYLES,
 // } from 'react-component-academic-reference';
 import { cssModules } from '../helpers/cssModules';
-
-import STYLES from './markdown-renderer.scss';
-
-import markdownLexer, { DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
-import { CodeInline, Code, CodeBashArrow } from '../Code';
-import { Paragraph, TextLink, Quote, Section, SubSection } from '../Typography';
 import { withTheme } from '../Theming';
 import HelperFunctions from '../helpers/HelperFunctions';
+import { CodeInline, Code } from '../Code';
+
+import Paragraph from './Paragraph';
+import TextLink from './TextLink';
+import Quote from './Quote';
+import Section from './Section';
+import SubSection from './SubSection';
+import { markdownLexer, DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
+import STYLES from './markdown-renderer.scss';
 
 const getClassName = cssModules(STYLES);
 
@@ -230,7 +233,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
         target={content.external && '_blank'}
         rel={content.external && 'noopener noreferrer'}
       >
-        <Section padding={false} name={content.title}></Section>
+        <a padding={false} name={content.title} />
       </a>
     );
   }

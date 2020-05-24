@@ -1,4 +1,4 @@
-import withScroll from './withScroll';
+import withScroll, { withScrollProps } from './withScroll';
 
 export default withScroll;
-export { withScroll };
+export { withScroll, withScrollProps };

@@ -1,62 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import prefersReducedMotion, {
   motionPreferences,
 } from '@magica11y/prefers-reduced-motion';
 
-import { CountdownDumb } from './index';
+import CountdownDumb from './CountdownDumb';
 
-const MS_PER_SECOND = 1000;
-const MS_PER_MINUTE = MS_PER_SECOND * 60;
-const MS_PER_HOUR = MS_PER_MINUTE * 60;
-const MS_PER_DAY = MS_PER_HOUR * 24;
+const Countdown = props => {
+  const [paused, setPaused] = useState(false);
 
-class Countdown extends Component {
-  static propTypes = {
-    toUTCTimestamp: PropTypes.string.isRequired,
-  };
+  // this is used to force re-renders so that the time updates
+  // eslint-disable-next-line no-unused-vars
+  const [lastUpdated, setLastUpdated] = useState(0);
 
-  constructor(props) {
-    super(props);
+  // the second empty-array argument means this will only be done once, on mount
+  useEffect(() => {
+    setPaused(prefersReducedMotion === motionPreferences.REDUCE);
+  }, []);
 
-    this.state = {
-      paused: false,
-      lastUpdated: 0,
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      paused: prefersReducedMotion() === motionPreferences.REDUCE,
-    });
-    this.interval = setInterval(() => {
-      this.setState({ lastUpdated: new Date().getTime() });
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastUpdated(new Date().getTime());
     }, 500);
-  }
 
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.timeInterval);
-    }
-  }
+    const cleanUp = () => {
+      clearInterval(interval);
+    };
+    return cleanUp;
+  });
 
-  render = () => {
-    const { toUTCTimestamp, ...rest } = this.props;
+  const { toUTCTimestamp, ...rest } = props;
 
-    const now = new Date();
-    let msDiff = toUTCTimestamp - now.getTime();
+  const now = new Date();
+  const msDiff = toUTCTimestamp - now.getTime();
 
-    return (
-      <CountdownDumb
-        paused={this.state.paused}
-        onPauseChanged={newValue => {
-          this.setState({ paused: newValue });
-        }}
-        millis={msDiff}
-        {...rest}
-      ></CountdownDumb>
-    );
-  };
-}
+  return (
+    <CountdownDumb
+      paused={paused}
+      onPauseChanged={newValue => {
+        setPaused(newValue);
+      }}
+      millis={msDiff}
+      {...rest}
+    />
+  );
+};
 
+Countdown.propTypes = {
+  toUTCTimestamp: PropTypes.string.isRequired,
+};
 export default Countdown;

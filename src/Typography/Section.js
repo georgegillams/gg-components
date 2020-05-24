@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './typography.scss';
@@ -104,7 +105,10 @@ Section.propTypes = {
   className: PropTypes.string,
   hover: PropTypes.bool,
   textClassName: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
+  headingProps: PropTypes.object,
   children: PropTypes.node,
 };
 
@@ -118,6 +122,7 @@ Section.defaultProps = {
   noPadding: false,
   className: null,
   textClassName: null,
+  headingProps: null,
   style: null,
   children: null,
 };

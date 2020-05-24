@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-
-import { Countdown, CountdownDumb } from './index';
 
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './stories.scss';
+
+import { Countdown, CountdownDumb } from './index';
 
 const getClassName = cssModules(STYLES);
 

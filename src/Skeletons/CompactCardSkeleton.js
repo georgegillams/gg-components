@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import Skeleton from './Skeleton';
@@ -15,6 +17,13 @@ const CompactCardSkeleton = props => {
   }
 
   return <Skeleton className={classNames.join(' ')} {...rest} />;
+};
+CompactCardSkeleton.propTypes = {
+  className: PropTypes.string,
+};
+
+CompactCardSkeleton.defaultProps = {
+  className: null,
 };
 
 export default CompactCardSkeleton;
