@@ -11,9 +11,9 @@
   "scripts": {
     "prerelease": "npm run transpile",
     "release": "babel-node scripts/release.js",
-    "release:major": "babel-node scripts/release.js --major",
-    "release:minor": "babel-node scripts/release.js --minor",
-    "release:patch": "babel-node scripts/release.js --patch",
+    "release:major": "npm run release -- --major",
+    "release:minor": "npm run release -- --minor",
+    "release:patch": "npm run release -- --patch",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass && npm run transpile:copy-tokens",
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "babel-node scripts/transform-js-scss-css-imports.js",
