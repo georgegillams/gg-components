@@ -60,24 +60,13 @@ const Marker = props => {
 Marker.propTypes = {
   hoverText: PropTypes.string,
   displayPercentage: PropTypes.number,
-  name: PropTypes.string.isRequired,
-  shortfall: PropTypes.number,
-  balance: PropTypes.number,
-  goalAmount: PropTypes.number,
-  filled: PropTypes.bool,
   className: PropTypes.string,
-  markerPosition: PropTypes.number,
 };
 
 Marker.defaultProps = {
   hoverText: null,
   displayPercentage: 0,
-  filled: true,
-  shortfall: null,
-  balance: null,
-  goalAmount: null,
   className: null,
-  markerPosition: null,
 };
 
 export default Marker;

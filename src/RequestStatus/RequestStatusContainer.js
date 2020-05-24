@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import RequestStatus from './RequestStatus';
@@ -21,7 +22,9 @@ const RequestStatusContainer = props => {
     <div className={classNameFinal.join(' ')}>
       {statuses &&
         statuses.map &&
-        statuses.map(status => <RequestStatus status={status} />)}
+        statuses.map(status => (
+          <RequestStatus key={status.message} status={status} />
+        ))}
     </div>
   );
 };

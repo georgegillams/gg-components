@@ -21,9 +21,16 @@ const MoneyPot = props => {
     ...rest
   } = props;
 
-  const markerDisplayPercentage = Math.min(100, markerPosition);
-  const percentage = Math.min(100, Math.round((100 * balance) / goalAmount));
-  const showPercentageValue = filled && percentage && percentage > 0.01;
+  const markerDisplayPercentage = Math.min(
+    100,
+    Math.round((100 * markerPosition) / goalAmount),
+  );
+  const balancePercentage = Math.min(
+    100,
+    Math.round((100 * balance) / goalAmount),
+  );
+  const showPercentageValue =
+    filled && balancePercentage && balancePercentage > 0.01;
 
   const classNameFinal = [getClassName('money-pot')];
   if (className) {
@@ -33,10 +40,9 @@ const MoneyPot = props => {
   const progress = (
     <Progress
       style={{ position: 'absolute', width: '100%', top: '-.2rem' }}
-      small
       max={100}
-      progress={filled ? percentage : 0}
-      error={shortfall}
+      progress={filled ? balancePercentage : 0}
+      error={shortfall > 0}
     />
   );
 
@@ -61,7 +67,7 @@ const MoneyPot = props => {
       <span
         className={getClassName('money-pot__percentage')}
         style={{ opacity: showPercentageValue ? 1 : 0 }}
-      >{`${percentage || '00'}%`}</span>
+      >{`${balancePercentage || '00'}%`}</span>
     </span>
   );
 };
@@ -78,7 +84,7 @@ MoneyPot.propTypes = {
 
 MoneyPot.defaultProps = {
   filled: true,
-  shortfall: null,
+  shortfall: 0,
   balance: null,
   goalAmount: null,
   className: null,

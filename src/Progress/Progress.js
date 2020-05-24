@@ -1,54 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './progress.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-class Progress extends Component {
-  constructor(props) {
-    super(props);
+const Progress = props => {
+  const { error, progress, max, className, ...rest } = props;
 
-    this.state = {};
+  const cappedProgress = Math.min(max, progress);
+  const progressPercentage = (100 * cappedProgress) / max;
+
+  const classNames = [getClassName('progress__outer')];
+  if (className) {
+    classNames.push(className);
   }
 
-  render = () => {
-    const { error, progress, max, className, ...rest } = this.props;
+  const innerClassNames = [getClassName('progress__inner')];
+  if (error) {
+    classNames.push(getClassName('progress__outer--error'));
+    innerClassNames.push(getClassName('progress__inner--error'));
+  }
 
-    const cappedProgress = Math.min(max, progress);
-    const progressPercentage = (100 * cappedProgress) / max;
-
-    const classNames = [getClassName('progress__outer')];
-    if (className) {
-      classNames.push(className);
-    }
-
-    const innerClassNames = [getClassName('progress__inner')];
-    if (error) {
-      classNames.push(getClassName('progress__outer--error'));
-      innerClassNames.push(getClassName('progress__inner--error'));
-    }
-
-    return (
+  return (
+    <div
+      role="progressbar"
+      aria-valuenow={cappedProgress}
+      aria-valuemin="0"
+      aria-valuemax={max}
+      className={classNames.join(' ')}
+      {...rest}
+    >
       <div
-        role="progressbar"
-        aria-valuenow={cappedProgress}
-        aria-valuemin="0"
-        aria-valuemax={max}
-        className={classNames.join(' ')}
-        {...rest}
-      >
-        <div
-          aria-hidden="true"
-          className={innerClassNames.join(' ')}
-          style={{ width: `${progressPercentage}%` }}
-        />
-      </div>
-    );
-  };
-}
+        aria-hidden="true"
+        className={innerClassNames.join(' ')}
+        style={{ width: `${progressPercentage}%` }}
+      />
+    </div>
+  );
+};
 
 Progress.propTypes = {
   progress: PropTypes.number.isRequired,

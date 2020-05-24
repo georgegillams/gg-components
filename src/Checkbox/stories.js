@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { cssModules } from '../helpers/cssModules';

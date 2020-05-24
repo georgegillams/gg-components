@@ -18,20 +18,20 @@ const StatefulMoneyPot = props => {
         balance={balance}
         goalAmount={6000}
         markerPosition={expected}
-        shortfall={balance < expected}
+        shortfall={expected - balance}
         {...props}
       />
-      {expected < 100 && (
+      {expected < 6500 && (
         <button
           type="button"
           onClick={() => {
-            setExpected(expected + 30);
+            setExpected(expected + INTERACTIVE_INCREMENT);
           }}
         >
           Increment expected amount
         </button>
       )}
-      {expected >= 100 && (
+      {expected >= 6500 && (
         <button
           type="button"
           onClick={() => {
@@ -67,15 +67,15 @@ const StatefulMoneyPot = props => {
 
 storiesOf('MoneyPot', module)
   .add('Default', () => (
-    <MoneyPot name="Test" balance={50} goalAmount={70} markerPosition={20} />
+    <MoneyPot name="Test" balance={50} goalAmount={70} markerPosition={40} />
   ))
   .add('Shortfall', () => (
     <MoneyPot
       name="Test"
-      shortfall
+      shortfall={20}
       balance={50}
       goalAmount={70}
-      markerPosition={80}
+      markerPosition={56}
     />
   ))
   .add('Stateful', () => <StatefulMoneyPot />);

@@ -1,50 +1,41 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { Progress } from './index';
 
 const INTERACTIVE_INCREMENT = 33;
 
-class StatefulProgress extends Component {
-  constructor(props) {
-    super(props);
+const StatefulProgress = props => {
+  const [progress, setProgress] = useState(0);
 
-    this.state = { progress: 0 };
-  }
-
-  render() {
-    return (
-      <div>
-        <Progress progress={this.state.progress} {...this.props} />
-        {this.state.progress < 100 && (
-          <button
-            onClick={() => {
-              this.setState({
-                progress: this.state.progress + INTERACTIVE_INCREMENT,
-              });
-            }}
-          >
-            Increment
-          </button>
-        )}
-        {this.state.progress >= 100 && (
-          <button
-            onClick={() => {
-              this.setState({
-                progress: 0,
-              });
-            }}
-          >
-            Reset
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <Progress progress={progress} {...props} />
+      {progress < 100 && (
+        <button
+          type="button"
+          onClick={() => {
+            setProgress(progress + INTERACTIVE_INCREMENT);
+          }}
+        >
+          Increment
+        </button>
+      )}
+      {progress >= 100 && (
+        <button
+          type="button"
+          onClick={() => {
+            setProgress(0);
+          }}
+        >
+          Reset
+        </button>
+      )}
+    </div>
+  );
+};
 
 storiesOf('Progress', module)
   .add('Default', () => <Progress progress={50} />)

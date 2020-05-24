@@ -1,18 +1,19 @@
-import React, { Component, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './stories.scss';
+
 import { SegmentedControl } from './index';
 
 const getClassName = cssModules(STYLES);
 
 const SegmentedControlStory = props => {
-  const { className, ...rest } = props;
+  const { className, selectedIndex: initiallySelectedIndex, ...rest } = props;
 
-  const [selectedIndex, setSelectedIndex] = useState(props.selectedIndex);
+  const [selectedIndex, setSelectedIndex] = useState(initiallySelectedIndex);
 
   const options = [
     {
@@ -31,7 +32,7 @@ const SegmentedControlStory = props => {
       onSelectionChanged={setSelectedIndex}
       options={options}
       {...rest}
-    ></SegmentedControl>
+    />
   );
 };
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { BurgerButton } from '../Button';
-import BlurEffectView from './BlurEffectView';
 import { cssModules } from '../helpers/cssModules';
 
+import BlurEffectView from './BlurEffectView';
 import STYLES from './navigation-bar.scss';
 
 const getClassName = cssModules({ ...STYLES });
@@ -12,6 +13,24 @@ const NavigationBar = props => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [changing, setChanging] = useState(false);
+
+  const closeMenu = () => {
+    setChanging(true);
+    setOpen(false);
+    setTimeout(() => {
+      setShow(false);
+      setChanging(false);
+    }, 500);
+  };
+
+  const openMenu = () => {
+    setChanging(true);
+    setShow(true);
+    setTimeout(() => {
+      setOpen(true);
+      setChanging(false);
+    }, 100);
+  };
 
   useEffect(() => {
     const escEventListener = event => {
@@ -36,24 +55,6 @@ const NavigationBar = props => {
     } else {
       openMenu();
     }
-  };
-
-  const closeMenu = () => {
-    setChanging(true);
-    setOpen(false);
-    setTimeout(() => {
-      setShow(false);
-      setChanging(false);
-    }, 500);
-  };
-
-  const openMenu = () => {
-    setChanging(true);
-    setShow(true);
-    setTimeout(() => {
-      setOpen(true);
-      setChanging(false);
-    }, 100);
   };
 
   const { className, menuItems, logo, accountMenuItem, ...rest } = props;
@@ -127,12 +128,14 @@ const NavigationBar = props => {
               onClick={toggleMenu}
             />
           </div>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className={getClassName('navigation-bar__logo-container')}
             onClick={closeMenu}
           >
             {logo}
           </div>
+          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
             className={getClassName(
               'navigation-bar__mobile-container',

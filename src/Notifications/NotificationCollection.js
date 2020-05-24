@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import NotificationComp from './NotificationComp';
@@ -7,66 +8,64 @@ import STYLES from './notification-collection.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-export default class NotificationCollection extends Component {
-  static propTypes = {
-    newDataAvailable: PropTypes.bool.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.object),
-    load: PropTypes.func.isRequired,
-    className: PropTypes.string,
-  };
+const NotificationCollection = props => {
+  const { newDataAvailable, notifications, load, className, ...rest } = props;
 
-  static defaultProps = {
-    className: null,
-  };
-
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount = () => {
-    this.interval = setInterval(this.reloadNotificationsIfNecessary, 500);
-  };
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  reloadNotificationsIfNecessary = () => {
-    if (this.props.newDataAvailable) {
-      this.props.load();
+  const reloadNotificationsIfNecessary = () => {
+    if (newDataAvailable) {
+      load();
     }
   };
 
-  render() {
-    const { notifications, load, className, ...rest } = this.props; // eslint-disable-line no-shadow
+  useEffect(() => {
+    const interval = setInterval(reloadNotificationsIfNecessary, 500);
 
-    const notificationsFiltered = (notifications || []).filter(
-      notif => !notif.deleted,
-    );
+    const cleanUp = () => {
+      clearInterval(interval);
+    };
+    return cleanUp;
+  });
 
-    if (!notificationsFiltered || notificationsFiltered.length < 1) {
-      return null;
-    }
+  const notificationsFiltered = (notifications || []).filter(
+    notification => !notification.deleted,
+  );
 
-    const outerClassNameFinal = [
-      getClassName('notification-collection__container'),
-    ];
-
-    if (className) {
-      outerClassNameFinal.push(className);
-    }
-    return (
-      <div className={outerClassNameFinal.join(' ')} {...rest}>
-        {notificationsFiltered.map(notif => (
-          <NotificationComp
-            className={getClassName('notification-collection__notification')}
-            type={notif.type}
-            deleted={notif.deleted}
-          >
-            {notif.message}
-          </NotificationComp>
-        ))}
-      </div>
-    );
+  if (!notificationsFiltered || notificationsFiltered.length < 1) {
+    return null;
   }
-}
+
+  const outerClassNameFinal = [
+    getClassName('notification-collection__container'),
+  ];
+
+  if (className) {
+    outerClassNameFinal.push(className);
+  }
+  return (
+    <div className={outerClassNameFinal.join(' ')} {...rest}>
+      {notificationsFiltered.map(notification => (
+        <NotificationComp
+          className={getClassName('notification-collection__notification')}
+          type={notification.type}
+          deleted={notification.deleted}
+        >
+          {notification.message}
+        </NotificationComp>
+      ))}
+    </div>
+  );
+};
+
+NotificationCollection.propTypes = {
+  newDataAvailable: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  notifications: PropTypes.arrayOf(PropTypes.object),
+  load: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+NotificationCollection.defaultProps = {
+  className: null,
+};
+
+export default NotificationCollection;

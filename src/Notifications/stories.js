@@ -1,14 +1,9 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
 
-import {
-  NotificationCollection,
-  NotificationComp,
-  NOTIFICATION_TYPES,
-} from './index';
+import { NotificationComp, NOTIFICATION_TYPES } from './index';
 
 storiesOf('Notifications', module)
   .add('NotificationComp - link', () => (

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* @flow strict */
 
 import React, { useState } from 'react';
@@ -6,8 +7,8 @@ import { storiesOf } from '@storybook/react';
 import { LoadingIndicator } from './index';
 
 const StatefulLoading = props => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(props.loading);
+  const [error, setError] = useState(props.error);
 
   return (
     <div>
@@ -41,21 +42,21 @@ storiesOf('LoadingIndicator', module)
     </LoadingIndicator>
   ))
   .add('Error', () => (
-    <LoadingIndicator error>
+    <LoadingIndicator error={{}}>
       <div
         style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
       />
     </LoadingIndicator>
   ))
   .add('Loading error', () => (
-    <LoadingIndicator loading error>
+    <LoadingIndicator loading error={{}}>
       <div
         style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
       />
     </LoadingIndicator>
   ))
   .add('Loaded', () => (
-    <LoadingIndicator loading={false} error={false}>
+    <LoadingIndicator loading={false}>
       <div
         style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
       />

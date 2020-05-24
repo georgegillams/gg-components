@@ -1,27 +1,34 @@
 # Changelog
 
+## 4.0.0
+
+- Breaking: Marker position is now an absolute value, rather than a percentage.
+  - To migrate, newMarkerPosition = oldMarkerPosition \* 100 / goalAmount
+- Fixed: Errors and warnings in Money components
+- Fixed: Errors and warnings in Navigation Bar components
+
 ## 3.0.0
 
-- Components no longer provide font-faces. This is now left up to the consuming site.
-- Renamed `GGRedirect` to `Redirect`
-- Fixed errors and warnings in Input components
-- Fixed style errors and warnings in all components
+- Breaking: Components no longer provide font-faces. This is now left up to the consuming site.
+- Breaking: `GGRedirect` renamed `Redirect`
+- Fixed: Errors and warnings in Input components
+- Fixed: Style errors and warnings in all components
 
 ## 2.0.1
 
-- Renamed `getTimeDifferenceFromMillis` to `getTimeDifferenceFromMilliseconds`
-- Fixed errors and warnings in Design components
-- Fixed errors and warnings in Footer components
-- Fixed errors and warnings in FormBuilder components
-- Fixed errors and warnings in InfoCell components
-- Fixed errors and warnings in Input components
-- Fixed errors and warnings in Select components
+- Breaking: `getTimeDifferenceFromMillis` renamed `getTimeDifferenceFromMilliseconds`
+- Fixed: Errors and warnings in Design components
+- Fixed: Errors and warnings in Footer components
+- Fixed: Errors and warnings in FormBuilder components
+- Fixed: Errors and warnings in InfoCell components
+- Fixed: Errors and warnings in Input components
+- Fixed: Errors and warnings in Select components
 
 ## 2.0.0
 
-- Renamed `FormBuilder` prop `presubmitText` to `preSubmitText`.
-- Fixed errors and warnings in Auth components
-- Fixed errors and warnings in Button components
-- Fixed errors and warnings in Card components
-- Fixed errors and warnings in Checkbox components
-- Fixed errors and warnings in Code components
+- Breaking: Renamed `FormBuilder` prop `presubmitText` to `preSubmitText`.
+- Fixed: Errors and warnings in Auth components
+- Fixed: Errors and warnings in Button components
+- Fixed: Errors and warnings in Card components
+- Fixed: Errors and warnings in Checkbox components
+- Fixed: Errors and warnings in Code components
