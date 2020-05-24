@@ -1,6 +1,6 @@
 # Changelog
 
-## 4.0.0
+## 4.0.0 (published as 4.0.1)
 
 - Breaking: Marker position is now an absolute value, rather than a percentage.
   - To migrate, newMarkerPosition = oldMarkerPosition \* 100 / goalAmount
