@@ -1,10 +1,12 @@
 /* @flow strict */
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Section } from '../Typography';
+
 import {
   ButtonSkeleton,
   CardSkeleton,

@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.0.2
+
+- Fixed: Errors and warnings in Countdown components
+- Fixed: Errors and warnings in Skeleton components
+- Fixed: Errors and warnings in Tag components
+- Fixed: Moved new-window icon to `Icons`
+
 ## 4.0.0 (published as 4.0.1)
 
 - Breaking: Marker position is now an absolute value, rather than a percentage.

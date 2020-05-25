@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import bibtexParse from 'bibtex-parse-js';
+
 import { cssModules } from '../helpers/cssModules';
+import Tag from '../Tag';
 
 import BlogPreviewSection from './BlogPreviewSection';
 import Section from './Section';
 import SubSection from './SubSection';
 import STYLES from './blog-viewer.scss';
 
-import Tag from '../Tag';
-import { ArticleDate } from '../Typography';
+import { ArticleDate } from '.';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -49,7 +50,7 @@ const BlogRenderer = props => {
   try {
     references = blog.bibtex ? bibtexParse.toJSON(blog.bibtex) : null;
   } catch (error) {
-    console.log(error);
+    references = null;
   }
 
   const tags =
@@ -107,6 +108,7 @@ const BlogRenderer = props => {
 
 BlogRenderer.propTypes = {
   centered: PropTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
   blog: PropTypes.object.isRequired,
   showEditLink: PropTypes.boolean,
   elementClassName: PropTypes.string,

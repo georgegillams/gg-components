@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './skeleton.scss';
@@ -39,14 +41,11 @@ class Skeleton extends Component {
   render() {
     const { className, ...rest } = this.props;
 
-    const classNames = [getClassName('skeleton__outer')];
-    if (className) {
-      classNames.push(className);
-    }
+    const classNames = getClassName('skeleton__outer', className);
 
     return (
       <div
-        className={classNames.join(' ')}
+        className={classNames}
         ref={divElement => (this.divElement = divElement)}
         {...rest}
       >

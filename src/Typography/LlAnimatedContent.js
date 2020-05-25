@@ -9,6 +9,7 @@ const LlAnimatedContent = props => {
 
 LlAnimatedContent.propTypes = {
   className: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.object,
 };
 

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 
 import Skeleton from './Skeleton';
@@ -15,6 +17,14 @@ const TicketStatusSkeleton = props => {
   }
 
   return <Skeleton className={classNames.join(' ')} {...rest} />;
+};
+
+TicketStatusSkeleton.propTypes = {
+  className: PropTypes.string,
+};
+
+TicketStatusSkeleton.defaultProps = {
+  className: null,
 };
 
 export default TicketStatusSkeleton;

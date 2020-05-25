@@ -1,12 +1,11 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-
-import STYLES from './stories.scss';
 
 import { cssModules } from '../helpers/cssModules';
+
+import STYLES from './stories.scss';
 
 import {
   ArticleDate,
@@ -25,28 +24,23 @@ const LONG_TEXT =
 
 const getClassName = cssModules(STYLES);
 
-class StatefulAnimatedContent extends Component {
-  constructor(props) {
-    super(props);
+const StatefulAnimatedContent = props => {
+  const [inView, setInView] = useState(false);
 
-    this.state = { inView: false };
-  }
-
-  render() {
-    return (
-      <div>
-        <button
-          onClick={() => {
-            this.setState({ inView: !this.state.inView });
-          }}
-        >
-          Toggle
-        </button>
-        <AnimatedContent inView={this.state.inView} {...this.props} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <button
+        type="button"
+        onClick={() => {
+          setInView(!inView);
+        }}
+      >
+        Toggle
+      </button>
+      <AnimatedContent inView={inView} {...props} />
+    </div>
+  );
+};
 
 storiesOf('Quote', module).add('default', () => (
   <Quote>Lorem ipse dolor sit amet.</Quote>
@@ -70,9 +64,7 @@ storiesOf('Section', module)
   .add('No padding no anchor', () => (
     <Section anchor={false} noPadding name="Test" />
   ))
-  .add('Link', () => (
-    <Section anchor={false} noPadding name="Test" link></Section>
-  ));
+  .add('Link', () => <Section anchor={false} noPadding name="Test" link />);
 
 storiesOf('SubSection', module)
   .add('Default', () => <SubSection name="Test" />)
@@ -102,7 +94,21 @@ Nisi scelerisque eu ultrices vitae auctor eu augue ut. Mauris cursus mattis mole
   ))
   .add('Multiple', () => (
     <div>
-      <Paragraph>{`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Consectetur a erat nam at lectus urna duis convallis convallis. Commodo ullamcorper a lacus vestibulum sed. Sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Viverra justo nec ultrices dui sapien eget. Blandit aliquam etiam erat velit scelerisque. Consequat mauris nunc congue nisi vitae. Aenean pharetra magna ac placerat vestibulum lectus mauris. Viverra justo nec ultrices dui sapien eget. In nulla posuere sollicitudin aliquam. Viverra suspendisse potenti nullam ac tortor vitae purus. Eu consequat ac felis donec. Fringilla est ullamcorper eget nulla facilisi. Convallis convallis tellus id interdum. Enim tortor at auctor urna nunc id cursus metus.`}</Paragraph>
+      <Paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Massa tincidunt nunc
+        pulvinar sapien et ligula ullamcorper. Consectetur a erat nam at lectus
+        urna duis convallis convallis. Commodo ullamcorper a lacus vestibulum
+        sed. Sed egestas egestas fringilla phasellus faucibus scelerisque
+        eleifend donec. Viverra justo nec ultrices dui sapien eget. Blandit
+        aliquam etiam erat velit scelerisque. Consequat mauris nunc congue nisi
+        vitae. Aenean pharetra magna ac placerat vestibulum lectus mauris.
+        Viverra justo nec ultrices dui sapien eget. In nulla posuere
+        sollicitudin aliquam. Viverra suspendisse potenti nullam ac tortor vitae
+        purus. Eu consequat ac felis donec. Fringilla est ullamcorper eget nulla
+        facilisi. Convallis convallis tellus id interdum. Enim tortor at auctor
+        urna nunc id cursus metus.
+      </Paragraph>
       <Paragraph>
         {' '}
         {`Laoreet id donec ultrices tincidunt arcu non sodales neque. Mauris ultrices eros in cursus turpis massa tincidunt. Amet est placerat in egestas. Tincidunt eget nullam non nisi est sit. Senectus et netus et malesuada fames ac turpis egestas. Sapien faucibus et molestie ac. Enim tortor at auctor urna. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet venenatis urna cursus eget. Orci eu lobortis elementum nibh. Arcu vitae elementum curabitur vitae nunc sed velit. Quam nulla porttitor massa id neque aliquam vestibulum morbi. Enim lobortis scelerisque fermentum dui faucibus. Id interdum velit laoreet id donec ultrices tincidunt arcu. Erat pellentesque adipiscing commodo elit. Platea dictumst quisque sagittis purus sit amet volutpat consequat.`}
@@ -200,26 +206,24 @@ storiesOf('PageTitle', module)
   ));
 
 storiesOf('MarkdownRenderer', module)
-  .add('Text only', () => (
-    <MarkdownRenderer content="This is a simple test"></MarkdownRenderer>
-  ))
+  .add('Text only', () => <MarkdownRenderer content="This is a simple test" />)
   .add('Text with link', () => (
-    <MarkdownRenderer content="This contains a [link](/test) to an internal page."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains a [link](/test) to an internal page." />
   ))
   .add('Text with extenal link', () => (
-    <MarkdownRenderer content="This contains a [link](https://www.google.com/) to an external page."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains a [link](https://www.google.com/) to an external page." />
   ))
   .add('Text with inline code', () => (
-    <MarkdownRenderer content="This contains some `code`."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains some `code`." />
   ))
   .add('Text with strikethrough', () => (
-    <MarkdownRenderer content="This contains a ~striken~ section."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains a ~striken~ section." />
   ))
   .add('Text with bold', () => (
-    <MarkdownRenderer content="This contains a **bold** section."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains a **bold** section." />
   ))
   .add('Text with italic', () => (
-    <MarkdownRenderer content="This contains an _italic_ section."></MarkdownRenderer>
+    <MarkdownRenderer content="This contains an _italic_ section." />
   ))
   .add('Text with code block', () => (
     <MarkdownRenderer
@@ -228,23 +232,23 @@ storiesOf('MarkdownRenderer', module)
 code block
   code block
 ```"
-    ></MarkdownRenderer>
+    />
   ))
   .add('Text with a big link', () => (
     <MarkdownRenderer
       content="This contains a large link:
 *[Massive link](https://www.google.com)"
-    ></MarkdownRenderer>
+    />
   ))
   .add('Youtube video', () => (
-    <MarkdownRenderer content="!yt[ytv](https://www.youtube.com/watch?v=Nozh1zDj8_o)"></MarkdownRenderer>
+    <MarkdownRenderer content="!yt[ytv](https://www.youtube.com/watch?v=Nozh1zDj8_o)" />
   ))
   .add('Text with a quotation', () => (
     <MarkdownRenderer
       content="This contains a quotation as follows:
 >This is a quote
 "
-    ></MarkdownRenderer>
+    />
   ))
   .add('Sectioned text', () => (
     <MarkdownRenderer
@@ -252,7 +256,7 @@ code block
 # Section
 This is some section content.
 "
-    ></MarkdownRenderer>
+    />
   ))
   .add('Subsectioned text', () => (
     <MarkdownRenderer
@@ -260,7 +264,7 @@ This is some section content.
 ## Subsection
 This is some subsection content.
 "
-    ></MarkdownRenderer>
+    />
   ))
   .add('Linebreak', () => (
     <MarkdownRenderer
@@ -270,7 +274,7 @@ Text before linebreak...
 
 ...text after linebreak.
 `}
-    ></MarkdownRenderer>
+    />
   ))
   .add('Sectioned text - long example', () => (
     <MarkdownRenderer
@@ -284,16 +288,16 @@ Let's throw in some \`code\` for good measure.
 ### SubSubSection
 This is some text in a subsubsection
 `}
-    ></MarkdownRenderer>
+    />
   ))
   .add('Link and italic', () => (
-    <MarkdownRenderer content="This contains a [link](/test) and _italics_"></MarkdownRenderer>
+    <MarkdownRenderer content="This contains a [link](/test) and _italics_" />
   ))
   .add('Link and italic (limited to just link)', () => (
     <MarkdownRenderer
       supportedFeatures={['link']}
       content="This contains a [link](/test) and _italics_"
-    ></MarkdownRenderer>
+    />
   ))
   .add('Extreme', () => (
     <MarkdownRenderer
