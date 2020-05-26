@@ -79,9 +79,9 @@ const SubSection = props => {
         </TextLink>
       )}
       {name && (
-        <h3 id={anchorLink} className={textClassNameFinal.join(' ')}>
+        <h2 id={anchorLink} className={textClassNameFinal.join(' ')}>
           {name}
-        </h3>
+        </h2>
       )}
       {children}
     </div>

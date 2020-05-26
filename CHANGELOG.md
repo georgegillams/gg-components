@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.3
+
+- Fixed: Updated heading tags so that my site can actually have some `h1` tags.
+
 ## 4.0.2
 
 - Fixed: Errors and warnings in Countdown components
