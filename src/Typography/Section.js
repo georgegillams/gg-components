@@ -82,13 +82,13 @@ const Section = props => {
         </a>
       )}
       {name && (
-        <h2
+        <h1
           id={anchorLink}
           className={textClassNameFinal.join(' ')}
           {...headingProps}
         >
           {name}
-        </h2>
+        </h1>
       )}
       {children}
     </div>

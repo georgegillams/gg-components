@@ -19,13 +19,13 @@ const ArticleDate = props => {
   }
 
   return (
-    <h3
+    <span
       style={{ fontStyle: 'italic' }}
       className={classNames.join(' ')}
       {...rest}
     >
       Published {date && date.toString()}
-    </h3>
+    </span>
   );
 };
 
