@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.0.5
+
+- Fixed: Output CSS is now compressed to reduce bundle size
+
+## 4.0.4
+
+- Fixed: Moved react dependencies to peer dependencies to avoid react versions clashing
+
 ## 4.0.3
 
 - Fixed: Updated heading tags so that my site can actually have some `h1` tags.

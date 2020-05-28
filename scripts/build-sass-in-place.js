@@ -14,7 +14,7 @@ const transpile = file =>
   new Promise((resolve, reject) => {
     const outputFile = dirname(file);
     const options =
-      '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src';
+      '--importer=node_modules/node-sass-tilde-importer --include-path=node_modules --include-path=src --output-style compressed';
     exec(
       `npm run node-sass -- ${options} "${file}" --output="${outputFile}"`,
       error => {
