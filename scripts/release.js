@@ -36,7 +36,7 @@ const updatePackageFile = newVersion => {
   newPackageData.version = newVersion;
   const fileContent = `${JSON.stringify(newPackageData, null, 2)}\n`;
   writeFileSync('package.json', fileContent, 'utf8');
-  execSync('cp package.json ./dist/ && cp package-lock.json ./dist/');
+  execSync('cp package.json ./dist/');
   console.log(blue('package.json updated'));
 };
 
