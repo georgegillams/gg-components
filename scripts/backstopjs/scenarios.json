@@ -78,6 +78,7 @@
     "moneypot--default",
     "moneypot--shortfall",
     "navigationbar--default",
+    "notification-collection--notification-collection",
     "notifications--notificationcomp-extenal-link",
     "notifications--notificationcomp-extenal-link-error",
     "notifications--notificationcomp-extenal-link-neutral",

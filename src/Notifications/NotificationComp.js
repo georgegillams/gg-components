@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 import { ThemeProvider, THEMES } from '../Theming';
+import { MarkdownRenderer } from '../Typography';
 
 import STYLES from './notification-comp.scss';
-
-import { MarkdownRenderer } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
@@ -85,9 +85,7 @@ class NotificationComp extends Component {
             elementClassName={elementClassName.join(' ')}
             content={`${children}${deleted ? ' (deleted)' : ''}`}
             anchor={false}
-          >
-            {children}
-          </MarkdownRenderer>
+          />
         </div>
       </ThemeProvider>
     );

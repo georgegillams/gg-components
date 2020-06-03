@@ -3,7 +3,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { NotificationComp, NOTIFICATION_TYPES } from './index';
+import {
+  NotificationCollection,
+  NotificationComp,
+  NOTIFICATION_TYPES,
+} from './index';
 
 storiesOf('Notifications', module)
   .add('NotificationComp - link', () => (
@@ -29,3 +33,16 @@ storiesOf('Notifications', module)
       type={NOTIFICATION_TYPES.neutral}
     >{`Hi. Here\'s a [link](https://www.google.com/)`}</NotificationComp>
   ));
+
+storiesOf('Notification collection', module).add(
+  'Notification collection ',
+  () => (
+    <NotificationCollection
+      notifications={[
+        { type: 'success', message: 'Hi 1' },
+        { type: 'warn', message: 'Hi 2' },
+        { type: 'error', message: 'Hi 3' },
+      ]}
+    />
+  ),
+);
