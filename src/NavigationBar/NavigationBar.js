@@ -40,11 +40,11 @@ const NavigationBar = props => {
     };
     document.addEventListener('keydown', escEventListener);
 
-    const cleanup = () => {
+    const cleanUp = () => {
       document.removeEventListener('keydown', escEventListener);
     };
-    return cleanup;
-  });
+    return cleanUp;
+  }, []);
 
   const toggleMenu = () => {
     if (changing) {

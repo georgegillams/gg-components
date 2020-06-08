@@ -12,7 +12,6 @@ const getClassName = cssModules(STYLES);
 const DebugObject = props => {
   const [showDebug, setShowDebug] = useState(false);
 
-  // the second empty-array argument means this will only be done once, on mount
   useEffect(() => {
     setShowDebug(
       window.localStorage.getItem('showSessionDebugViews') === 'true',
