@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.7
+
+- Fixed: Issue that caused nav bar blur effect view to repeatedly create child nodes
+
 ## 4.0.5
 
 - Fixed: Output CSS is now compressed to reduce bundle size
