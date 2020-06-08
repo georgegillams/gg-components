@@ -85,7 +85,7 @@ storiesOf('NavigationBar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+        <a href="/iframe.html?id=navigationbar--with-scroll">
           OPEN IN FULL WINDOW MODE TO TEST SCROLL
         </a>
         <br />
