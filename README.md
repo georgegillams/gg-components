@@ -1,6 +1,7 @@
 ## gg-components
 
 ![Build status](https://github.com/georgegillams/gg-components/workflows/CI/badge.svg)
+![Dependencies status](https://img.shields.io/david/georgegillams/gg-components)
 ![Dependencies status](https://img.shields.io/librariesio/release/npm/gg-components)
 
 A set of reusable React components, that are published as plain JS and CSS for maximum compatibility.
