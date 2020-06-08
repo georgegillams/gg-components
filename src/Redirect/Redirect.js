@@ -17,7 +17,7 @@ const Redirect = props => {
       clearTimeout(timeout);
     };
     return cleanUp;
-  });
+  }, []);
 
   const { name, to, ...rest } = props;
 

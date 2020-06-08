@@ -13,12 +13,9 @@ const Countdown = props => {
   // eslint-disable-next-line no-unused-vars
   const [lastUpdated, setLastUpdated] = useState(0);
 
-  // the second empty-array argument means this will only be done once, on mount
   useEffect(() => {
     setPaused(prefersReducedMotion === motionPreferences.REDUCE);
-  }, []);
 
-  useEffect(() => {
     const interval = setInterval(() => {
       setLastUpdated(new Date().getTime());
     }, 500);
@@ -27,7 +24,7 @@ const Countdown = props => {
       clearInterval(interval);
     };
     return cleanUp;
-  });
+  }, []);
 
   const { toUTCTimestamp, ...rest } = props;
 

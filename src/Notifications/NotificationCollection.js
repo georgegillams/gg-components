@@ -24,7 +24,7 @@ const NotificationCollection = props => {
       clearInterval(interval);
     };
     return cleanUp;
-  });
+  }, []);
 
   const notificationsFiltered = (notifications || []).filter(
     notification => !notification.deleted,
