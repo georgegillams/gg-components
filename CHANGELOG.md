@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- Added: Pride option for Logo component.
+
 ## 4.0.7
 
 - Fixed: Issue that caused nav bar blur effect view to repeatedly create child nodes

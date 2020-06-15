@@ -7,8 +7,6 @@ import { Logo } from './index';
 
 storiesOf('Logo', module)
   .add('Default', () => <Logo />)
-  .add('Light', () => <Logo light />)
-  .add('Small', () => <Logo small />)
-  .add('Small light', () => <Logo small light />)
-  .add('Small animated', () => <Logo small animated />)
-  .add('Small without padding', () => <Logo small padding={false} />);
+  .add('Pride', () => <Logo pride />)
+  .add('Animated', () => <Logo animated />)
+  .add('Without padding', () => <Logo padding={false} />);
