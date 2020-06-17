@@ -20,7 +20,7 @@ scenarioData.scenarioIds.forEach(sI => {
 
 const config = {
   id: 'gg-components-default',
-  misMatchThreshold: 5,
+  misMatchThreshold: 1.5,
   viewports: [
     {
       label: 'phone',
