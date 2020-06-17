@@ -45,6 +45,9 @@ storiesOf('Button', module)
   .add('href', () => <ButtonStory href="/test" />)
   .add('External href', () => (
     <ButtonStory hrefExternal href="https://duckduckgo.com/" />
+  ))
+  .add('Dumb href', () => (
+    <ButtonStory hrefDumb href="https://duckduckgo.com/" />
   ));
 
 storiesOf('BurgerButton', module)

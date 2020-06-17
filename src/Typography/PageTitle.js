@@ -10,7 +10,13 @@ import STYLES from './page-title.scss';
 const getClassName = cssModules(STYLES);
 
 const PageTitle = props => {
-  const { link, headingProps, linkProps, ...rest } = props;
+  const {
+    link,
+    linkWrapperComponent: LinkWrapperComponent,
+    headingProps,
+    linkProps,
+    ...rest
+  } = props;
 
   const sectionClassNames = [getClassName('page-title__section')];
 
@@ -18,15 +24,25 @@ const PageTitle = props => {
     sectionClassNames.push(getClassName('page-title__section--with-link'));
   }
 
+  let linkElement = null;
+  if (link) {
+    linkElement = (
+      <TextLink
+        className={getClassName('page-title__link')}
+        href={link.to}
+        hrefDumb={!!LinkWrapperComponent}
+        {...linkProps}
+      >{`⇠ ${link.text}`}</TextLink>
+    );
+
+    if (LinkWrapperComponent) {
+      linkElement = <LinkWrapperComponent>{linkElement}</LinkWrapperComponent>;
+    }
+  }
+
   return (
     <>
-      {link && (
-        <TextLink
-          className={getClassName('page-title__link')}
-          to={link.to}
-          {...linkProps}
-        >{`⇠ ${link.text}`}</TextLink>
-      )}
+      {link && linkElement}
       <Section
         headingProps={headingProps}
         textClassName={sectionClassNames.join(' ')}
@@ -44,6 +60,7 @@ PageTitle.propTypes = {
   headingProps: PropTypes.object,
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
+  linkWrapperComponent: PropTypes.element,
 };
 
 PageTitle.defaultProps = {
@@ -51,6 +68,7 @@ PageTitle.defaultProps = {
   link: null,
   headingProps: null,
   linkProps: null,
+  linkWrapperComponent: null,
 };
 
 export default PageTitle;

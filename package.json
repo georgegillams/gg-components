@@ -23,9 +23,9 @@
     "dev": "npm run start:dev",
     "fix:adapter-core-5": "cp ./scripts/adapter_core5.js node_modules/webrtc-adapter/src/js/adapter_core5.js",
     "fix:package-lock": "sed -i '' -e 's/http:\\/\\//https:\\/\\//g' $(find . -name 'package-lock.json')",
-    "lint": "npm run lint:js && npm run lint:scss",
-    "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
-    "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
+    "lint": "npm run lint:js && npm run lint:sass",
+    "lint:sass": "stylelint 'src/**/*.scss' --syntax scss",
+    "lint:sass:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint . --ext .js,.jsx",
     "lint:js:fix": "eslint . --ext .js,.jsx --fix",
     "transpile:clean": "rimraf ./dist",
@@ -43,7 +43,7 @@
     "start:aws": "AWS=true npm run prod",
     "test": "npm run test:lint && npm run test:jest",
     "test:jest": "cross-env NODE_ENV=test jest --coverage",
-    "test:lint": "npm run lint:scss",
+    "test:lint": "npm run lint:sass",
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
@@ -67,9 +67,7 @@
   "peerDependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
@@ -116,8 +114,6 @@
     "jest-cli": "^26.0.1",
     "node-sass": "^4.14.1",
     "node-sass-tilde-importer": "^1.0.2",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
     "react-test-renderer": "^16.13.1",
     "rimraf": "3.0.2",
     "sass": "^1.26.8",

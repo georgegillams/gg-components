@@ -1,5 +1,3 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
 import { configure, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withA11y } from '@storybook/addon-a11y';
@@ -7,16 +5,6 @@ import { addParameters } from '@storybook/react'; // <- or your storybook framew
 
 addDecorator(withA11y);
 addDecorator(withKnobs);
-addDecorator(story => (
-  <BrowserRouter>
-    <Route
-      path="/"
-      component={() => {
-        return story();
-      }}
-    />
-  </BrowserRouter>
-));
 
 addParameters({
   backgrounds: [
@@ -33,15 +21,12 @@ configure(() => {
   require('../src/Cards/stories.js');
   require('../src/Checkbox/stories.js');
   require('../src/Code/stories.js');
-  require('../src/CreativeCommons/stories.js');
   require('../src/Degree/stories.js');
   require('../src/Design/stories.js');
-  require('../src/Footer/stories.js');
   require('../src/FormBuilder/stories.js');
   require('../src/InfoCell/stories.js');
   require('../src/Input/stories.js');
   require('../src/LoadingIndicator/stories.js');
-  require('../src/Logo/stories.js');
   require('../src/MoneyPot/stories.js');
   require('../src/NavigationBar/stories.js');
   require('../src/Notifications/stories.js');
@@ -52,7 +37,7 @@ configure(() => {
   require('../src/SegmentedControl/stories.js');
   require('../src/Skeletons/stories.js');
   require('../src/Tag/stories.js');
-  require('../src/TimzoneSafeCountdown/stories.js');
+  require('../src/TimezoneSafeCountdown/stories.js');
   require('../src/Typography/stories.js');
 }, module);
 /* eslint-enable */

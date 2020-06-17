@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect as RRDRedirect } from 'react-router-dom';
 
-import HelperFunctions from '../helpers/HelperFunctions';
 import { Section, TextLink } from '../Typography';
 
 const Redirect = props => {
@@ -19,19 +17,26 @@ const Redirect = props => {
     return cleanUp;
   }, []);
 
-  const { name, to, ...rest } = props;
+  const { name, to, onRedirect, ...rest } = props;
 
-  const externalRedirect = HelperFunctions.includes(to, 'http');
+  const performRedirect = () => {
+    if (onRedirect) {
+      onRedirect(to);
+    } else {
+      document.location = to;
+    }
+  };
 
-  if (externalRedirect && isTimeToRedirect) {
-    document.location = to;
+  if (isTimeToRedirect) {
+    performRedirect();
   }
 
   return (
     <div {...rest}>
-      {!externalRedirect && isTimeToRedirect && <RRDRedirect to={to} />}
       <Section name={name || 'Redirecting in 2 seconds...'}>
-        <TextLink to={to}>Not been redirected? Click here.</TextLink>
+        <TextLink onClick={performRedirect}>
+          Not been redirected? Click here.
+        </TextLink>
       </Section>
     </div>
   );
@@ -40,10 +45,12 @@ const Redirect = props => {
 Redirect.propTypes = {
   to: PropTypes.string.isRequired,
   name: PropTypes.string,
+  onRedirect: PropTypes.func,
 };
 
 Redirect.defaultProps = {
   name: null,
+  onRedirect: null,
 };
 
 export default Redirect;

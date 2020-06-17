@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { cssModules } from '../helpers/cssModules';
 import { NewWindow } from '../Icons';
@@ -12,10 +11,11 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TextLink = props => {
   const {
-    external,
     fancy,
     light,
     href,
+    hrefExternal,
+    hrefDumb,
     className,
     textClassName,
     children,
@@ -41,49 +41,44 @@ const TextLink = props => {
     classNameFinal.push(className);
   }
 
-  return external ? (
+  return (
     <a
-      href={href}
-      rel="noopener noreferrer"
-      target="_blank"
+      href={hrefDumb ? null : href}
+      rel={hrefExternal ? 'noopener noreferrer' : null}
+      target={hrefExternal ? '_blank' : null}
       className={classNameFinal.join(' ')}
       onClick={onClick}
       {...rest}
     >
       {children}
-      <div className={getClassName('typography__icon')}>
-        <NewWindow className={getClassName('typography__icon--inner')} />
-      </div>
+      {hrefExternal && (
+        <div className={getClassName('typography__icon')}>
+          <NewWindow className={getClassName('typography__icon--inner')} />
+        </div>
+      )}
     </a>
-  ) : (
-    <Link
-      to={href}
-      onClick={onClick}
-      className={classNameFinal.join(' ')}
-      {...rest}
-    >
-      {children}
-    </Link>
   );
 };
 
 TextLink.propTypes = {
   onClick: PropTypes.func,
   fancy: PropTypes.bool,
-  external: PropTypes.bool,
   light: PropTypes.bool,
   children: PropTypes.node,
   href: PropTypes.string,
+  hrefExternal: PropTypes.bool,
+  hrefDumb: PropTypes.bool,
   textClassName: PropTypes.string,
   className: PropTypes.string,
 };
 
 TextLink.defaultProps = {
   onClick: null,
-  external: false,
   fancy: false,
   light: false,
   href: null,
+  hrefExternal: false,
+  hrefDumb: false,
   children: null,
   textClassName: null,
   className: null,

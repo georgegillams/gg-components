@@ -122,23 +122,28 @@ storiesOf('TextLink', module)
       Test
     </TextLink>
   ))
+  .add('Dumb', () => (
+    <TextLink hrefDumb href="/lol" name="Test">
+      Test
+    </TextLink>
+  ))
   .add('External', () => (
     <div>
       This is an external link to{' '}
-      <TextLink external href="/lol" name="Test">
+      <TextLink hrefExternal href="/lol" name="Test">
         Test
       </TextLink>{' '}
       content on another site.
     </div>
   ))
   .add('Light external', () => (
-    <TextLink light external href="/lol" name="Test">
+    <TextLink light hrefExternal href="/lol" name="Test">
       Test
     </TextLink>
   ))
   .add('Themed', () => (
     <div className={getClassName('stories__themed')}>
-      <TextLink external href="/lol" name="Test">
+      <TextLink hrefExternal href="/lol" name="Test">
         Test
       </TextLink>
     </div>
@@ -181,6 +186,19 @@ storiesOf('PageTitle', module)
   ))
   .add('With link', () => (
     <PageTitle link={{ to: '/test', text: 'Back' }} name="Test">
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ))
+  .add('With link wrapper component', () => (
+    <PageTitle
+      linkWrapperComponent={props => (
+        <div style={{ padding: '1rem', background: 'lightgreen' }} {...props} />
+      )}
+      link={{ to: '/test', text: 'Back' }}
+      name="Test"
+    >
       <div
         style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
       />

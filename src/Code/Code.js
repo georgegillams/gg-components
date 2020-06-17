@@ -27,9 +27,9 @@ const Code = props => {
             {showSpace && <span>&nbsp;</span>}
             {githubUrl && (
               <TextLink
-                external
                 light
                 href={githubUrl}
+                hrefExternal
                 className={getClassName('code__text-link')}
               >
                 View on Github{' '}

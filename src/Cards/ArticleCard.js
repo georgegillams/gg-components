@@ -45,16 +45,10 @@ const ArticleCard = props => {
     highlighted,
     children,
 
-    bannerColor,
-    fillImageSrc,
     light,
-    linkUrl,
-    href,
-    ariaLabel,
     className,
-    backgroundImageClassName,
     disabled,
-    onClick,
+    backgroundImageClassName,
 
     ...rest
   } = props;
@@ -179,17 +173,11 @@ const ArticleCard = props => {
 
   return (
     <Card
-      bannerColor={bannerColor}
-      fillImageSrc={fillImageSrc}
-      light={light}
-      linkUrl={linkUrl}
-      href={href}
-      ariaLabel={ariaLabel}
       className={classNameFinal.join(' ')}
-      backgroundImageClassName={backgroundImageClassName}
       disabled={disabled}
-      onClick={onClick}
       onHoverChanged={setHovering}
+      light={light}
+      backgroundImageClassName={backgroundImageClassName}
       {...rest}
     >
       {cardContent}
@@ -213,7 +201,6 @@ ArticleCard.propTypes = {
   imageSrc: PropTypes.node,
   layout: PropTypes.oneOf(Object.keys(ARTICLE_CARD_LAYOUTS)),
   light: PropTypes.bool,
-  linkUrl: PropTypes.string,
   month: PropTypes.string,
   onClick: PropTypes.func,
   title: PropTypes.string,
@@ -235,7 +222,6 @@ ArticleCard.defaultProps = {
   imageSrc: null,
   layout: ARTICLE_CARD_LAYOUTS.auto,
   light: false,
-  linkUrl: null,
   month: null,
   onClick: null,
   title: null,

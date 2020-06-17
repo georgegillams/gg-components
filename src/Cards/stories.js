@@ -41,6 +41,11 @@ storiesOf('Card', module)
       <Section noPadding name="Test" />
     </Card>
   ))
+  .add('With dumb href', () => (
+    <Card hrefDumb href="/test">
+      <Section noPadding name="Test" />
+    </Card>
+  ))
   .add('Disabled', () => (
     <Card disabled>
       <Section noPadding name="Test" />

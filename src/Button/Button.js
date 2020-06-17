@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { cssModules } from '../helpers/cssModules';
 
@@ -17,6 +16,7 @@ const Button = props => {
   const {
     href,
     hrefExternal,
+    hrefDumb,
     destructive,
     disabled,
     light,
@@ -75,9 +75,16 @@ const Button = props => {
 
   if (className) classNameFinal.push(className);
 
-  if (href && !hrefExternal && !disabled) {
+  if (href && !disabled) {
     return (
-      <Link aria-label={children} to={href} onClick={onClick} {...rest}>
+      <a
+        aria-label={children}
+        href={hrefDumb ? null : href}
+        target={hrefExternal ? '_blank' : null}
+        rel={hrefExternal ? 'noopener noreferrer' : null}
+        onClick={onClick}
+        {...rest}
+      >
         <button
           aria-hidden="true"
           type="button"
@@ -85,17 +92,13 @@ const Button = props => {
         >
           {children}
         </button>
-      </Link>
+      </a>
     );
   }
 
   let onClickFinal = onClick;
   if (disabled) {
     onClickFinal = null;
-  } else if (href && hrefExternal) {
-    onClickFinal = () => {
-      window.open(href, '_blank');
-    };
   }
 
   const onDestructiveClickFinal = event => {
@@ -128,6 +131,7 @@ Button.propTypes = {
   large: PropTypes.bool,
   href: PropTypes.string,
   hrefExternal: PropTypes.bool,
+  hrefDumb: PropTypes.bool,
   buttonClassName: PropTypes.string,
   secondary: PropTypes.bool,
   white: PropTypes.bool,
@@ -145,6 +149,7 @@ Button.defaultProps = {
   href: null,
   buttonClassName: null,
   hrefExternal: false,
+  hrefDumb: false,
   secondary: false,
   white: false,
   light: false,

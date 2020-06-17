@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.0.0
+
+- Breaking: Redirect now accepts an optional `onRedirect` function. If this is provided, it will be called instead of setting `document.location`. Use this to provide a custom function from your JS router if you want to avoid the entire page reloading when the redirect is performed.
+
+- Breaking: Button no longer uses `react-router-dom` `Link`. If you want to use a `react-router-dom` `Link`, pass `href` and `hrefDumb` to the button and wrap it in your own `Link`.
+- Breaking: Card no longer uses `react-router-dom` `Link`. If you want to use a `react-router-dom` `Link`, pass `href` and `hrefDumb` to the button and wrap it in your own `Link`.
+- Breaking: ArticleCard no longer uses `react-router-dom` `Link`. If you want to use a `react-router-dom` `Link`, pass `href` and `hrefDumb` to the button and wrap it in your own `Link`.
+- Breaking: TextLink no longer uses `react-router-dom` `Link`. If you want to use a `react-router-dom` `Link`, pass `href` and `hrefDumb` to the button and wrap it in your own `Link`.
+- Breaking: TextLink `external` prop has been renamed to `hrefExternal`.
+
+- Breaking: Removed `Logo`, `Footer`, `CreativeCommons`, `AdminOnly`, `LoggedInOnly`, `LoggedOutOnly` and `EmailConfirmedOnly`.
+
+- Breaking: Fixed typo. `TimzoneSafeCountdown` is now `TimezoneSafeCountdown`
+
+- Added: `PageTitle` can now accept an element prop `linkWrapperComponent` which will wrap a dumb link.
+
 ## 4.1.0
 
 - Added: Pride option for Logo component.

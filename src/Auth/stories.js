@@ -6,16 +6,7 @@ import { storiesOf } from '@storybook/react';
 import { CardSkeleton } from '../Skeletons';
 import { Section } from '../Typography';
 
-import {
-  APIEntity,
-  AdminOnly,
-  DebugObject,
-  EmailVerifiedOnly,
-  LoadingCover,
-  LoggedInOnly,
-  LoggedOutOnly,
-  ObjectAsList,
-} from './index';
+import { APIEntity, DebugObject, LoadingCover, ObjectAsList } from './index';
 
 const StatefulLoadingCover = () => {
   const [loading, setLoading] = useState(true);
@@ -57,66 +48,6 @@ const StatefulLoadingCover = () => {
 };
 
 storiesOf('Auth', module)
-  .add('Admin only - out', () => (
-    <AdminOnly
-      user={null}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
-      <Section>This is some admin-only content.</Section>
-    </AdminOnly>
-  ))
-  .add('Admin only - in', () => (
-    <AdminOnly
-      user={{ admin: true }}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
-      <Section>This is some admin-only content.</Section>
-    </AdminOnly>
-  ))
-  .add('Logged in only - out', () => (
-    <LoggedInOnly
-      user={null}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
-      <Section>This is some logged-in-only content.</Section>
-    </LoggedInOnly>
-  ))
-  .add('Logged in only - in', () => (
-    <LoggedInOnly
-      user={{ uname: 'Test' }}
-      setLoginRedirect={rd => {
-        console.log(`redirect set`, rd);
-      }}
-    >
-      <Section>This is some logged-in-only content.</Section>
-    </LoggedInOnly>
-  ))
-  .add('Logged out only - out', () => (
-    <LoggedOutOnly user={null}>
-      <Section>This is some logged-out-only content.</Section>
-    </LoggedOutOnly>
-  ))
-  .add('Logged out only - in', () => (
-    <LoggedOutOnly user={{ uname: 'Test' }}>
-      <Section>This is some logged-out-only content.</Section>
-    </LoggedOutOnly>
-  ))
-  .add('Email confirmed only - confirmed', () => (
-    <EmailVerifiedOnly user={{ uname: 'Test', emailVerified: true }}>
-      <Section>This is some email-confirmed-only content.</Section>
-    </EmailVerifiedOnly>
-  ))
-  .add('Email confirmed only - unconfirmed', () => (
-    <EmailVerifiedOnly user={{ uname: 'Test' }}>
-      <Section>This is some email-confirmed-only content.</Section>
-    </EmailVerifiedOnly>
-  ))
   .add('API entity', () => (
     <APIEntity
       entityType="Thing type"

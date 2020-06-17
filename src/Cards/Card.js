@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { cssModules } from '../helpers/cssModules';
 
@@ -13,8 +12,8 @@ const Card = props => {
   const [focused, setFocused] = useState(false);
 
   const {
-    linkUrl,
     href,
+    hrefDumb,
     onClick,
     padded,
     bannerColor,
@@ -87,7 +86,7 @@ const Card = props => {
     backgroundImageClassNames.push(backgroundImageClassName);
   }
 
-  let cardComponent = (
+  const cardComponent = (
     <div className={cardClassNames.join(' ')}>
       <div
         className={backgroundImageClassNames.join(' ')}
@@ -101,27 +100,20 @@ const Card = props => {
     </div>
   );
 
-  if (linkUrl) {
-    cardComponent = (
-      <Link
-        aria-disabled={disabled ? 'true' : null}
-        style={{ textDecoration: 'none' }}
-        role="button"
-        aria-label={ariaLabel}
-        to={disabled ? 'false' : linkUrl}
-      >
-        {cardComponent}
-      </Link>
-    );
-  } else if (href && !disabled) {
-    cardComponent = (
+  if (href && !disabled) {
+    return (
       <a
         aria-disabled={disabled ? 'true' : null}
         style={{ textDecoration: 'none' }}
         role="button"
-        rel="noopener noreferrer"
-        target="_blank"
-        href={href}
+        href={hrefDumb ? null : href}
+        onMouseEnter={hoverStarted}
+        onFocus={focusStarted}
+        onMouseLeave={hoverEnded}
+        onBlur={focusEnded}
+        className={className}
+        onClick={onClick}
+        {...rest}
       >
         {cardComponent}
       </a>
@@ -156,8 +148,8 @@ Card.propTypes = {
   disabled: PropTypes.bool,
   fillImageSrc: PropTypes.node,
   href: PropTypes.string,
+  hrefDumb: PropTypes.bool,
   light: PropTypes.bool,
-  linkUrl: PropTypes.string,
   onClick: PropTypes.func,
   onHoverChanged: PropTypes.func,
   padded: PropTypes.bool,
@@ -172,8 +164,8 @@ Card.defaultProps = {
   disabled: false,
   fillImageSrc: null,
   href: null,
+  hrefDumb: false,
   light: false,
-  linkUrl: null,
   onClick: null,
   onHoverChanged: null,
   padded: true,
