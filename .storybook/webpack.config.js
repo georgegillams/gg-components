@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: ['babel-loader'],
-        exclude: /node_modules\/(?!bpk-).*/,
+        exclude: /node_modules/,
       },
       {
         test: /\.scss$/,

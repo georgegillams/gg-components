@@ -59,7 +59,6 @@
   },
   "dependencies": {
     "@magica11y/prefers-reduced-motion": "^1.0.5",
-    "bpk-mixins": "^19.1.21",
     "lodash": "^4.17.15",
     "moment": "^2.26.0",
     "recompose": "^0.30.0",
