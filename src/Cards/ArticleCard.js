@@ -31,7 +31,7 @@ const MONTH_MAPPINGS = {
   11: 'Dec',
 };
 
-const ArticleCard = props => {
+const ArticleCard = React.forwardRef((props, ref) => {
   const [hovering, setHovering] = useState(false);
 
   const {
@@ -178,12 +178,13 @@ const ArticleCard = props => {
       onHoverChanged={setHovering}
       light={light}
       backgroundImageClassName={backgroundImageClassName}
+      ref={ref}
       {...rest}
     >
       {cardContent}
     </Card>
   );
-};
+});
 
 ArticleCard.propTypes = {
   ariaLabel: PropTypes.string,

@@ -9,7 +9,7 @@ import STYLES from './typography.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-const TextLink = props => {
+const TextLink = React.forwardRef((props, ref) => {
   const {
     fancy,
     light,
@@ -48,6 +48,7 @@ const TextLink = props => {
       target={hrefExternal ? '_blank' : null}
       className={classNameFinal.join(' ')}
       onClick={onClick}
+      ref={ref}
       {...rest}
     >
       {children}
@@ -58,7 +59,7 @@ const TextLink = props => {
       )}
     </a>
   );
-};
+});
 
 TextLink.propTypes = {
   onClick: PropTypes.func,

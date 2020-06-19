@@ -7,7 +7,7 @@ import STYLES from './gg-button.scss';
 
 const getClassName = cssModules(STYLES);
 
-const Button = props => {
+const Button = React.forwardRef((props, ref) => {
   const [
     showDestructiveConfirmation,
     setShowDestructiveConfirmation,
@@ -71,6 +71,10 @@ const Button = props => {
     classNameFinal.push(getClassName('button__outer--white'));
   }
 
+  if (href && !disabled) {
+    classNameFinal.push(getClassName('button__outer--link'));
+  }
+
   if (buttonClassName) classNameFinal.push(buttonClassName);
 
   if (className) classNameFinal.push(className);
@@ -83,6 +87,7 @@ const Button = props => {
         target={hrefExternal ? '_blank' : null}
         rel={hrefExternal ? 'noopener noreferrer' : null}
         onClick={onClick}
+        ref={ref}
         {...rest}
       >
         <button
@@ -119,13 +124,14 @@ const Button = props => {
       disabled={disabled}
       onClick={destructive ? onDestructiveClickFinal : onClickFinal}
       className={classNameFinal.join(' ')}
+      ref={ref}
       {...rest}
     >
       {showDestructiveConfirmation && 'Click again to confirm '}
       {children}
     </button>
   );
-};
+});
 
 Button.propTypes = {
   large: PropTypes.bool,

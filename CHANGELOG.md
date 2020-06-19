@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.1
+
+- Fixed: `Button` uses `forwardRef`
+- Fixed: `Card` and `ArticleCard` use `forwardRef`
+- Fixed: `TextLink` uses `forwardRef`
+
 ## 5.0.0
 
 - Breaking: Redirect now accepts an optional `onRedirect` function. If this is provided, it will be called instead of setting `document.location`. Use this to provide a custom function from your JS router if you want to avoid the entire page reloading when the redirect is performed.

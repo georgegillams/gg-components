@@ -7,7 +7,7 @@ import STYLES from './card.scss';
 
 const getClassName = cssModules(STYLES);
 
-const Card = props => {
+const Card = React.forwardRef((props, ref) => {
   const [hovering, setHovering] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -113,6 +113,7 @@ const Card = props => {
         onBlur={focusEnded}
         className={className}
         onClick={onClick}
+        ref={ref}
         {...rest}
       >
         {cardComponent}
@@ -132,12 +133,13 @@ const Card = props => {
       className={className}
       onClick={disabled ? null : onClick}
       onKeyDown={disabled ? null : onClick}
+      ref={ref}
       {...rest}
     >
       {cardComponent}
     </div>
   );
-};
+});
 
 Card.propTypes = {
   ariaLabel: PropTypes.string,
