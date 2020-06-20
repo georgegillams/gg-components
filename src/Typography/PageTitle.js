@@ -20,20 +20,17 @@ const PageTitle = props => {
 
   let linkElement = null;
   if (link) {
+    const linkHref = link.to;
+    const linkText = `⇠ ${link.text}`;
+    const linkClassName = getClassName('page-title__link');
+
     if (renderLink) {
-      linkElement = renderLink(
-        `⇠ ${link.text}`,
-        link.text,
-        getClassName('page-title__link'),
-      );
+      linkElement = renderLink(linkHref, linkText, linkClassName);
     } else {
       linkElement = (
-        <TextLink
-          className={getClassName('page-title__link')}
-          href={link.to}
-          hrefDumb={!!renderLink}
-          {...linkProps}
-        >{`⇠ ${link.text}`}</TextLink>
+        <TextLink className={linkClassName} href={linkHref} {...linkProps}>
+          {linkText}
+        </TextLink>
       );
     }
   }
@@ -52,8 +49,10 @@ const PageTitle = props => {
 
 PageTitle.propTypes = {
   name: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  link: PropTypes.object,
+  link: PropTypes.shape({
+    to: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
   // eslint-disable-next-line react/forbid-prop-types
   headingProps: PropTypes.object,
   // eslint-disable-next-line react/forbid-prop-types
