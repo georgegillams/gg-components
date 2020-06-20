@@ -191,10 +191,15 @@ storiesOf('PageTitle', module)
       />
     </PageTitle>
   ))
-  .add('With link wrapper component', () => (
+  .add('With custom link component', () => (
     <PageTitle
-      linkWrapperComponent={props => (
-        <div style={{ padding: '1rem', background: 'lightgreen' }} {...props} />
+      renderLink={(href, name, className) => (
+        <div
+          style={{ padding: '1rem 0', background: 'lightgreen' }}
+          className={className}
+        >
+          <a href={href}>{name}</a>
+        </div>
       )}
       link={{ to: '/test', text: 'Back' }}
       name="Test"

@@ -10,13 +10,7 @@ import STYLES from './page-title.scss';
 const getClassName = cssModules(STYLES);
 
 const PageTitle = props => {
-  const {
-    link,
-    linkWrapperComponent: LinkWrapperComponent,
-    headingProps,
-    linkProps,
-    ...rest
-  } = props;
+  const { link, renderLink, headingProps, linkProps, ...rest } = props;
 
   const sectionClassNames = [getClassName('page-title__section')];
 
@@ -26,23 +20,27 @@ const PageTitle = props => {
 
   let linkElement = null;
   if (link) {
-    linkElement = (
-      <TextLink
-        className={getClassName('page-title__link')}
-        href={link.to}
-        hrefDumb={!!LinkWrapperComponent}
-        {...linkProps}
-      >{`⇠ ${link.text}`}</TextLink>
-    );
-
-    if (LinkWrapperComponent) {
-      linkElement = <LinkWrapperComponent>{linkElement}</LinkWrapperComponent>;
+    if (renderLink) {
+      linkElement = renderLink(
+        `⇠ ${link.text}`,
+        link.text,
+        getClassName('page-title__link'),
+      );
+    } else {
+      linkElement = (
+        <TextLink
+          className={getClassName('page-title__link')}
+          href={link.to}
+          hrefDumb={!!renderLink}
+          {...linkProps}
+        >{`⇠ ${link.text}`}</TextLink>
+      );
     }
   }
 
   return (
     <>
-      {link && linkElement}
+      {linkElement && linkElement}
       <Section
         headingProps={headingProps}
         textClassName={sectionClassNames.join(' ')}
@@ -60,7 +58,7 @@ PageTitle.propTypes = {
   headingProps: PropTypes.object,
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
-  linkWrapperComponent: PropTypes.element,
+  renderLink: PropTypes.func,
 };
 
 PageTitle.defaultProps = {
@@ -68,7 +66,7 @@ PageTitle.defaultProps = {
   link: null,
   headingProps: null,
   linkProps: null,
-  linkWrapperComponent: null,
+  renderLink: null,
 };
 
 export default PageTitle;

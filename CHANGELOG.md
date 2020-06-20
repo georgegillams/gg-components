@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.0.2
+
+- Fixed: `PageTitle` render link callback is now usable
+
 ## 5.0.1
 
 - Fixed: `Button` uses `forwardRef`
