@@ -1,17 +1,5 @@
 @import '../Tokens/common';
 
-@keyframes example {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 .button {
   &__outer {
     min-width: 5rem;
@@ -138,7 +126,7 @@
         color: white;
         font-weight: bold;
         animation-duration: 0.4s;
-        animation-name: example;
+        animation-name: gg-bounce-hover-effect;
         fill: white;
       }
     }

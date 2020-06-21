@@ -11,7 +11,7 @@
     text-align: center;
   }
   div {
-    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: gg-lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 32px 32px;
     &::after {
       position: absolute;
@@ -86,7 +86,7 @@
   }
 }
 
-@keyframes lds-roller {
+@keyframes gg-lds-roller {
   0% {
     transform: rotate(0deg);
   }

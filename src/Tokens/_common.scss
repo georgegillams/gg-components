@@ -95,3 +95,15 @@ $focus-indicator-invert: 0 0 0 0.2rem #9f9f9f;
 
   @include page-container;
 }
+
+@keyframes gg-bounce-hover-effect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
