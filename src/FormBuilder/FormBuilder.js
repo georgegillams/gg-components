@@ -13,11 +13,13 @@ import STYLES from './forms.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const FormBuilder = props => {
-  const [formId] = useState(
-    Math.random()
-      .toString(36)
-      .substring(7),
-  );
+  const [formId] = props.test
+    ? ['FORM_ID']
+    : useState(
+        Math.random()
+          .toString(36)
+          .substring(7),
+      );
 
   const {
     className,
@@ -224,6 +226,7 @@ FormBuilder.propTypes = {
   submitOnChange: PropTypes.bool,
   disabled: PropTypes.bool,
   centered: PropTypes.bool,
+  test: PropTypes.bool,
   className: PropTypes.string,
 };
 
@@ -234,6 +237,7 @@ FormBuilder.defaultProps = {
   submitOnChange: false,
   disabled: false,
   centered: false,
+  test: false,
   preSubmitText: null,
 };
 
