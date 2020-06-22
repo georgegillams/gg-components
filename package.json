@@ -60,7 +60,7 @@
   "dependencies": {
     "@magica11y/prefers-reduced-motion": "^1.0.5",
     "lodash": "^4.17.15",
-    "moment": "^2.26.0",
+    "moment": "^2.27.0",
     "recompose": "^0.30.0",
     "youtube-embed-video": "^1.2.1"
   },
