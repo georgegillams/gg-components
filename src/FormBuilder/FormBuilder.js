@@ -32,6 +32,7 @@ const FormBuilder = props => {
     preSubmitText,
     submitLabel,
     formFields,
+    test,
     ...rest
   } = props;
 
