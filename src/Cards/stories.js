@@ -16,6 +16,11 @@ storiesOf('Card', module)
       <Section noPadding name="Test" />
     </Card>
   ))
+  .add('Highlighted', () => (
+    <Card highlighted linkUrl="/test">
+      <Section noPadding name="Test" />
+    </Card>
+  ))
   .add('Unpadded', () => (
     <Card padded={false} linkUrl="/test">
       <Section noPadding name="Test" />

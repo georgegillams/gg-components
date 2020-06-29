@@ -49,6 +49,19 @@
       background-color: $not-black;
     }
 
+    &--highlighted {
+      background-color: $primary-color-light;
+      background-color: var(--primary-color-light, $primary-color-light);
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $primary-color-really-dark;
+        background-color: var(
+          --primary-color-really-dark,
+          $primary-color-really-dark
+        );
+      }
+    }
+
     &--light {
       background-color: $background-color-elevated;
 

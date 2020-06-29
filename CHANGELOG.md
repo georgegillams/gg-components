@@ -1,5 +1,10 @@
 # Changelog
 
+## 5.1.2
+
+- Added: `Card` has a new `highlighted` prop.
+- Added: CSS variable `--primary-color-really-dark`.
+
 ## 5.0.2
 
 - Fixed: `PageTitle` render link callback is now usable

@@ -25,10 +25,11 @@ const Card = React.forwardRef((props, ref) => {
     children,
     disabled,
     onHoverChanged,
+    highlighted,
     ...rest
   } = props;
 
-  const propagate = newValue => {
+  const propagate = (newValue) => {
     if (onHoverChanged) {
       onHoverChanged(newValue);
     }
@@ -79,6 +80,11 @@ const Card = React.forwardRef((props, ref) => {
   }
 
   const backgroundImageClassNames = [getClassName('card__background')];
+  if (highlighted) {
+    backgroundImageClassNames.push(
+      getClassName('card__background--highlighted'),
+    );
+  }
   if (light) {
     backgroundImageClassNames.push(getClassName('card__background--light'));
   }
@@ -155,6 +161,7 @@ Card.propTypes = {
   onClick: PropTypes.func,
   onHoverChanged: PropTypes.func,
   padded: PropTypes.bool,
+  highlighted: PropTypes.bool,
 };
 
 Card.defaultProps = {
@@ -171,6 +178,7 @@ Card.defaultProps = {
   onClick: null,
   onHoverChanged: null,
   padded: true,
+  highlighted: false,
 };
 
 export default Card;

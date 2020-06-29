@@ -19,7 +19,7 @@
     "transform:js": "babel-node scripts/transform-js-scss-css-imports.js",
     "transpile:sass": "babel-node scripts/build-sass-in-place.js",
     "transpile:copy-tokens": "cp -R ./src/Tokens/* ./dist/Tokens/",
-    "transpile:remove-stories": "find dist -name \"stories.js\" -exec rm {} \\;",
+    "transpile:remove-stories": "find ./dist -name \"stories.js\" -exec rm {} \\;",
     "clean": "npm run test:clean && npm run build:clean",
     "dev": "npm run start:dev",
     "fix:adapter-core-5": "cp ./scripts/adapter_core5.js node_modules/webrtc-adapter/src/js/adapter_core5.js",
@@ -48,7 +48,6 @@
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
-  "main": "dist/index.js",
   "lint-staged": {
     "*.js": [
       "eslint --fix",
