@@ -106,7 +106,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.4",
+    "eslint-plugin-react-hooks": "^4.0.5",
     "eslint_d": "^9.1.1",
     "file-loader": "6.0.0",
     "http-server": "^0.12.3",
