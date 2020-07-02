@@ -79,7 +79,7 @@
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-flow": "^7.10.4",
     "@babel/preset-react": "^7.10.1",
-    "@babel/register": "^7.10.3",
+    "@babel/register": "^7.10.4",
     "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-backgrounds": "^5.3.19",
