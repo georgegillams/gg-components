@@ -67,7 +67,7 @@ storiesOf('Card', module)
     </Card>
   ));
 
-storiesOf('ArticleCard', module)
+storiesOf('Article card', module)
   .add('Default', () => (
     <ArticleCard
       day="23"

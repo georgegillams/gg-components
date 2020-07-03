@@ -7,7 +7,7 @@ import { Paragraph } from '../Typography';
 
 import { Code, CodeInline } from './index';
 
-storiesOf('CodeInline', module)
+storiesOf('Code in line', module)
   .add('Default', () => <CodeInline>This is some code.</CodeInline>)
   .add('In text', () => (
     <Paragraph>

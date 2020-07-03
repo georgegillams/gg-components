@@ -18,7 +18,7 @@ const menuItems = [
 const accountMenuItem = <button type="button">account</button>;
 const logo = <span style={{ color: 'hotpink' }}>LOGO</span>;
 
-storiesOf('NavigationBar', module)
+storiesOf('Navigation bar', module)
   .add('Default', () => (
     <NavigationBar
       menuItems={menuItems}

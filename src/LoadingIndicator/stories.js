@@ -33,7 +33,7 @@ const StatefulLoading = props => {
   );
 };
 
-storiesOf('LoadingIndicator', module)
+storiesOf('Loading indicator', module)
   .add('Loading', () => (
     <LoadingIndicator loading>
       <div

@@ -65,7 +65,7 @@ const StatefulMoneyPot = props => {
   );
 };
 
-storiesOf('MoneyPot', module)
+storiesOf('Money pot', module)
   .add('Default', () => (
     <MoneyPot name="Test" balance={50} goalAmount={70} markerPosition={40} />
   ))

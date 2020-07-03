@@ -101,7 +101,7 @@ storiesOf('Input', module)
   .add('Password', () => <Input type="password" value="Test" valid />)
   .add('Stateful', () => <StatefulInput />);
 
-storiesOf('TextArea', module)
+storiesOf('Text area', module)
   .add('Default', () => <TextArea value="Test" />)
   .add('Valid', () => <TextArea value="Test" valid />)
   .add('Invalid', () => <TextArea value="Test" valid={false} />)

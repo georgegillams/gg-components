@@ -36,7 +36,7 @@ const SegmentedControlStory = props => {
   );
 };
 
-storiesOf('SegmentedControl', module)
+storiesOf('Segmented control', module)
   .add('Default', () => <SegmentedControlStory />)
   .add('With selection', () => <SegmentedControlStory selectedIndex={0} />)
   .add('Deselection enabled', () => <SegmentedControlStory enableDeselection />)

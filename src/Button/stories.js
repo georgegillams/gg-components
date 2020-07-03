@@ -50,11 +50,11 @@ storiesOf('Button', module)
     <ButtonStory hrefDumb href="https://duckduckgo.com/" />
   ));
 
-storiesOf('BurgerButton', module)
+storiesOf('Burger button', module)
   .add('Closed', () => <BurgerButton onClick={action('burger clicked')} />)
   .add('Open', () => <BurgerButton onClick={action('burger clicked')} isOpen />)
   .add('Stateful', () => <StatefulBurger />);
 
-storiesOf('CopyButton', module).add('Default', () => (
+storiesOf('Copy button', module).add('Default', () => (
   <CopyButton text="This was a JS copy test." />
 ));

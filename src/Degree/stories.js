@@ -88,7 +88,7 @@ class StatefulDegreeModule extends Component {
   }
 }
 
-storiesOf('DegreeModule', module)
+storiesOf('Degree module', module)
   .add('Default', () => (
     <DegreeModule name="Test" percentage={50} markerPosition={70} />
   ))

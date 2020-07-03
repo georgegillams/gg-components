@@ -66,7 +66,7 @@ storiesOf('Section', module)
   ))
   .add('Link', () => <Section anchor={false} noPadding name="Test" link />);
 
-storiesOf('SubSection', module)
+storiesOf('Subsection', module)
   .add('Default', () => <SubSection name="Test" />)
   .add('Long', () => <SubSection name={LONG_TEXT} />)
   .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
@@ -116,7 +116,7 @@ Nisi scelerisque eu ultrices vitae auctor eu augue ut. Mauris cursus mattis mole
     </div>
   ));
 
-storiesOf('TextLink', module)
+storiesOf('Text link', module)
   .add('Default', () => (
     <TextLink href="/lol" name="Test">
       Test
@@ -149,11 +149,11 @@ storiesOf('TextLink', module)
     </div>
   ));
 
-storiesOf('ArticleDate', module).add('default', () => (
+storiesOf('Article date', module).add('default', () => (
   <ArticleDate date={new Date(2019, 4, 5, 10, 11, 12)} />
 ));
 
-storiesOf('AnimatedContent', module)
+storiesOf('Animated content', module)
   .add('In view', () => (
     <AnimatedContent inView>
       <div
@@ -176,7 +176,7 @@ storiesOf('AnimatedContent', module)
     </StatefulAnimatedContent>
   ));
 
-storiesOf('PageTitle', module)
+storiesOf('Page title', module)
   .add('Title', () => (
     <PageTitle name="Test">
       <div
@@ -228,7 +228,7 @@ storiesOf('PageTitle', module)
     </PageTitle>
   ));
 
-storiesOf('MarkdownRenderer', module)
+storiesOf('Markdown renderer', module)
   .add('Text only', () => <MarkdownRenderer content="This is a simple test" />)
   .add('Text with link', () => (
     <MarkdownRenderer content="This contains a [link](/test) to an internal page." />

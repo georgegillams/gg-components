@@ -40,7 +40,7 @@ const formFields = [
   },
 ];
 
-storiesOf('FormBuilder', module)
+storiesOf('Form builder', module)
   .add('Default', () => (
     <FormBuilder formFields={formFields} entity={{}} submitLabel="Submit" />
   ))
