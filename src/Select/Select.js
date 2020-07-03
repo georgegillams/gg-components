@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import ExclamationCircle from '../Icons/exclamation-circle';
 import Tick from '../Icons/tick';
 import { cssModules } from '../helpers/cssModules';
+import { Input } from '../Input';
 
-import Input from './Input';
 import STYLES from './input.scss';
 
 const OTHER_VALUE = '';

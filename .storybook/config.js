@@ -51,10 +51,12 @@ configure(() => {
   require('../src/ScrollContainer/stories.js');
   require('../src/Section/stories.js');
   require('../src/SegmentedControl/stories.js');
+  require('../src/Select/stories.js');
   require('../src/Skeletons/stories.js');
   require('../src/Subsection/stories.js');
   require('../src/Tag/stories.js');
   require('../src/TagFilter/stories.js');
+  require('../src/TextArea/stories.js');
   require('../src/TextLink/stories.js');
   require('../src/TimezoneSafeCountdown/stories.js');
 }, module);

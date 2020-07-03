@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Input } from './index';
+import { Input, TextArea, Select } from './index';
 
 class StatefulInput extends Component {
   constructor(props) {
@@ -87,10 +87,32 @@ class StatefulInput extends Component {
   }
 }
 
-storiesOf('Input', module)
-  .add('Default', () => <Input value="Test" />)
-  .add('Valid', () => <Input value="Test" valid />)
-  .add('Invalid', () => <Input value="Test" valid={false} />)
-  .add('Disabled', () => <Input value="Test" enabled={false} />)
-  .add('Password', () => <Input type="password" value="Test" valid />)
-  .add('Stateful', () => <StatefulInput />);
+const selectOptions = [
+  { value: 'apple', name: 'Apple' },
+  { value: 'banana', name: 'Banana' },
+  { value: 'cranberry', name: 'Cranberry' },
+];
+
+storiesOf('Select', module)
+  .add('Default', () => <Select value="apple" options={selectOptions} />)
+  .add('Valid', () => <Select value="apple" valid options={selectOptions} />)
+  .add('Invalid', () => (
+    <Select value="apple" valid={false} options={selectOptions} />
+  ))
+  .add('Disabled', () => (
+    <Select value="apple" enabled={false} options={selectOptions} />
+  ))
+  .add('With other', () => (
+    <Select value="other value" options={selectOptions} enableOther />
+  ))
+  .add('Stateful', () => (
+    <StatefulInput value="apple" component={Select} options={selectOptions} />
+  ))
+  .add('Stateful with other', () => (
+    <StatefulInput
+      value="apple"
+      component={Select}
+      options={selectOptions}
+      enableOther
+    />
+  ));

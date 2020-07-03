@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Input } from './index';
+import { TextArea } from './index';
 
 class StatefulInput extends Component {
   constructor(props) {
@@ -87,10 +87,9 @@ class StatefulInput extends Component {
   }
 }
 
-storiesOf('Input', module)
-  .add('Default', () => <Input value="Test" />)
-  .add('Valid', () => <Input value="Test" valid />)
-  .add('Invalid', () => <Input value="Test" valid={false} />)
-  .add('Disabled', () => <Input value="Test" enabled={false} />)
-  .add('Password', () => <Input type="password" value="Test" valid />)
-  .add('Stateful', () => <StatefulInput />);
+storiesOf('Text area', module)
+  .add('Default', () => <TextArea value="Test" />)
+  .add('Valid', () => <TextArea value="Test" valid />)
+  .add('Invalid', () => <TextArea value="Test" valid={false} />)
+  .add('Disabled', () => <TextArea value="Test" enabled={false} />)
+  .add('Stateful', () => <StatefulInput component={TextArea} />);

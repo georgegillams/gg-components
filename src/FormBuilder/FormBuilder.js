@@ -2,7 +2,9 @@ import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button } from '../Button';
-import { Input, TextArea, Select } from '../Input';
+import { Input } from '../Input';
+import { TextArea } from '../TextArea';
+import { Select } from '../Select';
 import { Checkbox } from '../Checkbox';
 import { cssModules } from '../helpers/cssModules';
 import { formValueChanged } from '../helpers/objects';

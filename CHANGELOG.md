@@ -3,6 +3,7 @@
 ## 9.0.0
 
 - Breaking: Spit `Tag` components into separate sub-modules for better code-splitting and tree-shaking.
+- Breaking: Spit `Input` components into separate sub-modules for better code-splitting and tree-shaking.
 - Fixed: Import optimisations.
 
 ## 8.0.0

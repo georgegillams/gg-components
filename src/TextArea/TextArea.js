@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Input from './Input';
+import { Input } from '../Input';
 
 const TextArea = props => (
   <Input component={taProps => <textarea {...taProps} />} {...props} />
