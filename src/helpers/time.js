@@ -1,4 +1,4 @@
-import moment from 'moment';
+import formatDistance from 'date-fns/formatDistance';
 
 const MS_PER_FIVE_YEARS = 5 * 365.25 * 24 * 60 * 60 * 1000;
 
@@ -6,7 +6,8 @@ const getTimeDifference = timeStamp => {
   if (timeStamp > 9000000000000000) {
     return '5 years';
   }
-  return moment(timeStamp).fromNow();
+  const currentTime = new Date();
+  return formatDistance(timeStamp, currentTime, { addSuffix: true });
 };
 
 const getTimeDifferenceFromMilliseconds = ms => {
@@ -18,7 +19,7 @@ const getTimeDifferenceFromMilliseconds = ms => {
   }
   const currentTime = new Date().getTime();
   const futureTime = currentTime + ms;
-  return moment(futureTime).fromNow();
+  return formatDistance(futureTime, currentTime, { addSuffix: true });
 };
 
 export { getTimeDifference, getTimeDifferenceFromMilliseconds };

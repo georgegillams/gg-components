@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.1.3
+
+- Fixed: Replaced `moment` dependency with `data-fns`.
+
 ## 5.1.2
 
 - Added: `Card` has a new `highlighted` prop.
