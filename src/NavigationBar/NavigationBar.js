@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { BurgerButton } from '../Button';
+import { BurgerButton } from '../BurgerButton';
 import { cssModules } from '../helpers/cssModules';
 
 import BlurEffectView from './BlurEffectView';

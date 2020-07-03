@@ -1,12 +1,18 @@
 # Changelog
 
+## 8.0.0
+
+- Breaking: Renamed `Subsection` to `Subsection`.
+- Breaking: Spit `Typography` components into separate sub-modules for better code-splitting and tree-shaking.
+- Breaking: Spit `Button` components into separate sub-modules for better code-splitting and tree-shaking.
+
 ## 7.0.0
 
-- Breaking: Spit `Cards` components into separate sub-modules for better code-splitting and tree-shaking
+- Breaking: Spit `Cards` components into separate sub-modules for better code-splitting and tree-shaking.
 
 ## 6.0.0
 
-- Breaking: Spit `Auth` components into separate sub-modules for better code-splitting and tree-shaking
+- Breaking: Spit `Auth` components into separate sub-modules for better code-splitting and tree-shaking.
 
 ## 5.1.3
 

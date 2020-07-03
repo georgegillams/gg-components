@@ -3,7 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Section } from '../Typography';
+import { Section } from '../Section';
 
 import { DebugObject } from './index';
 

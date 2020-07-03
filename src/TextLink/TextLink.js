@@ -2,20 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { NewWindow } from '../Icons';
+import NewWindow from '../Icons/new-window';
 import { THEMES } from '../Theming';
 
-import STYLES from './typography.scss';
+import STYLES from './text-link.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TextLink = React.forwardRef((props, ref) => {
   const {
-    fancy,
     light,
     href,
     hrefExternal,
-    hrefDumb,
     className,
     textClassName,
     children,
@@ -24,26 +22,24 @@ const TextLink = React.forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const classNameFinal = [getClassName('typography__main')];
-  classNameFinal.push(getClassName('typography__link'));
-  classNameFinal.push(getClassName('typography__link--text-link'));
-  classNameFinal.push(getClassName('typography--no-padding'));
+  const classNameFinal = [getClassName('text-link')];
+  classNameFinal.push(getClassName('text-link--text-link'));
+  classNameFinal.push(getClassName('text-link--no-padding'));
   if (light) {
-    classNameFinal.push(getClassName('typography--light'));
-    classNameFinal.push(getClassName('typography--light--text-link'));
+    classNameFinal.push(getClassName('text-link--light'));
+    classNameFinal.push(getClassName('text-link--light--text-link'));
   }
-  if (fancy) classNameFinal.push(getClassName('typography--fancy'));
   if (theme === THEMES.allWhite) {
-    classNameFinal.push(getClassName('typography__link--text-link--all-white'));
+    classNameFinal.push(getClassName('text-link--text-link--all-white'));
   }
-  classNameFinal.push(getClassName('typography--inline'));
+  classNameFinal.push(getClassName('text-link--inline'));
   if (className) {
     classNameFinal.push(className);
   }
 
   return (
     <a
-      href={hrefDumb ? null : href}
+      href={href}
       rel={hrefExternal ? 'noopener noreferrer' : null}
       target={hrefExternal ? '_blank' : null}
       className={classNameFinal.join(' ')}
@@ -53,8 +49,8 @@ const TextLink = React.forwardRef((props, ref) => {
     >
       {children}
       {hrefExternal && (
-        <div className={getClassName('typography__icon')}>
-          <NewWindow className={getClassName('typography__icon--inner')} />
+        <div className={getClassName('text-link__icon-container')}>
+          <NewWindow className={getClassName('text-link__icon')} />
         </div>
       )}
     </a>
@@ -63,26 +59,24 @@ const TextLink = React.forwardRef((props, ref) => {
 
 TextLink.propTypes = {
   onClick: PropTypes.func,
-  fancy: PropTypes.bool,
   light: PropTypes.bool,
   children: PropTypes.node,
   href: PropTypes.string,
   hrefExternal: PropTypes.bool,
-  hrefDumb: PropTypes.bool,
   textClassName: PropTypes.string,
   className: PropTypes.string,
+  theme: PropTypes.string,
 };
 
 TextLink.defaultProps = {
   onClick: null,
-  fancy: false,
   light: false,
   href: null,
   hrefExternal: false,
-  hrefDumb: false,
   children: null,
   textClassName: null,
   className: null,
+  theme: null,
 };
 
 export default TextLink;

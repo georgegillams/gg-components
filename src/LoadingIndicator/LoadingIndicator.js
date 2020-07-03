@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { SubSection } from '../Typography';
+import { Subsection } from '../Subsection';
 
 import STYLES from './style.scss';
 
@@ -28,7 +28,7 @@ const LoadingIndicator = props => {
         <div />
       </div>
       {error && (
-        <SubSection
+        <Subsection
           anchor={false}
           name="This is taking a while. Maybe something isn't quite right..."
         />

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { getTimeDifference } from '../helpers/time';
-import { Section } from '../Typography';
+import { Section } from '../Section';
 import { ObjectAsList } from '../ObjectAsList';
 
 const APIEntity = props => {

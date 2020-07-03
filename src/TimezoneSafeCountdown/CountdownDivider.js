@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './countdown.scss';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { CodeInline } from '../Code';
-import { SubSection } from '../Typography';
+import { Subsection } from '../Subsection';
 
 const ColourPalletteItem = props => {
   const { colourName, colour, ...rest } = props;
@@ -18,11 +18,11 @@ const ColourPalletteItem = props => {
       }}
       {...rest}
     >
-      <SubSection anchor={false}>
+      <Subsection anchor={false}>
         {colourName}
         <br />
         <CodeInline>{colour}</CodeInline>
-      </SubSection>
+      </Subsection>
       <div
         style={{
           width: '5rem',

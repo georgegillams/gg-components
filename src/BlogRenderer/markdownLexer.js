@@ -52,7 +52,7 @@ const markdownLexer = (content, supportedFeatures) => {
 };
 
 const lexRecursive = (content, depth, supportedFeatures) => {
-  //console.log(`content`, content);
+  // console.log(`content`, content);
   if (!content) {
     return content;
   }
@@ -150,8 +150,8 @@ const lexRecursive = (content, depth, supportedFeatures) => {
         type: 'lazyImage',
         src: imageSrc,
         alt: imageAltText,
-        aspectX: aspectX,
-        aspectY: aspectY,
+        aspectX,
+        aspectY,
       },
       lexRecursive(postImageText, depth, supportedFeatures),
     ];
@@ -171,8 +171,8 @@ const lexRecursive = (content, depth, supportedFeatures) => {
       lexRecursive(preLinkText, depth, supportedFeatures),
       {
         type: 'youtubeVideo',
-        showSuggestions: showSuggestions,
-        videoId: videoId,
+        showSuggestions,
+        videoId,
       },
       lexRecursive(postLinkText, depth, supportedFeatures),
     ];
@@ -196,7 +196,7 @@ const lexRecursive = (content, depth, supportedFeatures) => {
         type: 'bigLink',
         title: linkText,
         ref: linkRef,
-        external: external,
+        external,
       },
       lexRecursive(postLinkText, depth, supportedFeatures),
     ];
@@ -219,7 +219,7 @@ const lexRecursive = (content, depth, supportedFeatures) => {
         type: 'link',
         child: lexRecursive(linkText, depth + 1, supportedFeatures),
         ref: linkRef,
-        external: external,
+        external,
       },
       lexRecursive(postLinkText, depth, supportedFeatures),
     ];
@@ -365,7 +365,7 @@ const lexRecursive = (content, depth, supportedFeatures) => {
   //       <span className={classNameFinal.join(' ')} {...rest}>
   //         <RecursiveWrapper {...this.props} content={preReferencesText} />
   //         {Cite && (
-  //           <SubSection
+  //           <Subsection
   //             className={elementClassNameFinal.join(' ')}
   //             noAnchor={noAnchor}
   //             light={light}
@@ -379,7 +379,7 @@ const lexRecursive = (content, depth, supportedFeatures) => {
   //               referenceStyle={REFERENCE_STYLES.harvard}
   //               references={references}
   //             />
-  //           </SubSection>
+  //           </Subsection>
   //         )}
   //         <RecursiveWrapper {...this.props} content={postReferencesText} />
   //       </span>
@@ -420,7 +420,7 @@ const lexRecursive = (content, depth, supportedFeatures) => {
       lexRecursive(preCodeBlockText, depth, supportedFeatures),
       {
         type: 'codeblock',
-        language: language,
+        language,
         githubUrl: githubLink,
         text: blockCode,
       },

@@ -7,7 +7,7 @@ import Tag from '../Tag';
 
 import BlogPreviewSection from './BlogPreviewSection';
 import Section from './Section';
-import SubSection from './SubSection';
+import Subsection from './Subsection';
 import STYLES from './blog-viewer.scss';
 
 import { ArticleDate } from '.';
@@ -69,7 +69,7 @@ const BlogRenderer = props => {
             className={getClassName('pages__link')}
             href={`/admin/blog/edit/${blog.id}`}
           >
-            <SubSection
+            <Subsection
               textclassName={getClassName('blogs__edit-link')}
               name="Edit this blog"
               noAnchor

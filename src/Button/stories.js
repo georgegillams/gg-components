@@ -1,23 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Button, BurgerButton, CopyButton } from './index';
-
-const StatefulBurger = props => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <BurgerButton
-      onClick={() => {
-        setIsOpen(!isOpen);
-      }}
-      isOpen={isOpen}
-      {...props}
-    />
-  );
-};
+import { Button } from './index';
 
 const ButtonStory = props => {
   const { className, dark, ...rest } = props;
@@ -49,12 +35,3 @@ storiesOf('Button', module)
   .add('Dumb href', () => (
     <ButtonStory hrefDumb href="https://duckduckgo.com/" />
   ));
-
-storiesOf('Burger button', module)
-  .add('Closed', () => <BurgerButton onClick={action('burger clicked')} />)
-  .add('Open', () => <BurgerButton onClick={action('burger clicked')} isOpen />)
-  .add('Stateful', () => <StatefulBurger />);
-
-storiesOf('Copy button', module).add('Default', () => (
-  <CopyButton text="This was a JS copy test." />
-));

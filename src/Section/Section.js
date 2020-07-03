@@ -3,7 +3,7 @@ import React from 'react';
 
 import { cssModules } from '../helpers/cssModules';
 
-import STYLES from './typography.scss';
+import STYLES from './section.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 

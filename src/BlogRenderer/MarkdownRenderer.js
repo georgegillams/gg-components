@@ -20,7 +20,7 @@ import Paragraph from './Paragraph';
 import TextLink from './TextLink';
 import Quote from './Quote';
 import Section from './Section';
-import SubSection from './SubSection';
+import Subsection from './Subsection';
 import { markdownLexer, DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
 import STYLES from './markdown-renderer.scss';
 
@@ -206,9 +206,9 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'subsection') {
     return (
-      <SubSection padding={false} name={content.title}>
+      <Subsection padding={false} name={content.title}>
         {childElement}
-      </SubSection>
+      </Subsection>
     );
   }
 

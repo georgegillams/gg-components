@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { Section, SubSection } from '../Typography';
+import { Section } from '../Section';
+import { Subsection } from '../Subsection';
 import HelperFunctions from '../helpers/HelperFunctions';
 import { Card } from '../Card';
 
@@ -120,7 +121,7 @@ const ArticleCard = React.forwardRef((props, ref) => {
   const cardContent = (
     <div className={outerBannerClassNames.join(' ')}>
       <div className={dateContainerClassNames.join(' ')}>
-        <SubSection
+        <Subsection
           hover={hovering && !disabled}
           anchor={false}
           noPadding
@@ -132,7 +133,7 @@ const ArticleCard = React.forwardRef((props, ref) => {
               : month
           }
         />
-        <SubSection
+        <Subsection
           hover={hovering && !disabled}
           anchor={false}
           noPadding

@@ -155,15 +155,15 @@ Sample text here...
   done();
 });
 
-//test('parses sectioned structure', done => {
+// test('parses sectioned structure', done => {
 //  const result = markdownLexer(
 //    `Text outside any section
-//# Section
-//Text in section
-//# SubSection
-//Text in sub-section
-//## SubSubSection
-//Text in sub-sub-section`,
+// # Section
+// Text in section
+// # Subsection
+// Text in sub-section
+// ## SubSubSection
+// Text in sub-sub-section`,
 //  );
 //  expect(result.error).toBe(undefined);
 //  expect(result).toEqual([
@@ -174,7 +174,7 @@ Sample text here...
 //      child: [
 //        `Text in section`,
 //        {
-//          title: 'SubSection',
+//          title: 'Subsection',
 //          type: 'subsection',
 //          child: [
 //            `Text in sub-section`,
@@ -192,4 +192,4 @@ Sample text here...
 //    null,
 //  ]);
 //  done();
-//});
+// });

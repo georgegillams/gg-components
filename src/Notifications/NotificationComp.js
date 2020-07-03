@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
 import { ThemeProvider, THEMES } from '../Theming';
+import { MarkdownRenderer } from '../MarkdownRenderer';
 
 import STYLES from './notification-comp.scss';
-
-import { MarkdownRenderer } from '../Typography';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 

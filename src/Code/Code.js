@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TextLink from '../Typography/TextLink';
+import { TextLink } from '../TextLink';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './code.scss';

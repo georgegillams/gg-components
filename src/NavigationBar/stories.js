@@ -4,7 +4,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 
 import { NavigationBar, NavigationItem } from './index';
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Section } from '../Typography';
+import { Section } from '../Section';
 import { cssModules } from '../helpers/cssModules';
 import { ObjectAsList } from '../ObjectAsList';
 

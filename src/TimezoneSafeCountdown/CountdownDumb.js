@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
 import { getTimeDifferenceFromMilliseconds } from '../helpers/time';
-import { Paragraph } from '../Typography';
+import { Paragraph } from '../Paragraph';
 import { Checkbox } from '../Checkbox';
 
 import STYLES from './countdown.scss';

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { TextLink } from '../Typography';
+import { TextLink } from '../TextLink';
 
 import { InfoCell, INFO_CELL_STYLES } from './index';
 

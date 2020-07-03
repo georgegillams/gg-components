@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
+import { Section } from '../Section';
+import { TextLink } from '../TextLink';
 
-import Section from './Section';
-import TextLink from './TextLink';
 import STYLES from './page-title.scss';
 
 const getClassName = cssModules(STYLES);

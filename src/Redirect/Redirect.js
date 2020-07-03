@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { Section, TextLink } from '../Typography';
+import { TextLink } from '../TextLink';
+import { Section } from '../Section';
 
 const Redirect = props => {
   const [isTimeToRedirect, setIsTimeToRedirect] = useState(false);

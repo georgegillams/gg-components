@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Copy } from '../Icons';
+import Copy from '../Icons/copy';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './copy-button.scss';

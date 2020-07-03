@@ -12,7 +12,7 @@ import {
   Quote,
   Section,
   Paragraph,
-  SubSection,
+  Subsection,
   AnimatedContent,
   TextLink,
   PageTitle,
@@ -67,17 +67,17 @@ storiesOf('Section', module)
   .add('Link', () => <Section anchor={false} noPadding name="Test" link />);
 
 storiesOf('Subsection', module)
-  .add('Default', () => <SubSection name="Test" />)
-  .add('Long', () => <SubSection name={LONG_TEXT} />)
-  .add('Without anchor', () => <SubSection name="Test" anchor={false} />)
-  .add('No padding', () => <SubSection noPadding name="Test" />)
+  .add('Default', () => <Subsection name="Test" />)
+  .add('Long', () => <Subsection name={LONG_TEXT} />)
+  .add('Without anchor', () => <Subsection name="Test" anchor={false} />)
+  .add('No padding', () => <Subsection noPadding name="Test" />)
   .add('With content and padding', () => (
-    <SubSection name="Test">Some content</SubSection>
+    <Subsection name="Test">Some content</Subsection>
   ))
   .add('With content', () => (
-    <SubSection noPadding name="Test">
+    <Subsection noPadding name="Test">
       Some content
-    </SubSection>
+    </Subsection>
   ));
 
 storiesOf('Paragraph', module)
@@ -304,7 +304,7 @@ Text before linebreak...
       content={`
 # Section
 This is some section content.
-## SubSection
+## Subsection
 This is some text in a subsection
 
 Let's throw in some \`code\` for good measure.

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { SubSection } from '../Typography';
+import { Subsection } from '../Subsection';
 import { Skeleton } from '../Skeletons';
 
 import STYLES from './loading-cover.scss';
@@ -29,7 +29,7 @@ const LoadingCover = props => {
       <div className={getClassName('loading-cover__overlay')}>
         {LoadingSkeleton && <LoadingSkeleton aria-label="Loading" />}
         {error && (
-          <SubSection
+          <Subsection
             name="This is taking a while. Maybe something isn't quite right..."
             noPadding
             anchor={false}

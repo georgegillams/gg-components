@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Section } from '../Typography';
+import { Section } from '../Section';
 
 import {
   ButtonSkeleton,

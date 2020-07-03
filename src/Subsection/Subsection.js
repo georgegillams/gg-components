@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
+import { TextLink } from '../TextLink';
 
-import TextLink from './TextLink';
-import STYLES from './typography.scss';
+import STYLES from './subsection.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-const SubSection = props => {
+const Subsection = props => {
   const {
     link,
     fancy,
@@ -88,7 +88,7 @@ const SubSection = props => {
   );
 };
 
-SubSection.propTypes = {
+Subsection.propTypes = {
   hover: PropTypes.bool,
   link: PropTypes.bool,
   fancy: PropTypes.bool,
@@ -102,7 +102,7 @@ SubSection.propTypes = {
   children: PropTypes.node,
 };
 
-SubSection.defaultProps = {
+Subsection.defaultProps = {
   hover: false,
   link: false,
   fancy: false,
@@ -116,4 +116,4 @@ SubSection.defaultProps = {
   children: null,
 };
 
-export default SubSection;
+export default Subsection;

@@ -1,0 +1,18 @@
+@import '../Tokens/common';
+
+.blog-viewer {
+  &__outer {
+    display: inline;
+    color: $not-black;
+    font-family: 'Quattrocento Sans', sans-serif;
+
+    @media (prefers-color-scheme: dark) {
+      color: $not-black-invert;
+    }
+  }
+
+  &__element {
+    display: inline;
+    font-family: 'Quattrocento Sans', sans-serif;
+  }
+}

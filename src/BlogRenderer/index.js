@@ -1,7 +1,7 @@
 import Quote from './Quote';
 import ArticleDate from './ArticleDate';
 import Section from './Section';
-import SubSection from './SubSection';
+import Subsection from './Subsection';
 import Paragraph from './Paragraph';
 import TextLink from './TextLink';
 import AnimatedContent from './AnimatedContent';
@@ -12,7 +12,7 @@ export {
   ArticleDate,
   Quote,
   Section,
-  SubSection,
+  Subsection,
   MarkdownRenderer,
   AnimatedContent,
   PageTitle,
