@@ -1,5 +1,9 @@
 # Changelog
 
+## 8.0.1
+
+- Fixed: Import optimisations.
+
 ## 8.0.0
 
 - Breaking: Renamed `Subsection` to `Subsection`.

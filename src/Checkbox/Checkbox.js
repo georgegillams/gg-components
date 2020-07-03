@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { Tick } from '../Icons';
+import Tick from '../Icons/tick';
 
 import STYLES from './checkbox.scss';
 

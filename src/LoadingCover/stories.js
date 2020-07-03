@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { CardSkeleton } from '../Skeletons';
+import CardSkeleton from '../Skeletons/CardSkeleton';
 import { Section } from '../Section';
 
 import { LoadingCover } from './index';
