@@ -16,15 +16,6 @@ class Skeleton extends Component {
     };
   }
 
-  adjustPositionsToAlign = () => {
-    if (!this.divElement) {
-      return;
-    }
-
-    const left = this.divElement.getBoundingClientRect().x;
-    this.setState({ left });
-  };
-
   componentDidMount() {
     this.adjustPositionsToAlign();
     this.interval = setInterval(() => {
@@ -38,6 +29,15 @@ class Skeleton extends Component {
     }
   }
 
+  adjustPositionsToAlign = () => {
+    if (!this.divElement) {
+      return;
+    }
+
+    const left = this.divElement.getBoundingClientRect().x;
+    this.setState({ left });
+  };
+
   render() {
     const { className, ...rest } = this.props;
 
@@ -46,7 +46,9 @@ class Skeleton extends Component {
     return (
       <div
         className={classNames}
-        ref={divElement => (this.divElement = divElement)}
+        ref={divElement => {
+          this.divElement = divElement;
+        }}
         {...rest}
       >
         <div
@@ -57,5 +59,13 @@ class Skeleton extends Component {
     );
   }
 }
+
+Skeleton.propTypes = {
+  className: PropTypes.string,
+};
+
+Skeleton.defaultProps = {
+  className: null,
+};
 
 export default Skeleton;

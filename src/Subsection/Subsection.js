@@ -11,7 +11,6 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 const Subsection = props => {
   const {
     link,
-    fancy,
     light,
     name,
     anchor,
@@ -51,10 +50,6 @@ const Subsection = props => {
     textClassNameFinal.push(getClassName('typography--no-padding'));
     anchorClassNames.push(getClassName('typography__anchor-link--no-padding'));
   }
-  if (fancy) {
-    classNameFinal.push(getClassName('typography--fancy'));
-    textClassNameFinal.push(getClassName('typography--fancy'));
-  }
   if (className) {
     classNameFinal.push(className);
   }
@@ -91,28 +86,24 @@ const Subsection = props => {
 Subsection.propTypes = {
   hover: PropTypes.bool,
   link: PropTypes.bool,
-  fancy: PropTypes.bool,
   light: PropTypes.bool,
   anchor: PropTypes.bool,
   noPadding: PropTypes.bool,
   name: PropTypes.string,
   className: PropTypes.string,
   textClassName: PropTypes.string,
-  style: PropTypes.object,
   children: PropTypes.node,
 };
 
 Subsection.defaultProps = {
   hover: false,
   link: false,
-  fancy: false,
   anchor: true,
   name: null,
   light: false,
   noPadding: false,
   className: null,
   textClassName: null,
-  style: null,
   children: null,
 };
 

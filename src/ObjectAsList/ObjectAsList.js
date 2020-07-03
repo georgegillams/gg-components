@@ -6,7 +6,7 @@ const ObjectAsList = props => {
 
   const [expanded, setExpanded] = useState(false);
 
-  if ((value && typeof value === 'object') || typeof value === 'array') {
+  if (value && typeof value === 'object') {
     return (
       <>
         <div

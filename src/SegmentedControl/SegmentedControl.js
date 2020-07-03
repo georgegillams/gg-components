@@ -27,7 +27,7 @@ const SegmentedControl = props => {
           key={o.key}
           first={i === 0}
           last={i === options.length - 1}
-          onClick={e => {
+          onClick={() => {
             if (enableDeselection && selectedIndex === i) {
               onSelectionChanged(undefined, null);
             } else {

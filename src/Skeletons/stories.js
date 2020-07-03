@@ -1,11 +1,7 @@
 /* @flow strict */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-
-import { Section } from '../Section';
 
 import {
   ButtonSkeleton,
