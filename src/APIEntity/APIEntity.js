@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getTimeDifference } from '../helpers/time';
 import { Section } from '../Typography';
-
-import ObjectAsList from './ObjectAsList';
+import { ObjectAsList } from '../ObjectAsList';
 
 const APIEntity = props => {
   const { entityType, entity, name, children, ...rest } = props;

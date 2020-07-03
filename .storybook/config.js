@@ -16,20 +16,23 @@ addParameters({
 
 /* eslint-disable global-require */
 configure(() => {
-  require('../src/Auth/stories.js');
+  require('../src/APIEntity/stories.js');
   require('../src/Button/stories.js');
   require('../src/Cards/stories.js');
   require('../src/Checkbox/stories.js');
   require('../src/Code/stories.js');
+  require('../src/DebugObject/stories.js');
   require('../src/Degree/stories.js');
   require('../src/Design/stories.js');
   require('../src/FormBuilder/stories.js');
   require('../src/InfoCell/stories.js');
   require('../src/Input/stories.js');
+  require('../src/LoadingCover/stories.js');
   require('../src/LoadingIndicator/stories.js');
   require('../src/MoneyPot/stories.js');
   require('../src/NavigationBar/stories.js');
   require('../src/Notifications/stories.js');
+  require('../src/ObjectAsList/stories.js');
   require('../src/Progress/stories.js');
   require('../src/Redirect/stories.js');
   require('../src/RequestStatus/stories.js');

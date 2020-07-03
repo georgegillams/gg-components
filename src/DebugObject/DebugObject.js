@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Section } from '../Typography';
 import { cssModules } from '../helpers/cssModules';
+import { ObjectAsList } from '../ObjectAsList';
 
-import ObjectAsList from './ObjectAsList';
 import STYLES from './debug-object.scss';
 
 const getClassName = cssModules(STYLES);

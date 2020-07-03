@@ -1,5 +1,9 @@
 # Changelog
 
+## 6.0.0
+
+- Breaking: Spit `Auth` components into separate sub-modules for better code-splitting and tree-shaking
+
 ## 5.1.3
 
 - Fixed: Replaced `moment` dependency with `data-fns`.

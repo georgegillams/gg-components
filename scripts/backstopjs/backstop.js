@@ -25,12 +25,12 @@ const config = {
     {
       label: 'phone',
       width: 320,
-      height: 480,
+      height: 50,
     },
     {
       label: 'tablet',
       width: 1024,
-      height: 768,
+      height: 50,
     },
   ],
   onBeforeScript: 'puppet/onBefore.js',
