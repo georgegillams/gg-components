@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { cssModules } from '../helpers/cssModules';
-
-import Tag, { TAG_TYPES } from './Tag';
-import STYLES from './tag-filter.scss';
-
+import { Tag, TAG_TYPES } from '../Tag';
 import HelperFunctions from '../helpers/HelperFunctions';
+
+import STYLES from './tag-filter.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 

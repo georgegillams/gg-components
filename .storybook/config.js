@@ -54,6 +54,7 @@ configure(() => {
   require('../src/Skeletons/stories.js');
   require('../src/Subsection/stories.js');
   require('../src/Tag/stories.js');
+  require('../src/TagFilter/stories.js');
   require('../src/TextLink/stories.js');
   require('../src/TimezoneSafeCountdown/stories.js');
 }, module);

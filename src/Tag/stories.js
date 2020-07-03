@@ -3,11 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Tag, TagFilter, TAG_TYPES } from './index';
-
-storiesOf('Tag filter', module).add('Default', () => (
-  <TagFilter selectedTags={[]} />
-));
+import { Tag, TAG_TYPES } from './index';
 
 storiesOf('Tags', module)
   .add('Tech', () => <Tag type={TAG_TYPES.tech}>A tech tag</Tag>)
