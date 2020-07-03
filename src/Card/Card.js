@@ -29,7 +29,7 @@ const Card = React.forwardRef((props, ref) => {
     ...rest
   } = props;
 
-  const propagate = (newValue) => {
+  const propagate = newValue => {
     if (onHoverChanged) {
       onHoverChanged(newValue);
     }

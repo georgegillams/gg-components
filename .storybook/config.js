@@ -17,8 +17,9 @@ addParameters({
 /* eslint-disable global-require */
 configure(() => {
   require('../src/APIEntity/stories.js');
+  require('../src/ArticleCard/stories.js');
   require('../src/Button/stories.js');
-  require('../src/Cards/stories.js');
+  require('../src/Card/stories.js');
   require('../src/Checkbox/stories.js');
   require('../src/Code/stories.js');
   require('../src/DebugObject/stories.js');

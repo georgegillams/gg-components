@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { cssModules } from '../helpers/cssModules';
 import { Section, SubSection } from '../Typography';
 import HelperFunctions from '../helpers/HelperFunctions';
+import { Card } from '../Card';
 
 import STYLES from './article-card.scss';
-import Card from './Card';
 
 const getClassName = cssModules(STYLES);
 

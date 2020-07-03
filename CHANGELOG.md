@@ -1,5 +1,9 @@
 # Changelog
 
+## 7.0.0
+
+- Breaking: Spit `Cards` components into separate sub-modules for better code-splitting and tree-shaking
+
 ## 6.0.0
 
 - Breaking: Spit `Auth` components into separate sub-modules for better code-splitting and tree-shaking
