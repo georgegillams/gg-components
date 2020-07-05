@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Section } from '../Section';
@@ -10,18 +10,6 @@ import STYLES from './debug-object.scss';
 const getClassName = cssModules(STYLES);
 
 const DebugObject = props => {
-  const [showDebug, setShowDebug] = useState(false);
-
-  useEffect(() => {
-    setShowDebug(
-      window.localStorage.getItem('showSessionDebugViews') === 'true',
-    );
-  }, []);
-
-  if (!showDebug) {
-    return null;
-  }
-
   const { debugTitle, debugObject } = props;
 
   return (

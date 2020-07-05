@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.0.0
+
+- Breaking: `DebugObject` will now render always. Consumers are now responsible for loading/showing the component as they need it.
+
 ## 9.0.0
 
 - Breaking: Spit `Tag` components into separate sub-modules for better code-splitting and tree-shaking.
