@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* @flow strict */
 
 import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';

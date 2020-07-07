@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-/* @flow strict */
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
