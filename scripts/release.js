@@ -6,12 +6,7 @@ import { inc } from 'semver';
 
 import packageData, { version } from '../package.json';
 
-const BLUE_START = '\x1B[0;34m';
-const YELLOW_START = '\x1B[0;33m';
-const COLOR_END = '\x1B[0m';
-
-const blue = s => `${BLUE_START}${s}${COLOR_END}`;
-const yellow = s => `${YELLOW_START}${s}${COLOR_END}`;
+import { blue, yellow } from './colors';
 
 console.log('Starting release');
 console.log('');
@@ -37,6 +32,7 @@ const updatePackageFile = newVersion => {
   const fileContent = `${JSON.stringify(newPackageData, null, 2)}\n`;
   writeFileSync('package.json', fileContent, 'utf8');
   execSync('cp package.json ./dist/');
+  execSync('cp README.md ./dist/');
   console.log(blue('package.json updated'));
 };
 
