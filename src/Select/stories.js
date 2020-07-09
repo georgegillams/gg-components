@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Input, TextArea, Select } from './index';
+import { Select } from './index';
 
 class StatefulInput extends Component {
   constructor(props) {

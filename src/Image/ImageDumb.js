@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
@@ -20,10 +20,10 @@ const ImageDumb = props => {
     onImageLoad,
     className,
     imgProps,
+    isServer,
     ...rest
   } = props;
-
-  const imageElement = useRef(null);
+  const { className: imgClassName, ...imgPropsRest } = imgProps;
 
   const [transitioning, setTransitioning] = useState(false);
 
@@ -77,7 +77,7 @@ const ImageDumb = props => {
   const imgClassNames = [getClassName('image__img')];
   const skeletonClassNames = [getClassName('image__skeleton')];
 
-  if (!showImage) {
+  if (!isServer && !showImage) {
     imgClassNames.push(getClassName('image__img--hidden'));
   }
   if (!showSkeleton) {
@@ -91,6 +91,10 @@ const ImageDumb = props => {
     ...imgClassNames,
     getClassName('image__img--dark'),
   ];
+  if (imgClassName) {
+    darkImgClassNames.push(imgClassName);
+    lightImgClassNames.push(imgClassName);
+  }
 
   const aspectRatio = (100 * aspectY) / aspectX;
 
@@ -100,26 +104,38 @@ const ImageDumb = props => {
         className={getClassName('image__placeholder')}
         style={{ paddingBottom: `${aspectRatio}%` }}
       >
-        {renderSkeleton && (
+        {!isServer && renderSkeleton && (
           <div className={getClassName('image__spinner-container')}>
             <Skeleton className={skeletonClassNames.join(' ')} />
           </div>
         )}
-        {renderImg && (
+        {isServer && (
+          <>
+            <img
+              className={lightImgClassNames.join(' ')}
+              src={lightSrc}
+              {...imgPropsRest}
+            />
+            <img
+              className={darkImgClassNames.join(' ')}
+              src={darkSrc}
+              {...imgPropsRest}
+            />
+          </>
+        )}
+        {!isServer && renderImg && (
           <>
             <img
               className={lightImgClassNames.join(' ')}
               onLoad={onLightImageLoad}
-              ref={imageElement}
               src={lightSrc}
-              {...imgProps}
+              {...imgPropsRest}
             />
             <img
               className={darkImgClassNames.join(' ')}
               onLoad={onDarkImageLoad}
-              ref={imageElement}
               src={darkSrc}
-              {...imgProps}
+              {...imgPropsRest}
             />
           </>
         )}
@@ -139,7 +155,9 @@ ImageDumb.propTypes = {
   darkSrc: PropTypes.string.isRequired,
   imgProps: PropTypes.shape({
     alt: PropTypes.string.isRequired,
+    className: PropTypes.string,
   }).isRequired,
+  isServer: PropTypes.bool,
 };
 
 ImageDumb.defaultProps = {
@@ -147,6 +165,7 @@ ImageDumb.defaultProps = {
   renderImg: true,
   onImageLoad: null,
   className: null,
+  isServer: false,
 };
 
 export default ImageDumb;

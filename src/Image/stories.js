@@ -6,7 +6,7 @@ import ImageDumb from './ImageDumb';
 import { Image } from './index';
 
 const StatefulImageDumb = props => {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   return (
     <>
@@ -32,6 +32,30 @@ storiesOf('Image - dumb', module)
       darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
       imgProps={{
         alt: 'Some description',
+      }}
+    />
+  ))
+  .add('Server', () => (
+    <ImageDumb
+      aspectX={460}
+      aspectY={210}
+      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
+      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
+      imgProps={{
+        alt: 'Some description',
+      }}
+      isServer
+    />
+  ))
+  .add('With img className', () => (
+    <ImageDumb
+      aspectX={460}
+      aspectY={210}
+      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
+      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
+      imgProps={{
+        alt: 'Some description',
+        className: 'test',
       }}
     />
   ))
@@ -110,7 +134,7 @@ storiesOf('Image - dumb', module)
   ))
   .add('Down the page', () => (
     <>
-      <div style={{ height: '10rem', width: '100%', background: 'red' }} />
+      <div style={{ height: '50rem', width: '100%', background: 'red' }} />
       <ImageDumb
         aspectX={460}
         aspectY={210}
@@ -123,14 +147,27 @@ storiesOf('Image - dumb', module)
     </>
   ));
 
-storiesOf('Image', module).add('Default', () => (
-  <Image
-    aspectX={460}
-    aspectY={210}
-    lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
-    darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
-    imgProps={{
-      alt: 'Some description',
-    }}
-  />
-));
+storiesOf('Image', module)
+  .add('Default', () => (
+    <Image
+      aspectX={460}
+      aspectY={210}
+      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
+      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
+      imgProps={{
+        alt: 'Some description',
+      }}
+    />
+  ))
+  .add('Server', () => (
+    <Image
+      isServer
+      aspectX={460}
+      aspectY={210}
+      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
+      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
+      imgProps={{
+        alt: 'Some description',
+      }}
+    />
+  ));

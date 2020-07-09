@@ -1,5 +1,10 @@
 # Changelog
 
+## 10.1.1
+
+- Fixed: Fixed application of `img` className.
+- Fixed: Image SSR support.
+
 ## 10.1.0
 
 - Added: New Image component that will render a Skeleton until both light and dark images have completely loaded.

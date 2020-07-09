@@ -4,19 +4,13 @@
 // import Image from './Image';
 
 // const LazyLoadImage = props => {
-//   const [hidden, setHidden] = useState(true);
+//   const [renderImg, setRenderImg] = useState(false);
 
 //   const { ...rest } = props;
 
-//   const onImageLoad = () => {
-//     setHidden(false);
-//   };
-
 //   return (
 //     <Image
-//       renderImg={false}
-//       onImageLoad={onImageLoad}
-//       hidden={hidden}
+//       renderImg={renderImg}
 //       {...rest}
 //     />
 //   );
