@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.1.2
+
+- Fixed: Image will now not cause an error if `imgProps` is not defined.
+
 ## 10.1.1
 
 - Fixed: Fixed application of `img` className.

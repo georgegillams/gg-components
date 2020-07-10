@@ -156,7 +156,7 @@ ImageDumb.propTypes = {
   imgProps: PropTypes.shape({
     alt: PropTypes.string.isRequired,
     className: PropTypes.string,
-  }).isRequired,
+  }),
   isServer: PropTypes.bool,
 };
 
@@ -165,6 +165,7 @@ ImageDumb.defaultProps = {
   renderImg: true,
   onImageLoad: null,
   className: null,
+  imgProps: {},
   isServer: false,
 };
 
