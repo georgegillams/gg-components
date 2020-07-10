@@ -43,7 +43,9 @@ const InfoCell = props => {
     classNames.push(className);
   }
 
-  const showAux = hasBeenMostlyInView || hasBeenFullyInView;
+  const isServer = typeof window === 'undefined';
+
+  const showAux = isServer || hasBeenMostlyInView || hasBeenFullyInView;
 
   const auxClassNames = [getClassName('info-cell__aux')];
   if (showAux) {

@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.1.3
+
+- Fixed: `InfoCell` will display auxiliary view when rendered on server.
+
 ## 10.1.2
 
 - Fixed: Image will now not cause an error if `imgProps` is not defined.
