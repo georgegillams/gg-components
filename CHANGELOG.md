@@ -1,5 +1,9 @@
 # Changelog
 
+## 10.1.4
+
+- Fixed: `withScroll` will now behave properly on a server, rather than rendering HMTL that is incompatible with the client React tree.
+
 ## 10.1.3
 
 - Fixed: `InfoCell` will display auxiliary view when rendered on server.

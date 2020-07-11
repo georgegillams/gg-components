@@ -18,14 +18,11 @@ const withScrollProps = {
 };
 
 const withScroll = ComponentToScroll => {
-  const documentRef = typeof window !== 'undefined' ? document : null;
-  if (!documentRef) {
-    return ComponentToScroll;
-  }
-
   class WithScroll extends Component {
     constructor(): void {
       super();
+
+      this.documentRef = null;
 
       this.state = {
         fullyInView: false,
@@ -43,13 +40,21 @@ const withScroll = ComponentToScroll => {
     }
 
     componentDidMount(): void {
-      documentRef.addEventListener('scroll', this.checkPosition, {
+      this.documentRef = typeof window !== 'undefined' ? document : null;
+      // this.document should only be `null` when SSR
+      if (!this.documentRef) {
+        return;
+      }
+      this.documentRef.addEventListener('scroll', this.checkPosition, {
         capture: true,
         ...this.getPassiveArgs(),
       });
-      documentRef.addEventListener('resize', this.checkPosition);
-      documentRef.addEventListener('orientationchange', this.checkPosition);
-      documentRef.addEventListener('fullscreenchange', this.checkPosition);
+      this.documentRef.addEventListener('resize', this.checkPosition);
+      this.documentRef.addEventListener(
+        'orientationchange',
+        this.checkPosition,
+      );
+      this.documentRef.addEventListener('fullscreenchange', this.checkPosition);
       // call checkPosition immediately incase the
       // component is already in view prior to scrolling
       this.checkPosition();
@@ -67,6 +72,7 @@ const withScroll = ComponentToScroll => {
       const outOfView = !inView;
       const justInView = scrollPosition < 25.0;
       const mostlyInView = scrollPosition >= 25.0 && scrollPosition < 100;
+
       const fullyInView = scrollPosition >= 100;
       this.setState(prevState => ({
         inView,
@@ -84,13 +90,19 @@ const withScroll = ComponentToScroll => {
     };
 
     removeEventListeners = (): void => {
-      documentRef.removeEventListener('scroll', this.checkPosition, {
+      this.documentRef.removeEventListener('scroll', this.checkPosition, {
         capture: true,
         ...this.getPassiveArgs(),
       });
-      documentRef.removeEventListener('resize', this.checkPosition);
-      documentRef.removeEventListener('orientationchange', this.checkPosition);
-      documentRef.removeEventListener('fullscreenchange', this.checkPosition);
+      this.documentRef.removeEventListener('resize', this.checkPosition);
+      this.documentRef.removeEventListener(
+        'orientationchange',
+        this.checkPosition,
+      );
+      this.documentRef.removeEventListener(
+        'fullscreenchange',
+        this.checkPosition,
+      );
     };
 
     checkPosition = throttle(() => {
@@ -132,11 +144,11 @@ const withScroll = ComponentToScroll => {
     viewPortRect = () => {
       const viewPortHeight = Math.max(
         window.innerHeight,
-        documentRef.documentElement.clientHeight,
+        this.documentRef.documentElement.clientHeight,
       );
       const viewPortWidth = Math.max(
         window.innerWidth,
-        documentRef.documentElement.clientWidth,
+        this.documentRef.documentElement.clientWidth,
       );
       return { x: 0, y: 0, width: viewPortWidth, height: viewPortHeight };
     };

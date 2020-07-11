@@ -104,6 +104,8 @@ const ImageDumb = props => {
         className={getClassName('image__placeholder')}
         style={{ paddingBottom: `${aspectRatio}%` }}
       >
+        {/* Note we use completely separate elements on server vs client
+        to avoid the React tree becomming poluted when it's rehydrated */}
         {!isServer && renderSkeleton && (
           <div className={getClassName('image__spinner-container')}>
             <Skeleton className={skeletonClassNames.join(' ')} />
