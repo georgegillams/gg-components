@@ -33,7 +33,7 @@ storiesOf('Navigation bar', module)
         logo={logo}
       />
       <div id="mainScrollView">
-        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+        <a href="/iframe.html?id=navigation-bar--with-scroll">
           OPEN IN FULL WINDOW MODE TO TEST SCROLL
         </a>
         <br />
@@ -84,7 +84,7 @@ storiesOf('Navigation bar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <a href="/iframe.html?id=navigationbar--with-scroll">
+        <a href="/iframe.html?id=navigation-bar--with-scroll">
           OPEN IN FULL WINDOW MODE TO TEST SCROLL
         </a>
         <br />
@@ -116,7 +116,7 @@ storiesOf('Navigation bar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+        <a href="/iframe.html?id=navigation-bar--with-scroll">
           OPEN IN FULL WINDOW MODE TO TEST SCROLL
         </a>
         <br />
@@ -144,7 +144,7 @@ storiesOf('Navigation bar', module)
           Lorem ipse
         </Paragraph>
         <br />
-        <a href="http://localhost:9001/iframe.html?id=navigationbar--with-scroll">
+        <a href="/iframe.html?id=navigation-bar--with-scroll">
           OPEN IN FULL WINDOW MODE TO TEST SCROLL
         </a>
         <br />

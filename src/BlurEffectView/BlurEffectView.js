@@ -55,7 +55,7 @@ const BlurEffectView = props => {
   };
 
   useEffect(() => {
-    mainScrollElement = document.getElementById('mainScrollView');
+    mainScrollElement = document.getElementById(props.idToTrack);
     recreateBlurClone();
     const interval = setInterval(recreateBlurClone, 2000);
     window.addEventListener('scroll', () => {
@@ -81,6 +81,7 @@ const BlurEffectView = props => {
 };
 
 BlurEffectView.propTypes = {
+  idToTrack: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 

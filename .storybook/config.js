@@ -25,6 +25,7 @@ configure(() => {
   require('../src/AnimatedContent/stories.js');
   require('../src/ArticleCard/stories.js');
   require('../src/ArticleDate/stories.js');
+  require('../src/BlurEffectView/stories.js');
   require('../src/BurgerButton/stories.js');
   require('../src/Button/stories.js');
   require('../src/Card/stories.js');

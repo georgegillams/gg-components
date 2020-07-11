@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { BurgerButton } from '../BurgerButton';
 import { cssModules } from '../helpers/cssModules';
 
-import BlurEffectView from './BlurEffectView';
 import STYLES from './navigation-bar.scss';
 
 const getClassName = cssModules({ ...STYLES });
@@ -110,7 +109,6 @@ const NavigationBar = props => {
       )}
       <div className={getClassName('navigation-bar__bar-placeholder')} />
       <div className={outerClassNameFinal.join(' ')} {...rest}>
-        <BlurEffectView />
         <div className={getClassName('navigation-bar__bar')} {...rest}>
           <div
             className={getClassName(
