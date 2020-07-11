@@ -40,8 +40,8 @@
 
   &__status {
     z-index: $request-status-z-index;
-    margin-top: 1rem;
-    padding: 0 1rem;
+    margin-top: $spacing-base;
+    padding: 0 $spacing-base;
     border: 0.1rem #1e1e1e solid;
     border-radius: 0.2rem;
     background-color: rgba(0, 0, 0, 0.1);

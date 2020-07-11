@@ -1,5 +1,10 @@
 # Changelog
 
+## 11.0.0
+
+- Breaking: `bpk-spacing-base` has been removed.
+- Breaking: `bpk-spacing-xs` has been renamed `spacing-xs`.
+
 ## 10.1.4
 
 - Fixed: `withScroll` will now behave properly on a server, rather than rendering HMTL that is incompatible with the client React tree.

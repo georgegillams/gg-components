@@ -44,7 +44,7 @@ $card-height-mobile: 10rem;
     font-weight: inherit;
 
     &--with-content {
-      margin-bottom: 1rem;
+      margin-bottom: $spacing-base;
     }
   }
 
@@ -52,7 +52,7 @@ $card-height-mobile: 10rem;
     display: flex;
     min-width: 14rem;
     min-height: 8rem;
-    padding: 1rem;
+    padding: $spacing-base;
     flex-direction: column;
     justify-content: center;
     align-items: center;

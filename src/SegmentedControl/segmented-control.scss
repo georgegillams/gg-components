@@ -16,13 +16,13 @@
 
     &--first {
       border-left-width: 0.1rem;
-      border-top-left-radius: $bpk-spacing-xs;
-      border-bottom-left-radius: $bpk-spacing-xs;
+      border-top-left-radius: $spacing-xs;
+      border-bottom-left-radius: $spacing-xs;
     }
     &--last {
       border-right-width: 0.1rem;
-      border-top-right-radius: $bpk-spacing-xs;
-      border-bottom-right-radius: $bpk-spacing-xs;
+      border-top-right-radius: $spacing-xs;
+      border-bottom-right-radius: $spacing-xs;
     }
     &--selected {
       border-color: transparent;

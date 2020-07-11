@@ -2,7 +2,7 @@
 
 .quote {
   &__container {
-    padding: 1rem 0 1rem 2rem;
+    padding: $spacing-base 0 $spacing-base 2rem;
     border-left: solid 0.3rem $primary-color;
     border-left: solid 0.3rem var(--primary-color, $primary-color);
     border-top-right-radius: 0.4rem;

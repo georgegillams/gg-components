@@ -2,7 +2,7 @@
 
 .forms {
   &__component {
-    margin-bottom: 1rem;
+    margin-bottom: $spacing-base;
 
     &__text-box {
       width: 100%;
@@ -10,13 +10,13 @@
     }
 
     &__button {
-      margin-top: 1rem;
+      margin-top: $spacing-base;
     }
 
     &--inline {
       width: 15rem;
-      margin-right: 1rem;
-      margin-left: 1rem;
+      margin-right: $spacing-base;
+      margin-left: $spacing-base;
     }
 
     &__label {

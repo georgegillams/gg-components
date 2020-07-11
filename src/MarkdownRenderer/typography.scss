@@ -3,7 +3,7 @@
 .typography {
   &__main {
     width: 100%;
-    padding-bottom: 1rem;
+    padding-bottom: $spacing-base;
     color: $not-black;
     font-family: 'Quattrocento Sans', sans-serif;
     text-decoration: none;
@@ -22,7 +22,7 @@
   &__icon {
     display: inline-flex;
     width: 0.4rem;
-    height: 1rem;
+    height: $spacing-base;
     margin-left: 0.55rem;
 
     &--inner {
@@ -102,8 +102,8 @@
 
     &--section {
       padding-top: 1.5rem;
-      padding-bottom: 1rem;
-      border-radius: 1rem;
+      padding-bottom: $spacing-base;
+      border-radius: $spacing-base;
       font-size: 2.2rem;
       font-weight: bold;
       line-height: 2.8rem;

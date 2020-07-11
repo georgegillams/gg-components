@@ -11,7 +11,7 @@
   &__inner {
     width: 0.2rem;
     height: 0.5rem;
-    margin-top: 1rem;
+    margin-top: $spacing-base;
     margin-left: 0.9rem;
     background-color: $not-black;
     opacity: 0.15;
@@ -23,7 +23,7 @@
   }
   &__popover {
     position: absolute;
-    top: 2rem;
+    top: $spacing-lg;
     display: flex;
     width: 12rem;
 
