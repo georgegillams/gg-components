@@ -2,6 +2,7 @@
 
 exports[`Card should render correctly 1`] = `
 <div
+  aria-disabled={null}
   className={null}
   onBlur={[Function]}
   onClick={null}

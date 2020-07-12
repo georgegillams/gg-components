@@ -43,7 +43,7 @@
     "prod": "http-server build",
     "start:aws": "AWS=true npm run prod",
     "test": "npm run test:lint && npm run test:jest",
-    "test:jest": "cross-env NODE_ENV=test jest --coverage",
+    "test:jest": "cross-env jest --coverage",
     "test:lint": "npm run lint:sass",
     "test:clean": "rimraf ./coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll"

@@ -16,6 +16,7 @@ const DEFAULT_SUPPORTED_FEATURES = [
   'linebreak',
 ];
 
+/* eslint-disable no-useless-escape */
 const MD_SECTION_REGEX = /(.*)\n#\ ([^\n]+)\n(.*)/gims;
 const MD_SUBSECTION_REGEX = /(.*)\n##\ ([^\n]+)\n(.*)/gims;
 const MD_SUBSUBSECTION_REGEX = /(.*)\n###\ ([^\n]+)\n(.*)/gims;
@@ -38,6 +39,7 @@ const MD_CITATION_REGEX = /(.*)\[([0-9]*[0-9\,\ ]+)\](.*)/gims;
 const MD_REFERENCES_REGEX = /([^]*)!printReferences\(\)([^]*)/gi;
 const MD_FOOTNOTE_1_REGEX = /([^]*)!footnote\(([0-9]+)\)([^]*)/gi;
 const MD_FOOTNOTE_2_REGEX = /([^]*)!footnote\[([0-9]+)\]\(([^\(\)]+)\)([^]*)/gi;
+/* eslint-enable */
 
 // This component works recursively. Each time it checks for a feature (such as a link, stikethrough etc)
 // At each stage, if it finds one it renders the appropriate component, passing the surrounding text to
