@@ -1,11 +1,7 @@
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import YoutubeEmbedVideo from 'youtube-embed-video';
 
-// import BpkImage, {
-//   withLoadingBehavior,
-//   withLazyLoading,
-// } from 'bpk-component-image';
 // import {
 //   citation,
 //   References,
@@ -14,86 +10,64 @@ import YoutubeEmbedVideo from 'youtube-embed-video';
 import { cssModules } from '../helpers/cssModules';
 import { withTheme } from '../Theming';
 import HelperFunctions from '../helpers/HelperFunctions';
+import { Image } from '../Image';
 import { CodeInline, Code } from '../Code';
+import { Paragraph } from '../Paragraph';
+import { TextLink } from '../TextLink';
+import { Quote } from '../Quote';
+import { Section } from '../Section';
+import { Subsection } from '../Subsection';
 
-import Paragraph from './Paragraph';
-import TextLink from './TextLink';
-import Quote from './Quote';
-import Section from './Section';
-import Subsection from './Subsection';
-import { markdownLexer, DEFAULT_SUPPORTED_FEATURES } from './markdownLexer';
+import { markdownLexer } from './markdownLexer';
+import { DEFAULT_SUPPORTED_FEATURES } from './constants';
 import STYLES from './markdown-renderer.scss';
 
 const getClassName = cssModules(STYLES);
 
 const ThemedTextLink = withTheme(TextLink);
 
-// const documentIfExists = typeof window !== 'undefined' ? document : null;
-// const FadingLazyLoadedImage = withLoadingBehavior(
-//   withLazyLoading(BpkImage, documentIfExists),
-// );
+const MarkdownRenderer = props => {
+  const {
+    content,
+    supportedFeatures,
+    light,
+    references,
+    className,
+    elementClassName,
+  } = props;
 
-class MarkdownRenderer extends Component {
-  static propTypes = {
-    references: PropTypes.object,
-    content: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    elementClassName: PropTypes.string,
-    light: PropTypes.bool,
-    supportedFeatures: PropTypes.arrayOf(PropTypes.string),
-  };
+  const [lexedContent, setLexedContent] = useState(null);
 
-  static defaultProps = {
-    references: null,
-    className: null,
-    elementClassName: null,
-    light: false,
-    supportedFeatures: DEFAULT_SUPPORTED_FEATURES,
-  };
+  useEffect(() => {
+    const lexingResult = markdownLexer(content, supportedFeatures);
+    setLexedContent(lexingResult);
+  }, []);
 
-  constructor(props) {
-    super(props);
-
-    this.state = { lexedContent: null };
+  if (!lexedContent) {
+    return null;
   }
 
-  componentDidMount() {
-    this.setState({
-      lexedContent: markdownLexer(
-        this.props.content,
-        this.props.supportedFeatures,
-      ),
-    });
+  console.log(`lexedContent`, lexedContent);
+
+  const classNames = [getClassName(`blog-viewer__outer`)];
+  if (className) {
+    classNames.push(className);
   }
 
-  render() {
-    const { light, references, className, elementClassName } = this.props;
-    const { lexedContent } = this.state;
-
-    // console.log(`lexedContent`, lexedContent);
-
-    if (!lexedContent) {
-      return null;
-    }
-
-    const classNames = [getClassName(`blog-viewer__outer`)];
-    if (className) {
-      classNames.push(className);
-    }
-
-    const elementClassNames = [getClassName(`blog-viewer__element`)];
-    if (elementClassName) {
-      classNames.push(elementClassName);
-      elementClassNames.push(elementClassName);
-    }
-
-    return (
-      <div className={classNames.join(' ')}>
-        {elementForContent(lexedContent, 0, light, elementClassNames.join(' '))}
-      </div>
-    );
+  const elementClassNames = [getClassName(`blog-viewer__element`)];
+  if (elementClassName) {
+    classNames.push(elementClassName);
+    elementClassNames.push(elementClassName);
   }
-}
+
+  /* eslint-disable no-use-before-define */
+  return (
+    <div className={classNames.join(' ')}>
+      {elementForContent(lexedContent, 0, light, elementClassNames.join(' '))}
+    </div>
+  );
+  /* eslint-enable */
+};
 
 const elementForContent = (content, depth, light, elementClassName) => {
   if (!content) {
@@ -106,7 +80,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
     );
   }
 
-  let childElement = content.child;
+  let childElement = content.children;
   if (typeof childElement === 'object') {
     childElement = elementForContent(
       childElement,
@@ -117,40 +91,45 @@ const elementForContent = (content, depth, light, elementClassName) => {
   }
 
   if (typeof content === 'string' || !content.type || content.type === 'text') {
-    return <Paragraph>content</Paragraph>;
+    return content;
   }
 
-  if (content.type === 'footnote1') {
+  if (content.type === 'paragraph') {
     return (
-      <p>
-        <sup>content.number</sup>
-      </p>
+      <>
+        <Paragraph>{childElement}</Paragraph>
+        <br />
+      </>
     );
   }
 
-  if (content.type === 'linebreak') {
-    return <br />;
+  if (content.type === 'footnoteReference') {
+    return <sup>{content.number}</sup>;
   }
 
-  if (content.type === 'footnote2') {
+  if (content.type === 'footnote') {
     return (
-      <p>
-        <sup>{content.footnoteNumber}</sup> {childElement}
-      </p>
+      <sup>
+        {content.number}: {childElement}
+      </sup>
     );
   }
 
   if (content.type === 'quotation') {
-    return (
-      <Quote className={null /* elementClassName.join(' ') */}>
-        {childElement}
-      </Quote>
-    );
+    if (childElement.length > 1) {
+      childElement = childElement.map(c => (
+        <>
+          <Paragraph>{c}</Paragraph>
+          <br />
+        </>
+      ));
+    }
+    return <Quote>{childElement}</Quote>;
   }
 
   if (content.type === 'link') {
     return (
-      <ThemedTextLink external={content.external} href={content.ref}>
+      <ThemedTextLink hrefExternal={content.hrefExternal} href={content.href}>
         {childElement}
       </ThemedTextLink>
     );
@@ -187,18 +166,18 @@ const elementForContent = (content, depth, light, elementClassName) => {
     );
   }
 
-  if (content.type === 'youtubeVideo') {
+  if (content.type === 'youtube') {
     return (
       <YoutubeEmbedVideo
         showSuggestions={content.showSuggestions}
-        videoId={content.videoId}
+        videoId={content.videoID}
       />
     );
   }
 
   if (content.type === 'section') {
     return (
-      <Section padding={false} name={content.title}>
+      <Section padding={false} name={content.name}>
         {childElement}
       </Section>
     );
@@ -206,7 +185,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'subsection') {
     return (
-      <Subsection padding={false} name={content.title}>
+      <Subsection padding={false} name={content.name}>
         {childElement}
       </Subsection>
     );
@@ -216,9 +195,9 @@ const elementForContent = (content, depth, light, elementClassName) => {
     return [
       <br />,
       <br />,
-      <div style={{ fontWeight: 'bold' }} className={elementClassName}>
-        {content.title}
-      </div>,
+      <span style={{ fontWeight: 'bold' }} className={elementClassName}>
+        {content.name}
+      </span>,
       <br />,
       <br />,
       childElement,
@@ -233,7 +212,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
         target={content.external && '_blank'}
         rel={content.external && 'noopener noreferrer'}
       >
-        <a padding={false} name={content.title} />
+        <Section padding={false} name={content.title} />
       </a>
     );
   }
@@ -245,5 +224,50 @@ const elementForContent = (content, depth, light, elementClassName) => {
       </span>
     );
   }
+
+  if (content.type === 'image') {
+    return (
+      <img
+        className={elementClassName}
+        src={content.src}
+        alt={content.caption}
+      />
+    );
+  }
+
+  if (content.type === 'smartImage') {
+    return (
+      <Image
+        className={elementClassName}
+        lightSrc={content.lightSrc}
+        darkSrc={content.darkSrc}
+        aspectX={content.aspectX}
+        aspectY={content.aspectY}
+        alt={content.caption}
+      />
+    );
+  }
+
+  // Finally, default to returning the raw content
+  return content;
 };
+
+MarkdownRenderer.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  references: PropTypes.object,
+  content: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  elementClassName: PropTypes.string,
+  light: PropTypes.bool,
+  supportedFeatures: PropTypes.arrayOf(PropTypes.string),
+};
+
+MarkdownRenderer.defaultProps = {
+  references: null,
+  className: null,
+  elementClassName: null,
+  light: false,
+  supportedFeatures: DEFAULT_SUPPORTED_FEATURES,
+};
+
 export default MarkdownRenderer;

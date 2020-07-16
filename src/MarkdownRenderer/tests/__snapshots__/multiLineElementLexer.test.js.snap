@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ignores comment block if feature is unsupported 1`] = `
+Array [
+  Object {
+    "children": Array [
+      "Line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 2",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "> Unsupported quote line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "> Unsupported quote line 2",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "> Unsupported quote line 3",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 3",
+    ],
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`parses comment block inside section 1`] = `
+Array [
+  Object {
+    "children": Array [
+      "Line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          "Line 2",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Quote line 1",
+          "Quote line 2",
+          "Quote line 3",
+        ],
+        "type": "quotation",
+      },
+      Object {
+        "children": Array [
+          "Line 3",
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "section",
+  },
+  Object {
+    "children": Array [
+      "Line 4",
+    ],
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`parses lines containing no comment block 1`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 4",
+    "type": "line",
+  },
+]
+`;
+
+exports[`parses lines to insert comment block at start 1`] = `
+Array [
+  Object {
+    "children": Array [
+      "Quote line 1",
+      "Quote line 2",
+      "Quote line 3",
+    ],
+    "type": "quotation",
+  },
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;
+
+exports[`parses lines to insert comment block in middle 1`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "children": Array [
+      "Quote line 1",
+      "Quote line 2",
+      "Quote line 3",
+    ],
+    "type": "quotation",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;

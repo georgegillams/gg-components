@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.1.0
+
+- Added: Added functionality to `MarkdownRenderer`.
+
 ## 11.0.0
 
 - Breaking: `bpk-spacing-base` has been removed.

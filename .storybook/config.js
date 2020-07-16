@@ -41,6 +41,7 @@ configure(() => {
   require('../src/Input/stories.js');
   require('../src/LoadingCover/stories.js');
   require('../src/LoadingIndicator/stories.js');
+  require('../src/MarkdownRenderer/stories.js');
   require('../src/MoneyPot/stories.js');
   require('../src/NavigationBar/stories.js');
   require('../src/ObjectAsList/stories.js');
