@@ -1,5 +1,9 @@
 # Changelog
 
+## 11.2.0
+
+- Added: Added functionality to `Notifications`.
+
 ## 11.1.0
 
 - Added: Added functionality to `MarkdownRenderer`.

@@ -44,6 +44,7 @@ configure(() => {
   require('../src/MarkdownRenderer/stories.js');
   require('../src/MoneyPot/stories.js');
   require('../src/NavigationBar/stories.js');
+  require('../src/Notification/stories.js');
   require('../src/ObjectAsList/stories.js');
   require('../src/PageTitle/stories.js');
   require('../src/Paragraph/stories.js');
