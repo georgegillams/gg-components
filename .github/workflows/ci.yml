@@ -54,7 +54,7 @@ jobs:
 
       - name: deploy
         run: |
-          if [ "${{ github.ref }}" == "refs/heads/master" ] && [ "${{ github.event_name }}" != "pull_request" ]; then
+          if [ "${{ github.ref }}" == "refs/heads/main" ] && [ "${{ github.event_name }}" != "pull_request" ]; then
             zip -r build build
             echo "${{ secrets.EC2_RSA }}" > ./identityFile.txt
             chmod 400 ./identityFile.txt
