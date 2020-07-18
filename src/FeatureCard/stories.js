@@ -1,70 +1,65 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import backgroundImage from './backgroundImage.png';
-import image from './image.png';
+import { FeatureCard, FEATURE_CARD_LAYOUTS } from './index';
 
-import { ArticleCard, ARTICLE_CARD_LAYOUTS } from './index';
+const image = 'https://via.placeholder.com/460x210/red/white?text=image';
+const backgroundImage =
+  'https://via.placeholder.com/460x210/blue/black?text=image';
 
-storiesOf('Article card', module)
+storiesOf('Feature card', module)
   .add('Default', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
     />
   ))
   .add('Narrow', () => (
-    <ArticleCard
-      layout={ARTICLE_CARD_LAYOUTS.narrow}
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      layout={FEATURE_CARD_LAYOUTS.narrow}
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
     />
   ))
   .add('Narrow compact', () => (
-    <ArticleCard
-      layout={ARTICLE_CARD_LAYOUTS.narrowCompact}
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      layout={FEATURE_CARD_LAYOUTS.narrowCompact}
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
     />
   ))
   .add('Narrow compact - no image', () => (
-    <ArticleCard
-      layout={ARTICLE_CARD_LAYOUTS.narrowCompact}
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      layout={FEATURE_CARD_LAYOUTS.narrowCompact}
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
     />
   ))
   .add('With fill image', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
+    <FeatureCard
+      annotations={['23', 'Jan']}
       fillImageSrc={backgroundImage}
-      linkUrl="/test"
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
     />
   ))
   .add('With banner colour', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
@@ -72,20 +67,18 @@ storiesOf('Article card', module)
     />
   ))
   .add('Without image', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       bannerColor="red"
     />
   ))
   .add('Light', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
-      linkUrl="/test"
+    <FeatureCard
+      annotations={['23', 'Jan']}
+      href="/test"
       title="Title here"
       imageBorder="orchid"
       imageSrc={image}
@@ -93,9 +86,8 @@ storiesOf('Article card', module)
     />
   ))
   .add('With href', () => (
-    <ArticleCard
-      day="23"
-      month="Jan"
+    <FeatureCard
+      annotations={['23', 'Jan']}
       href="/test"
       title="Title here"
       imageBorder="orchid"

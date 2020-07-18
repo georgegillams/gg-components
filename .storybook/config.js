@@ -23,7 +23,6 @@ addParameters({
 configure(() => {
   require('../src/APIEntity/stories.js');
   require('../src/AnimatedContent/stories.js');
-  require('../src/ArticleCard/stories.js');
   require('../src/ArticleDate/stories.js');
   require('../src/BlurEffectView/stories.js');
   require('../src/BurgerButton/stories.js');
@@ -35,6 +34,7 @@ configure(() => {
   require('../src/DebugObject/stories.js');
   require('../src/Degree/stories.js');
   require('../src/Design/stories.js');
+  require('../src/FeatureCard/stories.js');
   require('../src/FormBuilder/stories.js');
   require('../src/Image/stories.js');
   require('../src/InfoCell/stories.js');

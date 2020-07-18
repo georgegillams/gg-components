@@ -9,32 +9,32 @@ import { Card } from './index';
 
 storiesOf('Card', module)
   .add('Default', () => (
-    <Card linkUrl="/test">
+    <Card href="/test">
       <Section noPadding name="Test" />
     </Card>
   ))
   .add('Highlighted', () => (
-    <Card highlighted linkUrl="/test">
+    <Card highlighted href="/test">
       <Section noPadding name="Test" />
     </Card>
   ))
   .add('Unpadded', () => (
-    <Card padded={false} linkUrl="/test">
+    <Card padded={false} href="/test">
       <Section noPadding name="Test" />
     </Card>
   ))
   .add('With fill image', () => (
-    <Card fillImageSrc={backgroundImage} linkUrl="/test">
+    <Card fillImageSrc={backgroundImage} href="/test">
       <Section noPadding name="Test" />
     </Card>
   ))
   .add('With banner colour', () => (
-    <Card linkUrl="/test" bannerColor="red">
+    <Card href="/test" bannerColor="red">
       <Section noPadding name="Test" />
     </Card>
   ))
   .add('Light', () => (
-    <Card linkUrl="/test" light>
+    <Card href="/test" light>
       <Section noPadding name="Test" />
     </Card>
   ))
@@ -58,8 +58,8 @@ storiesOf('Card', module)
       <Section noPadding name="Test" />
     </Card>
   ))
-  .add('Disabled with linkUrl', () => (
-    <Card disabled linkUrl="/test">
+  .add('Disabled with href', () => (
+    <Card disabled href="/test">
       <Section noPadding name="Test" />
     </Card>
   ));

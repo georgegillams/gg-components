@@ -1,6 +1,6 @@
 @import '../Tokens/common';
 
-.article-card {
+.feature-card {
   &--narrow-compact {
     width: 25rem;
     max-width: 25rem;
@@ -35,13 +35,6 @@
     overflow: hidden;
     box-sizing: border-box;
 
-    &--highlighted {
-      background-color: $primary-color-transparent;
-      background-color: var(
-        --primary-color-transparent,
-        $primary-color-transparent
-      );
-    }
     &--disabled {
       background-color: gray;
     }

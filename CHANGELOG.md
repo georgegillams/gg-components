@@ -1,5 +1,12 @@
 # Changelog
 
+## 12.0.0
+
+- Breaking: All `linkUrl` props have been renamed `href`.
+- Breaking: `FeatureCard` now takes an array of `annotations` instead of `day` and `month`.
+- Breaking: `ArticleCard` has been renamed `FeatureCard`
+- Breaking: `ARTICLE_CARD_LAYOUTS` has been renamed `FEATURE_CARD_LAYOUTS`
+
 ## 11.2.0
 
 - Added: Added functionality to `Notifications`.
