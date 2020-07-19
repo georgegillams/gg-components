@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import { FeatureCard, FEATURE_CARD_LAYOUTS } from './index';
 
-const image = 'https://via.placeholder.com/460x210/red/white?text=image';
+const image = 'https://via.placeholder.com/460x460/red/white?text=image';
 const backgroundImage =
   'https://via.placeholder.com/460x210/blue/black?text=image';
 

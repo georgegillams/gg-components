@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.0.1
+
+- Fixed: Improved design of `FeatureCard`
+
 ## 12.0.0
 
 - Breaking: All `linkUrl` props have been renamed `href`.

@@ -12,6 +12,7 @@
     height: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     box-sizing: border-box;
 
     &--narrow-compact {
@@ -20,7 +21,6 @@
 
     &--auto {
       @include bpk-breakpoint-mobile {
-        height: 30rem;
         justify-content: center;
         align-content: space-around;
       }
@@ -45,7 +45,7 @@
     z-index: 3;
     min-width: 10rem;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     flex: 1;
 
     @include bpk-breakpoint-mobile {
@@ -54,6 +54,7 @@
     }
 
     &--narrow-compact {
+      min-width: unset;
       justify-content: center;
     }
   }
@@ -74,12 +75,30 @@
     overflow: hidden;
   }
 
+  &__annotation {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+
+    &--tablet {
+      @include bpk-breakpoint-mobile {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @include bpk-breakpoint-mobile {
+        display: unset;
+      }
+    }
+  }
+
   &__image {
     z-index: 3;
-    width: 12rem;
-    height: 7rem;
-    margin-top: -0.5rem;
-    margin-left: -3rem;
+    width: 100%;
+    height: 100%;
   }
 
   &__title {

@@ -5,6 +5,7 @@ import { cssModules } from '../helpers/cssModules';
 import { Section } from '../Section';
 import { Subsection } from '../Subsection';
 import { Card } from '../Card';
+import { Image } from '../Image';
 
 import STYLES from './feature-card.scss';
 
@@ -88,17 +89,35 @@ const FeatureCard = React.forwardRef((props, ref) => {
   const cardContent = (
     <div className={outerBannerClassNames.join(' ')}>
       <div className={dateContainerClassNames.join(' ')}>
-        {annotations &&
-          annotations.map &&
-          annotations.map(annotation => (
+        {annotations && annotations.map && (
+          <>
             <Subsection
+              className={getClassName(
+                'feature-card__annotation',
+                'feature-card__annotation--mobile',
+              )}
               hover={hovering && !disabled}
               anchor={false}
               noPadding
               link
-              name={annotation}
+              name={annotations.join(' ')}
             />
-          ))}
+            {annotations.map(annotation => (
+              <Subsection
+                className={getClassName(
+                  'feature-card__annotation',
+                  'feature-card__annotation--tablet',
+                )}
+                key={annotation}
+                hover={hovering && !disabled}
+                anchor={false}
+                noPadding
+                link
+                name={annotation}
+              />
+            ))}
+          </>
+        )}
       </div>
       <div className={centerClassNames.join(' ')}>
         <Section
@@ -108,7 +127,11 @@ const FeatureCard = React.forwardRef((props, ref) => {
           link={!disabled}
           className={getClassName('feature-card__title')}
         />
-        <div className={getClassName('feature-card__children')}>{children}</div>
+        {children && (
+          <div className={getClassName('feature-card__children')}>
+            {children}
+          </div>
+        )}
       </div>
       {imageSrc && (
         <div
@@ -117,12 +140,15 @@ const FeatureCard = React.forwardRef((props, ref) => {
             border: imageBorder ? `solid ${imageBorder} 0.1rem` : 'none',
           }}
         >
-          <img
+          <Image
             className={imageClassNames.join(' ')}
-            alt="card"
-            width={987}
-            height={575}
-            src={imageSrc}
+            aspectX={1}
+            aspectY={1}
+            imgProps={{
+              alt: 'card',
+            }}
+            lightSrc={imageSrc}
+            darkSrc={imageSrc}
           />
         </div>
       )}
