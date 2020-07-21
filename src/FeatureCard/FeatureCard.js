@@ -77,6 +77,9 @@ const FeatureCard = React.forwardRef((props, ref) => {
   ];
 
   const imageClassNames = [getClassName('feature-card__image')];
+  if (disabled) {
+    imageClassNames.push(getClassName('feature-card__image--disabled'));
+  }
   if (imageClassName) {
     imageClassNames.push(imageClassName);
   }
@@ -96,6 +99,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
                 'feature-card__annotation',
                 'feature-card__annotation--mobile',
               )}
+              disabled={disabled}
               hover={hovering && !disabled}
               anchor={false}
               noPadding
@@ -109,6 +113,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
                   'feature-card__annotation--tablet',
                 )}
                 key={annotation}
+                disabled={disabled}
                 hover={hovering && !disabled}
                 anchor={false}
                 noPadding
@@ -122,6 +127,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
       <div className={centerClassNames.join(' ')}>
         <Section
           noPadding
+          disabled={disabled}
           hover={hovering && !disabled}
           name={title}
           link={!disabled}

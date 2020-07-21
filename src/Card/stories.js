@@ -50,7 +50,7 @@ storiesOf('Card', module)
   ))
   .add('Disabled', () => (
     <Card disabled>
-      <Section noPadding name="Test" />
+      <Section disabled noPadding name="Test" />
     </Card>
   ))
   .add('Disabled with href', () => (

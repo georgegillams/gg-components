@@ -26,6 +26,11 @@ $spacing-lg: 2rem;
   }
 }
 
+$disabled-background-color: #cdcdd7;
+$disabled-color: rgb(100, 100, 100);
+$disabled-background-color-invert: rgb(89, 89, 89);
+$disabled-color-invert: darkgray;
+
 $primary-color-dark-invert: white;
 $primary-color-really-dark: #002644;
 $primary-color-dark: #005da3;
@@ -54,7 +59,6 @@ $background-color-elevated: white;
 $background-color-elevated-invert: #222324;
 $background-color-elevated-colored: white;
 $background-color-elevated-colored-invert: #050d1b;
-$background-disabled-color: #cdcdd7;
 
 $alternating-background-color-1: #f4f4f4;
 $alternating-background-color-1-invert: #121313;

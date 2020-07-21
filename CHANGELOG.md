@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.2
+
+- Fixed: Improved style for disabled Buttons
+- Fixed: Improved style for disabled Cards
+- Fixed: Improved style for disabled CheckBoxes
+
 ## 12.0.1
 
 - Fixed: Improved design of `FeatureCard`

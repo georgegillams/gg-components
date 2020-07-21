@@ -115,6 +115,14 @@
     font-family: Tangerine, cursive;
   }
 
+  &--disabled {
+    color: $disabled-color;
+
+    @media (prefers-color-scheme: dark) {
+      color: $disabled-color-invert;
+    }
+  }
+
   &--no-padding {
     margin-top: 0;
     margin-bottom: 0;

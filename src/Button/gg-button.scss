@@ -95,12 +95,23 @@
     }
 
     &--disabled {
-      background-color: lightgray;
+      background-color: $disabled-background-color;
+      color: $disabled-color;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $disabled-background-color-invert;
+        color: $disabled-color-invert;
+      }
 
       &:focus,
       &:active,
       &:hover {
-        background-color: lightgray;
+        background-color: $disabled-background-color;
+        box-shadow: none;
+
+        @media (prefers-color-scheme: dark) {
+          background-color: $disabled-background-color-invert;
+        }
       }
     }
 

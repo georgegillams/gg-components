@@ -85,6 +85,16 @@ storiesOf('Feature card', module)
       light
     />
   ))
+  .add('Disabled', () => (
+    <FeatureCard
+      annotations={['23', 'Jan']}
+      href="/test"
+      title="Title here"
+      imageBorder="orchid"
+      imageSrc={image}
+      disabled
+    />
+  ))
   .add('With href', () => (
     <FeatureCard
       annotations={['23', 'Jan']}

@@ -27,6 +27,7 @@ storiesOf('Button', module)
   .add('Secondary', () => <ButtonStory secondary />)
   .add('Bouncy', () => <ButtonStory bouncy />)
   .add('Destructive', () => <ButtonStory destructive />)
+  .add('Disabled', () => <ButtonStory disabled />)
   .add('White', () => <ButtonStory dark white />)
   .add('href', () => <ButtonStory href="/test" />)
   .add('External href', () => (

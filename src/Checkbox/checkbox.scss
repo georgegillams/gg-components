@@ -31,7 +31,11 @@
     }
 
     &--disabled {
-      background: $background-disabled-color;
+      background-color: $disabled-background-color;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: $disabled-background-color-invert;
+      }
     }
     &--valid {
       box-shadow: 0 0 0 1px $bpk-color-monteverde inset;
@@ -72,8 +76,13 @@
       fill: $bpk-color-panjin;
     }
     &--disabled {
-      color: $shadow-color;
-      fill: $shadow-color;
+      color: $disabled-color;
+      fill: $disabled-color;
+
+      @media (prefers-color-scheme: dark) {
+        color: $disabled-color-invert;
+        fill: $disabled-color-invert;
+      }
     }
   }
 
@@ -87,7 +96,7 @@
     }
 
     &--disabled {
-      color: $background-disabled-color;
+      color: $disabled-background-color;
     }
   }
 }

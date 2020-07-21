@@ -15,6 +15,7 @@ const Subsection = props => {
     name,
     anchor,
     className,
+    disabled,
     hover,
     noPadding,
     textClassName,
@@ -50,6 +51,9 @@ const Subsection = props => {
     textClassNameFinal.push(getClassName('typography--no-padding'));
     anchorClassNames.push(getClassName('typography__anchor-link--no-padding'));
   }
+  if (disabled) {
+    textClassNameFinal.push(getClassName('typography--disabled'));
+  }
   if (className) {
     classNameFinal.push(className);
   }
@@ -84,6 +88,7 @@ const Subsection = props => {
 };
 
 Subsection.propTypes = {
+  disabled: PropTypes.bool,
   hover: PropTypes.bool,
   link: PropTypes.bool,
   light: PropTypes.bool,
@@ -96,6 +101,7 @@ Subsection.propTypes = {
 };
 
 Subsection.defaultProps = {
+  disabled: false,
   hover: false,
   link: false,
   anchor: true,

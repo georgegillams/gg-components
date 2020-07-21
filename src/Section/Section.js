@@ -18,6 +18,7 @@ const Section = props => {
     className,
     textClassName,
     children,
+    disabled,
     hover,
     headingProps,
     ...rest
@@ -57,6 +58,9 @@ const Section = props => {
   if (fancy) {
     classNameFinal.push(getClassName('typography--fancy'));
     textClassNameFinal.push(getClassName('typography--fancy'));
+  }
+  if (disabled) {
+    textClassNameFinal.push(getClassName('typography--disabled'));
   }
   if (className) {
     classNameFinal.push(className);
@@ -103,6 +107,7 @@ Section.propTypes = {
   noPadding: PropTypes.bool,
   name: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   hover: PropTypes.bool,
   textClassName: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
@@ -115,6 +120,7 @@ Section.propTypes = {
 Section.defaultProps = {
   anchor: false,
   link: false,
+  disabled: false,
   hover: false,
   fancy: false,
   light: false,

@@ -111,6 +111,14 @@
     }
   }
 
+  &--disabled {
+    color: $disabled-color;
+
+    @media (prefers-color-scheme: dark) {
+      color: $disabled-color-invert;
+    }
+  }
+
   &--fancy {
     font-family: Tangerine, cursive;
   }

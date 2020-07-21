@@ -63,10 +63,6 @@ const Card = React.forwardRef((props, ref) => {
 
   const cardClassNames = [getClassName('card')];
 
-  if (disabled) {
-    cardClassNames.push(getClassName('card--disabled'));
-  }
-
   const bannerClassNames = [getClassName('card__banner')];
   if (light) {
     bannerClassNames.push(getClassName('card__banner--light'));
@@ -84,6 +80,9 @@ const Card = React.forwardRef((props, ref) => {
     backgroundImageClassNames.push(
       getClassName('card__background--highlighted'),
     );
+  }
+  if (disabled) {
+    backgroundImageClassNames.push(getClassName('card__background--disabled'));
   }
   if (light) {
     backgroundImageClassNames.push(getClassName('card__background--light'));
