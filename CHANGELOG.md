@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.1.0
+
+- Added: New Error wrapper to turn text and SVG's red
+
 ## 12.0.2
 
 - Fixed: Improved style for disabled Buttons
