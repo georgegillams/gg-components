@@ -34,6 +34,7 @@ configure(() => {
   require('../src/DebugObject/stories.js');
   require('../src/Degree/stories.js');
   require('../src/Design/stories.js');
+  require('../src/Error/stories.js');
   require('../src/FeatureCard/stories.js');
   require('../src/FormBuilder/stories.js');
   require('../src/Image/stories.js');
