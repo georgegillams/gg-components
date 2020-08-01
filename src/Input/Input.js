@@ -13,8 +13,6 @@ const Input = props => {
   const [hovering, setHovering] = useState(false);
   const [focused, setFocused] = useState(false);
 
-  const InputComponent = props.component;
-
   const hoverStarted = () => {
     setHovering(true);
   };
@@ -41,7 +39,7 @@ const Input = props => {
     className,
     inputProps,
     iconProps,
-    component,
+    component: InputComponent,
     id,
     ...rest
   } = props;

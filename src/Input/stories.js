@@ -7,15 +7,14 @@ class StatefulInput extends Component {
   constructor(props) {
     super(props);
 
-    this.InputComponent = props.component || Input;
     this.state = { value: props.value || '', valid: null, enabled: true };
   }
 
   render() {
-    const { value, component, ...rest } = this.props;
+    const { value, ...rest } = this.props;
     return (
       <div>
-        <this.InputComponent
+        <Input
           name="Stateful_input"
           valid={this.state.valid}
           value={this.state.value}
