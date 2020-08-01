@@ -58,23 +58,13 @@ const MarkdownRenderer = props => {
   /* eslint-disable no-use-before-define */
   return (
     <div className={classNames.join(' ')}>
-      {elementForContent(
-        lexedContent,
-        0,
-        light,
-        elementClassNames.join(' '),
-      )}
+      {elementForContent(lexedContent, 0, light, elementClassNames.join(' '))}
     </div>
   );
   /* eslint-enable */
 };
 
-const elementForContent = (
-  content,
-  depth,
-  light,
-  elementClassName,
-) => {
+const elementForContent = (content, depth, light, elementClassName) => {
   if (!content) {
     return null;
   }
@@ -217,11 +207,11 @@ const elementForContent = (
   if (content.type === 'bigLink') {
     return (
       <a
-        href={content.ref}
-        target={content.external && '_blank'}
-        rel={content.external && 'noopener noreferrer'}
+        href={content.href}
+        target={content.hrefExternal && '_blank'}
+        rel={content.hrefExternal && 'noopener noreferrer'}
       >
-        <Section anchor={false} padding={false} name={content.title} />
+        <Subsection anchor={false} padding={false} link name={content.text} />
       </a>
     );
   }

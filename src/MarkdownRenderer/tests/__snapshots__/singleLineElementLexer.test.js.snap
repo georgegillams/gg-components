@@ -64,6 +64,17 @@ Array [
 ]
 `;
 
+exports[`parses text containing big link 1`] = `
+Array [
+  Object {
+    "href": "https://duckduckgo.com/",
+    "hrefExternal": true,
+    "text": "Big link to DDG",
+    "type": "bigLink",
+  },
+]
+`;
+
 exports[`parses text containing bold 1`] = `
 Array [
   "forFurtherProcessing: \\"Line containing \\"",
@@ -180,14 +191,12 @@ Array [
 
 exports[`parses text containing reference 1`] = `
 Array [
-  "forFurtherProcessing: \\"\\"",
   Object {
     "identifier": "4",
     "reference": "This is the forth reference
 !reference(5): This is the fifth reference",
     "type": "reference",
   },
-  "forFurtherProcessing: \\"\\"",
 ]
 `;
 

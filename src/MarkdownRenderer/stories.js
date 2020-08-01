@@ -268,7 +268,7 @@ console.log(foo(5));
 
 [link text](http://google.com)
 
-[link with title](http://google.com/ title text!)
+*[big link](http://google.com/)
 
 
 ## Images

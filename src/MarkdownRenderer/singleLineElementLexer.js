@@ -4,7 +4,7 @@ const MD_SMART_IMAGE_REGEX = /!\[([0-9]+)x([0-9]+)\]\[(.*?)\]\((.*?)\)\((.*?)\)(
 const MD_YOUTUBE_REGEX = /!yt\[(.*)\]\((.*)\)/gims;
 
 const MD_LINK_REGEX = /\[(.+?)\]\((.+?)\)(.*)/gims;
-// const MD_LINK_BIG_REGEX = /(.*)\*\[([^\[\]]*)\]\(([^\(\)]*)\)(.*)/gims;
+const MD_BIG_LINK_REGEX = /\*\[(.+?)\]\((.+?)\)/gims;
 const MD_STRIKETHROUGH_REGEX = /~(.*?)~(.*)/gims;
 const MD_CODE_REGEX = /`(.*?)`(.*)/gims;
 const MD_BOLD_REGEX = /\*\*(.*?)\*\*(.*)/gims;
@@ -45,6 +45,25 @@ const parseStringForBoldness = (item, furtherProcess) => {
       furtherProcess(elements[0]),
       { type: 'bold', children: [elements[1]] },
       furtherProcess(elements[2]),
+    ];
+  }
+  return [item];
+};
+
+// Takes a string, and returns an array
+const parseStringForBigLink = item => {
+  if (item.match(MD_BIG_LINK_REGEX)) {
+    const elements = item.split(MD_BIG_LINK_REGEX);
+    const href = elements[2];
+    const hrefExternal =
+      href.startsWith('http://') || href.startsWith('https://');
+    return [
+      {
+        type: 'bigLink',
+        href,
+        hrefExternal,
+        text: elements[1],
+      },
     ];
   }
   return [item];
@@ -206,17 +225,15 @@ const parseStringForCitations = (item, furtherProcess) => {
 };
 
 // Takes a string, and returns an array
-const parseStringForReferences = (item, furtherProcess) => {
+const parseStringForReferences = item => {
   if (item.match(MD_REFERENCES_REGEX)) {
     const elements = item.split(MD_REFERENCES_REGEX);
     return [
-      furtherProcess(elements[0]),
       {
         type: 'reference',
         identifier: elements[1],
         reference: elements[2],
       },
-      furtherProcess(elements[3]),
     ];
   }
   return [item];
@@ -297,6 +314,13 @@ const parseSingleLineElements = (list, supportedFeatures) => {
       supportedFeatures,
     );
   }
+  if (supportedFeatures.includes('bigLink')) {
+    result = processStringsInList(
+      result,
+      parseStringForBigLink,
+      supportedFeatures,
+    );
+  }
   if (supportedFeatures.includes('link')) {
     result = processStringsInList(
       result,
@@ -368,6 +392,7 @@ export {
   parseStringForImage,
   parseStringForItalic,
   parseStringForLink,
+  parseStringForBigLink,
   parseStringForReferences,
   parseStringForSmartImage,
   parseStringForStrikethrough,

@@ -10,6 +10,7 @@ import {
   parseStringForImage,
   parseStringForItalic,
   parseStringForLink,
+  parseStringForBigLink,
   parseStringForReferences,
   parseStringForYouTube,
   parseStringForSmartImage,
@@ -24,6 +25,14 @@ const simpleFurtherProcess = x => `forFurtherProcessing: "${x}"`;
 test('parses text containing image', () => {
   const result = parseStringForImage(
     'Line containing ![imageCaption](imageSrc) text',
+    simpleFurtherProcess,
+  );
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+test('parses text containing big link', () => {
+  const result = parseStringForBigLink(
+    `*[Big link to DDG](https://duckduckgo.com/)`,
     simpleFurtherProcess,
   );
   expect(result.error).toBe(undefined);

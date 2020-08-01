@@ -5,6 +5,7 @@ const DEFAULT_SUPPORTED_FEATURES = [
   'italic',
   'strikethrough',
   'quotation',
+  'bigLink',
   'link',
   'footnote',
   'image',

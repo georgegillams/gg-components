@@ -11,9 +11,7 @@ test('parses link', () => {
 });
 
 test('parses big link', () => {
-  const result = markdownLexer(
-    'This is a test which contains a *[Big link](https://www.google.com/) to Google.',
-  );
+  const result = markdownLexer('*[Big link](https://www.google.com/)');
   expect(result.error).toBe(undefined);
   expect(JSON.stringify(result)).toMatchSnapshot();
 });
