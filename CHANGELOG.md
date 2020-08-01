@@ -1,5 +1,9 @@
 # Changelog
 
+## 12.1.1
+
+- Fixed: An issue that caused TextArea to be blurred on text entry. 
+
 ## 12.1.0
 
 - Added: New Error wrapper to turn text and SVG's red

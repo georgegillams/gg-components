@@ -3,19 +3,18 @@ import { storiesOf } from '@storybook/react';
 
 import { TextArea } from './index';
 
-class StatefulInput extends Component {
+class StatefulTextArea extends Component {
   constructor(props) {
     super(props);
 
-    this.InputComponent = props.component || Input;
     this.state = { value: props.value || '', valid: null, enabled: true };
   }
 
   render() {
-    const { value, component, ...rest } = this.props;
+    const { value, ...rest } = this.props;
     return (
       <div>
-        <this.InputComponent
+        <TextArea
           name="Stateful_input"
           valid={this.state.valid}
           value={this.state.value}
@@ -90,4 +89,4 @@ storiesOf('Text area', module)
   .add('Valid', () => <TextArea value="Test" valid />)
   .add('Invalid', () => <TextArea value="Test" valid={false} />)
   .add('Disabled', () => <TextArea value="Test" enabled={false} />)
-  .add('Stateful', () => <StatefulInput component={TextArea} />);
+  .add('Stateful', () => <StatefulTextArea />);
