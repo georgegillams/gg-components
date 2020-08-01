@@ -124,7 +124,7 @@
     "style-loader": "^1.2.1",
     "stylelint": "^13.6.1",
     "stylelint-config-skyscanner": "^2.4.0",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-hot-middleware": "^2.25.0"
