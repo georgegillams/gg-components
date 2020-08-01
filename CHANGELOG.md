@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.1.0
+
+ - Added: Bullet and numbered list support for markdown.
+
 ## 13.0.0
 
 - Breaking: Markdown citations should now use syntax `!cite(i)` where `i` is the citation being referenced.
