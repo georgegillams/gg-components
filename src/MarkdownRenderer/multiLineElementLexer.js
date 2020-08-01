@@ -49,10 +49,13 @@ const parseLinesForQuoteBlock = list => {
 const parseMultiLineElements = (list, supportedFeatures) => {
   let result = list;
 
+  if (supportedFeatures.includes('quotation')) {
+    result = parseLinesForQuoteBlock(result);
+  }
+
   // handle children elements recursively:
   result = result.map(l => {
-    // TODO Can we move this later (like we do for single-line) and avoid the `!== quotation` check?
-    if (l.children && l.type !== 'quotation') {
+    if (l.children) {
       return {
         ...l,
         children: parseMultiLineElements(l.children, supportedFeatures),
@@ -60,10 +63,6 @@ const parseMultiLineElements = (list, supportedFeatures) => {
     }
     return l;
   });
-
-  if (supportedFeatures.includes('quotation')) {
-    result = parseLinesForQuoteBlock(result);
-  }
 
   result = convertLinesToParagraphs(result);
 

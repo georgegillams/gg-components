@@ -79,11 +79,37 @@ code block
   .add('Youtube video', () => (
     <MarkdownRenderer content="!yt[false](jofNR_WkoCE)" />
   ))
+  .add('Text with a bullet list', () => (
+    <MarkdownRenderer
+      content={`This contains a bullet-list as follows:
+ - This is a bullet point
+
+There are some more coming up:
+ - Another bullet
+ - One more for luck
+`}
+    />
+  ))
+  .add('Text with a numbered list', () => (
+    <MarkdownRenderer
+      content={`This contains a bullet-list as follows:
+ 1. This is a bullet point
+
+There are some more coming up:
+ 2. Another bullet
+ 3. One more for luck
+`}
+    />
+  ))
   .add('Text with a quotation', () => (
     <MarkdownRenderer
-      content="This contains a quotation as follows:
+      content={`This contains a quotation as follows:
 > This is a quote
-"
+
+There's even another one coming up next:
+> And it spans...
+> ... multiple lines
+`}
     />
   ))
   .add('Sectioned text', () => (
