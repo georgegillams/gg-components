@@ -1,9 +1,9 @@
 /* eslint-disable no-useless-escape */
-const MD_IMAGE_REGEX = /!\[(.*)\]\((.*)\)/gims;
-const MD_SMART_IMAGE_REGEX = /!\[([0-9]+)x([0-9]+)\]\[(.*)\]\((.*)\)\((.*)\)/gi;
+const MD_IMAGE_REGEX = /!\[(.*?)\]\((.*?)\)(.*)/gims;
+const MD_SMART_IMAGE_REGEX = /!\[([0-9]+)x([0-9]+)\]\[(.*?)\]\((.*?)\)\((.*?)\)(.*)/gi;
 const MD_YOUTUBE_REGEX = /!yt\[(.*)\]\((.*)\)/gims;
 
-const MD_LINK_REGEX = /\[(.*)\]\((.+)\)/gims;
+const MD_LINK_REGEX = /\[(.+?)\]\((.+?)\)(.*)/gims;
 // const MD_LINK_BIG_REGEX = /(.*)\*\[([^\[\]]*)\]\(([^\(\)]*)\)(.*)/gims;
 const MD_STRIKETHROUGH_REGEX = /~(.*?)~(.*)/gims;
 const MD_CODE_REGEX = /`(.*?)`(.*)/gims;

@@ -28,6 +28,10 @@
         color: $not-black-invert;
       }
     }
+
+    &--inherit-color {
+      color: inherit;
+    }
   }
 
   &__text-link {

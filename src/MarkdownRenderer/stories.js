@@ -24,8 +24,14 @@ storiesOf('Markdown renderer', module)
 This contains a [link](/test) to an internal page.`}
     />
   ))
-  .add('Text with extenal link', () => (
+  .add('Text with external link', () => (
     <MarkdownRenderer content="This contains a [link](https://www.google.com/) to an external page." />
+  ))
+  .add('Text with external code link', () => (
+    <MarkdownRenderer content="This contains a [`code_link`](https://github.com/) to an external page." />
+  ))
+  .add('Text with 2 links', () => (
+    <MarkdownRenderer content="This contains a [link to Google](https://www.google.com/) and another [link to DDG](https://duckduckgo.com/) to an external page." />
   ))
   .add('Text with inline code', () => (
     <MarkdownRenderer content="This contains some `code`." />

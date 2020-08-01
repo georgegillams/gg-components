@@ -1,8 +1,12 @@
 # Changelog
 
+## 12.1.2
+
+- Fixed: Broken markdown features
+
 ## 12.1.1
 
-- Fixed: An issue that caused TextArea to be blurred on text entry. 
+- Fixed: An issue that caused TextArea to be blurred on text entry.
 
 ## 12.1.0
 

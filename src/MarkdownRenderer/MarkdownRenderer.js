@@ -136,7 +136,11 @@ const elementForContent = (content, depth, light, elementClassName) => {
   }
 
   if (content.type === 'code') {
-    return <CodeInline className={elementClassName}>{content.text}</CodeInline>;
+    return (
+      <CodeInline inheritColor className={elementClassName}>
+        {content.text}
+      </CodeInline>
+    );
   }
 
   if (content.type === 'strikethrough') {
@@ -246,6 +250,14 @@ const elementForContent = (content, depth, light, elementClassName) => {
         alt={content.caption}
       />
     );
+  }
+
+  if (content.type === 'citation') {
+    return <span> [CITATION] </span>;
+  }
+
+  if (content.type === 'references') {
+    return <span> [REFERENCES] </span>;
   }
 
   // Finally, default to returning the raw content
