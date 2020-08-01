@@ -3,12 +3,13 @@
 import {
   parseMultiLineElements,
   parseLinesForQuoteBlock,
+  parseLinesForBulletList,
 } from '../multiLineElementLexer.js';
 import { DEFAULT_SUPPORTED_FEATURES } from '../constants.js';
 
 // #region individual lists
 test('parses lines to insert bullet-list', () => {
-  const result = parseLinesForQuoteBlock([
+  const result = parseLinesForBulletList([
     { type: 'line', content: 'Line 1' },
     { type: 'line', content: ' - Bullet 1' },
     { type: 'line', content: ' - Bullet 2' },

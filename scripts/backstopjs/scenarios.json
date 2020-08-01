@@ -84,6 +84,7 @@
     "markdown-renderer--text-with-a-bullet-list",
     "markdown-renderer--text-with-a-numbered-list",
     "markdown-renderer--text-with-a-quotation",
+    "markdown-renderer--text-with-all-the-multi-line-things",
     "markdown-renderer--text-with-citation-reference",
     "markdown-renderer--text-with-external-code-link",
     "markdown-renderer--text-with-footnote-reference",

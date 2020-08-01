@@ -1,6 +1,8 @@
 /* eslint-disable no-useless-escape */
 // const MD_BLOCK_CODE_REGEX = /(.*)```\ ?([^\,\n]*)\,?\ ?([^\n]*)\n([.\s\S]*)\n```(.*)/gims;
 const MD_QUOTATION_REGEX = /\>\ (.*)/gims;
+const MD_BULLET_REGEX = /\s+\-\ (.*)/gims;
+const MD_NUMBERED_REGEX = /\s+[0-9]+\.\ (.*)/gims;
 /* eslint-enable */
 
 const convertLinesToParagraphs = list =>
@@ -10,6 +12,77 @@ const convertLinesToParagraphs = list =>
     }
     return l;
   });
+
+const parseLinesForNumberedList = list => {
+  const results = [];
+  let currentResult = null;
+
+  list.forEach(l => {
+    if (l.type !== 'line') {
+      results.push(l);
+      return;
+    }
+
+    if (l.content.match(MD_NUMBERED_REGEX)) {
+      if (!currentResult) {
+        currentResult = { type: 'numberedList', children: [] };
+      }
+      const splitUpLine = l.content.split(MD_NUMBERED_REGEX);
+      currentResult.children.push({
+        type: 'paragraph',
+        children: [splitUpLine[1]],
+      });
+    } else {
+      if (currentResult) {
+        results.push(currentResult);
+        currentResult = null;
+      }
+      results.push(l);
+    }
+  });
+
+  // push the current result if there is still one being constructed and we've reached the end of the list
+  if (currentResult) {
+    results.push(currentResult);
+  }
+
+  return results;
+};
+const parseLinesForBulletList = list => {
+  const results = [];
+  let currentResult = null;
+
+  list.forEach(l => {
+    if (l.type !== 'line') {
+      results.push(l);
+      return;
+    }
+
+    if (l.content.match(MD_BULLET_REGEX)) {
+      if (!currentResult) {
+        currentResult = { type: 'bulletList', children: [] };
+      }
+      const splitUpLine = l.content.split(MD_BULLET_REGEX);
+      currentResult.children.push({
+        type: 'paragraph',
+        children: [splitUpLine[1]],
+      });
+    } else {
+      if (currentResult) {
+        results.push(currentResult);
+        currentResult = null;
+      }
+      results.push(l);
+    }
+  });
+
+  // push the current result if there is still one being constructed and we've reached the end of the list
+  if (currentResult) {
+    results.push(currentResult);
+  }
+
+  return results;
+};
 
 const parseLinesForQuoteBlock = list => {
   const results = [];
@@ -26,7 +99,10 @@ const parseLinesForQuoteBlock = list => {
         currentResult = { type: 'quotation', children: [] };
       }
       const splitUpLine = l.content.split(MD_QUOTATION_REGEX);
-      currentResult.children.push(splitUpLine[1]);
+      currentResult.children.push({
+        type: 'paragraph',
+        children: [splitUpLine[1]],
+      });
     } else {
       if (currentResult) {
         results.push(currentResult);
@@ -53,6 +129,14 @@ const parseMultiLineElements = (list, supportedFeatures) => {
     result = parseLinesForQuoteBlock(result);
   }
 
+  if (supportedFeatures.includes('bulletList')) {
+    result = parseLinesForBulletList(result);
+  }
+
+  if (supportedFeatures.includes('numberedList')) {
+    result = parseLinesForNumberedList(result);
+  }
+
   // handle children elements recursively:
   result = result.map(l => {
     if (l.children) {
@@ -70,4 +154,8 @@ const parseMultiLineElements = (list, supportedFeatures) => {
 };
 
 export default parseMultiLineElements;
-export { parseMultiLineElements, parseLinesForQuoteBlock };
+export {
+  parseMultiLineElements,
+  parseLinesForQuoteBlock,
+  parseLinesForBulletList,
+};

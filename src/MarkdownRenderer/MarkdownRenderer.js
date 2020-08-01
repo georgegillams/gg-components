@@ -42,8 +42,6 @@ const MarkdownRenderer = props => {
     return null;
   }
 
-  console.log(`lexedContent`, lexedContent);
-
   const classNames = [getClassName(`blog-viewer__outer`)];
   if (className) {
     classNames.push(className);
@@ -110,14 +108,19 @@ const elementForContent = (content, depth, light, elementClassName) => {
     );
   }
 
+  if (content.type === 'bulletList') {
+    childElement = childElement.map(c => <li>{c}</li>);
+    return <ul>{childElement}</ul>;
+  }
+
+  if (content.type === 'numberedList') {
+    childElement = childElement.map(c => <li>{c}</li>);
+    return <ol>{childElement}</ol>;
+  }
+
   if (content.type === 'quotation') {
     if (childElement.length > 1) {
-      childElement = childElement.map(c => (
-        <>
-          <Paragraph>{c}</Paragraph>
-          <br />
-        </>
-      ));
+      childElement = childElement.map(c => <Paragraph>{c}</Paragraph>);
     }
     return <Quote>{childElement}</Quote>;
   }

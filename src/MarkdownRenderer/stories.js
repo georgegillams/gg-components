@@ -79,6 +79,31 @@ code block
   .add('Youtube video', () => (
     <MarkdownRenderer content="!yt[false](jofNR_WkoCE)" />
   ))
+  .add('Text with all the multi-line things', () => (
+    <MarkdownRenderer
+      content={`This contains a bullet-list as follows:
+ - This is a bullet point
+
+There are some more coming up:
+ - Another bullet
+ - One **more** for luck
+ 
+...and a numbered-list as follows:
+ 1. This is a numbered item
+
+There are some more coming up:
+ 2. Another numbered item
+ 3. One **more** for luck
+
+...and a quotation as follows:
+> This is a quote
+
+There's even another one coming up next:
+> And it spans...
+> ... multiple lines with [link](https://duckduckgo.com/)'s
+`}
+    />
+  ))
   .add('Text with a bullet list', () => (
     <MarkdownRenderer
       content={`This contains a bullet-list as follows:
@@ -86,18 +111,18 @@ code block
 
 There are some more coming up:
  - Another bullet
- - One more for luck
+ - One **more** for luck
 `}
     />
   ))
   .add('Text with a numbered list', () => (
     <MarkdownRenderer
-      content={`This contains a bullet-list as follows:
- 1. This is a bullet point
+      content={`This contains a numbered-list as follows:
+ 1. This is a numbered item
 
 There are some more coming up:
- 2. Another bullet
- 3. One more for luck
+ 2. Another numbered item
+ 3. One **more** for luck
 `}
     />
   ))
@@ -108,7 +133,7 @@ There are some more coming up:
 
 There's even another one coming up next:
 > And it spans...
-> ... multiple lines
+> ... multiple lines with [link](https://duckduckgo.com/)'s
 `}
     />
   ))

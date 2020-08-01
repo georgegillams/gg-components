@@ -13,6 +13,8 @@ const DEFAULT_SUPPORTED_FEATURES = [
   'citation',
   'sectioning',
   'linebreak',
+  'bulletList',
+  'numberedList',
 ];
 
 export default DEFAULT_SUPPORTED_FEATURES;

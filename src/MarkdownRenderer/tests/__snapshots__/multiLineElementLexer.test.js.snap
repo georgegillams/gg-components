@@ -59,9 +59,24 @@ Array [
       },
       Object {
         "children": Array [
-          "Quote line 1",
-          "Quote line 2",
-          "Quote line 3",
+          Object {
+            "children": Array [
+              "Quote line 1",
+            ],
+            "type": "paragraph",
+          },
+          Object {
+            "children": Array [
+              "Quote line 2",
+            ],
+            "type": "paragraph",
+          },
+          Object {
+            "children": Array [
+              "Quote line 3",
+            ],
+            "type": "paragraph",
+          },
         ],
         "type": "quotation",
       },
@@ -111,16 +126,27 @@ Array [
     "type": "line",
   },
   Object {
-    "content": " - Bullet 1",
-    "type": "line",
-  },
-  Object {
-    "content": " - Bullet 2",
-    "type": "line",
-  },
-  Object {
-    "content": " - Bullet 3",
-    "type": "line",
+    "children": Array [
+      Object {
+        "children": Array [
+          "Bullet 1",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Bullet 2",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Bullet 3",
+        ],
+        "type": "paragraph",
+      },
+    ],
+    "type": "bulletList",
   },
   Object {
     "content": "Line 2",
@@ -137,9 +163,24 @@ exports[`parses lines to insert comment block at start 1`] = `
 Array [
   Object {
     "children": Array [
-      "Quote line 1",
-      "Quote line 2",
-      "Quote line 3",
+      Object {
+        "children": Array [
+          "Quote line 1",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Quote line 2",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Quote line 3",
+        ],
+        "type": "paragraph",
+      },
     ],
     "type": "quotation",
   },
@@ -170,9 +211,24 @@ Array [
   },
   Object {
     "children": Array [
-      "Quote line 1",
-      "Quote line 2",
-      "Quote line 3",
+      Object {
+        "children": Array [
+          "Quote line 1",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Quote line 2",
+        ],
+        "type": "paragraph",
+      },
+      Object {
+        "children": Array [
+          "Quote line 3",
+        ],
+        "type": "paragraph",
+      },
     ],
     "type": "quotation",
   },
