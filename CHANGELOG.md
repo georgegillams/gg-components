@@ -1,5 +1,12 @@
 # Changelog
 
+## 13.0.0
+
+- Breaking: Markdown citations should now use syntax `!cite(i)` where `i` is the citation being referenced.
+- Breaking: Markdown references should now be specified individually using `!reference(i): REFERENCE` where `i` is the reference index and `REFERENCE` is the fully qualified reference string.
+
+- Fixed: More broken markdown features
+
 ## 12.1.2
 
 - Fixed: Broken markdown features

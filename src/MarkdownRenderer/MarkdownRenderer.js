@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import YoutubeEmbedVideo from 'youtube-embed-video';
 
-// import {
-//   citation,
-//   References,
-//   REFERENCE_STYLES,
-// } from 'react-component-academic-reference';
 import { cssModules } from '../helpers/cssModules';
 import { withTheme } from '../Theming';
 import HelperFunctions from '../helpers/HelperFunctions';
@@ -17,6 +12,7 @@ import { TextLink } from '../TextLink';
 import { Quote } from '../Quote';
 import { Section } from '../Section';
 import { Subsection } from '../Subsection';
+import { Citation, Reference } from '../References';
 
 import { markdownLexer } from './markdownLexer';
 import { DEFAULT_SUPPORTED_FEATURES } from './constants';
@@ -31,7 +27,6 @@ const MarkdownRenderer = props => {
     content,
     supportedFeatures,
     light,
-    references,
     className,
     elementClassName,
   } = props;
@@ -63,13 +58,23 @@ const MarkdownRenderer = props => {
   /* eslint-disable no-use-before-define */
   return (
     <div className={classNames.join(' ')}>
-      {elementForContent(lexedContent, 0, light, elementClassNames.join(' '))}
+      {elementForContent(
+        lexedContent,
+        0,
+        light,
+        elementClassNames.join(' '),
+      )}
     </div>
   );
   /* eslint-enable */
 };
 
-const elementForContent = (content, depth, light, elementClassName) => {
+const elementForContent = (
+  content,
+  depth,
+  light,
+  elementClassName,
+) => {
   if (!content) {
     return null;
   }
@@ -181,7 +186,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'section') {
     return (
-      <Section padding={false} name={content.name}>
+      <Section anchor padding={false} name={content.name}>
         {childElement}
       </Section>
     );
@@ -189,7 +194,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'subsection') {
     return (
-      <Subsection padding={false} name={content.name}>
+      <Subsection anchor padding={false} name={content.name}>
         {childElement}
       </Subsection>
     );
@@ -216,7 +221,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
         target={content.external && '_blank'}
         rel={content.external && 'noopener noreferrer'}
       >
-        <Section padding={false} name={content.title} />
+        <Section anchor={false} padding={false} name={content.title} />
       </a>
     );
   }
@@ -253,11 +258,16 @@ const elementForContent = (content, depth, light, elementClassName) => {
   }
 
   if (content.type === 'citation') {
-    return <span> [CITATION] </span>;
+    return <Citation identifier={content.identifier} />;
   }
 
-  if (content.type === 'references') {
-    return <span> [REFERENCES] </span>;
+  if (content.type === 'reference') {
+    return (
+      <Reference
+        identifier={content.identifier}
+        reference={content.reference}
+      />
+    );
   }
 
   // Finally, default to returning the raw content
@@ -265,8 +275,6 @@ const elementForContent = (content, depth, light, elementClassName) => {
 };
 
 MarkdownRenderer.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  references: PropTypes.object,
   content: PropTypes.string.isRequired,
   className: PropTypes.string,
   elementClassName: PropTypes.string,
@@ -275,7 +283,6 @@ MarkdownRenderer.propTypes = {
 };
 
 MarkdownRenderer.defaultProps = {
-  references: null,
   className: null,
   elementClassName: null,
   light: false,

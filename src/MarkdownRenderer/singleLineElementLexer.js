@@ -11,8 +11,8 @@ const MD_BOLD_REGEX = /\*\*(.*?)\*\*(.*)/gims;
 const MD_BOLD_ITALIC_3_STAR_REGEX = /\*\*\*(.*?)\*\*\*(.*)/gims;
 const MD_ITALIC_REGEX = /[\_|\*](.*?)[\_\*](.*)/gims;
 
-const MD_CITATION_REGEX = /!cite\((.*?)\)(.*)/gims;
-const MD_REFERENCES_REGEX = /!printReferences\(\)/gims;
+const MD_CITATION_REGEX = /!cite\(([0-9]+)\)(.*)/gims;
+const MD_REFERENCES_REGEX = /!reference\(([0-9]+)\):\ (.*)/gims;
 const MD_FOOTNOTE_REFERENCE_REGEX = /\[\^([0-9]+)\](.*)/gims;
 const MD_FOOTNOTE_REGEX = /^\[\^([0-9]+)\]:\ (.+)/gims;
 /* eslint-enable */
@@ -197,7 +197,7 @@ const parseStringForCitations = (item, furtherProcess) => {
       furtherProcess(elements[0]),
       {
         type: 'citation',
-        reference: elements[1],
+        identifier: elements[1],
       },
       furtherProcess(elements[2]),
     ];
@@ -212,9 +212,11 @@ const parseStringForReferences = (item, furtherProcess) => {
     return [
       furtherProcess(elements[0]),
       {
-        type: 'references',
+        type: 'reference',
+        identifier: elements[1],
+        reference: elements[2],
       },
-      furtherProcess(elements[1]),
+      furtherProcess(elements[3]),
     ];
   }
   return [item];

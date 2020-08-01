@@ -94,10 +94,10 @@ exports[`parses text containing citation 1`] = `
 Array [
   "forFurtherProcessing: \\"This points to some citation\\"",
   Object {
-    "reference": "lee:2009",
+    "identifier": "7",
     "type": "citation",
   },
-  "forFurtherProcessing: \\" that will appear further down!cite(Mack:2010) the page.\\"",
+  "forFurtherProcessing: \\" that will appear further down!cite(10) the page.\\"",
 ]
 `;
 
@@ -178,11 +178,14 @@ Array [
 ]
 `;
 
-exports[`parses text containing references 1`] = `
+exports[`parses text containing reference 1`] = `
 Array [
   "forFurtherProcessing: \\"\\"",
   Object {
-    "type": "references",
+    "identifier": "4",
+    "reference": "This is the forth reference
+!reference(5): This is the fifth reference",
+    "type": "reference",
   },
   "forFurtherProcessing: \\"\\"",
 ]

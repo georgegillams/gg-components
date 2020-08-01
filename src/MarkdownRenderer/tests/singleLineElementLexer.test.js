@@ -63,15 +63,15 @@ test('parses text containing footnote reference', () => {
 });
 test('parses text containing citation', () => {
   const result = parseStringForCitations(
-    `This points to some citation!cite(lee:2009) that will appear further down!cite(Mack:2010) the page.`,
+    `This points to some citation!cite(7) that will appear further down!cite(10) the page.`,
     simpleFurtherProcess,
   );
   expect(result.error).toBe(undefined);
   expect(result).toMatchSnapshot();
 });
-test('parses text containing references', () => {
+test('parses text containing reference', () => {
   const result = parseStringForReferences(
-    `!printReferences()`,
+    `!reference(4): This is the forth reference\n!reference(5): This is the fifth reference`,
     simpleFurtherProcess,
   );
   expect(result.error).toBe(undefined);

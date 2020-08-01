@@ -42,7 +42,9 @@ This contains a [link](/test) to an internal page.`}
     />
   ))
   .add('Text with citation reference', () => (
-    <MarkdownRenderer content="This references!cite(Lee:2009) something further down the page, as does this!cite(Mack:2010)" />
+    <MarkdownRenderer
+      content={`This references!cite(1) something further down the page, as does this!cite(2)\n\n!reference(1): Test reference\n!reference(2): Test another reference`}
+    />
   ))
   .add('Text with strikethrough', () => (
     <MarkdownRenderer content="This contains a ~striken~ section." />
