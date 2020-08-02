@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.2.0
+
+ - Added: Code block support for markdown.
+
 ## 13.1.0
 
  - Added: Bullet and numbered list support for markdown.
