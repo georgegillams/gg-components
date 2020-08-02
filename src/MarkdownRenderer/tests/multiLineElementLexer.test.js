@@ -4,10 +4,62 @@ import {
   parseMultiLineElements,
   parseLinesForQuoteBlock,
   parseLinesForBulletList,
+  parseLinesForBlockCode,
 } from '../multiLineElementLexer.js';
 import { DEFAULT_SUPPORTED_FEATURES } from '../constants.js';
 
 // #region individual lists
+test('parses lines to insert code-block', () => {
+  const result = parseLinesForBlockCode([
+    { type: 'line', content: 'Line 1' },
+    { type: 'line', content: '```' },
+    { type: 'line', content: ' - Some code' },
+    {
+      type: 'line',
+      content: ' - Some code with a [link](https://duckduckgo.com)',
+    },
+    { type: 'line', content: '```' },
+    { type: 'line', content: 'Line 2' },
+    { type: 'line', content: 'Line 3' },
+  ]);
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
+test('parses lines to insert code-block with language', () => {
+  const result = parseLinesForBlockCode([
+    { type: 'line', content: 'Line 1' },
+    { type: 'line', content: '``` js' },
+    { type: 'line', content: ' - Some code' },
+    {
+      type: 'line',
+      content: ' - Some code with a [link](https://duckduckgo.com)',
+    },
+    { type: 'line', content: '```' },
+    { type: 'line', content: 'Line 2' },
+    { type: 'line', content: 'Line 3' },
+  ]);
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
+test('parses lines to insert code-block', () => {
+  const result = parseLinesForBlockCode([
+    { type: 'line', content: 'Line 1' },
+    { type: 'line', content: '``` js, https://github.com/' },
+    { type: 'line', content: ' - Some code' },
+    {
+      type: 'line',
+      content: ' - Some code with a [link](https://duckduckgo.com)',
+    },
+    { type: 'line', content: '```' },
+    { type: 'line', content: 'Line 2' },
+    { type: 'line', content: 'Line 3' },
+  ]);
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
 test('parses lines to insert bullet-list', () => {
   const result = parseLinesForBulletList([
     { type: 'line', content: 'Line 1' },

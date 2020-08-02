@@ -160,10 +160,15 @@ const elementForContent = (content, depth, light, elementClassName) => {
     );
   }
 
-  if (content.type === 'codeblock') {
+  if (content.type === 'blockCode') {
     return (
-      <Code language={content.language} githubUrl={content.githubUrl}>
-        {content.text}
+      <Code lang={content.language} githubUrl={content.url}>
+        {content.codeLines.map(c => (
+          <>
+            {c.replace(/ /g, '\u00a0')}
+            <br />
+          </>
+        ))}
       </Code>
     );
   }

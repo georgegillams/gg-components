@@ -3,6 +3,9 @@
 const MD_QUOTATION_REGEX = /\>\ (.*)/gims;
 const MD_BULLET_REGEX = /\s+\-\ (.*)/gims;
 const MD_NUMBERED_REGEX = /\s+[0-9]+\.\ (.*)/gims;
+const MD_CODE_BLOCK_START_REGEX = /```\ ?(.*)/gims;
+const MD_CODE_BLOCK_START_LANG_URL_REGEX = /```\ (.+)\,\ (.+)/gims;
+const MD_CODE_BLOCK_END_REGEX = /```/gims;
 /* eslint-enable */
 
 const convertLinesToParagraphs = list =>
@@ -48,6 +51,7 @@ const parseLinesForNumberedList = list => {
 
   return results;
 };
+
 const parseLinesForBulletList = list => {
   const results = [];
   let currentResult = null;
@@ -74,6 +78,49 @@ const parseLinesForBulletList = list => {
       }
       results.push(l);
     }
+  });
+
+  // push the current result if there is still one being constructed and we've reached the end of the list
+  if (currentResult) {
+    results.push(currentResult);
+  }
+
+  return results;
+};
+
+const parseLinesForBlockCode = list => {
+  const results = [];
+  let currentResult = null;
+
+  list.forEach(l => {
+    if (l.type !== 'line') {
+      results.push(l);
+      return;
+    }
+
+    if (!currentResult) {
+      if (l.content.match(MD_CODE_BLOCK_START_LANG_URL_REGEX)) {
+        currentResult = { type: 'blockCode', codeLines: [] };
+        const splitUpLine = l.content.split(MD_CODE_BLOCK_START_LANG_URL_REGEX);
+        currentResult.language = splitUpLine[1];
+        currentResult.url = splitUpLine[2];
+        return;
+      }
+      if (l.content.match(MD_CODE_BLOCK_START_REGEX)) {
+        currentResult = { type: 'blockCode', codeLines: [] };
+        const splitUpLine = l.content.split(MD_CODE_BLOCK_START_REGEX);
+        currentResult.language = splitUpLine[1];
+        return;
+      }
+    } else if (currentResult && l.content.match(MD_CODE_BLOCK_END_REGEX)) {
+      results.push(currentResult);
+      currentResult = null;
+      return;
+    } else if (currentResult) {
+      currentResult.codeLines.push(l.content);
+      return;
+    }
+    results.push(l);
   });
 
   // push the current result if there is still one being constructed and we've reached the end of the list
@@ -137,6 +184,10 @@ const parseMultiLineElements = (list, supportedFeatures) => {
     result = parseLinesForNumberedList(result);
   }
 
+  if (supportedFeatures.includes('blockCode')) {
+    result = parseLinesForBlockCode(result);
+  }
+
   // handle children elements recursively:
   result = result.map(l => {
     if (l.children) {
@@ -158,4 +209,5 @@ export {
   parseMultiLineElements,
   parseLinesForQuoteBlock,
   parseLinesForBulletList,
+  parseLinesForBlockCode,
 };

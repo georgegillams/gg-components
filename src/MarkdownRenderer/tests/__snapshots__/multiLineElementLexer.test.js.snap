@@ -159,6 +159,82 @@ Array [
 ]
 `;
 
+exports[`parses lines to insert code-block 1`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "codeLines": Array [
+      " - Some code",
+      " - Some code with a [link](https://duckduckgo.com)",
+    ],
+    "language": "",
+    "type": "blockCode",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;
+
+exports[`parses lines to insert code-block 2`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "codeLines": Array [
+      " - Some code",
+      " - Some code with a [link](https://duckduckgo.com)",
+    ],
+    "language": "js",
+    "type": "blockCode",
+    "url": "https://github.com/",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;
+
+exports[`parses lines to insert code-block with language 1`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "codeLines": Array [
+      " - Some code",
+      " - Some code with a [link](https://duckduckgo.com)",
+    ],
+    "language": "js",
+    "type": "blockCode",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;
+
 exports[`parses lines to insert comment block at start 1`] = `
 Array [
   Object {

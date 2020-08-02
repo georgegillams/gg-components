@@ -63,11 +63,27 @@ This contains a [link](/test) to an internal page.`}
   ))
   .add('Text with code block', () => (
     <MarkdownRenderer
-      content="This contains a block of code as follows:
-``` js, github.com
-code block
-  code block
-```"
+      content={`This contains a block of code as follows:
+\`\`\`
+if (render code) {
+  then stuff
+}
+\`\`\`
+
+And another with a language annotation:
+\`\`\` js
+if (render code) {
+  then stuff
+}
+\`\`\`
+
+And another with language and url:
+\`\`\` js, https://github.com/
+if (render code) {
+  then stuff
+}
+\`\`\`
+`}
     />
   ))
   .add('Text with a big link', () => (
