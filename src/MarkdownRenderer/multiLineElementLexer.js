@@ -1,8 +1,8 @@
 /* eslint-disable no-useless-escape */
 // const MD_BLOCK_CODE_REGEX = /(.*)```\ ?([^\,\n]*)\,?\ ?([^\n]*)\n([.\s\S]*)\n```(.*)/gims;
 const MD_QUOTATION_REGEX = /\>\ (.*)/gims;
-const MD_BULLET_REGEX = /\s+\-\ (.*)/gims;
-const MD_NUMBERED_REGEX = /\s+[0-9]+\.\ (.*)/gims;
+const MD_BULLET_REGEX = /^\s+\-\ (.*)/gims;
+const MD_NUMBERED_REGEX = /^\s+[0-9]+\.\ (.*)/gims;
 const MD_CODE_BLOCK_START_REGEX = /```\ ?(.*)/gims;
 const MD_CODE_BLOCK_START_LANG_URL_REGEX = /```\ (.+)\,\ (.+)/gims;
 const MD_CODE_BLOCK_END_REGEX = /```/gims;

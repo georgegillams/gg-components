@@ -36,18 +36,18 @@ const MarkdownRenderer = props => {
   useEffect(() => {
     const lexingResult = markdownLexer(content, supportedFeatures);
     setLexedContent(lexingResult);
-  }, []);
+  }, [content, supportedFeatures]);
 
   if (!lexedContent) {
     return null;
   }
 
-  const classNames = [getClassName(`blog-viewer__outer`)];
+  const classNames = [getClassName(`markdown-renderer__outer`)];
   if (className) {
     classNames.push(className);
   }
 
-  const elementClassNames = [getClassName(`blog-viewer__element`)];
+  const elementClassNames = [getClassName(`markdown-renderer__element`)];
   if (elementClassName) {
     classNames.push(elementClassName);
     elementClassNames.push(elementClassName);
@@ -90,7 +90,14 @@ const elementForContent = (content, depth, light, elementClassName) => {
   if (content.type === 'paragraph') {
     return (
       <>
-        <Paragraph>{childElement}</Paragraph>
+        <Paragraph
+          className={[
+            elementClassName,
+            getClassName('markdown-renderer__paragraph'),
+          ].join(' ')}
+        >
+          {childElement}
+        </Paragraph>
         <br />
       </>
     );
@@ -250,7 +257,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
         darkSrc={content.darkSrc}
         aspectX={content.aspectX}
         aspectY={content.aspectY}
-        alt={content.caption}
+        imgProps={{ alt: content.caption }}
       />
     );
   }

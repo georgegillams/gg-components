@@ -1,6 +1,6 @@
 @import '../Tokens/common';
 
-.blog-viewer {
+.markdown-renderer {
   &__outer {
     display: inline;
     color: $not-black;
@@ -13,6 +13,11 @@
 
   &__element {
     display: inline;
+    max-width: 100%;
     font-family: 'Quattrocento Sans', sans-serif;
+  }
+
+  &__paragraph {
+    width: 100%;
   }
 }

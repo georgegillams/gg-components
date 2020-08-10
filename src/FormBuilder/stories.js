@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { FormBuilder } from './index';
@@ -37,6 +37,12 @@ const formFields = [
     show: true,
   },
 ];
+
+const StatefulFormBuilder = props => {
+  const [entity, setEntity] = useState({});
+
+  return <FormBuilder entity={entity} onDataChanged={setEntity} {...props} />;
+};
 
 storiesOf('Form builder', module)
   .add('Default', () => (
@@ -94,4 +100,7 @@ storiesOf('Form builder', module)
       submitLabel="Submit"
       preSubmitText="By clicking submit, you agree to have your soul split in two."
     />
+  ))
+  .add('Stateful', () => (
+    <StatefulFormBuilder formFields={formFields} submitLabel="Submit" />
   ));
