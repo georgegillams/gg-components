@@ -77,8 +77,6 @@ const Button = React.forwardRef((props, ref) => {
 
   if (buttonClassName) classNameFinal.push(buttonClassName);
 
-  if (className) classNameFinal.push(className);
-
   if (href && !disabled) {
     return (
       <a
@@ -88,6 +86,7 @@ const Button = React.forwardRef((props, ref) => {
         rel={hrefExternal ? 'noopener noreferrer' : null}
         onClick={onClick}
         ref={ref}
+        className={className}
         {...rest}
       >
         <button
@@ -105,6 +104,8 @@ const Button = React.forwardRef((props, ref) => {
   if (disabled) {
     onClickFinal = null;
   }
+
+  if (className) classNameFinal.push(className);
 
   const onDestructiveClickFinal = event => {
     if (showDestructiveConfirmation) {
