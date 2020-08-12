@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.2.2
+
+ - Fixed: Link buttons will no long apply `className` to the inner button. To apply a className to the inner button, use `buttonClassName`.
+
 ## 13.2.0
 
  - Added: Code block support for markdown.
