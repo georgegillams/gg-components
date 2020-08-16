@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.2.4
+
+- Fixed: Link buttons have `display: inline-block` applied by default so that styles will be properly applied.
+
 ## 13.2.3
 
 - Fixed: `LoadingCover` will not present the `Skeleton` with no wrapping divs, so flex-alignment will now work more smoothly.

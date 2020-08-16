@@ -86,7 +86,7 @@ const Button = React.forwardRef((props, ref) => {
         rel={hrefExternal ? 'noopener noreferrer' : null}
         onClick={onClick}
         ref={ref}
-        className={className}
+        className={getClassName('button__a', className)}
         {...rest}
       >
         <button
