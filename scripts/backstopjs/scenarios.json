@@ -75,6 +75,7 @@
     "input--password",
     "input--valid",
     "loading-cover--default",
+    "loading-cover--flex-centered",
     "loading-indicator--loaded",
     "markdown-renderer--extreme",
     "markdown-renderer--more-extreme",
