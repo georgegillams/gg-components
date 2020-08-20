@@ -76,10 +76,6 @@
   }
 
   &__annotation {
-    &:not(:last-child) {
-      margin-bottom: 0.5rem;
-    }
-
     &--tablet {
       @include bpk-breakpoint-mobile {
         display: none;
@@ -90,7 +86,7 @@
       display: none;
 
       @include bpk-breakpoint-mobile {
-        display: unset;
+        display: inherit;
       }
     }
   }

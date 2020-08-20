@@ -94,32 +94,40 @@ const FeatureCard = React.forwardRef((props, ref) => {
       <div className={dateContainerClassNames.join(' ')}>
         {annotations && annotations.map && (
           <>
-            <Subsection
+            {/* Note we're using an additional div here to apply the className
+            due to an issue with className ordering in next.js */}
+            <div
               className={getClassName(
                 'feature-card__annotation',
                 'feature-card__annotation--mobile',
               )}
-              disabled={disabled}
-              hover={hovering && !disabled}
-              anchor={false}
-              noPadding
-              link
-              name={annotations.join(' ')}
-            />
-            {annotations.map(annotation => (
+            >
               <Subsection
-                className={getClassName(
-                  'feature-card__annotation',
-                  'feature-card__annotation--tablet',
-                )}
-                key={annotation}
                 disabled={disabled}
                 hover={hovering && !disabled}
                 anchor={false}
                 noPadding
                 link
-                name={annotation}
+                name={annotations.join(' ')}
               />
+            </div>
+            {annotations.map(annotation => (
+              <div
+                className={getClassName(
+                  'feature-card__annotation',
+                  'feature-card__annotation--tablet',
+                )}
+              >
+                <Subsection
+                  key={annotation}
+                  disabled={disabled}
+                  hover={hovering && !disabled}
+                  anchor={false}
+                  noPadding
+                  link
+                  name={annotation}
+                />
+              </div>
             ))}
           </>
         )}
