@@ -40,7 +40,7 @@ storiesOf('Segmented control', module)
   .add('Default', () => <SegmentedControlStory />)
   .add('With selection', () => <SegmentedControlStory selectedIndex={0} />)
   .add('Deselection enabled', () => <SegmentedControlStory enableDeselection />)
-  .add('Themed', () => (
+  .add('With CSS variables', () => (
     <div className={getClassName('stories__themed')}>
       <SegmentedControlStory selectedIndex={0} />
     </div>

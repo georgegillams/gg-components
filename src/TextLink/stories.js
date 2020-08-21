@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { cssModules } from '../helpers/cssModules';
+import { THEMES } from '../Theming';
 
 import STYLES from './stories.scss';
 
@@ -29,12 +30,12 @@ storiesOf('Text link', module)
       content on another site.
     </div>
   ))
-  .add('Light external', () => (
-    <TextLink light hrefExternal href="/lol" name="Test">
+  .add('Themed - white', () => (
+    <TextLink theme={THEMES.allWhite} hrefExternal href="/lol" name="Test">
       Test
     </TextLink>
   ))
-  .add('Themed', () => (
+  .add('With CSS variables', () => (
     <div className={getClassName('stories__themed')}>
       <TextLink hrefExternal href="/lol" name="Test">
         Test

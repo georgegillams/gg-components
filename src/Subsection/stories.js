@@ -30,7 +30,7 @@ storiesOf('Subsection', module)
       Some content
     </Subsection>
   ))
-  .add('themed', () => (
+  .add('With CSS variables', () => (
     <div className={getClassName('stories__themed')}>
       <Subsection anchor name="Test">
         Some content

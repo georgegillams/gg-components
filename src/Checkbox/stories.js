@@ -96,7 +96,7 @@ storiesOf('Checkbox', module)
   .add('Disabled checked', () => (
     <Checkbox checked label="Test" name="Test" disabled />
   ))
-  .add('Themed', () => (
+  .add('With CSS variables', () => (
     <div className={getClassName('stories__themed')}>
       <Checkbox checked label="Test" name="Test" />
     </div>

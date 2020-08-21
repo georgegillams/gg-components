@@ -1,5 +1,17 @@
 # Changelog
 
+## 13.2.7
+
+- Fixed: Enabled `white` theme in `TextLink` and `Paragraph`.
+
+## 13.2.6
+
+ - No notable changes
+
+## 13.2.5
+
+ - No notable changes
+
 ## 13.2.4
 
 - Fixed: Link buttons have `display: inline-block` applied by default so that styles will be properly applied.

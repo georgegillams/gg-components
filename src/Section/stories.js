@@ -27,9 +27,8 @@ storiesOf('Section', module)
       Some content
     </Section>
   ))
-  .add('Themed', () => (
+  .add('With CSS variables', () => (
     <div className={getClassName('stories__themed')}>
-      {' '}
       <Section anchor highlight name="Test" />
     </div>
   ))

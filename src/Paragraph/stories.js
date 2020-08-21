@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
+import { THEMES } from '../Theming';
+
 import { Paragraph } from './index';
 
 storiesOf('Paragraph', module)
@@ -37,4 +39,7 @@ Nisi scelerisque eu ultrices vitae auctor eu augue ut. Mauris cursus mattis mole
         {`Laoreet id donec ultrices tincidunt arcu non sodales neque. Mauris ultrices eros in cursus turpis massa tincidunt. Amet est placerat in egestas. Tincidunt eget nullam non nisi est sit. Senectus et netus et malesuada fames ac turpis egestas. Sapien faucibus et molestie ac. Enim tortor at auctor urna. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet venenatis urna cursus eget. Orci eu lobortis elementum nibh. Arcu vitae elementum curabitur vitae nunc sed velit. Quam nulla porttitor massa id neque aliquam vestibulum morbi. Enim lobortis scelerisque fermentum dui faucibus. Id interdum velit laoreet id donec ultrices tincidunt arcu. Erat pellentesque adipiscing commodo elit. Platea dictumst quisque sagittis purus sit amet volutpat consequat.`}
       </Paragraph>
     </div>
+  ))
+  .add('Themed - white', () => (
+    <Paragraph theme={THEMES.allWhite}>Test</Paragraph>
   ));

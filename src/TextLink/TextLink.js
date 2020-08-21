@@ -11,7 +11,6 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const TextLink = React.forwardRef((props, ref) => {
   const {
-    light,
     href,
     hrefExternal,
     className,
@@ -25,10 +24,6 @@ const TextLink = React.forwardRef((props, ref) => {
   const classNameFinal = [getClassName('text-link')];
   classNameFinal.push(getClassName('text-link--text-link'));
   classNameFinal.push(getClassName('text-link--no-padding'));
-  if (light) {
-    classNameFinal.push(getClassName('text-link--light'));
-    classNameFinal.push(getClassName('text-link--light--text-link'));
-  }
   if (theme === THEMES.allWhite) {
     classNameFinal.push(getClassName('text-link--text-link--all-white'));
   }
@@ -59,7 +54,6 @@ const TextLink = React.forwardRef((props, ref) => {
 
 TextLink.propTypes = {
   onClick: PropTypes.func,
-  light: PropTypes.bool,
   children: PropTypes.node,
   href: PropTypes.string,
   hrefExternal: PropTypes.bool,
@@ -70,7 +64,6 @@ TextLink.propTypes = {
 
 TextLink.defaultProps = {
   onClick: null,
-  light: false,
   href: null,
   hrefExternal: false,
   children: null,
