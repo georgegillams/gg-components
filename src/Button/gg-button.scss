@@ -120,6 +120,7 @@
     }
 
     &--bouncy {
+      min-width: unset;
       padding: 0.2rem 0.8rem;
       background-color: transparent;
       color: $not-black;
