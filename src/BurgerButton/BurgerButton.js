@@ -40,6 +40,7 @@ const BurgerButton = props => {
     <button
       type="button"
       aria-label="Menu"
+      aria-expanded={!!isOpen}
       onClick={onClick}
       className={outerClassNames.join(' ')}
       {...rest}

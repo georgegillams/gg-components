@@ -1,5 +1,13 @@
 # Changelog
 
+## 13.2.9
+
+- Fixed: Added `aria-expanded` to burger button.
+
+## 13.2.8
+
+- Fixed: Removed `min-width` from bouncy buttons.
+
 ## 13.2.7
 
 - Fixed: Enabled `white` theme in `TextLink` and `Paragraph`.
