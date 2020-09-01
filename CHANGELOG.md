@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.3.0
+
+- Added: New `AnimateHeight` component.
+
 ## 13.2.9
 
 - Fixed: Added `aria-expanded` to burger button.
@@ -14,11 +18,11 @@
 
 ## 13.2.6
 
- - No notable changes
+- No notable changes
 
 ## 13.2.5
 
- - No notable changes
+- No notable changes
 
 ## 13.2.4
 
