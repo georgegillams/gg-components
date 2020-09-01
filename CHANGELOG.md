@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.3.1
+
+- Fixed: `AnimateHeight` will now set the height to `null` after animating so that child-height changes are respected.
+
 ## 13.3.0
 
 - Added: New `AnimateHeight` component.

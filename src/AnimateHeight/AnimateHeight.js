@@ -11,37 +11,28 @@ const AnimateHeight = props => {
   const { className, expanded, children, ...rest } = props;
 
   const [renderHeight, setRenderHeight] = useState(expanded ? null : 0);
-  const [needsHeightRecalc, setNeedsHeightRecalc] = useState(false);
   const childElement = useRef(null);
 
   const updateHeight = () => {
-    if (childElement && childElement.current) {
-      const contentHeight = childElement.current.getBoundingClientRect().height;
-      setRenderHeight(expanded ? contentHeight : 0);
-      setNeedsHeightRecalc(false);
+    if (!childElement || !childElement.current) {
+      return;
+    }
+
+    const contentHeight = childElement.current.getBoundingClientRect().height;
+
+    if (expanded) {
+      setRenderHeight(contentHeight);
+      setTimeout(() => setRenderHeight(null), 400);
+    }
+    if (!expanded && renderHeight !== 0) {
+      setRenderHeight(contentHeight);
+      setTimeout(() => setRenderHeight(0), 10);
     }
   };
 
   useEffect(() => {
     updateHeight();
-  }, [expanded, children, needsHeightRecalc]);
-
-  useEffect(() => {
-    const sizeChangeEventListener = () => {
-      setNeedsHeightRecalc(true);
-    };
-
-    window.addEventListener('resize', sizeChangeEventListener);
-    window.addEventListener('orientationchange', sizeChangeEventListener);
-    window.addEventListener('fullscreenchange', sizeChangeEventListener);
-
-    const cleanUp = () => {
-      window.removeEventListener('resize', sizeChangeEventListener);
-      window.removeEventListener('orientationchange', sizeChangeEventListener);
-      window.removeEventListener('fullscreenchange', sizeChangeEventListener);
-    };
-    return cleanUp;
-  }, []);
+  }, [expanded]);
 
   return (
     <div
