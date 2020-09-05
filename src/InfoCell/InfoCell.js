@@ -35,7 +35,7 @@ const InfoCell = props => {
   delete rest.outOfView;
   delete rest.scrollPosition;
 
-  const [isServer, setIsServer] = useState(true);
+  const [isServer, setIsServer] = useState(typeof window === 'undefined');
 
   useEffect(() => {
     setIsServer(false);

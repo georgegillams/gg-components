@@ -6,7 +6,7 @@ import ImageDumb from './ImageDumb';
 const Image = props => {
   const [hidden, setHidden] = useState(true);
 
-  const [isServer, setIsServer] = useState(true);
+  const [isServer, setIsServer] = useState(typeof window === 'undefined');
 
   useEffect(() => {
     setIsServer(false);
