@@ -9,7 +9,6 @@ $card-height-mobile: 10rem;
     justify-content: space-around;
     background-color: $alternating-background-color-1;
     color: $not-black;
-    font-family: 'Quattrocento Sans', sans-serif;
 
     @media (prefers-color-scheme: dark) {
       background-color: $alternating-background-color-1-invert;
