@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.4.1
+
+- Fixed: Improvement to `isServer` detection.
+
 ## 13.4.0
 
 - Added: New chevron icon.
