@@ -1,5 +1,9 @@
 # Changelog
 
+## 13.4.2
+
+- Fixed: Checkbox tick position should now look OK regardless of line-height.
+
 ## 13.4.1
 
 - Fixed: Improvement to `isServer` detection.

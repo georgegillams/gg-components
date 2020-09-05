@@ -72,38 +72,37 @@ const Checkbox = props => {
   }
 
   return (
-    <div className={getClassName('checkbox', className)} {...rest}>
-      <input
-        aria-invalid={invalid}
-        aria-disabled={disabled ? true : null}
-        aria-label={label}
-        onMouseEnter={hoverStarted}
-        onFocus={focusStarted}
-        onMouseLeave={hoverEnded}
-        onBlur={focusEnded}
-        className={checkboxClassNames.join(' ')}
-        name={name}
-        type="checkbox"
-        checked={checked}
-        readOnly={!onChange}
-        onChange={enabled ? onChange : null}
-        {...inputProps}
-      />
-      <Tick className={checkClassNames.join(' ')} />
-      {label && (
-        <span aria-hidden="true" className={labelClassNames.join(' ')}>
-          {' '}
-          {label}{' '}
-        </span>
-      )}
-    </div>
+    <label className={getClassName('checkbox', className)} {...rest}>
+      <div className={getClassName('checkbox__input-wrapper')}>
+        <input
+          aria-invalid={invalid}
+          aria-disabled={disabled ? true : null}
+          aria-label={label}
+          onMouseEnter={hoverStarted}
+          onFocus={focusStarted}
+          onMouseLeave={hoverEnded}
+          onBlur={focusEnded}
+          className={checkboxClassNames.join(' ')}
+          name={name}
+          type="checkbox"
+          checked={checked}
+          readOnly={!onChange}
+          onChange={enabled ? onChange : null}
+          {...inputProps}
+        />
+        <Tick className={checkClassNames.join(' ')} />
+      </div>
+      <span aria-hidden="true" className={labelClassNames.join(' ')}>
+        {label}{' '}
+      </span>
+    </label>
   );
 };
 
 Checkbox.propTypes = {
   onChange: PropTypes.func,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   inputProps: PropTypes.object,
   checked: PropTypes.bool,
@@ -116,7 +115,6 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   onChange: null,
   inputProps: {},
-  label: null,
   className: null,
   labelClassName: null,
   checked: false,

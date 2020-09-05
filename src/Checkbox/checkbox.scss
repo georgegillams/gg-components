@@ -1,13 +1,21 @@
 @import '../Tokens/common';
 
 .checkbox {
-  position: relative;
   display: flex;
   align-items: center;
 
-  &__input {
+  &__input-wrapper {
+    position: relative;
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     margin: 0;
     border-radius: 0.2rem;
     background: $background-color;
@@ -47,8 +55,8 @@
 
   &__check {
     position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
+    top: 0.12rem;
+    left: 0.15rem;
     display: none;
     color: $checkbox-tick-color;
     color: var(--checkbox-tick-color, $checkbox-tick-color);

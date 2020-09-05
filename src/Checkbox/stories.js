@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { cssModules } from '../helpers/cssModules';
 
@@ -80,25 +79,40 @@ const StatefulCheckbox = props => {
   );
 };
 
-storiesOf('Checkbox', module)
-  .add('Default', () => <Checkbox label="Test" name="Test" />)
-  .add('No label', () => <Checkbox name="Test" />)
-  .add('Valid', () => <Checkbox label="Test" name="Test" valid />)
-  .add('Invalid', () => <Checkbox label="Test" name="Test" valid={false} />)
-  .add('Disabled', () => <Checkbox label="Test" name="Test" disabled />)
-  .add('No label checked', () => <Checkbox checked name="Test" />)
-  .add('Valid checked', () => (
-    <Checkbox checked label="Test" name="Test" valid />
-  ))
-  .add('Invalid checked', () => (
-    <Checkbox checked label="Test" name="Test" valid={false} />
-  ))
-  .add('Disabled checked', () => (
-    <Checkbox checked label="Test" name="Test" disabled />
-  ))
-  .add('With CSS variables', () => (
-    <div className={getClassName('stories__themed')}>
-      <Checkbox checked label="Test" name="Test" />
-    </div>
-  ))
-  .add('Stateful', () => <StatefulCheckbox label="Test" />);
+export default { title: 'Checkbox' };
+
+export const Default = () => <Checkbox label="Test" name="Test" />;
+export const Valid = () => <Checkbox label="Test" name="Test" valid />;
+export const Invalid = () => (
+  <Checkbox label="Test" name="Test" valid={false} />
+);
+export const Disabled = () => <Checkbox label="Test" name="Test" disabled />;
+
+export const CheckedLineHeight = () => (
+  <Checkbox style={{ lineHeight: '5rem' }} checked label="Test" name="Test" />
+);
+CheckedLineHeight.storyName = 'With extreme lineHeight';
+
+export const ValidChecked = () => (
+  <Checkbox checked label="Test" name="Test" valid />
+);
+ValidChecked.storyName = 'Valid checked';
+
+export const InvalidChecked = () => (
+  <Checkbox checked label="Test" name="Test" valid={false} />
+);
+InvalidChecked.storyName = 'Invalid checked';
+
+export const DisabledChecked = () => (
+  <Checkbox checked label="Test" name="Test" disabled />
+);
+DisabledChecked.storyName = 'Disabled checked';
+
+export const WithCssVariables = () => (
+  <div className={getClassName('stories__themed')}>
+    <Checkbox checked label="Test" name="Test" />
+  </div>
+);
+WithCssVariables.storyName = 'With CSS variables';
+
+export const Stateful = () => <StatefulCheckbox label="Test" />;

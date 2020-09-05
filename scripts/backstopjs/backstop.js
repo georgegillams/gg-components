@@ -14,7 +14,7 @@ scenarioData.scenarioIds.forEach(sI => {
   scenarios.push({
     label: sI,
     url: `${BASE_URL}${sI}`,
-    delay: 1000,
+    delay: 500,
   });
 });
 
