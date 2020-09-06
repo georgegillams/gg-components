@@ -1,7 +1,9 @@
 {
   "scenarioIds": [
     "animate-height--collapsed",
+    "animate-height--collapsed-with-bleed",
     "animate-height--expanded",
+    "animate-height--expanded-with-bleed",
     "animated-content--in-view",
     "animated-content--out-of-view",
     "api-entity--default",

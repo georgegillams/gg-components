@@ -8,7 +8,14 @@ import STYLES from './animate-height.scss';
 const getClassName = cssModules(STYLES);
 
 const AnimateHeight = props => {
-  const { className, expanded, children, verticalMargin, ...rest } = props;
+  const {
+    className,
+    expanded,
+    children,
+    verticalMargin,
+    bleedEdges,
+    ...rest
+  } = props;
 
   const [renderHeight, setRenderHeight] = useState(expanded ? null : 0);
   const childElement = useRef(null);
@@ -36,7 +43,7 @@ const AnimateHeight = props => {
   }, [expanded]);
 
   const wrapperClassNames = [getClassName('animate-height__wrapper')];
-  if (expanded) {
+  if (bleedEdges && expanded) {
     wrapperClassNames.push(getClassName('animate-height__wrapper--expanded'));
   }
 
@@ -55,12 +62,14 @@ const AnimateHeight = props => {
 AnimateHeight.propTypes = {
   verticalMargin: PropTypes.number,
   expanded: PropTypes.bool,
+  bleedEdges: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
 AnimateHeight.defaultProps = {
   verticalMargin: 0,
+  bleedEdges: false,
   expanded: false,
   className: null,
 };
