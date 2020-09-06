@@ -2,7 +2,15 @@
 
 .animate-height {
   &__wrapper {
-    transition: height 0.2s ease-in-out;
+    margin: 0;
+    padding: 0;
+    transition: height 0.2s ease-in-out, margin 0.2s ease-in-out,
+      padding 0.2s ease-in-out;
     overflow: hidden;
+
+    &--expanded {
+      margin: -1rem;
+      padding: 1rem;
+    }
   }
 }

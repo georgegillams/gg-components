@@ -8,7 +8,7 @@ import STYLES from './animate-height.scss';
 const getClassName = cssModules(STYLES);
 
 const AnimateHeight = props => {
-  const { className, expanded, children, ...rest } = props;
+  const { className, expanded, children, verticalMargin, ...rest } = props;
 
   const [renderHeight, setRenderHeight] = useState(expanded ? null : 0);
   const childElement = useRef(null);
@@ -18,7 +18,8 @@ const AnimateHeight = props => {
       return;
     }
 
-    const contentHeight = childElement.current.getBoundingClientRect().height;
+    const contentHeight =
+      childElement.current.getBoundingClientRect().height + verticalMargin;
 
     if (expanded) {
       setRenderHeight(contentHeight);
@@ -34,10 +35,15 @@ const AnimateHeight = props => {
     updateHeight();
   }, [expanded]);
 
+  const wrapperClassNames = [getClassName('animate-height__wrapper')];
+  if (expanded) {
+    wrapperClassNames.push(getClassName('animate-height__wrapper--expanded'));
+  }
+
   return (
     <div
       aria-hidden={!expanded}
-      className={getClassName('animate-height__wrapper')}
+      className={wrapperClassNames.join(' ')}
       style={{ height: renderHeight }}
       {...rest}
     >
@@ -47,12 +53,14 @@ const AnimateHeight = props => {
 };
 
 AnimateHeight.propTypes = {
+  verticalMargin: PropTypes.number,
   expanded: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
 
 AnimateHeight.defaultProps = {
+  verticalMargin: 0,
   expanded: false,
   className: null,
 };
