@@ -38,6 +38,12 @@
     @include bpk-breakpoint-mobile {
       height: 5rem;
     }
+
+    &--wrapping {
+      @include bpk-breakpoint-mobile {
+        height: 6.59rem;
+      }
+    }
   }
 
   &__mobile-container {

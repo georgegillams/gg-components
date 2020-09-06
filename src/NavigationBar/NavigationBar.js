@@ -56,7 +56,14 @@ const NavigationBar = props => {
     }
   };
 
-  const { className, menuItems, logo, accountMenuItem, ...rest } = props;
+  const {
+    className,
+    menuItems,
+    logo,
+    accountMenuItem,
+    wrapping,
+    ...rest
+  } = props;
   const outerClassNameFinal = [getClassName('navigation-bar__container')];
   if (className) {
     outerClassNameFinal.push(className);
@@ -107,7 +114,12 @@ const NavigationBar = props => {
           </nav>
         </div>
       )}
-      <div className={getClassName('navigation-bar__bar-placeholder')} />
+      <div
+        className={getClassName(
+          'navigation-bar__bar-placeholder',
+          wrapping && 'navigation-bar__bar-placeholder--wrapping',
+        )}
+      />
       <div className={outerClassNameFinal.join(' ')} {...rest}>
         <div className={getClassName('navigation-bar__bar')} {...rest}>
           <div
@@ -150,6 +162,7 @@ const NavigationBar = props => {
 };
 
 NavigationBar.propTypes = {
+  wrapping: PropTypes.bool,
   accountMenuItem: PropTypes.node,
   className: PropTypes.string,
   logo: PropTypes.node,
@@ -158,6 +171,7 @@ NavigationBar.propTypes = {
 };
 
 NavigationBar.defaultProps = {
+  wrapping: false,
   accountMenuItem: null,
   className: null,
   logo: null,
