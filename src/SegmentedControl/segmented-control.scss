@@ -36,12 +36,6 @@
   }
 
   &__item-text {
-    color: gray;
-
-    @media (prefers-color-scheme: dark) {
-      color: lightgray;
-    }
-
     &--selected {
       color: white;
     }

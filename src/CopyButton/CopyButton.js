@@ -9,7 +9,7 @@ import STYLES from './copy-button.scss';
 const getClassName = cssModules(STYLES);
 
 const CopyButton = props => {
-  const { text, className, ...rest } = props;
+  const { text, accessibilityLabel, className, ...rest } = props;
 
   const classNames = [getClassName('copy-button__outer', className)];
 
@@ -22,17 +22,22 @@ const CopyButton = props => {
       className={classNames.join(' ')}
       {...rest}
     >
-      <Copy className={getClassName('copy-button__icon')} />
+      <Copy
+        aria-label={accessibilityLabel || `Copy ${text}`}
+        className={getClassName('copy-button__icon')}
+      />
     </button>
   );
 };
 
 CopyButton.propTypes = {
+  accessibilityLabel: PropTypes.string,
   text: PropTypes.string.isRequired,
   className: PropTypes.string,
 };
 
 CopyButton.defaultProps = {
+  accessibilityLabel: null,
   className: null,
 };
 

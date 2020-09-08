@@ -48,7 +48,11 @@
     width: 2.1rem;
     margin-left: 0.6rem;
     transition: all 0.4s;
-    color: $primary-color;
+    color: $primary-color-dark;
     font-weight: bold;
+
+    @media (prefers-color-scheme: dark) {
+      color: $primary-color;
+    }
   }
 }

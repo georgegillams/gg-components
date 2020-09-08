@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { TextLink } from '../TextLink';
 import { cssModules } from '../helpers/cssModules';
+import { THEMES } from '../Theming';
 
 import STYLES from './code.scss';
 
@@ -27,12 +28,12 @@ const Code = props => {
             {showSpace && <span>&nbsp;</span>}
             {githubUrl && (
               <TextLink
-                light
+                theme={THEMES.allWhite}
                 href={githubUrl}
                 hrefExternal
                 className={getClassName('code__text-link')}
               >
-                View on Github{' '}
+                View on Github
               </TextLink>
             )}
           </span>

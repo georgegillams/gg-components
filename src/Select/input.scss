@@ -28,6 +28,10 @@
         border-color: #6a6a6a;
       }
     }
+
+    &--show-other {
+      margin-bottom: $spacing-base;
+    }
   }
 
   &__inner {

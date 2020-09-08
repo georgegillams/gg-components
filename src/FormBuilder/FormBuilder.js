@@ -173,6 +173,18 @@ const FormBuilder = props => {
                   'forms__component',
                   'forms__component__text-box',
                 )}
+                renderOtherLabel={() => (
+                  <label
+                    htmlFor={`${formField.id}_${formId}_other`}
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__label',
+                    )}
+                  >
+                    {formField.name} - other
+                  </label>
+                )}
+                otherInputId={`${formField.id}_${formId}_other`}
                 name={formField.name}
                 value={entity[formField.id]}
                 valid={validity[index]}

@@ -33,6 +33,8 @@ const Select = props => {
   };
 
   const {
+    renderOtherLabel,
+    otherInputId,
     name,
     value,
     onChange,
@@ -50,6 +52,9 @@ const Select = props => {
   const disabled = enabled === false;
   const focusedState = hovering || focused;
 
+  const showOtherFreeTextField =
+    enableOther && !options.map(o => o.value).includes(value);
+
   const classNames = [getClassName('input__outer')];
   const innerClassNames = [
     getClassName('input__inner', 'input__inner--select'),
@@ -62,6 +67,9 @@ const Select = props => {
   if (focusedState && enabled) {
     classNames.push(getClassName('input__outer--hovering'));
   }
+  if (showOtherFreeTextField) {
+    classNames.push(getClassName('input__outer--show-other'));
+  }
 
   let IconComponent = null;
   if (valid && enabled) {
@@ -72,9 +80,6 @@ const Select = props => {
     iconClassNames.push(getClassName('input__icon--invalid'));
     IconComponent = ExclamationCircle;
   }
-
-  const showOtherFreeTextField =
-    enableOther && !options.map(o => o.value).includes(value);
 
   return (
     <div {...rest}>
@@ -112,21 +117,26 @@ const Select = props => {
         )}
       </div>
       {showOtherFreeTextField && (
-        <Input
-          style={{ marginTop: '1rem' }}
-          name={name}
-          value={value}
-          enabled={enabled}
-          valid={valid}
-          readOnly={!onChange}
-          onChange={enabled ? onChange : null}
-        />
+        <>
+          {renderOtherLabel && renderOtherLabel()}
+          <Input
+            id={otherInputId}
+            name={name}
+            value={value}
+            enabled={enabled}
+            valid={valid}
+            readOnly={!onChange}
+            onChange={enabled ? onChange : null}
+          />
+        </>
       )}
     </div>
   );
 };
 
 Select.propTypes = {
+  renderOtherLabel: PropTypes.func,
+  otherInputId: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,
@@ -143,6 +153,8 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+  renderOtherLabel: null,
+  otherInputId: null,
   onChange: null,
   name: null,
   value: null,
