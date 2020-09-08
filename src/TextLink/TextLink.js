@@ -40,6 +40,7 @@ const TextLink = React.forwardRef((props, ref) => {
       className={classNameFinal.join(' ')}
       onClick={onClick}
       ref={ref}
+      aria-label={hrefExternal ? `${children} (opens in a new tab)` : null}
       {...rest}
     >
       {children}
