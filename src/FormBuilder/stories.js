@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { FormBuilder } from './index';
 
@@ -38,69 +37,89 @@ const formFields = [
   },
 ];
 
+const formFieldsWithHints = formFields.map(f => ({
+  ...f,
+  hint: `Hint for ${f.name}`,
+}));
+
 const StatefulFormBuilder = props => {
   const [entity, setEntity] = useState({});
 
   return <FormBuilder entity={entity} onDataChanged={setEntity} {...props} />;
 };
 
-storiesOf('Form builder', module)
-  .add('Default', () => (
-    <FormBuilder formFields={formFields} entity={{}} submitLabel="Submit" />
-  ))
-  .add('No autocomplete', () => (
-    <FormBuilder
-      formFields={[
-        {
-          id: 'ff1',
-          name: 'Input no autocomplete',
-          show: true,
-          inputProps: {
-            autocomplete: 'off',
-            autosuggest: 'off',
-            autofill: 'off',
-            spellcheck: 'false',
-          },
+export default { title: 'Form builder' };
+
+export const Default = () => (
+  <FormBuilder formFields={formFields} entity={{}} submitLabel="Submit" />
+);
+
+export const NoAutocomplete = () => (
+  <FormBuilder
+    formFields={[
+      {
+        id: 'ff1',
+        name: 'Input no autocomplete',
+        show: true,
+        inputProps: {
+          autocomplete: 'off',
+          autosuggest: 'off',
+          autofill: 'off',
+          spellcheck: 'false',
         },
-        {
-          id: 'ff2',
-          name: 'Text area no autocomplete',
-          long: true,
-          show: true,
-          inputProps: {
-            autocomplete: 'off',
-            autosuggest: 'off',
-            autofill: 'off',
-            spellcheck: 'false',
-          },
+      },
+      {
+        id: 'ff2',
+        name: 'Text area no autocomplete',
+        long: true,
+        show: true,
+        inputProps: {
+          autocomplete: 'off',
+          autosuggest: 'off',
+          autofill: 'off',
+          spellcheck: 'false',
         },
-      ]}
-      entity={{}}
-      submitLabel="Submit"
-    />
-  ))
-  .add('With values', () => (
-    <FormBuilder
-      formFields={formFields}
-      entity={{
-        field1: 'test1',
-        field2: 'test2',
-        field3: 'test3',
-        field4: true,
-        field5: 'banana',
-        field6: 'test5',
-      }}
-      submitLabel="Submit"
-    />
-  ))
-  .add('With pre-submit text', () => (
-    <FormBuilder
-      formFields={formFields}
-      entity={{}}
-      submitLabel="Submit"
-      preSubmitText="By clicking submit, you agree to have your soul split in two."
-    />
-  ))
-  .add('Stateful', () => (
-    <StatefulFormBuilder formFields={formFields} submitLabel="Submit" />
-  ));
+      },
+    ]}
+    entity={{}}
+    submitLabel="Submit"
+  />
+);
+
+export const WithValues = () => (
+  <FormBuilder
+    formFields={formFields}
+    entity={{
+      field1: 'test1',
+      field2: 'test2',
+      field3: 'test3',
+      field4: true,
+      field5: 'banana',
+      field6: 'test5',
+    }}
+    submitLabel="Submit"
+  />
+);
+
+export const WithPreSubmitText = () => (
+  <FormBuilder
+    formFields={formFields}
+    entity={{}}
+    submitLabel="Submit"
+    preSubmitText="By clicking submit, you agree to have your soul split in two."
+  />
+);
+WithPreSubmitText.storyName = 'With pre-submit text';
+
+export const WithHints = () => (
+  <FormBuilder
+    formFields={formFieldsWithHints}
+    entity={{}}
+    submitLabel="Submit"
+    preSubmitText="By clicking submit, you agree to have your soul split in two."
+  />
+);
+
+export const Stateful = () => (
+  <StatefulFormBuilder formFields={formFields} submitLabel="Submit" />
+);

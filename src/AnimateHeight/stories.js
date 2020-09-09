@@ -81,15 +81,13 @@ export default { title: 'Animate height' };
 export const Expanded = () => (
   <AnimateHeight expanded>{content1}</AnimateHeight>
 );
-export const ExpandedWithBleed = () => (
+export const ExpandedWithBleedingEdges = () => (
   <AnimateHeight bleedEdges expanded>
     {cardContent}
   </AnimateHeight>
 );
-ExpandedWithBleed.storyName = 'Expanded with bleeding edges';
 export const Collapsed = () => <AnimateHeight>{content1}</AnimateHeight>;
-export const CollapsedWithBleed = () => (
+export const CollapsedWithBleedingEdges = () => (
   <AnimateHeight bleedEdges>{cardContent}</AnimateHeight>
 );
-CollapsedWithBleed.storyName = 'Collapsed with bleeding edges';
 export const Stateful = () => <StatefulAnimateHeight />;

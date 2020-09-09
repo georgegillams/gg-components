@@ -198,4 +198,3 @@ export const WithScroll = () => (
     </div>{' '}
   </div>
 );
-WithScroll.storyName = 'With scroll';

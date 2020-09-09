@@ -45,6 +45,7 @@ const Select = props => {
     inputProps,
     iconProps,
     id,
+    'aria-describedby': ariaDescribedBy,
     ...rest
   } = props;
 
@@ -98,6 +99,7 @@ const Select = props => {
           onChange={enabled ? onChange : null}
           className={innerClassNames.join(' ')}
           id={id}
+          aria-describedby={ariaDescribedBy}
           {...inputProps}
         >
           {options &&
@@ -140,6 +142,7 @@ Select.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   id: PropTypes.string,
+  'aria-describedby': PropTypes.string,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
   className: PropTypes.string,
@@ -159,6 +162,7 @@ Select.defaultProps = {
   name: null,
   value: null,
   id: null,
+  'aria-describedby': null,
   className: null,
   enabled: true,
   enableOther: false,
