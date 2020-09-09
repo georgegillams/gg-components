@@ -57,53 +57,40 @@ const FormBuilder = props => {
 
   return (
     <div className={classNameFinal.join(' ')} {...rest}>
-      {filteredFormFields.map((formField, index) => (
-        <Fragment key={`${formField.id}_${formId}`}>
-          {formField.type === 'CHECKBOX' && (
-            <>
-              <Checkbox
-                id={`${formField.id}_${formId}`}
-                className={getClassName('forms__component')}
-                name={formField.name}
-                label={formField.name}
-                checked={entity[formField.id]}
-                onChange={event => {
-                  formValueChanged(
-                    entity,
-                    formField.id,
-                    event,
-                    onDataChanged,
-                    submitOnChange ? onSubmit : null,
-                  );
-                }}
-                disabled={formField.disabled}
-              />
-              <br />
-            </>
-          )}
-          {!formField.long &&
-            formField.type !== 'CHECKBOX' &&
-            formField.type !== 'SELECT' && (
+      {filteredFormFields.map((formField, index) => {
+        const label = (
+          <label
+            htmlFor={`${formField.id}_${formId}`}
+            className={getClassName(
+              'forms__component',
+              'forms__component__label',
+            )}
+          >
+            {formField.name}
+          </label>
+        );
+        const hint = formField.hint ? (
+          <p
+            id={`hint_${formField.id}_${formId}`}
+            className={getClassName(
+              'forms__component',
+              'forms__component__hint',
+            )}
+          >
+            {formField.hint}
+          </p>
+        ) : null;
+
+        return (
+          <Fragment key={`${formField.id}_${formId}`}>
+            {formField.type === 'CHECKBOX' && (
               <>
-                <label
-                  htmlFor={`${formField.id}_${formId}`}
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__label',
-                  )}
-                >
-                  {formField.name}
-                </label>
-                <Input
+                <Checkbox
                   id={`${formField.id}_${formId}`}
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__text-box',
-                  )}
+                  className={getClassName('forms__component')}
                   name={formField.name}
-                  value={entity[formField.id]}
-                  valid={validity[index]}
-                  type={formField.type === 'password' ? 'password' : null}
+                  label={formField.name}
+                  checked={entity[formField.id]}
                   onChange={event => {
                     formValueChanged(
                       entity,
@@ -113,99 +100,125 @@ const FormBuilder = props => {
                       submitOnChange ? onSubmit : null,
                     );
                   }}
-                  inputProps={formField.inputProps}
                   disabled={formField.disabled}
-                  placeholder={formField.name}
                 />
+                <br />
               </>
             )}
-          {formField.long &&
-            formField.type !== 'CHECKBOX' &&
-            formField.type !== 'SELECT' && (
-              <>
-                <label
-                  htmlFor={`${formField.id}_${formId}`}
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__label',
-                  )}
-                >
-                  {formField.name}
-                </label>
-                <TextArea
-                  id={`${formField.id}_${formId}`}
-                  className={getClassName(
-                    'forms__component',
-                    'forms__component__text-box',
-                  )}
-                  name={formField.name}
-                  value={entity[formField.id]}
-                  valid={validity[index]}
-                  onChange={event => {
-                    formValueChanged(
-                      entity,
-                      formField.id,
-                      event,
-                      onDataChanged,
-                      submitOnChange ? onSubmit : null,
-                    );
-                  }}
-                  inputProps={formField.inputProps}
-                  disabled={formField.disabled}
-                  placeholder={formField.name}
-                />
-              </>
-            )}
-          {formField.type === 'SELECT' && (
-            <>
-              <label
-                htmlFor={`${formField.id}_${formId}`}
-                className={getClassName(
-                  'forms__component',
-                  'forms__component__label',
-                )}
-              >
-                {formField.name}
-              </label>
-              <Select
-                id={`${formField.id}_${formId}`}
-                className={getClassName(
-                  'forms__component',
-                  'forms__component__text-box',
-                )}
-                renderOtherLabel={() => (
-                  <label
-                    htmlFor={`${formField.id}_${formId}_other`}
+            {!formField.long &&
+              formField.type !== 'CHECKBOX' &&
+              formField.type !== 'SELECT' && (
+                <>
+                  {label}
+                  {hint && hint}
+                  <Input
+                    id={`${formField.id}_${formId}`}
+                    aria-describedby={
+                      hint ? `hint_${formField.id}_${formId}` : null
+                    }
                     className={getClassName(
                       'forms__component',
-                      'forms__component__label',
+                      'forms__component__text-box',
                     )}
-                  >
-                    {formField.name} - other
-                  </label>
-                )}
-                otherInputId={`${formField.id}_${formId}_other`}
-                name={formField.name}
-                value={entity[formField.id]}
-                valid={validity[index]}
-                onChange={event => {
-                  formValueChanged(
-                    entity,
-                    formField.id,
-                    event,
-                    onDataChanged,
-                    submitOnChange ? onSubmit : null,
-                  );
-                }}
-                options={formField.options}
-                enableOther={formField.enableOther}
-                disabled={formField.disabled}
-                placeholder={formField.name}
-              />
-            </>
-          )}
-        </Fragment>
-      ))}
+                    name={formField.name}
+                    value={entity[formField.id]}
+                    valid={validity[index]}
+                    type={formField.type === 'password' ? 'password' : null}
+                    onChange={event => {
+                      formValueChanged(
+                        entity,
+                        formField.id,
+                        event,
+                        onDataChanged,
+                        submitOnChange ? onSubmit : null,
+                      );
+                    }}
+                    inputProps={formField.inputProps}
+                    disabled={formField.disabled}
+                    placeholder={formField.name}
+                  />
+                </>
+              )}
+            {formField.long &&
+              formField.type !== 'CHECKBOX' &&
+              formField.type !== 'SELECT' && (
+                <>
+                  {label}
+                  {hint && hint}
+                  <TextArea
+                    id={`${formField.id}_${formId}`}
+                    aria-describedby={
+                      hint ? `hint_${formField.id}_${formId}` : null
+                    }
+                    className={getClassName(
+                      'forms__component',
+                      'forms__component__text-box',
+                    )}
+                    name={formField.name}
+                    value={entity[formField.id]}
+                    valid={validity[index]}
+                    onChange={event => {
+                      formValueChanged(
+                        entity,
+                        formField.id,
+                        event,
+                        onDataChanged,
+                        submitOnChange ? onSubmit : null,
+                      );
+                    }}
+                    inputProps={formField.inputProps}
+                    disabled={formField.disabled}
+                    placeholder={formField.name}
+                  />
+                </>
+              )}
+            {formField.type === 'SELECT' && (
+              <>
+                {label}
+                {hint && hint}
+                <Select
+                  id={`${formField.id}_${formId}`}
+                  aria-describedby={
+                    hint ? `hint_${formField.id}_${formId}` : null
+                  }
+                  className={getClassName(
+                    'forms__component',
+                    'forms__component__text-box',
+                  )}
+                  renderOtherLabel={() => (
+                    <label
+                      htmlFor={`${formField.id}_${formId}_other`}
+                      className={getClassName(
+                        'forms__component',
+                        'forms__component__label',
+                      )}
+                    >
+                      {formField.name} - other
+                    </label>
+                  )}
+                  otherInputId={`${formField.id}_${formId}_other`}
+                  name={formField.name}
+                  value={entity[formField.id]}
+                  valid={validity[index]}
+                  onChange={event => {
+                    formValueChanged(
+                      entity,
+                      formField.id,
+                      event,
+                      onDataChanged,
+                      submitOnChange ? onSubmit : null,
+                    );
+                  }}
+                  options={formField.options}
+                  enableOther={formField.enableOther}
+                  disabled={formField.disabled}
+                  placeholder={formField.name}
+                />
+              </>
+            )}
+          </Fragment>
+        );
+      })}
       {preSubmitText && (
         <>
           <div className={getClassName('forms__component')}>

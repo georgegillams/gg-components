@@ -41,6 +41,7 @@ const Input = props => {
     iconProps,
     component: InputComponent,
     id,
+    'aria-describedby': ariaDescribedby,
     ...rest
   } = props;
 
@@ -89,6 +90,7 @@ const Input = props => {
         onChange={enabled ? onChange : null}
         className={innerClassNames.join(' ')}
         id={id}
+        aria-describedby={ariaDescribedby}
         {...inputProps}
       />
       {IconComponent && (
@@ -100,6 +102,7 @@ const Input = props => {
 
 Input.propTypes = {
   id: PropTypes.string,
+  'aria-describedby': PropTypes.string,
   value: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
@@ -116,6 +119,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   id: null,
+  'aria-describedby': null,
   value: null,
   name: null,
   onChange: null,

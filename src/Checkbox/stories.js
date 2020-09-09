@@ -88,25 +88,21 @@ export const Invalid = () => (
 );
 export const Disabled = () => <Checkbox label="Test" name="Test" disabled />;
 
-export const CheckedLineHeight = () => (
+export const WithExtremeLineHeight = () => (
   <Checkbox style={{ lineHeight: '5rem' }} checked label="Test" name="Test" />
 );
-CheckedLineHeight.storyName = 'With extreme lineHeight';
 
 export const ValidChecked = () => (
   <Checkbox checked label="Test" name="Test" valid />
 );
-ValidChecked.storyName = 'Valid checked';
 
 export const InvalidChecked = () => (
   <Checkbox checked label="Test" name="Test" valid={false} />
 );
-InvalidChecked.storyName = 'Invalid checked';
 
 export const DisabledChecked = () => (
   <Checkbox checked label="Test" name="Test" disabled />
 );
-DisabledChecked.storyName = 'Disabled checked';
 
 export const WithCssVariables = () => (
   <div className={getClassName('stories__themed')}>

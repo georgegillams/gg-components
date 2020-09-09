@@ -21,11 +21,23 @@
 
     &__label {
       display: inline-block;
-      margin: 0 0 0 0.1rem;
-      margin-bottom: $spacing-xs;
+      width: 100%;
+      margin: 0 0 $spacing-xs 0.1rem;
       color: $not-black;
       font-size: 0.8rem;
       font-weight: bold;
+
+      @media (prefers-color-scheme: dark) {
+        color: $not-black-invert;
+      }
+    }
+
+    &__hint {
+      display: inline-block;
+      width: 100%;
+      margin: 0 0 $spacing-xs 0.1rem;
+      color: $not-black;
+      font-size: 0.8rem;
 
       @media (prefers-color-scheme: dark) {
         color: $not-black-invert;
