@@ -18,29 +18,78 @@ const AnimateHeight = props => {
   } = props;
 
   const [renderHeight, setRenderHeight] = useState(expanded ? null : 0);
+
+  const [showChildren, setShowChildren] = useState(!!expanded);
+  const [animationInProgress, setAnimationInProgress] = useState(false);
+  const [needsCollapsing, setNeedsCollapsing] = useState(false);
+  const [needsExpanding, setNeedsExpanding] = useState(false);
+  const [collapsingInProgress, setCollapsingInProgress] = useState(false);
+  const [expanding, setExpanding] = useState(false);
   const childElement = useRef(null);
 
-  const updateHeight = () => {
+  const getContentHeight = () => {
     if (!childElement || !childElement.current) {
-      return;
+      return 50;
     }
 
-    const contentHeight =
-      childElement.current.getBoundingClientRect().height + verticalMargin;
-
-    if (expanded) {
-      setRenderHeight(contentHeight);
-      setTimeout(() => setRenderHeight(null), 400);
-    }
-    if (!expanded && renderHeight !== 0) {
-      setRenderHeight(contentHeight);
-      setTimeout(() => setRenderHeight(0), 10);
-    }
+    return childElement.current.getBoundingClientRect().height + verticalMargin;
   };
 
   useEffect(() => {
-    updateHeight();
+    if (expanded) {
+      setNeedsExpanding(true);
+      setNeedsCollapsing(false);
+    } else {
+      setNeedsCollapsing(true);
+      setNeedsExpanding(false);
+    }
   }, [expanded]);
+
+  useEffect(() => {
+    if (animationInProgress) {
+      return;
+    }
+    if (needsExpanding) {
+      setAnimationInProgress(true);
+      setShowChildren(true);
+      setExpanding(true);
+      setNeedsExpanding(false);
+    }
+  }, [needsExpanding, animationInProgress]);
+
+  useEffect(() => {
+    if (animationInProgress) {
+      return;
+    }
+    if (needsCollapsing) {
+      setAnimationInProgress(true);
+      setCollapsingInProgress(true);
+      setRenderHeight(getContentHeight());
+      setNeedsCollapsing(false);
+    }
+  }, [needsCollapsing, animationInProgress]);
+
+  useEffect(() => {
+    if (collapsingInProgress) {
+      setTimeout(() => setRenderHeight(0), 10);
+      setTimeout(() => {
+        setShowChildren(false);
+        setCollapsingInProgress(false);
+        setAnimationInProgress(false);
+      }, 400);
+    }
+  }, [collapsingInProgress]);
+
+  useEffect(() => {
+    if (expanding) {
+      setRenderHeight(getContentHeight());
+      setTimeout(() => {
+        setRenderHeight(null);
+        setExpanding(false);
+        setAnimationInProgress(false);
+      }, 400);
+    }
+  }, [expanding]);
 
   const wrapperClassNames = [getClassName('animate-height__wrapper')];
   if (bleedEdges && expanded) {
@@ -54,7 +103,7 @@ const AnimateHeight = props => {
       style={{ height: renderHeight }}
       {...rest}
     >
-      <div ref={childElement}>{children}</div>
+      <div ref={childElement}>{showChildren && children}</div>
     </div>
   );
 };
