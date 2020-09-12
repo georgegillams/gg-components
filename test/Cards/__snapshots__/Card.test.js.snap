@@ -18,11 +18,7 @@ exports[`Card should render correctly 1`] = `
   >
     <div
       className="card__background"
-      style={
-        Object {
-          "backgroundImage": "url(null)",
-        }
-      }
+      style={Object {}}
     />
     <div
       className="card__outer-container card__outer-container--padded"
