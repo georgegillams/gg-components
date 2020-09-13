@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import NewWindow from '../Icons/new-window';
+import NewWindow from '../Icons/NewWindow';
 import { THEMES } from '../Theming';
 
 import STYLES from './text-link.scss';

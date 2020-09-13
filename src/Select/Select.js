@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import ExclamationCircle from '../Icons/exclamation-circle';
-import Tick from '../Icons/tick';
+import ExclamationCircle from '../Icons/ExclamationCircle';
+import Tick from '../Icons/Tick';
 import { cssModules } from '../helpers/cssModules';
 import { Input } from '../Input';
 

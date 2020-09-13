@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.0.0
+
+- Added: Filter icon
+- Breaking: Icons can no longer be imported from 'gg-components/Icons' as importing this way bloats the bundle size too much.
+
 ## 13.5.3
 
 - Fixed: Issue in Card that would cause a network request to `/null` if no background image was specified.
