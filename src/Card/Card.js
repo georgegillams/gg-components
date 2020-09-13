@@ -95,7 +95,7 @@ const Card = React.forwardRef((props, ref) => {
     <div className={cardClassNames.join(' ')}>
       <div
         className={backgroundImageClassNames.join(' ')}
-        style={{ backgroundImage: `url(${fillImageSrc})` }}
+        style={fillImageSrc ? { backgroundImage: `url(${fillImageSrc})` } : {}}
       />
       <div className={outerBannerClassNames.join(' ')}>{children}</div>
       <div

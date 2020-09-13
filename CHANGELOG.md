@@ -1,5 +1,33 @@
 # Changelog
 
+## 13.5.3
+
+- Fixed: Issue in Card that would cause a network request to `/null` if no background image was specified.
+
+## 13.5.2
+
+- Fixed: Animate-height children are now removed when not visible.
+
+## 13.5.1
+
+- Upgraded several dependencies.
+
+## 13.5.0
+
+- Added: Hints can now be included via `FormBuilder`.
+
+## 13.4.8
+
+- Fixed: Added aria-text "(Opens in new tab)" to external links.
+
+## 13.4.7
+
+- Fixed: Accessibility wins.
+
+## 13.4.3
+
+- Fixed: Navigation bar height placeholder when logo is wrapped.
+
 ## 13.4.2
 
 - Fixed: Checkbox tick position should now look OK regardless of line-height.
