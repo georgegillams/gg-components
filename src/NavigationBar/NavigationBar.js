@@ -59,6 +59,7 @@ const NavigationBar = props => {
   const {
     className,
     menuItems,
+    burgerButtonWrapper: BurgerButtonWrapper,
     logo,
     accountMenuItem,
     wrapping,
@@ -128,15 +129,17 @@ const NavigationBar = props => {
               'navigation-bar__mobile-container--left',
             )}
           >
-            <BurgerButton
-              className={burgerClassNames.join(' ')}
-              lineClassName={getClassName(
-                'navigation-bar__burger-button__line',
-              )}
-              isOpen={open}
-              aria-label="Menu"
-              onClick={toggleMenu}
-            />
+            <BurgerButtonWrapper>
+              <BurgerButton
+                className={burgerClassNames.join(' ')}
+                lineClassName={getClassName(
+                  'navigation-bar__burger-button__line',
+                )}
+                isOpen={open}
+                aria-label="Menu"
+                onClick={toggleMenu}
+              />
+            </BurgerButtonWrapper>
           </div>
           {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
           <div
@@ -165,6 +168,7 @@ NavigationBar.propTypes = {
   wrapping: PropTypes.bool,
   accountMenuItem: PropTypes.node,
   className: PropTypes.string,
+  burgerButtonWrapper: PropTypes.element,
   logo: PropTypes.node,
   menuItems: PropTypes.arrayOf(PropTypes.node),
   user: PropTypes.object, // eslint-disable-line react/forbid-prop-types
@@ -177,6 +181,7 @@ NavigationBar.defaultProps = {
   logo: null,
   menuItems: null,
   user: null,
+  burgerButtonWrapper: bbProps => <>{bbProps.children}</>,
 };
 
 export default NavigationBar;

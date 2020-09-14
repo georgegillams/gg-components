@@ -40,6 +40,21 @@ export const Wrapping = () => (
   </>
 );
 
+export const WithBurgerWrapper = () => (
+  <>
+    <NavigationBar
+      wrapping
+      menuItems={menuItems}
+      accountMenuItem={accountMenuItem}
+      logo={logo}
+      burgerButtonWrapper={bbProps => (
+        <div {...bbProps} style={{ backgroundColor: 'lime' }} />
+      )}
+    />
+    <div style={{ height: '1rem', width: '100%', background: 'red' }} />
+  </>
+);
+
 export const WithScroll = () => (
   <div>
     <NavigationBar

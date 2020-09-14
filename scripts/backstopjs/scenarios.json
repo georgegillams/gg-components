@@ -99,6 +99,7 @@
     "money-pot--default",
     "money-pot--shortfall",
     "navigation-bar--default",
+    "navigation-bar--with-burger-wrapper",
     "navigation-bar--wrapping",
     "notifications--notification-markdown",
     "notifications--notification-simple-error",

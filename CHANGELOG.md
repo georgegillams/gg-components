@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.1.0
+
+- Added: Navigation bar will now hide `main` and `footer` elements when nav is open.
+- Added: Navigation bar now provides a wrapper function for the burger-button, allowing custom behaviour (for example for SSR).
+
 ## 14.0.0
 
 - Added: Filter icon
