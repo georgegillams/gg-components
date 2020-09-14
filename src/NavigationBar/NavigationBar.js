@@ -13,9 +13,26 @@ const NavigationBar = props => {
   const [show, setShow] = useState(false);
   const [changing, setChanging] = useState(false);
 
+  const setAppAriaHidden = hidden => {
+    if (typeof window === 'undefined' || !document.getElementsByTagName) {
+      return;
+    }
+
+    const mainElements = document.getElementsByTagName('MAIN');
+    if (mainElements.length === 1) {
+      mainElements[0].ariaHidden = hidden;
+    }
+
+    const footerElements = document.getElementsByTagName('FOOTER');
+    if (footerElements.length === 1) {
+      footerElements[0].ariaHidden = hidden;
+    }
+  };
+
   const closeMenu = () => {
     setChanging(true);
     setOpen(false);
+    setAppAriaHidden(false);
     setTimeout(() => {
       setShow(false);
       setChanging(false);
@@ -25,6 +42,7 @@ const NavigationBar = props => {
   const openMenu = () => {
     setChanging(true);
     setShow(true);
+    setAppAriaHidden(true);
     setTimeout(() => {
       setOpen(true);
       setChanging(false);
