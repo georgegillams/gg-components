@@ -68,7 +68,14 @@ export const WithScroll = () => (
         OPEN IN FULL WINDOW MODE TO TEST SCROLL{' '}
       </a>{' '}
       <br />{' '}
-      <Paragraph style={{ display: 'block', marginBottom: '2rem' }}>
+      <Paragraph
+        style={{
+          display: 'block',
+          marginBottom: '2rem',
+          height: '10rem',
+          background: 'red',
+        }}
+      >
         {' '}
         Lorem ipse{' '}
       </Paragraph>{' '}

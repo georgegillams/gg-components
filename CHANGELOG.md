@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.3.0
+
+- Added: Navigation bar now has a webkit native blur effect
+
 ## 14.2.1
 
 - Fixed: Navigation bar menu will now appear after the header in the DOM, instead of before.
