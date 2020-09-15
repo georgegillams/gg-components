@@ -121,18 +121,6 @@ const NavigationBar = props => {
         />
       )}
 
-      {show && (
-        <div
-          aria-hidden={show ? null : 'true'}
-          className={animatedContainerClassNameFinal.join(' ')}
-        >
-          <nav
-            className={getClassName('navigation-bar__mobile-menu-container')}
-          >
-            {menuItemsWithClickBehaviour}
-          </nav>
-        </div>
-      )}
       <div
         className={getClassName(
           'navigation-bar__bar-placeholder',
@@ -178,6 +166,18 @@ const NavigationBar = props => {
           </div>
         </div>
       </div>
+      {show && (
+        <div
+          aria-hidden={show ? null : 'true'}
+          className={animatedContainerClassNameFinal.join(' ')}
+        >
+          <nav
+            className={getClassName('navigation-bar__mobile-menu-container')}
+          >
+            {menuItemsWithClickBehaviour}
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
