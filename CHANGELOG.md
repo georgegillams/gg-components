@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.2.1
+
+- Fixed: Navigation bar menu will now appear after the header in the DOM, instead of before.
+
 ## 14.2.0
 
 - Added: Navigation bar will now hide `main` and `footer` elements when nav is open.
