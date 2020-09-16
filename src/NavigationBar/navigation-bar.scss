@@ -54,6 +54,9 @@
     }
 
     @media (prefers-color-scheme: dark) {
+      border-bottom: 0.1rem white solid;
+      box-shadow: unset;
+
       @include navigation-bar-background-standard-dark;
 
       @supports (backdrop-filter: blur(1rem)) or
