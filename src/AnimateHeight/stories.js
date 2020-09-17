@@ -11,6 +11,7 @@ const content2 =
 const cardContent = <Card>content1</Card>;
 
 const StatefulAnimateHeight = props => {
+  const { children, ...rest } = props;
   const [expanded, setExpanded] = useState(false);
   const [content, setContent] = useState(false);
   const [margin, setMargin] = useState(false);
@@ -26,19 +27,24 @@ const StatefulAnimateHeight = props => {
         verticalMargin={margin ? 16 : 0}
         expanded={expanded}
         bleedEdges={bleedEdges}
-        {...props}
+        {...rest}
       >
-        <OuterComponent style={margin ? { marginBottom: '1rem' } : {}}>
-          {content ? content1 : content2}
-          <div
-            style={{
-              marginTop: '2rem',
-              width: '100%',
-              height: '1rem',
-              background: 'red',
-            }}
-          />
-        </OuterComponent>
+        <>
+          <OuterComponent style={margin ? { marginBottom: '1rem' } : {}}>
+            {content ? content1 : content2}
+            {!children && (
+              <div
+                style={{
+                  marginTop: '2rem',
+                  width: '100%',
+                  height: '1rem',
+                  background: 'red',
+                }}
+              />
+            )}
+          </OuterComponent>
+          {children}
+        </>
       </AnimateHeight>
       <button
         type="button"
@@ -91,3 +97,12 @@ export const CollapsedWithBleedingEdges = () => (
   <AnimateHeight bleedEdges>{cardContent}</AnimateHeight>
 );
 export const Stateful = () => <StatefulAnimateHeight />;
+export const LargeStateful = () => (
+  <>
+    <div style={{ background: 'red', width: '100%', height: '44rem' }} />
+    <StatefulAnimateHeight>
+      <div style={{ background: 'yellow', width: '100%', height: '44rem' }} />
+    </StatefulAnimateHeight>
+    <div style={{ background: 'green', width: '100%', height: '44rem' }} />
+  </>
+);

@@ -35,6 +35,14 @@ const AnimateHeight = props => {
     return childElement.current.getBoundingClientRect().height + verticalMargin;
   };
 
+  const scrollBackIntoView = () => {
+    if (!childElement || !childElement.current) {
+      return;
+    }
+
+    childElement.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     if (expanded) {
       setNeedsExpanding(true);
@@ -72,6 +80,7 @@ const AnimateHeight = props => {
   useEffect(() => {
     if (collapsingInProgress) {
       setTimeout(() => setRenderHeight(0), 10);
+      scrollBackIntoView();
       setTimeout(() => {
         setShowChildren(false);
         setCollapsingInProgress(false);
