@@ -14,6 +14,7 @@ const AnimateHeight = props => {
     children,
     verticalMargin,
     bleedEdges,
+    scrollOffset,
     ...rest
   } = props;
 
@@ -44,11 +45,11 @@ const AnimateHeight = props => {
       top: collapsingElementTop,
     } = childElement.current.getBoundingClientRect();
     const currentScrollY = window.scrollY;
-    if (collapsingElementTop > 0) {
+    if (collapsingElementTop > scrollOffset) {
       return;
     }
     window.scrollTo({
-      top: currentScrollY + collapsingElementTop - 75,
+      top: currentScrollY + collapsingElementTop - (50 + scrollOffset),
       behavior: 'smooth',
     });
   };
@@ -133,6 +134,7 @@ AnimateHeight.propTypes = {
   bleedEdges: PropTypes.bool,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  scrollOffset: PropTypes.number,
 };
 
 AnimateHeight.defaultProps = {
@@ -140,6 +142,7 @@ AnimateHeight.defaultProps = {
   bleedEdges: false,
   expanded: false,
   className: null,
+  scrollOffset: 0,
 };
 
 export default AnimateHeight;
