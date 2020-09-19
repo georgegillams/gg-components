@@ -85,7 +85,11 @@ const Tag = props => {
       <div
         role="button"
         aria-label={ariaLabel}
-        onKeyPress={onClick}
+        onKeyPress={e => {
+          if (e.key === 'Enter') {
+            onClick();
+          }
+        }}
         onMouseEnter={() => {
           setHovering(true);
         }}

@@ -3,6 +3,7 @@
 ## 14.4.0
 
 - Added: Animate height now accepts a `scrollOffset` prop.
+- Fixed: Key press events were being fired for any keyDown event. Now they will only be fired if that key is "Enter".
 
 ## 14.3.4
 
