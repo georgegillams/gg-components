@@ -1,5 +1,10 @@
 # Changelog
 
+## 14.4.1
+
+- Fixed: Paused timer font-size.
+- Fixed: Segmented colour selected colour in Next.js projects.
+
 ## 14.4.0
 
 - Added: Animate height now accepts a `scrollOffset` prop.

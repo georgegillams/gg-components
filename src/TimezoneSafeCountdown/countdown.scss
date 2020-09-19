@@ -39,7 +39,7 @@
   &__pausedLabel {
     width: auto;
     margin-top: $spacing-lg;
-    font-size: 6rem;
+    font-size: 5rem;
 
     @include bpk-breakpoint-mobile {
       font-size: 2rem;

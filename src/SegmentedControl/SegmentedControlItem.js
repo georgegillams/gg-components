@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Paragraph } from '../Paragraph';
 import { cssModules } from '../helpers/cssModules';
+import { THEMES } from '../Theming';
 
 import STYLES from './segmented-control.scss';
 
@@ -35,7 +36,12 @@ const SegmentedControlItem = props => {
       className={classNames.join(' ')}
       {...rest}
     >
-      <Paragraph className={textClassNames.join(' ')}>{children}</Paragraph>
+      <Paragraph
+        theme={selected ? THEMES.allWhite : null}
+        className={textClassNames.join(' ')}
+      >
+        {children}
+      </Paragraph>
     </button>
   );
 };
