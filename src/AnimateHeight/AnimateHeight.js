@@ -40,7 +40,17 @@ const AnimateHeight = props => {
       return;
     }
 
-    childElement.current.scrollIntoView({ behavior: 'smooth' });
+    const {
+      top: collapsingElementTop,
+    } = childElement.current.getBoundingClientRect();
+    const currentScrollY = window.scrollY;
+    if (collapsingElementTop > 0) {
+      return;
+    }
+    window.scrollTo({
+      top: currentScrollY + collapsingElementTop - 75,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
@@ -70,6 +80,7 @@ const AnimateHeight = props => {
       return;
     }
     if (needsCollapsing) {
+      scrollBackIntoView();
       setAnimationInProgress(true);
       setCollapsingInProgress(true);
       setRenderHeight(getContentHeight());
@@ -80,7 +91,6 @@ const AnimateHeight = props => {
   useEffect(() => {
     if (collapsingInProgress) {
       setTimeout(() => setRenderHeight(0), 10);
-      scrollBackIntoView();
       setTimeout(() => {
         setShowChildren(false);
         setCollapsingInProgress(false);

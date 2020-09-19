@@ -3,6 +3,7 @@
 ## 14.3.1
 
 - Fixed: Markdown renderer will now render content on server.
+- Fixed: Adjusted behaviour of scroll-into-view when collapsing animate-height.
 
 ## 14.3.0
 
