@@ -31,7 +31,9 @@ const MarkdownRenderer = props => {
     elementClassName,
   } = props;
 
-  const [lexedContent, setLexedContent] = useState(null);
+  const [lexedContent, setLexedContent] = useState(
+    markdownLexer(content, supportedFeatures),
+  );
 
   useEffect(() => {
     const lexingResult = markdownLexer(content, supportedFeatures);
