@@ -29,6 +29,12 @@ const Marker = props => {
     setHover(false);
   };
 
+  const onPress = e => {
+    if (e.key === 'Enter') {
+      hoverStarted();
+    }
+  };
+
   return (
     <div
       role="button"
@@ -41,7 +47,7 @@ const Marker = props => {
       onMouseLeave={hoverEnded}
       onBlur={hoverEnded}
       onClick={hoverStarted}
-      onKeyPress={hoverStarted}
+      onKeyPress={onPress}
       tabIndex={0}
       {...rest}
     >

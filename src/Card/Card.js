@@ -126,6 +126,12 @@ const Card = React.forwardRef((props, ref) => {
     );
   }
 
+  const onPress = e => {
+    if (e.key === 'Enter') {
+      onClick(e);
+    }
+  };
+
   return (
     <div
       tabIndex="0"
@@ -137,7 +143,7 @@ const Card = React.forwardRef((props, ref) => {
       onBlur={focusEnded}
       className={className}
       onClick={disabled ? null : onClick}
-      onKeyDown={disabled ? null : onClick}
+      onKeyPress={disabled ? null : onPress}
       ref={ref}
       {...rest}
     >

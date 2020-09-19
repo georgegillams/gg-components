@@ -16,8 +16,18 @@ const ObjectAsList = props => {
           onClick={() => {
             setExpanded(!expanded);
           }}
-          onKeyPress={() => {
-            setExpanded(!expanded);
+          onKeyDown={e => {
+            if (e.key === 'ArrowRight') {
+              setExpanded(true);
+            }
+            if (e.key === 'ArrowLeft') {
+              setExpanded(false);
+            }
+          }}
+          onKeyPress={e => {
+            if (e.key === 'Enter') {
+              setExpanded(!expanded);
+            }
           }}
           {...rest}
         >{`${expanded ? '🔽' : '▶️'} ${name || 'top-level'}:`}</div>
