@@ -1,6 +1,10 @@
 # Changelog
 
-## 14.3.1
+## 14.4.0
+
+- Added: Animate height now accepts a `scrollOffset` prop.
+
+## 14.3.4
 
 - Fixed: Markdown renderer will now render content on server.
 - Fixed: Adjusted behaviour of scroll-into-view when collapsing animate-height.
