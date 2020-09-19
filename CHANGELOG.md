@@ -1,8 +1,12 @@
 # Changelog
 
+## 14.3.1
+
+- Fixed: Markdown renderer will now render content on server.
+
 ## 14.3.0
 
-- Added: Navigation bar now has a webkit native blur effect
+- Added: Navigation bar now has a webkit native blur effect.
 
 ## 14.2.1
 
