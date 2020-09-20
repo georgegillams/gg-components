@@ -110,7 +110,6 @@ const Card = React.forwardRef((props, ref) => {
       <a
         aria-disabled={disabled ? 'true' : null}
         style={{ textDecoration: 'none' }}
-        role="button"
         href={hrefDumb ? null : href}
         onMouseEnter={hoverStarted}
         onFocus={focusStarted}
