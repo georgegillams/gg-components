@@ -80,10 +80,9 @@ const NavigationBar = props => {
     burgerButtonWrapper: BurgerButtonWrapper,
     logo,
     accountMenuItem,
-    wrapping,
     ...rest
   } = props;
-  const outerClassNameFinal = [getClassName('navigation-bar__container')];
+  const outerClassNameFinal = [getClassName('navigation-bar__bar-container')];
   if (className) {
     outerClassNameFinal.push(className);
   }
@@ -112,7 +111,7 @@ const NavigationBar = props => {
     );
 
   return (
-    <header role="banner">
+    <header role="banner" className={getClassName('navigation-bar__container')}>
       {show && (
         <div
           aria-hidden="true"
@@ -120,13 +119,6 @@ const NavigationBar = props => {
           onClick={closeMenu}
         />
       )}
-
-      <div
-        className={getClassName(
-          'navigation-bar__bar-placeholder',
-          wrapping && 'navigation-bar__bar-placeholder--wrapping',
-        )}
-      />
       <div className={outerClassNameFinal.join(' ')} {...rest}>
         <div className={getClassName('navigation-bar__bar')} {...rest}>
           <div
@@ -183,7 +175,6 @@ const NavigationBar = props => {
 };
 
 NavigationBar.propTypes = {
-  wrapping: PropTypes.bool,
   accountMenuItem: PropTypes.node,
   className: PropTypes.string,
   burgerButtonWrapper: PropTypes.element,
@@ -193,7 +184,6 @@ NavigationBar.propTypes = {
 };
 
 NavigationBar.defaultProps = {
-  wrapping: false,
   accountMenuItem: null,
   className: null,
   logo: null,

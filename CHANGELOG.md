@@ -1,8 +1,10 @@
 # Changelog
 
-## 14.4.2
+## 15.0.0
 
-- Fixed: Removed Button prop `buttonClassName`
+- Breaking: Removed Button prop `buttonClassName`
+- Fixed: Tweaked button styles
+- Fixed: NavigationBar uses position: sticky, so there should be less cases of it overlapping content.
 
 ## 14.4.1
 
