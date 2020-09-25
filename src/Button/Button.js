@@ -23,7 +23,6 @@ const Button = React.forwardRef((props, ref) => {
     bouncy,
     onClick,
     className,
-    buttonClassName,
     large,
     children,
     secondary,
@@ -75,7 +74,7 @@ const Button = React.forwardRef((props, ref) => {
     classNameFinal.push(getClassName('button__outer--link'));
   }
 
-  if (buttonClassName) classNameFinal.push(buttonClassName);
+  if (className) classNameFinal.push(className);
 
   if (href && !disabled) {
     return (
@@ -86,16 +85,10 @@ const Button = React.forwardRef((props, ref) => {
         rel={hrefExternal ? 'noopener noreferrer' : null}
         onClick={onClick}
         ref={ref}
-        className={getClassName('button__a', className)}
+        className={getClassName('button__a', classNameFinal.join(' '))}
         {...rest}
       >
-        <button
-          aria-hidden="true"
-          type="button"
-          className={classNameFinal.join(' ')}
-        >
-          {children}
-        </button>
+        <span className={getClassName('button__child')}>{children}</span>
       </a>
     );
   }
@@ -104,8 +97,6 @@ const Button = React.forwardRef((props, ref) => {
   if (disabled) {
     onClickFinal = null;
   }
-
-  if (className) classNameFinal.push(className);
 
   const onDestructiveClickFinal = event => {
     if (showDestructiveConfirmation) {
@@ -128,8 +119,10 @@ const Button = React.forwardRef((props, ref) => {
       ref={ref}
       {...rest}
     >
-      {showDestructiveConfirmation && 'Click again to confirm '}
-      {children}
+      <span className={getClassName('button__child')}>
+        {showDestructiveConfirmation && 'Click again to confirm '}
+        {children}
+      </span>
     </button>
   );
 });
@@ -139,7 +132,6 @@ Button.propTypes = {
   href: PropTypes.string,
   hrefExternal: PropTypes.bool,
   hrefDumb: PropTypes.bool,
-  buttonClassName: PropTypes.string,
   secondary: PropTypes.bool,
   white: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -154,7 +146,6 @@ Button.propTypes = {
 Button.defaultProps = {
   large: false,
   href: null,
-  buttonClassName: null,
   hrefExternal: false,
   hrefDumb: false,
   secondary: false,

@@ -1,5 +1,10 @@
 # Changelog
 
+## 15.0.0
+
+- Breaking: Removed Button prop `buttonClassName`
+- Fixed: Tweaks to Button appearance.
+
 ## 14.4.1
 
 - Fixed: Paused timer font-size.
