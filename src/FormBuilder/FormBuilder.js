@@ -232,7 +232,6 @@ const FormBuilder = props => {
             'forms__component',
             'forms__component__button',
           )}
-          large
           onClick={onSubmit}
           disabled={disabled || !validity.every(v => v)}
         >
