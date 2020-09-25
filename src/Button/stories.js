@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Button } from './index';
@@ -21,18 +20,26 @@ const ButtonStory = props => {
   );
 };
 
-storiesOf('Button', module)
-  .add('Primary', () => <ButtonStory />)
-  .add('Large', () => <ButtonStory large />)
-  .add('Secondary', () => <ButtonStory secondary />)
-  .add('Bouncy', () => <ButtonStory bouncy />)
-  .add('Destructive', () => <ButtonStory destructive />)
-  .add('Disabled', () => <ButtonStory disabled />)
-  .add('White', () => <ButtonStory dark white />)
-  .add('href', () => <ButtonStory href="/test" />)
-  .add('External href', () => (
-    <ButtonStory hrefExternal href="https://duckduckgo.com/" />
-  ))
-  .add('Dumb href', () => (
-    <ButtonStory hrefDumb href="https://duckduckgo.com/" />
-  ));
+export default { title: 'Button' };
+
+export const Primary = () => <ButtonStory />;
+
+export const Large = () => <ButtonStory large />;
+export const Secondary = () => <ButtonStory secondary />;
+export const Bouncy = () => <ButtonStory bouncy />;
+export const Destructive = () => <ButtonStory destructive />;
+export const Disabled = () => <ButtonStory disabled />;
+export const White = () => <ButtonStory dark white />;
+export const Href = () => <ButtonStory href="/test" />;
+export const SideBySide = () => (
+  <div>
+    <Button>Button</Button>
+    <Button href="/test">Button</Button>
+  </div>
+);
+export const ExternalHref = () => (
+  <ButtonStory hrefExternal href="https://duckduckgo.com/" />
+);
+export const DumbHref = () => (
+  <ButtonStory hrefDumb href="https://duckduckgo.com/" />
+);

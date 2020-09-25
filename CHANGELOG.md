@@ -1,5 +1,9 @@
 # Changelog
 
+## 14.4.2
+
+- Fixed: Removed Button prop `buttonClassName`
+
 ## 14.4.1
 
 - Fixed: Paused timer font-size.

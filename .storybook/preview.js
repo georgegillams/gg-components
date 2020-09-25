@@ -1,8 +1,13 @@
 import React from 'react';
 
+import STYLES from './global-styles.scss';
+import { cssModules } from '../src/helpers/cssModules';
+
+const getClassName = cssModules(STYLES);
+
 export const decorators = [
   Story => (
-    <div style={{ fontFamily: 'Quattrocento Sans' }}>
+    <div className={getClassName('global-wrapper')}>
       <Story />
     </div>
   ),
