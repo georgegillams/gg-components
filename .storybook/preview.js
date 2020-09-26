@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { DocsPage, DocsContainer } from '@storybook/addon-docs/blocks';
+
 import STYLES from './global-styles.scss';
 import { cssModules } from '../src/helpers/cssModules';
 
@@ -20,5 +22,9 @@ export const parameters = {
       { name: 'Skyscanner', value: '#0770E3' },
       { name: 'Orange', value: '#ffbb00' },
     ],
+  },
+  docs: {
+    container: DocsContainer,
+    page: DocsPage,
   },
 };
