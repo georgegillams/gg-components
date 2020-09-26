@@ -1,5 +1,8 @@
 @import '../Tokens/common';
 
+/* stylelint-disable-next-line unit-blacklist, unit-disallowed-list */
+$webkit-filter: saturate(180%) blur(20px);
+
 @mixin navigation-bar-background-standard {
   background-color: $background-color-elevated-colored;
   backdrop-filter: unset;
@@ -18,18 +21,18 @@
 
 @mixin navigation-bar-background-filtered {
   background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(3rem);
+  backdrop-filter: $webkit-filter;
 
   /* stylelint-disable-next-line */
-  -webkit-backdrop-filter: blur(3rem);
+  -webkit-backdrop-filter: $webkit-filter;
 }
 
 @mixin navigation-bar-background-filtered-dark {
   background-color: rgba(5, 13, 27, 0.7);
-  backdrop-filter: blur(3rem);
+  backdrop-filter: $webkit-filter;
 
   /* stylelint-disable-next-line */
-  -webkit-backdrop-filter: blur(3rem);
+  -webkit-backdrop-filter: $webkit-filter;
 }
 
 .navigation-bar {
