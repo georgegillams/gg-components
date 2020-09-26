@@ -1,9 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { APIEntity } from './index';
 
-storiesOf('API entity', module).add('default', () => (
+export default { title: 'API entity', component: APIEntity };
+
+export const Default = () => (
   <APIEntity
     entityType="Thing type"
     name="Geoff"
@@ -16,4 +17,4 @@ storiesOf('API entity', module).add('default', () => (
       unspecifiedObjectKey: { test1: '1', test2: '2' },
     }}
   />
-));
+);

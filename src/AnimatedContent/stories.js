@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { AnimatedContent } from './index';
 
@@ -21,25 +20,20 @@ const StatefulAnimatedContent = props => {
   );
 };
 
-storiesOf('Animated content', module)
-  .add('In view', () => (
-    <AnimatedContent inView>
-      <div
-        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
-      />
-    </AnimatedContent>
-  ))
-  .add('Out of view', () => (
-    <AnimatedContent inView={false}>
-      <div
-        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
-      />
-    </AnimatedContent>
-  ))
-  .add('Stateful', () => (
-    <StatefulAnimatedContent>
-      <div
-        style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }}
-      />
-    </StatefulAnimatedContent>
-  ));
+export default { title: 'Animated content', component: AnimatedContent };
+
+export const InView = () => (
+  <AnimatedContent inView>
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }} />
+  </AnimatedContent>
+);
+export const OutOfView = () => (
+  <AnimatedContent inView={false}>
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }} />
+  </AnimatedContent>
+);
+export const Stateful = () => (
+  <StatefulAnimatedContent>
+    <div style={{ width: '100vw', height: '100vh', backgroundColor: 'red' }} />
+  </StatefulAnimatedContent>
+);
