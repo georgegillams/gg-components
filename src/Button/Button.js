@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
 
-import STYLES from './gg-button.scss';
+import STYLES from './button.scss';
 
 const getClassName = cssModules(STYLES);
 
