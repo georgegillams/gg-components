@@ -20,7 +20,7 @@ const ButtonStory = props => {
   );
 };
 
-export default { title: 'Button' };
+export default { title: 'Button', component: Button };
 
 export const Primary = () => <ButtonStory />;
 

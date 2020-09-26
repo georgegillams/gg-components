@@ -79,7 +79,7 @@ const StatefulCheckbox = props => {
   );
 };
 
-export default { title: 'Checkbox' };
+export default { title: 'Checkbox', component: Checkbox };
 
 export const Default = () => <Checkbox label="Test" name="Test" />;
 export const Valid = () => <Checkbox label="Test" name="Test" valid />;

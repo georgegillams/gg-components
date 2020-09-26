@@ -48,7 +48,7 @@ const StatefulFormBuilder = props => {
   return <FormBuilder entity={entity} onDataChanged={setEntity} {...props} />;
 };
 
-export default { title: 'Form builder' };
+export default { title: 'Form builder', component: FormBuilder };
 
 export const Default = () => (
   <FormBuilder formFields={formFields} entity={{}} submitLabel="Submit" />

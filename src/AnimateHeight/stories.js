@@ -82,7 +82,7 @@ const StatefulAnimateHeight = props => {
   );
 };
 
-export default { title: 'Animate height' };
+export default { title: 'Animate height', component: AnimateHeight };
 
 export const Expanded = () => (
   <AnimateHeight expanded>{content1}</AnimateHeight>

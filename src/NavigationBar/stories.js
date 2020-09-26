@@ -16,7 +16,7 @@ const menuItems = [
 const accountMenuItem = <button type="button">account</button>;
 const logo = <span style={{ color: 'hotpink' }}>LOGO</span>;
 
-export default { title: 'Navigation bar' };
+export default { title: 'Navigation bar', component: NavigationBar };
 export const Default = () => (
   <>
     <NavigationBar
