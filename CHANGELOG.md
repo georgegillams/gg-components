@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.1.1
+
+- Fixed: Segmented control unselected text color in dark-mode.
+
 ## 16.1.0
 
 - Added: Focus state mixin

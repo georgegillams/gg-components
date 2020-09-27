@@ -36,8 +36,14 @@
   }
 
   &__item-text {
+    color: $not-black;
+
+    @media (prefers-color-scheme: dark) {
+      color: $not-black-invert;
+    }
+
     &--selected {
-      color: white;
+      color: $not-black-invert;
     }
   }
 }
