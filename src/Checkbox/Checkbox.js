@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
@@ -9,24 +9,6 @@ import STYLES from './checkbox.scss';
 const getClassName = cssModules(STYLES);
 
 const Checkbox = props => {
-  const [hovering, setHovering] = useState(false);
-  const [focused, setFocused] = useState(false);
-
-  const hoverStarted = () => {
-    setHovering(true);
-  };
-
-  const hoverEnded = () => {
-    setHovering(false);
-  };
-
-  const focusStarted = () => {
-    setFocused(true);
-  };
-
-  const focusEnded = () => {
-    setFocused(false);
-  };
   const {
     onChange,
     labelClassName,
@@ -40,7 +22,6 @@ const Checkbox = props => {
     ...rest
   } = props;
 
-  const focusedState = hovering || focused;
   const enabled = disabled !== true;
   const invalid = valid === false;
 
@@ -50,10 +31,6 @@ const Checkbox = props => {
 
   if (checked) {
     checkClassNames.push(getClassName('checkbox__check--checked'));
-  }
-
-  if (focusedState && enabled) {
-    checkboxClassNames.push(getClassName('checkbox__input--hovering'));
   }
 
   if (enabled) {
@@ -78,16 +55,13 @@ const Checkbox = props => {
           aria-invalid={invalid}
           aria-disabled={disabled ? true : null}
           aria-label={label}
-          onMouseEnter={hoverStarted}
-          onFocus={focusStarted}
-          onMouseLeave={hoverEnded}
-          onBlur={focusEnded}
           className={checkboxClassNames.join(' ')}
           name={name}
           type="checkbox"
           checked={checked}
           readOnly={!onChange}
           onChange={enabled ? onChange : null}
+          disabled={disabled}
           {...inputProps}
         />
         <Tick className={checkClassNames.join(' ')} />

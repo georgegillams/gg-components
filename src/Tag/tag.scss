@@ -20,11 +20,6 @@
     filter: saturate(0.5);
   }
 
-  &--hovered {
-    cursor: pointer;
-    filter: brightness(1.2);
-  }
-
   &--dark-text {
     color: #3c4451;
   }

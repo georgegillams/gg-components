@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.1.0
+
+- Added: Focus state mixin
+- Fixed: Focus states look better and work more consistently with other apps
+
 ## 16.0.0
 
 - Breaking: Paragraph no longer applies any colour styling itself. This should be handled by the consumer.

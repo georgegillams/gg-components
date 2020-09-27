@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Tick from '../Icons/Tick';
@@ -10,25 +10,6 @@ import STYLES from './input.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const Input = props => {
-  const [hovering, setHovering] = useState(false);
-  const [focused, setFocused] = useState(false);
-
-  const hoverStarted = () => {
-    setHovering(true);
-  };
-
-  const hoverEnded = () => {
-    setHovering(false);
-  };
-
-  const focusStarted = () => {
-    setFocused(true);
-  };
-
-  const focusEnded = () => {
-    setFocused(false);
-  };
-
   const {
     name,
     value,
@@ -47,7 +28,6 @@ const Input = props => {
 
   const disabled = enabled === false;
   const invalid = valid === false;
-  const focusedState = hovering || focused;
 
   const classNames = [getClassName('input__outer')];
   const innerClassNames = [getClassName('input__inner')];
@@ -55,9 +35,6 @@ const Input = props => {
   if (disabled) {
     classNames.push(getClassName('input__outer--disabled'));
     innerClassNames.push(getClassName('input__inner--disabled'));
-  }
-  if (focusedState && enabled) {
-    classNames.push(getClassName('input__outer--hovering'));
   }
   if (className) {
     classNames.push(className);
@@ -78,10 +55,6 @@ const Input = props => {
       <InputComponent
         aria-invalid={invalid}
         aria-disabled={disabled}
-        onMouseEnter={hoverStarted}
-        onFocus={focusStarted}
-        onMouseLeave={hoverEnded}
-        onBlur={focusEnded}
         value={value || ''}
         type={type}
         name={name}

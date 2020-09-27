@@ -14,14 +14,7 @@
     text-decoration-color: transparent;
     text-decoration-line: none;
 
-    &:active,
-    &:focus {
-      box-shadow: $focus-indicator;
-
-      @media (prefers-color-scheme: dark) {
-        box-shadow: $focus-indicator-invert;
-      }
-    }
+    @include focus-style;
 
     &--regular {
       background-color: $cta-color;

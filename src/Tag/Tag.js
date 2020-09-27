@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
@@ -32,19 +32,7 @@ const tagText = {
 };
 
 const Tag = props => {
-  const [hovering, setHovering] = useState(false);
-  const [focused, setFocused] = useState(false);
-
-  const {
-    className,
-    disabled,
-    ariaLabel,
-    type,
-    children,
-    onClick,
-    link,
-    ...rest
-  } = props;
+  const { className, disabled, ariaLabel, type, children, ...rest } = props;
 
   const outerClassNameFinal = [getClassName('tag__outer')];
   if (className) {
@@ -56,10 +44,6 @@ const Tag = props => {
     tagClassName.push(getClassName(tagTypeClassNames[type]));
   }
 
-  if ((hovering || focused) && (link || onClick)) {
-    tagClassName.push(getClassName('tag--hovered'));
-  }
-
   if (disabled) {
     outerClassNameFinal.push(getClassName('tag--disabled'));
   }
@@ -67,50 +51,6 @@ const Tag = props => {
   const tagComponent = (
     <span className={tagClassName.join(' ')}>{`${tagText[type]}`}</span>
   );
-
-  if (link) {
-    return (
-      <a
-        role="button"
-        aria-label={ariaLabel}
-        className={outerClassNameFinal.join(' ')}
-        to={`/blog?filter=${type}`}
-      >
-        {tagComponent}
-      </a>
-    );
-  }
-  if (onClick) {
-    return (
-      <div
-        role="button"
-        aria-label={ariaLabel}
-        onKeyPress={e => {
-          if (e.key === 'Enter') {
-            onClick();
-          }
-        }}
-        onMouseEnter={() => {
-          setHovering(true);
-        }}
-        tabIndex="0"
-        onFocus={() => {
-          setFocused(true);
-        }}
-        onMouseLeave={() => {
-          setHovering(false);
-        }}
-        onBlur={() => {
-          setFocused(false);
-        }}
-        onClick={onClick}
-        className={outerClassNameFinal.join(' ')}
-        {...rest}
-      >
-        {tagComponent}
-      </div>
-    );
-  }
 
   return (
     <div className={outerClassNameFinal.join(' ')} {...rest}>
@@ -121,8 +61,6 @@ const Tag = props => {
 
 Tag.propTypes = {
   disabled: PropTypes.bool,
-  link: PropTypes.bool,
-  onClick: PropTypes.func,
   type: PropTypes.oneOf(TAG_TYPES),
   className: PropTypes.string,
   children: PropTypes.node,
@@ -131,8 +69,6 @@ Tag.propTypes = {
 
 Tag.defaultProps = {
   disabled: false,
-  link: false,
-  onClick: null,
   type: null,
   className: null,
   children: null,

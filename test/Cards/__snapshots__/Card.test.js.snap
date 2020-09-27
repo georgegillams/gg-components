@@ -1,34 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card should render correctly 1`] = `
-<div
+<button
   aria-disabled={null}
-  className={null}
+  className={
+    Array [
+      "card",
+    ]
+  }
   onBlur={[Function]}
   onClick={null}
   onFocus={[Function]}
   onKeyPress={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  role="button"
-  tabIndex="0"
+  type="button"
 >
   <div
-    className="card"
+    className="card__background"
+    style={Object {}}
+  />
+  <div
+    className="card__outer-container card__outer-container--padded"
   >
-    <div
-      className="card__background"
-      style={Object {}}
-    />
-    <div
-      className="card__outer-container card__outer-container--padded"
-    >
-      Some content
-    </div>
-    <div
-      className="card__banner"
-      style={Object {}}
-    />
+    Some content
   </div>
-</div>
+  <div
+    className="card__banner"
+    style={Object {}}
+  />
+</button>
 `;

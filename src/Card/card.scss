@@ -2,10 +2,16 @@
 
 .card {
   position: relative;
+  display: inline-block; // a tag needs this
   z-index: 3;
   width: 100%;
+  padding: 0; // button tag applies padding
   transition: all 0.4s;
+  border: none; // button tag applies border
   border-radius: 0.35rem;
+  outline: none; // override system focus style as we have our own
+  text-align: left; // button tag centers things by default
+  text-decoration: none;
   box-shadow: 0.2rem 0.2rem 0.5rem 0 $shadow-color;
   overflow: hidden;
   box-sizing: border-box;
@@ -15,6 +21,7 @@
   }
 
   &:focus,
+  &:focus-within,
   &:active,
   &:hover {
     box-shadow: 0.4rem 0.4rem 1rem 0 $shadow-color;

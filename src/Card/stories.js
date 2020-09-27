@@ -28,7 +28,7 @@ export const WithFillImage = () => (
     <Section noPadding name="Test" />{' '}
   </Card>
 );
-export const WithjannerColour = () => (
+export const WithBannerColour = () => (
   <Card href="/test" bannerColor="red">
     <Section noPadding name="Test" />{' '}
   </Card>

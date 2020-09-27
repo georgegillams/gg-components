@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import ExclamationCircle from '../Icons/ExclamationCircle';
@@ -13,25 +13,6 @@ const OTHER_VALUE = '';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const Select = props => {
-  const [hovering, setHovering] = useState(false);
-  const [focused, setFocused] = useState(false);
-
-  const hoverStarted = () => {
-    setHovering(true);
-  };
-
-  const hoverEnded = () => {
-    setHovering(false);
-  };
-
-  const focusStarted = () => {
-    setFocused(true);
-  };
-
-  const focusEnded = () => {
-    setFocused(false);
-  };
-
   const {
     renderOtherLabel,
     otherInputId,
@@ -51,7 +32,6 @@ const Select = props => {
 
   const invalid = valid === false;
   const disabled = enabled === false;
-  const focusedState = hovering || focused;
 
   const showOtherFreeTextField =
     enableOther && !options.map(o => o.value).includes(value);
@@ -64,9 +44,6 @@ const Select = props => {
   if (disabled) {
     classNames.push(getClassName('input__outer--disabled'));
     innerClassNames.push(getClassName('input__inner--disabled'));
-  }
-  if (focusedState && enabled) {
-    classNames.push(getClassName('input__outer--hovering'));
   }
   if (showOtherFreeTextField) {
     classNames.push(getClassName('input__outer--show-other'));
@@ -88,10 +65,6 @@ const Select = props => {
         <select
           aria-invalid={invalid}
           aria-disabled={disabled}
-          onMouseEnter={hoverStarted}
-          onFocus={focusStarted}
-          onMouseLeave={hoverEnded}
-          onBlur={focusEnded}
           value={showOtherFreeTextField ? OTHER_VALUE : value}
           name={name}
           disabled={disabled}

@@ -61,7 +61,7 @@ const Card = React.forwardRef((props, ref) => {
 
   const focusedState = hovering || focused;
 
-  const cardClassNames = [getClassName('card')];
+  const cardClassNames = [getClassName('card', className)];
 
   const bannerClassNames = [getClassName('card__banner')];
   if (light) {
@@ -91,8 +91,8 @@ const Card = React.forwardRef((props, ref) => {
     backgroundImageClassNames.push(backgroundImageClassName);
   }
 
-  const cardComponent = (
-    <div className={cardClassNames.join(' ')}>
+  const cardContent = (
+    <>
       <div
         className={backgroundImageClassNames.join(' ')}
         style={fillImageSrc ? { backgroundImage: `url(${fillImageSrc})` } : {}}
@@ -102,25 +102,24 @@ const Card = React.forwardRef((props, ref) => {
         className={bannerClassNames.join(' ')}
         style={bannerColor ? { backgroundColor: bannerColor } : {}}
       />
-    </div>
+    </>
   );
 
   if (href && !disabled) {
     return (
       <a
         aria-disabled={disabled ? 'true' : null}
-        style={{ textDecoration: 'none' }}
         href={hrefDumb ? null : href}
         onMouseEnter={hoverStarted}
         onFocus={focusStarted}
         onMouseLeave={hoverEnded}
         onBlur={focusEnded}
-        className={className}
+        className={cardClassNames}
         onClick={onClick}
         ref={ref}
         {...rest}
       >
-        {cardComponent}
+        {cardContent}
       </a>
     );
   }
@@ -132,22 +131,21 @@ const Card = React.forwardRef((props, ref) => {
   };
 
   return (
-    <div
-      tabIndex="0"
-      role="button"
+    <button
+      type="button"
       aria-disabled={disabled ? 'true' : null}
       onMouseEnter={hoverStarted}
       onFocus={focusStarted}
       onMouseLeave={hoverEnded}
       onBlur={focusEnded}
-      className={className}
+      className={cardClassNames}
       onClick={disabled ? null : onClick}
       onKeyPress={disabled ? null : onPress}
       ref={ref}
       {...rest}
     >
-      {cardComponent}
-    </div>
+      {cardContent}
+    </button>
   );
 });
 
