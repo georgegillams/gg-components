@@ -1,5 +1,9 @@
 # Changelog
 
+## 16.0.0
+
+- Breaking: Paragraph no longer applies any colour styling itself. This should be handled by the consumer.
+
 ## 15.0.0
 
 - Breaking: Removed Button prop `buttonClassName`
