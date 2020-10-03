@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { CodeInline } from '../Code';
-import { Subsection } from '../Subsection';
+import { Paragraph } from '../Paragraph';
 
 const ColourPalletteItem = props => {
   const { colourName, colour, ...rest } = props;
@@ -18,11 +18,8 @@ const ColourPalletteItem = props => {
       }}
       {...rest}
     >
-      <Subsection anchor={false}>
-        {colourName}
-        <br />
-        <CodeInline>{colour}</CodeInline>
-      </Subsection>
+      <Paragraph style={{ marginBottom: '.2rem' }}>{colourName}</Paragraph>
+      <CodeInline style={{ marginBottom: '.5rem' }}>{colour}</CodeInline>
       <div
         style={{
           width: '5rem',

@@ -102,7 +102,6 @@ const FormBuilder = props => {
                   }}
                   disabled={formField.disabled}
                 />
-                <br />
               </>
             )}
             {!formField.long &&

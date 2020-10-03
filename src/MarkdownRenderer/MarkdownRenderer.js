@@ -91,17 +91,15 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'paragraph') {
     return (
-      <>
-        <Paragraph
-          className={[
-            elementClassName,
-            getClassName('markdown-renderer__paragraph'),
-          ].join(' ')}
-        >
-          {childElement}
-        </Paragraph>
+      <Paragraph
+        className={[
+          elementClassName,
+          getClassName('markdown-renderer__paragraph'),
+        ].join(' ')}
+      >
+        {childElement}
         <br />
-      </>
+      </Paragraph>
     );
   }
 
@@ -209,13 +207,14 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'subsubsection') {
     return [
-      <br />,
-      <br />,
-      <span style={{ fontWeight: 'bold' }} className={elementClassName}>
+      <span
+        className={getClassName(
+          'markdown-renderer__subsubsection-title',
+          elementClassName,
+        )}
+      >
         {content.name}
       </span>,
-      <br />,
-      <br />,
       childElement,
       <br />,
     ];
