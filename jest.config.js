@@ -7,6 +7,11 @@ module.exports = {
     '!app/app.js',
     '!app/*/*/Loadable.{js,jsx}',
   ],
+  testPathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage/',
+  ],
   coverageThreshold: {
     global: {
       statements: 0.1,
