@@ -22,12 +22,13 @@ const FeatureCard = React.forwardRef((props, ref) => {
 
   const {
     annotations,
-    imageBorder,
-    imageSrc,
-    title,
-    imageClassName,
-    layout,
+    ariaLabel,
     children,
+    imageBorder,
+    imageClassName,
+    imageSrc,
+    layout,
+    title,
 
     className,
     disabled,
@@ -90,7 +91,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
   }
 
   const cardContent = (
-    <div className={outerBannerClassNames.join(' ')}>
+    <div className={outerBannerClassNames.join(' ')} aria-hidden="true">
       <div className={dateContainerClassNames.join(' ')}>
         {annotations && annotations.map && (
           <>
@@ -171,6 +172,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
 
   return (
     <Card
+      aria-label={ariaLabel}
       className={classNameFinal.join(' ')}
       disabled={disabled}
       onHoverChanged={setHovering}

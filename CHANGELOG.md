@@ -1,5 +1,10 @@
 # Changelog
 
+## 16.2.0
+
+- Added: Form label and hint skeletons
+- Added: Reinstated `ariaLabel` on `FeatureCard`
+
 ## 16.1.1
 
 - Fixed: Segmented control unselected text color in dark-mode.
