@@ -81,8 +81,12 @@ $navigation-bar-scrim-z-index: 997;
 
 $outline-color: rgba(0, 125, 250, 0.6);
 $outline-color-invert: rgba(0, 125, 250, 0.6);
-$focus-indicator: 0 0 0 0.2rem $outline-color;
-$focus-indicator-invert: 0 0 0 0.2rem $outline-color-invert;
+$outline-gap: 0.2rem;
+$outline-width: 0.4rem;
+$focus-indicator: 0 0 0 $outline-gap $background-color,
+  0 0 0 $outline-width $outline-color;
+$focus-indicator-invert: 0 0 0 $outline-gap $background-color-invert,
+  0 0 0 $outline-width $outline-color-invert;
 
 @mixin focus-style() {
   &:focus-within,
