@@ -8,10 +8,10 @@ import STYLES from './article-date.scss';
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
 const ArticleDate = props => {
-  const { date, noPadding, className, ...rest } = props;
+  const { date, padding, className, ...rest } = props;
 
   const classNames = [getClassName('article-date__date')];
-  if (noPadding) {
+  if (!padding) {
     classNames.push(getClassName('article-date__date--no-padding'));
   }
   if (className) {
@@ -32,12 +32,12 @@ const ArticleDate = props => {
 ArticleDate.propTypes = {
   date: PropTypes.number.isRequired,
   className: PropTypes.string,
-  noPadding: PropTypes.bool,
+  padding: PropTypes.bool,
 };
 
 ArticleDate.defaultProps = {
   className: null,
-  noPadding: false,
+  padding: true,
 };
 
 export default ArticleDate;

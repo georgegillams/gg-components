@@ -1,5 +1,10 @@
 # Changelog
 
+## 17.0.0
+
+- Breaking: `noPadding` has been replaced with `padding`.
+- Breaking: Page titles, sections, subsections and paragraphs come with better margin defaults.
+
 ## 16.2.0
 
 - Added: Form label and hint skeletons

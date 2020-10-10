@@ -1,8 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { cssModules } from '../helpers/cssModules';
-import { TextLink } from '../TextLink';
 
 import STYLES from './subsection.scss';
 
@@ -11,54 +10,43 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 const Subsection = props => {
   const {
     link,
-    light,
-    name,
+    padding,
     anchor,
+    name,
     className,
-    disabled,
-    hover,
-    noPadding,
     textClassName,
     children,
+    disabled,
+    hover,
+    headingProps,
     ...rest
   } = props;
 
-  const classNameFinal = [getClassName('typography__main')];
-  const textClassNameFinal = [
-    getClassName('typography__text', 'typography__text--subsection'),
-  ];
-  const anchorClassNames = [getClassName('typography__anchor-link')];
+  const outerClassNames = [getClassName('subsection__outer')];
+  const textClassNames = [getClassName('subsection__heading')];
+  const anchorClassNames = [getClassName('subsection__anchor-link')];
+
+  if (link) {
+    textClassNames.push(getClassName('subsection__heading--link'));
+  }
   if (hover) {
-    if (light) {
-      textClassNameFinal.push(getClassName('typography--hovering-light'));
-    } else {
-      textClassNameFinal.push(getClassName('typography--hovering'));
-    }
+    textClassNames.push(getClassName('subsection__heading--hovering'));
   }
   if (anchor) {
-    textClassNameFinal.push(getClassName('typography__text--with-anchor-link'));
+    textClassNames.push(getClassName('subsection__heading--with-anchor-link'));
   }
-  if (light) {
-    classNameFinal.push(getClassName('typography--light'));
-    textClassNameFinal.push(getClassName('typography--light'));
-  }
-  if (link) {
-    classNameFinal.push(getClassName('typography__link'));
-    textClassNameFinal.push(getClassName('typography__link'));
-  }
-  if (noPadding) {
-    classNameFinal.push(getClassName('typography--no-padding'));
-    textClassNameFinal.push(getClassName('typography--no-padding'));
-    anchorClassNames.push(getClassName('typography__anchor-link--no-padding'));
+  if (!padding) {
+    textClassNames.push(getClassName('subsection__heading--no-padding'));
+    anchorClassNames.push(getClassName('subsection__anchor-link--no-padding'));
   }
   if (disabled) {
-    textClassNameFinal.push(getClassName('typography--disabled'));
+    textClassNames.push(getClassName('subsection__heading--disabled'));
   }
   if (className) {
-    classNameFinal.push(className);
+    outerClassNames.push(className);
   }
   if (textClassName) {
-    textClassNameFinal.push(textClassName);
+    textClassNames.push(textClassName);
   }
 
   const anchorLink = `${name}`
@@ -67,20 +55,24 @@ const Subsection = props => {
     .join('-');
 
   return (
-    <div className={classNameFinal.join(' ')} {...rest}>
+    <div className={outerClassNames.join(' ')} {...rest}>
       {anchor && name && (
-        <TextLink
+        <a
           aria-label={name}
           href={`#${anchorLink}`}
           className={anchorClassNames.join(' ')}
         >
           §
-        </TextLink>
+        </a>
       )}
       {name && (
-        <h2 id={anchorLink} className={textClassNameFinal.join(' ')}>
+        <h3
+          id={anchorLink}
+          className={textClassNames.join(' ')}
+          {...headingProps}
+        >
           {name}
-        </h2>
+        </h3>
       )}
       {children}
     </div>
@@ -88,28 +80,32 @@ const Subsection = props => {
 };
 
 Subsection.propTypes = {
-  disabled: PropTypes.bool,
-  hover: PropTypes.bool,
-  link: PropTypes.bool,
-  light: PropTypes.bool,
   anchor: PropTypes.bool,
-  noPadding: PropTypes.bool,
+  link: PropTypes.bool,
+  padding: PropTypes.bool,
   name: PropTypes.string,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
+  hover: PropTypes.bool,
   textClassName: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  // eslint-disable-next-line react/forbid-prop-types
+  headingProps: PropTypes.object,
   children: PropTypes.node,
 };
 
 Subsection.defaultProps = {
+  anchor: false,
+  link: false,
   disabled: false,
   hover: false,
-  link: false,
-  anchor: true,
   name: null,
-  light: false,
-  noPadding: false,
+  padding: true,
   className: null,
   textClassName: null,
+  headingProps: null,
+  style: null,
   children: null,
 };
 

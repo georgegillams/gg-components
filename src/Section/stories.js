@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { cssModules } from '../helpers/cssModules';
 
@@ -12,28 +11,32 @@ const LONG_TEXT =
 
 const getClassName = cssModules(STYLES);
 
-storiesOf('Section', module)
-  .add('Default', () => <Section name="Test" />)
-  .add('Long', () => <Section name={LONG_TEXT} />)
-  .add('With anchor', () => <Section anchor name="Test" />)
-  .add('No padding', () => <Section anchor noPadding name="Test" />)
-  .add('With content and padding', () => (
-    <Section anchor name="Test">
-      Some content
-    </Section>
-  ))
-  .add('With content', () => (
-    <Section noPadding anchor name="Test">
-      Some content
-    </Section>
-  ))
-  .add('With CSS variables', () => (
-    <div className={getClassName('stories__themed')}>
-      <Section anchor highlight name="Test" />
-    </div>
-  ))
-  .add('Highlight', () => <Section anchor highlight name="Test" />)
-  .add('No padding no anchor', () => (
-    <Section anchor={false} noPadding name="Test" />
-  ))
-  .add('Link', () => <Section anchor={false} noPadding name="Test" link />);
+export default { title: 'Section', component: Section };
+
+export const Default = () => <Section name="Test" />;
+export const Long = () => <Section name={LONG_TEXT} />;
+export const WithAnchor = () => <Section anchor name="Test" />;
+export const NoPadding = () => <Section anchor padding={false} name="Test" />;
+export const WithContentAndPadding = () => (
+  <Section anchor name="Test">
+    Some content
+  </Section>
+);
+export const WithContent = () => (
+  <Section padding={false} anchor name="Test">
+    Some content
+  </Section>
+);
+export const Disabled = () => <Section disabled highlight name="Test" />;
+export const WithCssVariables = () => (
+  <div className={getClassName('stories__themed')}>
+    <Section anchor highlight name="Test" />
+  </div>
+);
+export const Hover = () => <Section anchor hover name="Test" />;
+export const NoPaddingNoAnchor = () => (
+  <Section anchor={false} padding={false} name="Test" />
+);
+export const Link = () => (
+  <Section anchor={false} padding={false} name="Test" link />
+);

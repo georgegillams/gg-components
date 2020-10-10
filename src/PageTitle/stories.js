@@ -18,6 +18,24 @@ storiesOf('Page title', module)
       />
     </PageTitle>
   ))
+  .add('Centered', () => (
+    <PageTitle
+      link={{ to: '/test', text: 'Back' }}
+      name="Test"
+      style={{ textAlign: 'center' }}
+    >
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ))
+  .add('No padding', () => (
+    <PageTitle link={{ to: '/test', text: 'Back' }} name="Test" padding={false}>
+      <div
+        style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
+      />
+    </PageTitle>
+  ))
   .add('With custom link component', () => (
     <PageTitle
       renderLink={(href, name, className) => (
@@ -36,8 +54,8 @@ storiesOf('Page title', module)
       />
     </PageTitle>
   ))
-  .add('Title with custom headingProps', () => (
-    <PageTitle headingProps={{ id: 'test-this' }} name="Test">
+  .add('Title with custom props', () => (
+    <PageTitle name="Test" id="test-this">
       <div
         style={{ width: '45rem', height: '15rem', backgroundColor: 'red' }}
       />

@@ -1,7 +1,21 @@
 @import '../Tokens/common';
 
 .paragraph {
+  display: inline-block;
+  margin-top: 2rem;
   margin-bottom: 0;
   padding-bottom: 0;
   line-height: 1.5;
+
+  &:first-of-type {
+    margin-top: 0.86rem;
+  }
+
+  &--no-padding {
+    margin-top: 0;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
 }

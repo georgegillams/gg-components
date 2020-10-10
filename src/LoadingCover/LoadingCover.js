@@ -30,7 +30,7 @@ const LoadingCover = props => {
       {error && (
         <Subsection
           name="This is taking a while. Maybe something isn't quite right..."
-          noPadding
+          padding={false}
           anchor={false}
           className={getClassName('loading-cover__overlay--content')}
         />

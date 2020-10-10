@@ -16,11 +16,15 @@ const CountdownItem = props => {
   return (
     <div aria-hidden="true" className={classNames.join(' ')} {...rest}>
       <Paragraph
+        padding={false}
         className={getClassName('countdown__itemNumber', textClassName)}
       >
         {number}
       </Paragraph>
-      <Paragraph className={getClassName('countdown__itemName', textClassName)}>
+      <Paragraph
+        padding={false}
+        className={getClassName('countdown__itemName', textClassName)}
+      >
         {name}
       </Paragraph>
     </div>

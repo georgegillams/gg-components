@@ -107,7 +107,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
                 disabled={disabled}
                 hover={hovering && !disabled}
                 anchor={false}
-                noPadding
+                padding={false}
                 link
                 name={annotations.join(' ')}
               />
@@ -124,7 +124,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
                   disabled={disabled}
                   hover={hovering && !disabled}
                   anchor={false}
-                  noPadding
+                  padding={false}
                   link
                   name={annotation}
                 />
@@ -135,7 +135,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
       </div>
       <div className={centerClassNames.join(' ')}>
         <Section
-          noPadding
+          padding={false}
           disabled={disabled}
           hover={hovering && !disabled}
           name={title}

@@ -17,6 +17,9 @@ storiesOf('Notifications', module)
   ))
   .add('Notification - markdown', () => (
     <Notification type={NOTIFICATION_TYPES.warn}>
-      <MarkdownRenderer content="Hi. Here's a [link](https://www.google.com/)" />
+      <MarkdownRenderer
+        padding={false}
+        content="Hi. Here's a [link](https://www.google.com/)"
+      />
     </Notification>
   ));

@@ -35,7 +35,10 @@ const Redirect = props => {
   return (
     <div {...rest}>
       <Section name={name || 'Redirecting in 2 seconds...'}>
-        <TextLink onClick={performRedirect}>
+        <TextLink
+          style={{ marginTop: '0.86rem', display: 'inline-block' }}
+          onClick={performRedirect}
+        >
           Not been redirected? Click here.
         </TextLink>
       </Section>

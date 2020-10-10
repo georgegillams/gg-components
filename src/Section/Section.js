@@ -10,9 +10,7 @@ const getClassName = cssModules(STYLES); // REGEX_REPLACED
 const Section = props => {
   const {
     link,
-    fancy,
-    light,
-    noPadding,
+    padding,
     anchor,
     name,
     className,
@@ -24,49 +22,31 @@ const Section = props => {
     ...rest
   } = props;
 
-  const classNameFinal = [getClassName('typography__main')];
-  const textClassNameFinal = [
-    getClassName('typography__text', 'typography__text--section'),
-  ];
-  const anchorClassNames = [
-    getClassName('typography__anchor-link', 'typography__anchor-link--section'),
-  ];
+  const outerClassNames = [getClassName('section__outer')];
+  const textClassNames = [getClassName('section__heading')];
+  const anchorClassNames = [getClassName('section__anchor-link')];
+
+  if (link) {
+    textClassNames.push(getClassName('section__heading--link'));
+  }
   if (hover) {
-    if (light) {
-      textClassNameFinal.push(getClassName('typography--hovering-light'));
-    } else {
-      textClassNameFinal.push(getClassName('typography--hovering'));
-    }
+    textClassNames.push(getClassName('section__heading--hovering'));
   }
   if (anchor) {
-    textClassNameFinal.push(getClassName('typography__text--with-anchor-link'));
+    textClassNames.push(getClassName('section__heading--with-anchor-link'));
   }
-  if (light) {
-    classNameFinal.push(getClassName('typography--light'));
-    textClassNameFinal.push(getClassName('typography--light'));
-  }
-  if (link) {
-    textClassNameFinal.push(getClassName('typography__link'));
-  }
-  if (noPadding) {
-    classNameFinal.push(getClassName('typography--no-padding'));
-    textClassNameFinal.push(getClassName('typography--no-padding'));
-    anchorClassNames.push(
-      getClassName('typography__anchor-link--section--no-padding'),
-    );
-  }
-  if (fancy) {
-    classNameFinal.push(getClassName('typography--fancy'));
-    textClassNameFinal.push(getClassName('typography--fancy'));
+  if (!padding) {
+    textClassNames.push(getClassName('section__heading--no-padding'));
+    anchorClassNames.push(getClassName('section__anchor-link--no-padding'));
   }
   if (disabled) {
-    textClassNameFinal.push(getClassName('typography--disabled'));
+    textClassNames.push(getClassName('section__heading--disabled'));
   }
   if (className) {
-    classNameFinal.push(className);
+    outerClassNames.push(className);
   }
   if (textClassName) {
-    textClassNameFinal.push(textClassName);
+    textClassNames.push(textClassName);
   }
 
   const anchorLink = `${name}`
@@ -75,7 +55,7 @@ const Section = props => {
     .join('-');
 
   return (
-    <div className={classNameFinal.join(' ')} {...rest}>
+    <div className={outerClassNames.join(' ')} {...rest}>
       {anchor && name && (
         <a
           aria-label={name}
@@ -86,13 +66,13 @@ const Section = props => {
         </a>
       )}
       {name && (
-        <h1
+        <h2
           id={anchorLink}
-          className={textClassNameFinal.join(' ')}
+          className={textClassNames.join(' ')}
           {...headingProps}
         >
           {name}
-        </h1>
+        </h2>
       )}
       {children}
     </div>
@@ -102,9 +82,7 @@ const Section = props => {
 Section.propTypes = {
   anchor: PropTypes.bool,
   link: PropTypes.bool,
-  fancy: PropTypes.bool,
-  light: PropTypes.bool,
-  noPadding: PropTypes.bool,
+  padding: PropTypes.bool,
   name: PropTypes.string,
   className: PropTypes.string,
   disabled: PropTypes.bool,
@@ -122,10 +100,8 @@ Section.defaultProps = {
   link: false,
   disabled: false,
   hover: false,
-  fancy: false,
-  light: false,
   name: null,
-  noPadding: false,
+  padding: true,
   className: null,
   textClassName: null,
   headingProps: null,

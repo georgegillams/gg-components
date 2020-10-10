@@ -37,6 +37,7 @@ const SegmentedControlItem = props => {
       {...rest}
     >
       <Paragraph
+        padding={false}
         theme={selected ? THEMES.allWhite : null}
         className={textClassNames.join(' ')}
       >

@@ -29,6 +29,7 @@ const MarkdownRenderer = props => {
     light,
     className,
     elementClassName,
+    padding,
   } = props;
 
   const [lexedContent, setLexedContent] = useState(
@@ -58,20 +59,32 @@ const MarkdownRenderer = props => {
   /* eslint-disable no-use-before-define */
   return (
     <div className={classNames.join(' ')}>
-      {elementForContent(lexedContent, 0, light, elementClassNames.join(' '))}
+      {elementForContent(
+        lexedContent,
+        0,
+        light,
+        elementClassNames.join(' '),
+        padding,
+      )}
     </div>
   );
   /* eslint-enable */
 };
 
-const elementForContent = (content, depth, light, elementClassName) => {
+const elementForContent = (
+  content,
+  depth,
+  light,
+  elementClassName,
+  padding,
+) => {
   if (!content) {
     return null;
   }
 
   if (HelperFunctions.isArray(content)) {
     return content.map(c =>
-      elementForContent(c, depth, light, elementClassName),
+      elementForContent(c, depth, light, elementClassName, padding),
     );
   }
 
@@ -82,6 +95,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
       depth + 1,
       light,
       elementClassName,
+      padding,
     );
   }
 
@@ -92,6 +106,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
   if (content.type === 'paragraph') {
     return (
       <Paragraph
+        padding={padding}
         className={[
           elementClassName,
           getClassName('markdown-renderer__paragraph'),
@@ -127,7 +142,9 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'quotation') {
     if (childElement.length > 1) {
-      childElement = childElement.map(c => <Paragraph>{c}</Paragraph>);
+      childElement = childElement.map(c => (
+        <Paragraph padding={padding}>{c}</Paragraph>
+      ));
     }
     return <Quote>{childElement}</Quote>;
   }
@@ -191,7 +208,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'section') {
     return (
-      <Section anchor padding={false} name={content.name}>
+      <Section anchor padding={padding} name={content.name}>
         {childElement}
       </Section>
     );
@@ -199,7 +216,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
 
   if (content.type === 'subsection') {
     return (
-      <Subsection anchor padding={false} name={content.name}>
+      <Subsection anchor padding={padding} name={content.name}>
         {childElement}
       </Subsection>
     );
@@ -227,7 +244,7 @@ const elementForContent = (content, depth, light, elementClassName) => {
         target={content.hrefExternal && '_blank'}
         rel={content.hrefExternal && 'noopener noreferrer'}
       >
-        <Subsection anchor={false} padding={false} link name={content.text} />
+        <Subsection anchor={false} padding={padding} link name={content.text} />
       </a>
     );
   }
@@ -284,11 +301,13 @@ MarkdownRenderer.propTypes = {
   content: PropTypes.string.isRequired,
   className: PropTypes.string,
   elementClassName: PropTypes.string,
+  padding: PropTypes.bool,
   light: PropTypes.bool,
   supportedFeatures: PropTypes.arrayOf(PropTypes.string),
 };
 
 MarkdownRenderer.defaultProps = {
+  padding: true,
   className: null,
   elementClassName: null,
   light: false,
