@@ -10,6 +10,7 @@
   border: none; // button tag applies border
   border-radius: 0.35rem;
   outline: none; // override system focus style as we have our own
+  background: none; // override system button style
   text-align: left; // button tag centers things by default
   text-decoration: none;
   box-shadow: 0.2rem 0.2rem 0.5rem 0 $shadow-color;
