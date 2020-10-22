@@ -1,5 +1,9 @@
 # Changelog
 
+## 18.1.0
+
+- Added: `daysOnly` countdown style.
+
 ## 17.0.0
 
 - Breaking: `noPadding` has been replaced with `padding`.

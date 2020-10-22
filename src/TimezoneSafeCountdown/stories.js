@@ -5,34 +5,38 @@ import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './stories.scss';
 
-import { Countdown, CountdownDumb } from './index';
+import { Countdown, CountdownDumb, DISPLAY_TYPES } from './index';
 
 const getClassName = cssModules(STYLES);
 
-storiesOf('Countdown dumb', module)
-  .add('Default - tomorrow', () => <CountdownDumb millis={86387125} />)
-  .add('Default - oneWeek', () => <CountdownDumb millis={604766461} />)
-  .add('Default - oneWeekAgo', () => <CountdownDumb millis={-604842403} />)
-  .add('Default - coloured', () => (
-    <CountdownDumb
-      textClassName={getClassName('stories__text')}
-      millis={604842403}
-    />
-  ))
-  .add('CompleteMessage - oneWeekAgo', () => (
-    <CountdownDumb millis={-604842403} completeMessage="Timer finished!" />
-  ))
-  .add('Paused - oneWeekAgo', () => (
-    <CountdownDumb millis={-604766461} paused />
-  ))
-  .add('Paused - oneWeek', () => <CountdownDumb millis={604766461} paused />)
-  .add('Paused - oneWeek coloured', () => (
-    <CountdownDumb
-      textClassName={getClassName('stories__text')}
-      millis={604766461}
-      paused
-    />
-  ));
+export default { title: 'Countdown dumb', component: CountdownDumb };
+
+export const DefaultTomorrow = () => <CountdownDumb millis={86387125} />;
+export const DefaultOneWeek = () => <CountdownDumb millis={604766461} />;
+export const DefaultOneWeekDayOnly = () => (
+  <CountdownDumb display={DISPLAY_TYPES.daysOnly} millis={604766461} />
+);
+export const DefaultOneWeekAgo = () => <CountdownDumb millis={-604842403} />;
+export const DefaultColoured = () => (
+  <CountdownDumb
+    textClassName={getClassName('stories__text')}
+    millis={604842403}
+  />
+);
+export const CompleteMessageOneWeekAgo = () => (
+  <CountdownDumb millis={-604842403} completeMessage="Timer finished!" />
+);
+export const PausedOneWeekAgo = () => (
+  <CountdownDumb millis={-604766461} paused />
+);
+export const PausedOneWeek = () => <CountdownDumb millis={604766461} paused />;
+export const PausedOneWeekColoured = () => (
+  <CountdownDumb
+    textClassName={getClassName('stories__text')}
+    millis={604766461}
+    paused
+  />
+);
 
 const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);

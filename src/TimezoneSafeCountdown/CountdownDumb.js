@@ -24,6 +24,11 @@ const absFloor = num => {
   return Math.ceil(num);
 };
 
+export const DISPLAY_TYPES = {
+  full: 'full',
+  daysOnly: 'daysOnly',
+};
+
 const CountdownDumb = props => {
   const {
     millis,
@@ -33,6 +38,7 @@ const CountdownDumb = props => {
     large,
     paused,
     onPauseChanged,
+    display,
     ...rest
   } = props;
 
@@ -50,6 +56,23 @@ const CountdownDumb = props => {
   let accessibleLabel = `Timer ends ${timeDifferenceFriendly}`;
   if (millis <= 0) {
     accessibleLabel = `Timer ended ${timeDifferenceFriendly}`;
+  }
+
+  if (display === DISPLAY_TYPES.daysOnly) {
+    return (
+      <div
+        className={getClassName('countdown__outer', className)}
+        aria-label={`Countdown - ${Math.abs(daysLeft)} days`}
+        {...rest}
+      >
+        <CountdownItem
+          aria-hidden="true"
+          textClassName={textClassName}
+          name="DAYS"
+          number={Math.abs(daysLeft)}
+        />
+      </div>
+    );
   }
 
   let component = (
@@ -142,6 +165,7 @@ CountdownDumb.propTypes = {
   onPauseChanged: PropTypes.func,
   large: PropTypes.bool,
   paused: PropTypes.bool,
+  display: PropTypes.string,
 };
 
 CountdownDumb.defaultProps = {
@@ -151,6 +175,7 @@ CountdownDumb.defaultProps = {
   paused: false,
   onPauseChanged: null,
   textClassName: null,
+  display: DISPLAY_TYPES.full,
 };
 
 export default CountdownDumb;
