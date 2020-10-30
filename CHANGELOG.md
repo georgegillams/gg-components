@@ -1,5 +1,10 @@
 # Changelog
 
+## 19.2.0
+
+- Added: `paragraph-font-size-larger` token.
+- Fixed: Reduced size of info cell titles.
+
 ## 19.1.0
 
 - Added: typography tokens.
