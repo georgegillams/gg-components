@@ -39,7 +39,7 @@ $card-height-mobile: 10rem;
 
   &__title {
     margin: 0;
-    font-size: 3rem;
+    font-size: $section-font-size;
     font-weight: inherit;
 
     &--with-content {
