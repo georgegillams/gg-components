@@ -12,8 +12,8 @@
   }
 
   &__heading {
-    margin: 2.13rem 0 0 0;
-    font-size: 1.5rem;
+    margin: $subsection-margin-top 0 0 0;
+    font-size: $subsection-font-size;
 
     &--hovering {
       transition: all 0.4s;

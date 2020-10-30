@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.1.0
+
+- Added: typography tokens.
+
 ## 19.0.0 - Should be minor, released major instead
 
 - Added: `daysOnly` countdown style.

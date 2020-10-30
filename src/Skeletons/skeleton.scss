@@ -54,16 +54,14 @@
 
   &__subsection {
     width: 8rem;
-    height: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 2.6rem;
+    height: $subsection-font-size;
+    margin-top: $subsection-margin-top;
   }
 
   &__section {
     width: 8rem;
-    height: 3rem;
-    margin-top: 1.5rem;
-    margin-bottom: 2.6rem;
+    height: $section-font-size;
+    margin-top: $section-margin-top;
   }
 
   &__ticket-status {

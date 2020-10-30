@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import { Paragraph } from '../Paragraph';
 import { TextLink } from '../TextLink';
 import { Section } from '../Section';
 
@@ -35,12 +36,11 @@ const Redirect = props => {
   return (
     <div {...rest}>
       <Section name={name || 'Redirecting in 2 seconds...'}>
-        <TextLink
-          style={{ marginTop: '0.86rem', display: 'inline-block' }}
-          onClick={performRedirect}
-        >
-          Not been redirected? Click here.
-        </TextLink>
+        <Paragraph>
+          <TextLink onClick={performRedirect}>
+            Not been redirected? Click here.
+          </TextLink>
+        </Paragraph>
       </Section>
     </div>
   );
