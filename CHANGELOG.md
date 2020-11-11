@@ -1,6 +1,6 @@
 # Changelog
 
-## 19.2.1
+## 19.2.3
 
 - Fixed: Reduced padding of navigation bar.
 - Fixed: Navigation bar uses primary-color lines in dark-mode.
