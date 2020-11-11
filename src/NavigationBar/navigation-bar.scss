@@ -42,7 +42,7 @@ $webkit-filter: saturate(180%) blur(20px);
     left: 0;
     z-index: $navigation-bar-z-index;
     width: 100%;
-    padding: 0.8rem 0.2rem;
+    padding: 0.4rem 0.2rem;
     box-shadow: 0 0.05rem 0.5rem rgba(0, 0, 0, 0.173);
 
     @include navigation-bar-background-standard;
@@ -57,7 +57,9 @@ $webkit-filter: saturate(180%) blur(20px);
     }
 
     @media (prefers-color-scheme: dark) {
-      border-bottom: 0.1rem white solid;
+      border-bottom: 0.1rem transparent solid;
+      border-color: $primary-color;
+      border-color: var(--primary-color, $primary-color);
       box-shadow: unset;
 
       @include navigation-bar-background-standard-dark;
@@ -132,7 +134,9 @@ $webkit-filter: saturate(180%) blur(20px);
     }
 
     @media (prefers-color-scheme: dark) {
-      border-right: 0.1rem white solid;
+      border-right: 0.1rem transparent solid;
+      border-color: $primary-color;
+      border-color: var(--primary-color, $primary-color);
       background-color: $background-color-elevated-colored-invert;
     }
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 19.2.1
+
+- Fixed: Reduced padding of navigation bar.
+- Fixed: Navigation bar uses primary-color lines in dark-mode.
+
 ## 19.2.0
 
 - Added: `paragraph-font-size-larger` token.
