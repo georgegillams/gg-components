@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.2.4
+
+- Fixed: Upgraded minor/patch deps
+
 ## 19.2.3
 
 - Fixed: Reduced padding of navigation bar.
