@@ -200,6 +200,7 @@ const elementForContent = (
   if (content.type === 'youtube') {
     return (
       <YoutubeEmbedVideo
+        className={getClassName('markdown-renderer__youtube')}
         showSuggestions={content.showSuggestions}
         videoId={content.videoID}
       />

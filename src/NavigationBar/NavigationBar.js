@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { scopeFocus, unscopeFocus } from 'a11y-focus-scope';
 
 import { BurgerButton } from '../BurgerButton';
 import { cssModules } from '../helpers/cssModules';
@@ -12,20 +13,29 @@ const NavigationBar = props => {
   const [open, setOpen] = useState(false);
   const [show, setShow] = useState(false);
   const [changing, setChanging] = useState(false);
+  const headerElement = useRef(null);
 
   const setAppAriaHidden = hidden => {
     if (typeof window === 'undefined' || !document.getElementsByTagName) {
       return;
     }
 
+    if (headerElement && headerElement.current) {
+      if (hidden) {
+        scopeFocus(headerElement.current);
+      } else {
+        unscopeFocus();
+      }
+    }
+
     const mainElements = document.getElementsByTagName('MAIN');
     if (mainElements.length === 1) {
-      mainElements[0].ariaHidden = hidden;
+      mainElements[0].setAttribute('aria-hidden', hidden);
     }
 
     const footerElements = document.getElementsByTagName('FOOTER');
     if (footerElements.length === 1) {
-      footerElements[0].ariaHidden = hidden;
+      footerElements[0].setAttribute('aria-hidden', hidden);
     }
   };
 
@@ -112,10 +122,11 @@ const NavigationBar = props => {
     );
 
   return (
-    <header role="banner">
+    <header role="banner" ref={headerElement}>
       {show && (
         <div
           aria-hidden="true"
+          role="presentation"
           className={scrimClassNames.join(' ')}
           onClick={closeMenu}
         />

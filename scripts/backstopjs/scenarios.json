@@ -47,5 +47,8 @@
     "request-status--error",
     "request-status--success",
     "request-status--warn"
+  ],
+  "globallyHiddenSelectors": [
+    "[class^=markdown-renderer__youtube]"
   ]
 }

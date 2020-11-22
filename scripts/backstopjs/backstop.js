@@ -17,6 +17,7 @@ scenarioData.storyIds.forEach(sI => {
     label: sI,
     url: `${STORY_BASE_URL}${sI}`,
     delay: 500,
+    hideSelectors: scenarioData.globallyHiddenSelectors,
   });
 });
 scenarioData.docIds.forEach(dI => {
@@ -24,6 +25,7 @@ scenarioData.docIds.forEach(dI => {
     label: dI,
     url: `${DOCS_BASE_URL}${dI}`,
     delay: 500,
+    hideSelectors: scenarioData.globallyHiddenSelectors,
   });
 });
 
@@ -62,8 +64,6 @@ const config = {
   debug: false,
   debugWindow: false,
 };
-
-console.log(`config.misMatchThreshold`, config.misMatchThreshold);
 
 backstop('test', { config })
   .then(() => {

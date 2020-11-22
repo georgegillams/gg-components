@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.2.5
+
+- Fixed: Navigation bar will now correctly trap focus
+
 ## 19.2.4
 
 - Fixed: Upgraded minor/patch deps
