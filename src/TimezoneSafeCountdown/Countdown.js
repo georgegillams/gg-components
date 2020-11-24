@@ -1,9 +1,7 @@
 /* eslint-disable  */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import prefersReducedMotion, {
-  motionPreferences,
-} from '@magica11y/prefers-reduced-motion';
+import { prefersReducedMotion } from '../helpers/prefersReducedMotion';
 
 import CountdownDumb from './CountdownDumb';
 
@@ -15,7 +13,7 @@ const Countdown = props => {
   const [lastUpdated, setLastUpdated] = useState(0);
 
   useEffect(() => {
-    setPaused(prefersReducedMotion === motionPreferences.REDUCE);
+    setPaused(prefersReducedMotion());
 
     const interval = setInterval(() => {
       setLastUpdated(new Date().getTime());
