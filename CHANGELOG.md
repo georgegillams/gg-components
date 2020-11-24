@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.2.6
+
+- Fixed: Removed magica11y dependency to avoid duplicate webpack transitive dependencies.
+
 ## 19.2.5
 
 - Fixed: Navigation bar will now correctly trap focus
