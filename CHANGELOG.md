@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.3.0
+
+- Added: Skip-link component.
+
 ## 19.2.6
 
 - Fixed: Removed magica11y dependency to avoid duplicate webpack transitive dependencies.
