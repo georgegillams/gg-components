@@ -106,7 +106,9 @@ $focus-indicator-invert: 0 0 0 $outline-gap $background-color-invert,
 @mixin focus-style() {
   &:focus-within,
   &:focus {
-    outline: none;
+    // Using important to override browser-styles
+    // stylelint-disable-next-line declaration-no-important
+    outline: none !important;
     box-shadow: $focus-indicator;
 
     @media (prefers-color-scheme: dark) {
