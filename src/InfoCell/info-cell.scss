@@ -67,21 +67,20 @@ $card-height-mobile: 10rem;
   }
 
   &__aux-inner {
-    padding-top: $card-height;
-    transition: all 2s ease-in-out;
-    opacity: 0;
+    padding-top: 0;
+    opacity: 1;
 
     @include bpk-breakpoint-mobile {
       height: $card-height-mobile;
     }
 
-    &--no-animation {
-      transition: none;
+    &--animated {
+      transition: all 1s ease-in-out;
     }
 
-    &--visible {
-      padding-top: 0;
-      opacity: 1;
+    &--hidden {
+      padding-top: $card-height;
+      opacity: 0;
     }
   }
 

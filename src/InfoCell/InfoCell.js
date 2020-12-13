@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
+import { useEntryAnimationClientOnly } from '../ServerSideRendering';
 
 import STYLES from './info-cell.scss';
 
@@ -35,11 +36,19 @@ const InfoCell = props => {
   delete rest.outOfView;
   delete rest.scrollPosition;
 
-  const [isServer, setIsServer] = useState(typeof window === 'undefined');
+  const [timeHasElapsed, setTimeHasElapsed] = useState(false);
 
   useEffect(() => {
-    setIsServer(false);
+    setTimeout(() => {
+      setTimeHasElapsed(true);
+    }, 500);
   }, []);
+
+  const [isFirstRender, animationsEnabled] = useEntryAnimationClientOnly();
+
+  const showAux =
+    isFirstRender ||
+    ((hasBeenMostlyInView || hasBeenFullyInView) && timeHasElapsed);
 
   const classNames = [getClassName('info-cell__outer')];
   if (cellStyle === INFO_CELL_STYLES.dark) {
@@ -49,27 +58,16 @@ const InfoCell = props => {
     classNames.push(className);
   }
 
-  const showAux = isServer || hasBeenMostlyInView || hasBeenFullyInView;
-
   const auxClassNames = [getClassName('info-cell__aux')];
-
-  if (showAux) {
-    auxClassNames.push(getClassName('info-cell__aux--visible'));
-  }
-
   const auxInnerClassNames = [getClassName('info-cell__aux-inner')];
-  if (showAux) {
-    auxInnerClassNames.push(getClassName('info-cell__aux-inner--visible'));
+  const auxOuterClassNames = [getClassName('info-cell__aux-outer')];
+
+  if (!showAux) {
+    auxInnerClassNames.push(getClassName('info-cell__aux-inner--hidden'));
   }
 
-  const auxInnerServerClassNames = [
-    ...auxInnerClassNames,
-    getClassName('info-cell__aux--no-animation'),
-  ];
-
-  const auxOuterClassNames = [getClassName('info-cell__aux-outer')];
-  if (showAux) {
-    auxOuterClassNames.push(getClassName('info-cell__aux-outer--visible'));
+  if (animationsEnabled) {
+    auxInnerClassNames.push(getClassName('info-cell__aux-inner--animated'));
   }
 
   const titleClassNames = [getClassName('info-cell__title')];
@@ -85,18 +83,9 @@ const InfoCell = props => {
           {content && content}
         </div>
         <div className={auxOuterClassNames.join(' ')}>
-          {/* Note we use completely separate elements on server vs client
-            to avoid the React tree becomming poluted when it's rehydrated */}
-          {isServer && (
-            <div className={auxInnerServerClassNames.join(' ')}>
-              <div className={auxClassNames.join(' ')}>{aux && aux}</div>
-            </div>
-          )}
-          {!isServer && (
-            <div className={auxInnerClassNames.join(' ')}>
-              <div className={auxClassNames.join(' ')}>{aux && aux}</div>
-            </div>
-          )}
+          <div className={auxInnerClassNames.join(' ')}>
+            <div className={auxClassNames.join(' ')}>{aux && aux}</div>
+          </div>
         </div>
       </div>
     </div>
