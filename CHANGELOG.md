@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.3.1
+
+- Fixed: Info cell animations now work properly whether first rendered on server or client.
+
 ## 19.3.0
 
 - Added: Skip-link component.
