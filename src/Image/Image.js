@@ -1,16 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+
+import { useEntryAnimationClientOnly } from '../ServerSideRendering';
 
 import ImageDumb from './ImageDumb';
 
 const Image = props => {
   const [hidden, setHidden] = useState(true);
 
-  const [isServer, setIsServer] = useState(typeof window === 'undefined');
-
-  useEffect(() => {
-    setIsServer(false);
-  }, []);
+  const [isFirstRender, animationsEnabled] = useEntryAnimationClientOnly();
 
   const onImageLoad = () => {
     setHidden(false);
@@ -18,7 +16,8 @@ const Image = props => {
 
   return (
     <ImageDumb
-      isServer={isServer}
+      isFirstRender={isFirstRender}
+      animationsEnabled={animationsEnabled}
       hidden={hidden}
       onImageLoad={onImageLoad}
       {...props}

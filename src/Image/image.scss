@@ -34,7 +34,10 @@
     top: 0;
     left: 0;
     width: 100%;
-    transition: opacity ease-in-out 0.4s;
+
+    &--animated {
+      transition: opacity ease-in-out 0.4s;
+    }
 
     &--dark {
       display: none;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
@@ -36,19 +36,11 @@ const InfoCell = props => {
   delete rest.outOfView;
   delete rest.scrollPosition;
 
-  const [timeHasElapsed, setTimeHasElapsed] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTimeHasElapsed(true);
-    }, 500);
-  }, []);
-
   const [isFirstRender, animationsEnabled] = useEntryAnimationClientOnly();
 
   const showAux =
     isFirstRender ||
-    ((hasBeenMostlyInView || hasBeenFullyInView) && timeHasElapsed);
+    ((hasBeenMostlyInView || hasBeenFullyInView) && animationsEnabled);
 
   const classNames = [getClassName('info-cell__outer')];
   if (cellStyle === INFO_CELL_STYLES.dark) {

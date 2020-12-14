@@ -20,7 +20,8 @@ const ImageDumb = props => {
     onImageLoad,
     className,
     imgProps,
-    isServer,
+    isFirstRender,
+    animationsEnabled,
     ...rest
   } = props;
   const { className: imgClassName, ...imgPropsRest } = imgProps;
@@ -77,7 +78,11 @@ const ImageDumb = props => {
   const imgClassNames = [getClassName('image__img')];
   const skeletonClassNames = [getClassName('image__skeleton')];
 
-  if (!isServer && !showImage) {
+  if (animationsEnabled) {
+    imgClassNames.push(getClassName('image__img--animated'));
+  }
+  // Hide the image until animations are enabled
+  if (!isFirstRender && (!showImage || !animationsEnabled)) {
     imgClassNames.push(getClassName('image__img--hidden'));
   }
   if (!showSkeleton) {
@@ -104,28 +109,12 @@ const ImageDumb = props => {
         className={getClassName('image__placeholder')}
         style={{ paddingBottom: `${aspectRatio}%` }}
       >
-        {/* Note we use completely separate elements on server vs client
-        to avoid the React tree becomming poluted when it's rehydrated */}
-        {!isServer && renderSkeleton && (
+        {renderSkeleton && (
           <div className={getClassName('image__spinner-container')}>
             <Skeleton className={skeletonClassNames.join(' ')} />
           </div>
         )}
-        {isServer && (
-          <>
-            <img
-              className={lightImgClassNames.join(' ')}
-              src={lightSrc}
-              {...imgPropsRest}
-            />
-            <img
-              className={darkImgClassNames.join(' ')}
-              src={darkSrc}
-              {...imgPropsRest}
-            />
-          </>
-        )}
-        {!isServer && renderImg && (
+        {renderImg && (
           <>
             <img
               className={lightImgClassNames.join(' ')}
@@ -159,7 +148,8 @@ ImageDumb.propTypes = {
     alt: PropTypes.string.isRequired,
     className: PropTypes.string,
   }),
-  isServer: PropTypes.bool,
+  isFirstRender: PropTypes.bool,
+  animationsEnabled: PropTypes.bool,
 };
 
 ImageDumb.defaultProps = {
@@ -168,7 +158,8 @@ ImageDumb.defaultProps = {
   onImageLoad: null,
   className: null,
   imgProps: {},
-  isServer: false,
+  isFirstRender: false,
+  animationsEnabled: false,
 };
 
 export default ImageDumb;

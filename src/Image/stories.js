@@ -44,7 +44,7 @@ storiesOf('Image - dumb', module)
       imgProps={{
         alt: 'Some description',
       }}
-      isServer
+      isFirstRender
     />
   ))
   .add('With img className', () => (
@@ -148,6 +148,17 @@ storiesOf('Image - dumb', module)
   ));
 
 storiesOf('Image', module)
+  .add('Loading', () => (
+    <Image
+      aspectX={460}
+      aspectY={210}
+      lightSrc="null"
+      darkSrc="null"
+      imgProps={{
+        alt: 'Some description',
+      }}
+    />
+  ))
   .add('Default', () => (
     <Image
       aspectX={460}
@@ -161,7 +172,7 @@ storiesOf('Image', module)
   ))
   .add('Server', () => (
     <Image
-      isServer
+      isFirstRender
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
