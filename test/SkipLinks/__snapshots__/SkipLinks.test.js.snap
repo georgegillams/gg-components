@@ -2,10 +2,8 @@
 
 exports[`SkipLink should render correctly 1`] = `
 <a
-  className="skip-link skip-link--hidden"
+  className="skip-link"
   href="#main"
-  onBlur={[Function]}
-  onFocus={[Function]}
 >
   Skip to main content
 </a>
@@ -13,10 +11,8 @@ exports[`SkipLink should render correctly 1`] = `
 
 exports[`SkipLink should support arbitrary props 1`] = `
 <a
-  className="skip-link skip-link--hidden"
+  className="skip-link"
   href="#main"
-  onBlur={[Function]}
-  onFocus={[Function]}
   testID="123"
 >
   Skip to main content
@@ -25,10 +21,8 @@ exports[`SkipLink should support arbitrary props 1`] = `
 
 exports[`SkipLink should support custom class names 1`] = `
 <a
-  className="skip-link skip-link--hidden custom-classname"
+  className="skip-link custom-classname"
   href="#main"
-  onBlur={[Function]}
-  onFocus={[Function]}
 >
   Skip to main content
 </a>

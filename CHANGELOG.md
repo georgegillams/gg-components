@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.3.4
+
+- Fixed: Skip links no longer require client-side JS
+
 ## 19.3.3
 
 - Fixed: Image animations now work properly whether first rendered on server or client.

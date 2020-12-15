@@ -15,10 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* @flow strict */
 
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { cssModules } from '../helpers/cssModules';
 
@@ -26,56 +25,15 @@ import STYLES from './skip-link.scss';
 
 const getClassName = cssModules(STYLES);
 
-export type State = {
-  hidden: boolean,
+const SkipLink = props => {
+  const { label, href, className, ...rest } = props;
+
+  return (
+    <a href={href} className={getClassName('skip-link', className)} {...rest}>
+      {label}
+    </a>
+  );
 };
-
-export type Props = {
-  label: string,
-  href: string,
-  className: ?string,
-};
-class SkipLink extends Component<Props, State> {
-  constructor(props) {
-    super(props);
-
-    this.state = { hidden: true };
-  }
-
-  render() {
-    const { label, href, className, ...rest } = this.props;
-    const { hidden } = this.state;
-
-    const classNames = getClassName(
-      'skip-link',
-      hidden && getClassName('skip-link--hidden'),
-      className,
-    );
-
-    return (
-      // $FlowFixMe - inexact rest. See 'decisions/flowfixme.md'.
-      <a
-        onFocus={() => {
-          clearTimeout(this.hideTimout);
-          this.setState({ hidden: false });
-        }}
-        onBlur={() => {
-          // We want the skiplink to remain visible for a short period of time after it is blurred so that
-          // a user tabbing quickly has a chance to see that it appeared
-          this.hideTimout = setTimeout(
-            () => this.setState({ hidden: true }),
-            200,
-          );
-        }}
-        href={href}
-        className={classNames}
-        {...rest}
-      >
-        {label}
-      </a>
-    );
-  }
-}
 
 SkipLink.propTypes = {
   label: PropTypes.string.isRequired,
