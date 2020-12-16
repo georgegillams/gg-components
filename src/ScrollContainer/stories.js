@@ -7,6 +7,7 @@ const ScrollReporter = props => {
   const {
     inView,
     scrollPosition,
+    scrollPositionVh,
 
     outOfView,
     justInView,
@@ -34,6 +35,8 @@ const ScrollReporter = props => {
       {`inView: ${inView ? 'YES' : 'NO'}`}
       <br />
       {`scrollPosition: ${scrollPosition}`}
+      <br />
+      {`scrollPositionVh: ${scrollPositionVh}`}
       <br />
       {`outOfView: ${outOfView}`}
       <br />

@@ -35,6 +35,7 @@ const InfoCell = props => {
   delete rest.mostlyInView;
   delete rest.outOfView;
   delete rest.scrollPosition;
+  delete rest.scrollPositionVh;
 
   const [isFirstRender, animationsEnabled] = useEntryAnimationClientOnly();
 

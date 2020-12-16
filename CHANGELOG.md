@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.4.0
+
+- Added: New `scrollPositionVh` prop supplied by the `withScroll` HOC.
+
 ## 19.3.4
 
 - Fixed: Skip links no longer require client-side JS

@@ -16,6 +16,7 @@ const withScrollProps = {
   mostlyInView: PropTypes.bool,
   outOfView: PropTypes.bool,
   scrollPosition: PropTypes.number,
+  scrollPositionVh: PropTypes.number,
 };
 
 const withScroll = ComponentToScroll => {
@@ -37,6 +38,7 @@ const withScroll = ComponentToScroll => {
         mostlyInView: false,
         outOfView: false,
         scrollPosition: 0,
+        scrollPositionVh: 0,
       };
     }
 
@@ -69,10 +71,14 @@ const withScroll = ComponentToScroll => {
       return this.supportsPassiveEvents() ? { passive: true } : {};
     }
 
-    updateStateValues = (inView, scrollPosition) => {
+    updateStateValues = (inView, scrollPosition, scrollPositionVh) => {
       const outOfView = !inView;
       const justInView = scrollPosition < 25.0;
       const mostlyInView = scrollPosition >= 25.0 && scrollPosition < 100;
+      const scrollPositionConstrained = Math.min(
+        100,
+        Math.max(0, scrollPosition),
+      );
 
       const fullyInView = scrollPosition >= 100;
       this.setState(prevState => ({
@@ -80,7 +86,8 @@ const withScroll = ComponentToScroll => {
         hasBeenInView: inView || prevState.hasBeenInView,
         outOfView,
         hasBeenOutOfView: outOfView || prevState.hasBeenOutOfView,
-        scrollPosition,
+        scrollPosition: scrollPositionConstrained,
+        scrollPositionVh: scrollPositionVh,
         justInView,
         mostlyInView,
         fullyInView,
@@ -111,7 +118,8 @@ const withScroll = ComponentToScroll => {
       const viewPortRect = this.viewPortRect();
       const inView = this.isInViewPort(elementRect, viewPortRect);
       const scrollPosition = this.scrollPosition(elementRect, viewPortRect);
-      this.updateStateValues(inView, scrollPosition);
+      const scrollPositionVh = this.scrollPositionVh(elementRect, viewPortRect);
+      this.updateStateValues(inView, scrollPosition, scrollPositionVh);
     }, 250);
 
     // This function is taken from modernizr
@@ -164,12 +172,15 @@ const withScroll = ComponentToScroll => {
       const elementHeight = elementRect.height;
       const elementHeightInView = viewPortRect.height - elementRect.y;
       let elementPercentageInView = (100 * elementHeightInView) / elementHeight;
-      if (elementPercentageInView > 100) {
-        elementPercentageInView = 100;
-      } else if (elementPercentageInView < 0) {
-        elementPercentageInView = 0;
-      }
       return elementPercentageInView;
+    };
+
+    scrollPositionVh = (elementRect, viewPortRect) => {
+      const elementMidpointInViewport = elementRect.y + elementRect.height / 2;
+      const viewPortHeight = viewPortRect.height;
+      let elementPercentageThroughViewport =
+        (100 * elementMidpointInViewport) / viewPortHeight;
+      return elementPercentageThroughViewport;
     };
 
     render() {
@@ -184,20 +195,7 @@ const withScroll = ComponentToScroll => {
           style={style}
           className={className}
         >
-          <ComponentToScroll
-            inView={this.state.inView}
-            scrollPosition={this.state.scrollPosition}
-            outOfView={this.state.outOfView}
-            justInView={this.state.justInView}
-            mostlyInView={this.state.mostlyInView}
-            fullyInView={this.state.fullyInView}
-            hasBeenInView={this.state.hasBeenInView}
-            hasBeenOutOfView={this.state.hasBeenOutOfView}
-            hasBeenJustInView={this.state.hasBeenJustInView}
-            hasBeenMostlyInView={this.state.hasBeenMostlyInView}
-            hasBeenFullyInView={this.state.hasBeenFullyInView}
-            {...rest}
-          />
+          <ComponentToScroll {...this.state} {...rest} />
         </div>
       );
     }
