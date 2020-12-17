@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.4.1
+
+- Fixed: Optimised focus outlines a bit.
+
 ## 19.4.0
 
 - Added: New `scrollPositionVh` prop supplied by the `withScroll` HOC.

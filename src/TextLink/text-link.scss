@@ -6,6 +6,8 @@
   font-weight: bold;
   text-decoration: none;
 
+  @include focus-style;
+
   &--text-link {
     color: $link-color;
     color: var(--link-color, $link-color);
@@ -32,15 +34,6 @@
     color: var(--link-color-hover, $link-color-hover);
     fill: $link-color-hover;
     fill: var(--link-color-hover, $link-color-hover);
-  }
-  &:focus-within,
-  &:focus {
-    outline: none;
-    box-shadow: $focus-indicator;
-
-    @media (prefers-color-scheme: dark) {
-      box-shadow: $focus-indicator-invert;
-    }
   }
 
   &__icon-container {

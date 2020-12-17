@@ -96,23 +96,33 @@ $navigation-bar-scrim-z-index: 997;
 
 $outline-color: rgba(0, 125, 250, 0.6);
 $outline-color-invert: rgba(0, 125, 250, 0.6);
-$outline-gap: 0.2rem;
-$outline-width: 0.4rem;
-$focus-indicator: 0 0 0 $outline-gap $background-color,
-  0 0 0 $outline-width $outline-color;
-$focus-indicator-invert: 0 0 0 $outline-gap $background-color-invert,
-  0 0 0 $outline-width $outline-color-invert;
+$outline-gap: 0.35rem;
+$outline-width: 0.2rem;
+$outline-border-radius: 0.5rem;
 
 @mixin focus-style() {
   &:focus-within,
   &:focus {
-    // Using important to override browser-styles
-    // stylelint-disable-next-line declaration-no-important
+    position: relative;
+    /* stylelint-disable-next-line declaration-no-important */
     outline: none !important;
-    box-shadow: $focus-indicator;
 
-    @media (prefers-color-scheme: dark) {
-      box-shadow: $focus-indicator-invert;
+    &::after {
+      position: absolute;
+      // Could just use `inset` but it's not widely supported
+      top: -$outline-gap;
+      right: -$outline-gap;
+      bottom: -$outline-gap;
+      left: -$outline-gap;
+      content: '';
+      display: block;
+      border: solid $outline-color $outline-width;
+      border-radius: $outline-border-radius;
+      pointer-events: none;
+
+      @media (prefers-color-scheme: dark) {
+        border-color: $outline-color-invert;
+      }
     }
   }
 }
