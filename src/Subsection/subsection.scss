@@ -69,6 +69,8 @@
     text-decoration: none;
     opacity: 0.4;
 
+    @include focus-style;
+
     @include bpk-breakpoint-tablet {
       /* stylelint-disable-next-line unit-blacklist, unit-disallowed-list */
       margin-left: -5px;
@@ -76,15 +78,6 @@
 
     @media (prefers-color-scheme: dark) {
       opacity: 1;
-    }
-
-    &:active,
-    &:focus {
-      box-shadow: $focus-indicator;
-
-      @media (prefers-color-scheme: dark) {
-        box-shadow: $focus-indicator-invert;
-      }
     }
   }
 }
