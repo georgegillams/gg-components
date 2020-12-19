@@ -1,11 +1,18 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import { Button } from './index';
 
 const ButtonStory = props => {
-  const { className, dark, ...rest } = props;
+  const { className, dark, focus, ...rest } = props;
+  const button = useRef(null);
+
+  useEffect(() => {
+    if (focus && button.current) {
+      button.current.focus();
+    }
+  }, []);
 
   return (
     <div
@@ -13,7 +20,7 @@ const ButtonStory = props => {
         backgroundColor: dark ? '#1e1e1e' : 'transparent',
       }}
     >
-      <Button onClick={action('Button clicked')} {...rest}>
+      <Button ref={button} onClick={action('Button clicked')} {...rest}>
         Button
       </Button>
     </div>
@@ -23,6 +30,7 @@ const ButtonStory = props => {
 export default { title: 'Button', component: Button };
 
 export const Primary = () => <ButtonStory />;
+export const Focused = () => <ButtonStory focus />;
 
 export const Large = () => <ButtonStory large />;
 export const Secondary = () => <ButtonStory secondary />;
