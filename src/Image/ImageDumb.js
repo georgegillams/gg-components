@@ -13,7 +13,7 @@ const ImageDumb = props => {
   const {
     aspectX,
     aspectY,
-    hidden,
+    loaded,
     lightSrc,
     darkSrc,
     renderImg,
@@ -28,18 +28,21 @@ const ImageDumb = props => {
 
   const [transitioning, setTransitioning] = useState(false);
 
-  const [renderSkeleton, setRenderSkeleton] = useState(hidden);
-  const [showImage, setShowImage] = useState(!hidden);
-  const [showSkeleton, setShowSkeleton] = useState(hidden);
+  const [renderSkeleton, setRenderSkeleton] = useState(!loaded);
+  const [showImage, setShowImage] = useState(loaded);
+  const [showSkeleton, setShowSkeleton] = useState(!loaded);
 
   const [lightImageLoaded, setLightImageLoaded] = useState(false);
   const [darkImageLoaded, setDarkImageLoaded] = useState(false);
 
   useEffect(() => {
+    if (isFirstRender || !animationsEnabled) {
+      return;
+    }
     if (transitioning) {
       return;
     }
-    if (!hidden && !showImage) {
+    if (loaded && !showImage) {
       setTransitioning(true);
       setShowImage(true);
       setTimeout(() => {
@@ -50,7 +53,7 @@ const ImageDumb = props => {
         }, 400);
       }, 400);
     }
-    if (hidden && showImage) {
+    if (!loaded && showImage) {
       setTransitioning(true);
       setShowSkeleton(true);
       setRenderSkeleton(true);
@@ -59,7 +62,7 @@ const ImageDumb = props => {
         setTransitioning(false);
       }, 400);
     }
-  }, [hidden, transitioning]);
+  }, [loaded, transitioning, isFirstRender, animationsEnabled]);
 
   useEffect(() => {
     if (lightImageLoaded && darkImageLoaded && onImageLoad) {
@@ -80,12 +83,12 @@ const ImageDumb = props => {
 
   if (animationsEnabled) {
     imgClassNames.push(getClassName('image__img--animated'));
+    skeletonClassNames.push(getClassName('image__skeleton--animated'));
   }
-  // Hide the image until animations are enabled
-  if (!isFirstRender && (!showImage || !animationsEnabled)) {
+  if (!isFirstRender && !showImage) {
     imgClassNames.push(getClassName('image__img--hidden'));
   }
-  if (!showSkeleton) {
+  if (isFirstRender || !showSkeleton) {
     skeletonClassNames.push(getClassName('image__skeleton--hidden'));
   }
   const lightImgClassNames = [
@@ -119,13 +122,17 @@ const ImageDumb = props => {
             <img
               className={lightImgClassNames.join(' ')}
               onLoad={onLightImageLoad}
-              src={lightSrc}
+              // This is a hack to ensure that the src is set after onload is.
+              // Otherwise onload may never be called as the image is already loaded when it's set
+              src={(isFirstRender || animationsEnabled) && lightSrc}
               {...imgPropsRest}
             />
             <img
               className={darkImgClassNames.join(' ')}
               onLoad={onDarkImageLoad}
-              src={darkSrc}
+              // This is a hack to ensure that the src is set after onload is.
+              // Otherwise onload may never be called as the image is already loaded when it's set
+              src={(isFirstRender || animationsEnabled) && darkSrc}
               {...imgPropsRest}
             />
           </>
@@ -138,7 +145,7 @@ const ImageDumb = props => {
 ImageDumb.propTypes = {
   aspectX: PropTypes.number.isRequired,
   aspectY: PropTypes.number.isRequired,
-  hidden: PropTypes.bool,
+  loaded: PropTypes.bool,
   renderImg: PropTypes.bool,
   onImageLoad: PropTypes.func,
   className: PropTypes.string,
@@ -153,7 +160,7 @@ ImageDumb.propTypes = {
 };
 
 ImageDumb.defaultProps = {
-  hidden: false,
+  loaded: false,
   renderImg: true,
   onImageLoad: null,
   className: null,

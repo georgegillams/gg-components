@@ -6,18 +6,43 @@ import ImageDumb from './ImageDumb';
 import { Image } from './index';
 
 const StatefulImageDumb = props => {
-  const [hidden, setHidden] = useState(true);
+  const [isFirstRender, setIsFirstRender] = useState(true);
+  const [animationsEnabled, setAnimationsEnabled] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <>
-      <ImageDumb hidden={hidden} {...props} />
+      <ImageDumb
+        {...{
+          loaded,
+          isFirstRender,
+          animationsEnabled,
+        }}
+        {...props}
+      />
       <button
         type="button"
         onClick={() => {
-          setHidden(!hidden);
+          setIsFirstRender(!isFirstRender);
         }}
       >
-        {hidden ? 'Show' : 'Hide'}
+        {isFirstRender ? 'Set not first render' : 'Set first render'}
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setAnimationsEnabled(!animationsEnabled);
+        }}
+      >
+        {animationsEnabled ? 'Disable animations' : 'Enable animations'}
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          setLoaded(!loaded);
+        }}
+      >
+        {loaded ? 'Unload' : 'Load'}
       </button>
     </>
   );
@@ -26,6 +51,9 @@ const StatefulImageDumb = props => {
 storiesOf('Image - dumb', module)
   .add('Default', () => (
     <ImageDumb
+      loaded
+      isFirstRender={false}
+      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -37,6 +65,7 @@ storiesOf('Image - dumb', module)
   ))
   .add('Server', () => (
     <ImageDumb
+      isFirstRender
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -44,11 +73,13 @@ storiesOf('Image - dumb', module)
       imgProps={{
         alt: 'Some description',
       }}
-      isFirstRender
     />
   ))
   .add('With img className', () => (
     <ImageDumb
+      loaded
+      isFirstRender={false}
+      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -61,6 +92,9 @@ storiesOf('Image - dumb', module)
   ))
   .add('Width percent', () => (
     <ImageDumb
+      loaded
+      isFirstRender={false}
+      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -73,6 +107,9 @@ storiesOf('Image - dumb', module)
   ))
   .add('Width absolute', () => (
     <ImageDumb
+      loaded
+      isFirstRender={false}
+      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -94,9 +131,9 @@ storiesOf('Image - dumb', module)
       }}
     />
   ))
-  .add('Hidden', () => (
+  .add('Not loaded', () => (
     <ImageDumb
-      hidden
+      loaded={false}
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -106,9 +143,9 @@ storiesOf('Image - dumb', module)
       }}
     />
   ))
-  .add('Hidden width percent', () => (
+  .add('Not loaded width percent', () => (
     <ImageDumb
-      hidden
+      loaded={false}
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -119,9 +156,9 @@ storiesOf('Image - dumb', module)
       style={{ width: '70%' }}
     />
   ))
-  .add('Hidden width absolute', () => (
+  .add('Not loaded width absolute', () => (
     <ImageDumb
-      hidden
+      loaded={false}
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -136,6 +173,9 @@ storiesOf('Image - dumb', module)
     <>
       <div style={{ height: '50rem', width: '100%', background: 'red' }} />
       <ImageDumb
+        loaded
+        isFirstRender={false}
+        animationsEnabled
         aspectX={460}
         aspectY={210}
         lightSrc="https://live.staticflickr.com/65535/49195241431_7880522df6_k.jpg"

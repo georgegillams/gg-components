@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.4.2
+
+- Fixed: Fixed a bug that caused image onload to sometimes never fire.
+
 ## 19.4.1
 
 - Fixed: Optimised focus outlines a bit.
