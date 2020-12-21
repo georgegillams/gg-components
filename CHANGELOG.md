@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.4.3
+
+- Fixed: Markdown Youtube videos won't exceed 100% width of the parent container.
+
 ## 19.4.2
 
 - Fixed: Fixed a bug that caused image onload to sometimes never fire.
