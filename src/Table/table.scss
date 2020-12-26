@@ -1,0 +1,23 @@
+@import '../Tokens/common';
+
+.table {
+  &__table {
+    border-collapse: collapse;
+  }
+
+  &__head {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__cell {
+    padding: 0.4rem;
+    border: 1px solid #1e1e1e;
+    font-weight: inherit;
+    text-align: inherit;
+
+    @media (prefers-color-scheme: dark) {
+      border-color: gray;
+    }
+  }
+}

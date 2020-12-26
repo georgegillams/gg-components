@@ -5,6 +5,7 @@ import {
   parseLinesForQuoteBlock,
   parseLinesForBulletList,
   parseLinesForBlockCode,
+  parseLinesForTable,
 } from '../multiLineElementLexer.js';
 import { DEFAULT_SUPPORTED_FEATURES } from '../constants.js';
 
@@ -122,6 +123,21 @@ test('parses lines to insert comment block in middle', () => {
   expect(result.error).toBe(undefined);
   expect(result).toMatchSnapshot();
 });
+
+test('parses table', () => {
+  const result = parseLinesForTable([
+    { type: 'line', content: 'Line 1' },
+    { type: 'line', content: 'Line 2' },
+    { type: 'line', content: '| col 1 | col 2 | col 3 |' },
+    { type: 'line', content: '| ----- | ----- | ----- |' },
+    { type: 'line', content: '| 1.1   | 1.2   | 1.3   |' },
+    { type: 'line', content: '| 2.1   | 2.2   | 2.3   |' },
+    { type: 'line', content: 'Line 3' },
+  ]);
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
 // #endregion individual lists
 
 // #region structure
@@ -162,4 +178,68 @@ test('ignores comment block if feature is unsupported', () => {
   expect(result.error).toBe(undefined);
   expect(result).toMatchSnapshot();
 });
+
+test('parses table', () => {
+  const result = parseMultiLineElements(
+    [
+      { type: 'line', content: 'Line 1' },
+      { type: 'line', content: 'Line 2' },
+      { type: 'line', content: '| col 1 | col 2 | col 3 |' },
+      { type: 'line', content: '| ----- | ----- | ----- |' },
+      { type: 'line', content: '| 1.1   | 1.2   | 1.3   |' },
+      { type: 'line', content: '| 2.1   | 2.2   | 2.3   |' },
+      { type: 'line', content: 'Line 3' },
+    ],
+    DEFAULT_SUPPORTED_FEATURES,
+  );
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
+test('ignores table if feature is not supported', () => {
+  const result = parseMultiLineElements(
+    [
+      { type: 'line', content: 'Line 1' },
+      { type: 'line', content: 'Line 2' },
+      { type: 'line', content: '| col 1 | col 2 | col 3 |' },
+      { type: 'line', content: '| ----- | ----- | ----- |' },
+      { type: 'line', content: '| 1.1   | 1.2   | 1.3   |' },
+      { type: 'line', content: '| 2.1   | 2.2   | 2.3   |' },
+      { type: 'line', content: 'Line 3' },
+    ],
+    [],
+  );
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
+test('parses table containing code and links', () => {
+  const result = parseMultiLineElements(
+    [
+      { type: 'line', content: 'Line 1' },
+      { type: 'line', content: 'Line 2' },
+      {
+        type: 'line',
+        content: '| col 1 | col 2                         | col 3 |',
+      },
+      {
+        type: 'line',
+        content: '| ----- | ----------------------------- | ----- |',
+      },
+      {
+        type: 'line',
+        content: '| 1.1   | [1.2](https://duckduckgo.com) | 1.3   |',
+      },
+      {
+        type: 'line',
+        content: '| 2.1   | 2.2                           | `2.3` |',
+      },
+      { type: 'line', content: 'Line 3' },
+    ],
+    DEFAULT_SUPPORTED_FEATURES,
+  );
+  expect(result.error).toBe(undefined);
+  expect(result).toMatchSnapshot();
+});
+
 // #endregion structure

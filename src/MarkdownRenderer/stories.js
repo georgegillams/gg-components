@@ -14,6 +14,28 @@ import { MarkdownRenderer } from './index';
 
 storiesOf('Markdown renderer', module)
   .add('Text only', () => <MarkdownRenderer content="This is a simple test" />)
+  .add('Table', () => (
+    <MarkdownRenderer
+      content={`This content includes a table
+
+| column 1 | column 2 | column 3 |
+| -------- | -------- | -------- |
+| data 1.1 | data 1.2 | data 1.3 |
+| data 2.1 | data 2.2 | data 2.3 |
+`}
+    />
+  ))
+  .add('Table containing other elements', () => (
+    <MarkdownRenderer
+      content={`This content includes a table
+
+| column 1 | column 2     | column 3 |
+| -------- | ------------ | -------- |
+| data 1.1 | data 1.2     | data 1.3 |
+| data 2.1 | data \`2.2\` | data 2.3 |
+`}
+    />
+  ))
   .add('Text with link', () => (
     <MarkdownRenderer content="This contains a [link](/test) to an internal page." />
   ))

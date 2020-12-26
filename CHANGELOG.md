@@ -1,5 +1,10 @@
 # Changelog
 
+## 19.5.0
+
+- Added: New table component.
+- Added: Non-nested table support in markdown.
+
 ## 19.4.3
 
 - Fixed: Markdown Youtube videos won't exceed 100% width of the parent container.

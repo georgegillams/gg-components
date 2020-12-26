@@ -41,6 +41,53 @@ Array [
 ]
 `;
 
+exports[`ignores table if feature is not supported 1`] = `
+Array [
+  Object {
+    "children": Array [
+      "Line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 2",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "| col 1 | col 2 | col 3 |",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "| ----- | ----- | ----- |",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "| 1.1   | 1.2   | 1.3   |",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "| 2.1   | 2.2   | 2.3   |",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 3",
+    ],
+    "type": "paragraph",
+  },
+]
+`;
+
 exports[`parses comment block inside section 1`] = `
 Array [
   Object {
@@ -340,6 +387,273 @@ Array [
   Object {
     "content": "Line 3",
     "type": "line",
+  },
+]
+`;
+
+exports[`parses table 1`] = `
+Array [
+  Object {
+    "content": "Line 1",
+    "type": "line",
+  },
+  Object {
+    "content": "Line 2",
+    "type": "line",
+  },
+  Object {
+    "body": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "1.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "1.2  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "1.3  ",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "2.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "2.2  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "2.3  ",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+      ],
+      "type": "table-body",
+    },
+    "head": Object {
+      "children": Object {
+        "children": Array [
+          null,
+          Object {
+            "children": "col 1",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 2",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 3",
+            "type": "table-cell",
+          },
+          null,
+        ],
+        "type": "table-row",
+      },
+      "type": "table-head",
+    },
+    "type": "table",
+  },
+  Object {
+    "content": "Line 3",
+    "type": "line",
+  },
+]
+`;
+
+exports[`parses table 2`] = `
+Array [
+  Object {
+    "children": Array [
+      "Line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 2",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "body": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "1.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "1.2  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "1.3  ",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "2.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "2.2  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "2.3  ",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+      ],
+      "type": "table-body",
+    },
+    "head": Object {
+      "children": Object {
+        "children": Array [
+          null,
+          Object {
+            "children": "col 1",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 2",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 3",
+            "type": "table-cell",
+          },
+          null,
+        ],
+        "type": "table-row",
+      },
+      "type": "table-head",
+    },
+    "type": "table",
+  },
+  Object {
+    "children": Array [
+      "Line 3",
+    ],
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`parses table containing code and links 1`] = `
+Array [
+  Object {
+    "children": Array [
+      "Line 1",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "children": Array [
+      "Line 2",
+    ],
+    "type": "paragraph",
+  },
+  Object {
+    "body": Object {
+      "children": Array [
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "1.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "[1.2](https://duckduckgo.com)",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "1.3  ",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+        Object {
+          "children": Array [
+            null,
+            Object {
+              "children": "2.1  ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "2.2                          ",
+              "type": "table-cell",
+            },
+            Object {
+              "children": "\`2.3\`",
+              "type": "table-cell",
+            },
+            null,
+          ],
+          "type": "table-row",
+        },
+      ],
+      "type": "table-body",
+    },
+    "head": Object {
+      "children": Object {
+        "children": Array [
+          null,
+          Object {
+            "children": "col 1",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 2                        ",
+            "type": "table-cell",
+          },
+          Object {
+            "children": "col 3",
+            "type": "table-cell",
+          },
+          null,
+        ],
+        "type": "table-row",
+      },
+      "type": "table-head",
+    },
+    "type": "table",
+  },
+  Object {
+    "children": Array [
+      "Line 3",
+    ],
+    "type": "paragraph",
   },
 ]
 `;

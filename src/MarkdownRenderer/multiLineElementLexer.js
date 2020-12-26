@@ -7,6 +7,9 @@ const MD_NUMBERED_REGEX = /^\s+[0-9]+\.\ (.*)/gims;
 const MD_CODE_BLOCK_START_REGEX = /```\ ?(.*)/gims;
 const MD_CODE_BLOCK_START_LANG_URL_REGEX = /```\ (.+)\,\ (.+)/gims;
 const MD_CODE_BLOCK_END_REGEX = /```/gims;
+const MD_TABLE_REGEX_FULL_ROW = /\|(?:\s+(.*?)\s+\|)+/gims;
+const MD_TABLE_REGEX_CELLS = /\s?\|\s?/gims;
+const MD_TABLE_HEADER_DIVIDER_REGEX = /\|(?:\s+(-+)\s+\|)+/gims;
 /* eslint-enable no-useless-escape */
 
 const convertLinesToParagraphs = list =>
@@ -132,6 +135,61 @@ const parseLinesForBlockCode = list => {
   return results;
 };
 
+const parseLinesForTable = list => {
+  const results = [];
+  let currentResult = null;
+
+  list.forEach(l => {
+    if (l.type !== 'line') {
+      results.push(l);
+      return;
+    }
+
+    if (l.content.match(MD_TABLE_REGEX_FULL_ROW)) {
+      if (!currentResult) {
+        currentResult = {
+          type: 'table',
+          head: null,
+          body: { type: 'table-body', children: [] },
+        };
+      }
+      // Don't do anything with the table head/rows divider
+      if (!l.content.match(MD_TABLE_HEADER_DIVIDER_REGEX)) {
+        const splitUpLine = l.content.split(MD_TABLE_REGEX_CELLS);
+        const cells = splitUpLine.map((sul, index) =>
+          index === 0 || index === splitUpLine.length - 1
+            ? null
+            : {
+                type: 'table-cell',
+                children: sul,
+              },
+        );
+        const row = {
+          type: 'table-row',
+          children: cells,
+        };
+        if (!currentResult.head) {
+          currentResult.head = { type: 'table-head', children: row };
+        } else {
+          currentResult.body.children.push(row);
+        }
+      }
+    } else {
+      if (currentResult) {
+        results.push(currentResult);
+        currentResult = null;
+      }
+      results.push(l);
+    }
+  });
+
+  // push the current result if there is still one being constructed and we've reached the end of the list
+  if (currentResult) {
+    results.push(currentResult);
+  }
+
+  return results;
+};
 const parseLinesForQuoteBlock = list => {
   const results = [];
   let currentResult = null;
@@ -173,6 +231,10 @@ const parseLinesForQuoteBlock = list => {
 const parseMultiLineElements = (list, supportedFeatures) => {
   let result = list;
 
+  if (supportedFeatures.includes('table')) {
+    result = parseLinesForTable(result);
+  }
+
   if (supportedFeatures.includes('quotation')) {
     result = parseLinesForQuoteBlock(result);
   }
@@ -211,4 +273,5 @@ export {
   parseLinesForQuoteBlock,
   parseLinesForBulletList,
   parseLinesForBlockCode,
+  parseLinesForTable,
 };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import YoutubeEmbedVideo from 'youtube-embed-video';
 
+import { Table, Head, Body, Row, Cell } from '../Table';
 import { cssModules } from '../helpers/cssModules';
 import { withTheme } from '../Theming';
 import HelperFunctions from '../helpers/HelperFunctions';
@@ -120,6 +121,45 @@ const elementForContent = (
 
   if (content.type === 'footnoteReference') {
     return <sup>{content.number}</sup>;
+  }
+
+  if (content.type === 'table') {
+    const headElement = elementForContent(
+      content.head,
+      depth + 1,
+      light,
+      elementClassName,
+      padding,
+    );
+    const bodyElement = elementForContent(
+      content.body,
+      depth + 1,
+      light,
+      elementClassName,
+      padding,
+    );
+    return (
+      <Table>
+        {headElement}
+        {bodyElement}
+      </Table>
+    );
+  }
+
+  if (content.type === 'table-row') {
+    return <Row>{childElement}</Row>;
+  }
+
+  if (content.type === 'table-head') {
+    return <Head>{childElement}</Head>;
+  }
+
+  if (content.type === 'table-body') {
+    return <Body>{childElement}</Body>;
+  }
+
+  if (content.type === 'table-cell') {
+    return <Cell>{childElement}</Cell>;
   }
 
   if (content.type === 'footnote') {
