@@ -22,7 +22,7 @@ const Table = props => {
 
   return (
     <table
-      className={getClassName('table__table')}
+      className={getClassName('table__table', className)}
       cellSpacing="4"
       cellPadding="4"
       {...rest}
