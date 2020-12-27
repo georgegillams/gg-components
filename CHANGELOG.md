@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.5.1
+
+- Fixed: Table components now apply user-land classNames properly.
+
 ## 19.5.0
 
 - Added: New table component.

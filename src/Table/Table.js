@@ -44,7 +44,7 @@ const Head = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <thead className={getClassName('table__head')} {...rest}>
+    <thead className={getClassName('table__head', className)} {...rest}>
       {children}
     </thead>
   );
@@ -62,7 +62,7 @@ const Body = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <tbody className={getClassName('table__body')} {...rest}>
+    <tbody className={getClassName('table__body', className)} {...rest}>
       {children}
     </tbody>
   );
@@ -80,7 +80,7 @@ const Row = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <tr className={getClassName('table__row')} {...rest}>
+    <tr className={getClassName('table__row', className)} {...rest}>
       {children}
     </tr>
   );
@@ -98,7 +98,7 @@ const Cell = props => {
   const { className, children, ...rest } = props;
 
   return (
-    <th className={getClassName('table__cell')} {...rest}>
+    <th className={getClassName('table__cell', className)} {...rest}>
       {children}
     </th>
   );
