@@ -100,10 +100,13 @@ $outline-gap: 0.35rem;
 $outline-width: 0.2rem;
 $outline-border-radius: 0.5rem;
 
-@mixin focus-style() {
+@mixin focus-style($apply-relative-positioning: true) {
   &:focus-within,
   &:focus {
-    position: relative;
+    @if $apply-relative-positioning {
+      position: relative;
+    }
+
     /* stylelint-disable-next-line declaration-no-important */
     outline: none !important;
 

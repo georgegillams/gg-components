@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.5.2
+
+- Fixed: Section anchor links were jumping when focused
+
 ## 19.5.1
 
 - Fixed: Table components now apply user-land classNames properly.
