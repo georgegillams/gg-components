@@ -1,6 +1,10 @@
 # Changelog
 
-## 19.5.2
+## 19.6.0
+
+- Added: `cleanRestScrollProps` method for cleaning up `withScroll` props before applying `rest`.
+
+## 19.5.3
 
 - Fixed: Section anchor links were jumping when focused
 
