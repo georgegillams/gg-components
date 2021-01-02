@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollContainer should clean rest props correctly 1`] = `
+Object {
+  "nonClearableProp": "asdf",
+}
+`;
