@@ -6,8 +6,6 @@ import ImageDumb from './ImageDumb';
 import { Image } from './index';
 
 const StatefulImageDumb = props => {
-  const [isFirstRender, setIsFirstRender] = useState(true);
-  const [animationsEnabled, setAnimationsEnabled] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   return (
@@ -15,27 +13,9 @@ const StatefulImageDumb = props => {
       <ImageDumb
         {...{
           loaded,
-          isFirstRender,
-          animationsEnabled,
         }}
         {...props}
       />
-      <button
-        type="button"
-        onClick={() => {
-          setIsFirstRender(!isFirstRender);
-        }}
-      >
-        {isFirstRender ? 'Set not first render' : 'Set first render'}
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          setAnimationsEnabled(!animationsEnabled);
-        }}
-      >
-        {animationsEnabled ? 'Disable animations' : 'Enable animations'}
-      </button>
       <button
         type="button"
         onClick={() => {
@@ -52,20 +32,6 @@ storiesOf('Image - dumb', module)
   .add('Default', () => (
     <ImageDumb
       loaded
-      isFirstRender={false}
-      animationsEnabled
-      aspectX={460}
-      aspectY={210}
-      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
-      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
-      imgProps={{
-        alt: 'Some description',
-      }}
-    />
-  ))
-  .add('Server', () => (
-    <ImageDumb
-      isFirstRender
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -78,8 +44,6 @@ storiesOf('Image - dumb', module)
   .add('With img className', () => (
     <ImageDumb
       loaded
-      isFirstRender={false}
-      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -93,8 +57,6 @@ storiesOf('Image - dumb', module)
   .add('Width percent', () => (
     <ImageDumb
       loaded
-      isFirstRender={false}
-      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -108,8 +70,6 @@ storiesOf('Image - dumb', module)
   .add('Width absolute', () => (
     <ImageDumb
       loaded
-      isFirstRender={false}
-      animationsEnabled
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
@@ -174,8 +134,6 @@ storiesOf('Image - dumb', module)
       <div style={{ height: '50rem', width: '100%', background: 'red' }} />
       <ImageDumb
         loaded
-        isFirstRender={false}
-        animationsEnabled
         aspectX={460}
         aspectY={210}
         lightSrc="https://live.staticflickr.com/65535/49195241431_7880522df6_k.jpg"
@@ -201,18 +159,6 @@ storiesOf('Image', module)
   ))
   .add('Default', () => (
     <Image
-      aspectX={460}
-      aspectY={210}
-      lightSrc="https://via.placeholder.com/460x210/red/white?text=image"
-      darkSrc="https://via.placeholder.com/460x210/blue/black?text=image"
-      imgProps={{
-        alt: 'Some description',
-      }}
-    />
-  ))
-  .add('Server', () => (
-    <Image
-      isFirstRender
       aspectX={460}
       aspectY={210}
       lightSrc="https://via.placeholder.com/460x210/red/white?text=image"

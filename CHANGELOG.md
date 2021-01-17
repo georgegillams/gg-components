@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.6.2
+
+- Fixed: Image now works when server-side-rendered without any hacks.
+
 ## 19.6.1
 
 - Fixed: Info Cell now works when server-side-rendered without any hacks.

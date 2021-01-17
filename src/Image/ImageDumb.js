@@ -20,8 +20,6 @@ const ImageDumb = props => {
     onImageLoad,
     className,
     imgProps,
-    isFirstRender,
-    animationsEnabled,
     ...rest
   } = props;
   const { className: imgClassName, ...imgPropsRest } = imgProps;
@@ -35,13 +33,13 @@ const ImageDumb = props => {
   const [lightImageLoaded, setLightImageLoaded] = useState(false);
   const [darkImageLoaded, setDarkImageLoaded] = useState(false);
 
+  const [enableSrc, setEnableSrc] = useState(false);
+
   useEffect(() => {
-    if (isFirstRender || !animationsEnabled) {
-      return;
-    }
-    if (transitioning) {
-      return;
-    }
+    setEnableSrc(true);
+  }, []);
+
+  useEffect(() => {
     if (loaded && !showImage) {
       setTransitioning(true);
       setShowImage(true);
@@ -62,13 +60,13 @@ const ImageDumb = props => {
         setTransitioning(false);
       }, 400);
     }
-  }, [loaded, transitioning, isFirstRender, animationsEnabled]);
+  }, [loaded, transitioning]);
 
   useEffect(() => {
     if (lightImageLoaded && darkImageLoaded && onImageLoad) {
       onImageLoad();
     }
-  }, [lightImageLoaded, darkImageLoaded]);
+  }, [lightImageLoaded, darkImageLoaded, onImageLoad]);
 
   const onLightImageLoad = () => {
     setLightImageLoaded(true);
@@ -81,14 +79,12 @@ const ImageDumb = props => {
   const imgClassNames = [getClassName('image__img')];
   const skeletonClassNames = [getClassName('image__skeleton')];
 
-  if (animationsEnabled) {
-    imgClassNames.push(getClassName('image__img--animated'));
-    skeletonClassNames.push(getClassName('image__skeleton--animated'));
-  }
-  if (!isFirstRender && !showImage) {
+  imgClassNames.push(getClassName('image__img--animated'));
+  skeletonClassNames.push(getClassName('image__skeleton--animated'));
+  if (!showImage) {
     imgClassNames.push(getClassName('image__img--hidden'));
   }
-  if (isFirstRender || !showSkeleton) {
+  if (!showSkeleton) {
     skeletonClassNames.push(getClassName('image__skeleton--hidden'));
   }
   const lightImgClassNames = [
@@ -124,7 +120,7 @@ const ImageDumb = props => {
               onLoad={onLightImageLoad}
               // This is a hack to ensure that the src is set after onload is.
               // Otherwise onload may never be called as the image is already loaded when it's set
-              src={(isFirstRender || animationsEnabled) && lightSrc}
+              src={enableSrc && lightSrc}
               {...imgPropsRest}
             />
             <img
@@ -132,11 +128,25 @@ const ImageDumb = props => {
               onLoad={onDarkImageLoad}
               // This is a hack to ensure that the src is set after onload is.
               // Otherwise onload may never be called as the image is already loaded when it's set
-              src={(isFirstRender || animationsEnabled) && darkSrc}
+              src={enableSrc && darkSrc}
               {...imgPropsRest}
             />
           </>
         )}
+        <noscript>
+          <>
+            <img
+              className={getClassName('image__img', 'image__img--light')}
+              src={lightSrc}
+              {...imgPropsRest}
+            />
+            <img
+              className={getClassName('image__img', 'image__img--dark')}
+              src={darkSrc}
+              {...imgPropsRest}
+            />
+          </>
+        </noscript>
       </div>
     </div>
   );
@@ -155,8 +165,6 @@ ImageDumb.propTypes = {
     alt: PropTypes.string.isRequired,
     className: PropTypes.string,
   }),
-  isFirstRender: PropTypes.bool,
-  animationsEnabled: PropTypes.bool,
 };
 
 ImageDumb.defaultProps = {
@@ -165,8 +173,6 @@ ImageDumb.defaultProps = {
   onImageLoad: null,
   className: null,
   imgProps: {},
-  isFirstRender: false,
-  animationsEnabled: false,
 };
 
 export default ImageDumb;
