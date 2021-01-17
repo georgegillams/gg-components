@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
@@ -7,58 +7,55 @@ import STYLES from './skeleton.scss';
 
 const getClassName = cssModules(STYLES); // REGEX_REPLACED
 
-class Skeleton extends Component {
-  constructor(props) {
-    super(props);
+const Skeleton = props => {
+  const { className, ...rest } = props;
 
-    this.state = {
-      left: 0,
-    };
-  }
+  const classNames = getClassName('skeleton__outer', className);
 
-  componentDidMount() {
-    this.adjustPositionsToAlign();
-    this.interval = setInterval(() => {
-      this.adjustPositionsToAlign();
-    }, 2000);
-  }
+  const [left, setLeft] = useState(0);
+  const [offsetEnabled, setOffsetEnabled] = useState(false);
+  const divElement = useRef(null);
 
-  componentWillUnmount() {
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
-  }
-
-  adjustPositionsToAlign = () => {
-    if (!this.divElement) {
+  const adjustPositionsToAlign = () => {
+    if (!divElement || !divElement.current) {
       return;
     }
 
-    const left = this.divElement.getBoundingClientRect().x;
-    this.setState({ left });
+    setLeft(divElement.current.getBoundingClientRect().x);
   };
 
-  render() {
-    const { className, ...rest } = this.props;
+  useEffect(() => {
+    const loadEvent = () => {
+      setOffsetEnabled(true);
+    };
+    window.addEventListener('load', loadEvent);
 
-    const classNames = getClassName('skeleton__outer', className);
+    return () => {
+      window.removeEventListener('load', loadEvent);
+    };
+  }, []);
 
-    return (
+  useEffect(() => {
+    adjustPositionsToAlign();
+
+    const interval = setInterval(() => {
+      adjustPositionsToAlign();
+    }, 2000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [offsetEnabled]);
+
+  return (
+    <div className={classNames} ref={divElement} {...rest}>
       <div
-        className={classNames}
-        ref={divElement => {
-          this.divElement = divElement;
-        }}
-        {...rest}
-      >
-        <div
-          className={getClassName('skeleton__shimmer')}
-          style={{ marginLeft: `-${this.state.left}px` }}
-        />
-      </div>
-    );
-  }
-}
+        className={getClassName('skeleton__shimmer')}
+        style={{ marginLeft: `-${left}px` }}
+      />
+    </div>
+  );
+};
 
 Skeleton.propTypes = {
   className: PropTypes.string,

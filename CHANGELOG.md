@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.6.3
+
+- Fixed: Skeletons will now adjust position without forcing pre-CSS layout.
+
 ## 19.6.2
 
 - Fixed: Image now works when server-side-rendered without any hacks.
