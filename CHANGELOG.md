@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.6.1
+
+- Fixed: Info Cell now works when server-side-rendered without any hacks.
+
 ## 19.6.0
 
 - Added: `cleanRestScrollProps` method for cleaning up `withScroll` props before applying `rest`.

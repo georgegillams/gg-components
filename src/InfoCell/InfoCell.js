@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { cssModules } from '../helpers/cssModules';
-import { useEntryAnimationClientOnly } from '../ServerSideRendering';
 
 import STYLES from './info-cell.scss';
 
@@ -37,11 +36,7 @@ const InfoCell = props => {
   delete rest.scrollPosition;
   delete rest.scrollPositionVh;
 
-  const [isFirstRender, animationsEnabled] = useEntryAnimationClientOnly();
-
-  const showAux =
-    isFirstRender ||
-    ((hasBeenMostlyInView || hasBeenFullyInView) && animationsEnabled);
+  const showAux = hasBeenMostlyInView || hasBeenFullyInView;
 
   const classNames = [getClassName('info-cell__outer')];
   if (cellStyle === INFO_CELL_STYLES.dark) {
@@ -53,14 +48,15 @@ const InfoCell = props => {
 
   const auxClassNames = [getClassName('info-cell__aux')];
   const auxInnerClassNames = [getClassName('info-cell__aux-inner')];
+  const auxInnerClassNamesAnimated = [
+    getClassName('info-cell__aux-inner', 'info-cell__aux-inner--animated'),
+  ];
   const auxOuterClassNames = [getClassName('info-cell__aux-outer')];
 
   if (!showAux) {
-    auxInnerClassNames.push(getClassName('info-cell__aux-inner--hidden'));
-  }
-
-  if (animationsEnabled) {
-    auxInnerClassNames.push(getClassName('info-cell__aux-inner--animated'));
+    auxInnerClassNamesAnimated.push(
+      getClassName('info-cell__aux-inner--hidden'),
+    );
   }
 
   const titleClassNames = [getClassName('info-cell__title')];
@@ -76,7 +72,12 @@ const InfoCell = props => {
           {content && content}
         </div>
         <div className={auxOuterClassNames.join(' ')}>
-          <div className={auxInnerClassNames.join(' ')}>
+          <noscript>
+            <div className={auxInnerClassNames.join(' ')}>
+              <div className={auxClassNames.join(' ')}>{aux && aux}</div>
+            </div>
+          </noscript>
+          <div className={auxInnerClassNamesAnimated.join(' ')}>
             <div className={auxClassNames.join(' ')}>{aux && aux}</div>
           </div>
         </div>
