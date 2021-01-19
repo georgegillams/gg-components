@@ -37,11 +37,17 @@ const Skeleton = props => {
   }, []);
 
   useEffect(() => {
-    console.log(`ADJUSTING POSITION TO ALIGN`);
-    adjustPositionsToAlign();
+    console.log(`NOT YET ADJUSTING POSITION TO ALIGN`);
+    if (offsetEnabled) {
+      console.log(`ADJUSTING POSITION TO ALIGN`);
+      adjustPositionsToAlign();
+    }
 
     const interval = setInterval(() => {
-      adjustPositionsToAlign();
+      if (offsetEnabled) {
+        console.log(`ADJUSTING POSITION TO ALIGN`);
+        adjustPositionsToAlign();
+      }
     }, 2000);
 
     return () => {
