@@ -30,6 +30,9 @@ const Skeleton = props => {
       setOffsetEnabled(true);
     };
     window.addEventListener('load', loadEvent);
+    if (document.readyState === 'complete') {
+      loadEvent();
+    }
 
     return () => {
       window.removeEventListener('load', loadEvent);
