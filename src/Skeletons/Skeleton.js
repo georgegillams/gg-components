@@ -26,6 +26,7 @@ const Skeleton = props => {
 
   useEffect(() => {
     const loadEvent = () => {
+      console.log(`PAGE FULLY LOADED`);
       setOffsetEnabled(true);
     };
     window.addEventListener('load', loadEvent);
@@ -36,6 +37,7 @@ const Skeleton = props => {
   }, []);
 
   useEffect(() => {
+    console.log(`ADJUSTING POSITION TO ALIGN`);
     adjustPositionsToAlign();
 
     const interval = setInterval(() => {
