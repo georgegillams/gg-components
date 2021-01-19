@@ -12,6 +12,9 @@ console.log('Starting release');
 console.log('');
 
 const getBumpType = () => {
+  if (process.argv.includes('--alpha')) {
+    return 'alpha';
+  }
   if (process.argv.includes('--major')) {
     return 'major';
   }
@@ -68,7 +71,12 @@ if (currentVersion !== currentVersionPublished) {
     ),
   );
 }
-const newVersion = inc(currentVersion, bumpType);
+let newVersion = currentVersion;
+if (bumpType === 'alpha') {
+  newVersion = `${currentVersion}-alpha`;
+} else {
+  newVersion = inc(currentVersion, bumpType);
+}
 console.log(`Publishing version ${newVersion}`);
 
 updatePackageFile(newVersion);

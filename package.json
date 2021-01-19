@@ -14,6 +14,7 @@
     "release:major": "npm run release -- --major",
     "release:minor": "npm run release -- --minor",
     "release:patch": "npm run release -- --patch",
+    "release:alpha": "npm run release -- --alpha",
     "transpile": "npm run pretranspile && npm run transpile:js && npm run transform:js && npm run transpile:sass && npm run transpile:copy-tokens && npm run transpile:remove-stories",
     "transpile:js": "babel src -d dist --copy-files",
     "transform:js": "babel-node scripts/transform-js-scss-css-imports.js",
