@@ -13,7 +13,6 @@ const Skeleton = props => {
   const classNames = getClassName('skeleton__outer', className);
 
   const [left, setLeft] = useState(0);
-  const [offsetEnabled, setOffsetEnabled] = useState(false);
   const divElement = useRef(null);
 
   const adjustPositionsToAlign = () => {
@@ -24,39 +23,78 @@ const Skeleton = props => {
     setLeft(divElement.current.getBoundingClientRect().x);
   };
 
-  useEffect(() => {
-    const loadEvent = () => {
-      console.log(`PAGE FULLY LOADED`);
-      setOffsetEnabled(true);
-    };
-    window.addEventListener('load', loadEvent);
-    if (document.readyState === 'complete') {
-      loadEvent();
-    }
+  const useEffectOnPageLoad = effectFunc => {
+    const [pageLoaded, setPageLoaded] = useState(false);
 
-    return () => {
-      window.removeEventListener('load', loadEvent);
-    };
-  }, []);
+    useEffect(() => {
+      const loadEvent = () => {
+        console.log(`LOAD_EVENT`);
+        setPageLoaded(true);
+      };
 
-  useEffect(() => {
-    console.log(`NOT YET ADJUSTING POSITION TO ALIGN`);
-    if (offsetEnabled) {
-      console.log(`ADJUSTING POSITION TO ALIGN`);
-      adjustPositionsToAlign();
-    }
+      window.addEventListener('load', loadEvent);
+
+      // Page was already loaded before JS was run:
+      if (document.readyState === 'complete') {
+        console.log(`PAGE_ALREADY_LOADED`);
+        loadEvent();
+        window.removeEventListener('load', loadEvent);
+      }
+
+      return () => {
+        window.removeEventListener('load', loadEvent);
+      };
+    }, []);
+
+    useEffect(() => {
+      let cleanupFunc = null;
+
+      if (pageLoaded) {
+        cleanupFunc = effectFunc();
+      } else {
+        console.log(`NOT ADJUSTING POS`);
+      }
+
+      return () => {
+        if (cleanupFunc) {
+          cleanupFunc();
+        }
+      };
+    }, [pageLoaded]);
+  };
+
+  useEffectOnPageLoad(() => {
+    console.log(`ADJUSTING POS`);
+    adjustPositionsToAlign();
 
     const interval = setInterval(() => {
-      if (offsetEnabled) {
-        console.log(`ADJUSTING POSITION TO ALIGN`);
-        adjustPositionsToAlign();
-      }
+      console.log(`ADJUSTING POS`);
+      adjustPositionsToAlign();
     }, 2000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [offsetEnabled]);
+  });
+
+  // useEffect(() => {
+  //   console.log(`NOT YET ADJUSTING POSITION TO ALIGN`);
+  //   if (offsetEnabled) {
+  //     console.log(`ADJUSTING POSITION TO ALIGN`);
+  //     adjustPositionsToAlign();
+  //   }
+
+  //   const interval = setInterval(() => {
+  //     if (offsetEnabled) {
+  //       console.log(`ADJUSTING POSITION TO ALIGN`);
+  //       adjustPositionsToAlign();
+  //     }
+  //   }, 2000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [offsetEnabled]);
 
   return (
     <div className={classNames} ref={divElement} {...rest}>
