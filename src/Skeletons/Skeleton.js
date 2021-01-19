@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { useEffectAfterPageLoad } from '../ServerSideRendering';
 import { cssModules } from '../helpers/cssModules';
 
 import STYLES from './skeleton.scss';
@@ -13,7 +14,6 @@ const Skeleton = props => {
   const classNames = getClassName('skeleton__outer', className);
 
   const [left, setLeft] = useState(0);
-  const [offsetEnabled, setOffsetEnabled] = useState(false);
   const divElement = useRef(null);
 
   const adjustPositionsToAlign = () => {
@@ -24,18 +24,7 @@ const Skeleton = props => {
     setLeft(divElement.current.getBoundingClientRect().x);
   };
 
-  useEffect(() => {
-    const loadEvent = () => {
-      setOffsetEnabled(true);
-    };
-    window.addEventListener('load', loadEvent);
-
-    return () => {
-      window.removeEventListener('load', loadEvent);
-    };
-  }, []);
-
-  useEffect(() => {
+  useEffectAfterPageLoad(() => {
     adjustPositionsToAlign();
 
     const interval = setInterval(() => {
@@ -45,7 +34,7 @@ const Skeleton = props => {
     return () => {
       clearInterval(interval);
     };
-  }, [offsetEnabled]);
+  });
 
   return (
     <div className={classNames} ref={divElement} {...rest}>
