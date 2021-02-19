@@ -25,6 +25,10 @@ $webkit-filter: saturate(180%) blur(20px);
 
   /* stylelint-disable-next-line */
   -webkit-backdrop-filter: $webkit-filter;
+
+  @media (prefers-reduced-transparency: reduce) {
+    @include navigation-bar-background-standard;
+  }
 }
 
 @mixin navigation-bar-background-filtered-dark {
@@ -33,6 +37,28 @@ $webkit-filter: saturate(180%) blur(20px);
 
   /* stylelint-disable-next-line */
   -webkit-backdrop-filter: $webkit-filter;
+
+  @media (prefers-reduced-transparency: reduce) {
+    @include navigation-bar-background-standard-dark;
+  }
+}
+
+@mixin navigation-bar-background {
+  @include navigation-bar-background-standard;
+
+  @supports (backdrop-filter: blur(1rem)) or
+    (-webkit-backdrop-filter: blur(1rem)) {
+    @include navigation-bar-background-filtered;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include navigation-bar-background-standard-dark;
+
+    @supports (backdrop-filter: blur(1rem)) or
+      (-webkit-backdrop-filter: blur(1rem)) {
+      @include navigation-bar-background-filtered-dark;
+    }
+  }
 }
 
 .navigation-bar {
@@ -45,33 +71,10 @@ $webkit-filter: saturate(180%) blur(20px);
     padding: 0.4rem 0.2rem;
     box-shadow: 0 0.05rem 0.5rem rgba(0, 0, 0, 0.173);
 
-    @include navigation-bar-background-standard;
-
-    @supports (backdrop-filter: blur(1rem)) or
-      (-webkit-backdrop-filter: blur(1rem)) {
-      @include navigation-bar-background-filtered;
-
-      @media (prefers-reduced-transparency: reduce) {
-        @include navigation-bar-background-standard;
-      }
-    }
+    @include navigation-bar-background;
 
     @media (prefers-color-scheme: dark) {
-      border-bottom: 0.1rem transparent solid;
-      border-color: $primary-color;
-      border-color: var(--primary-color, $primary-color);
       box-shadow: unset;
-
-      @include navigation-bar-background-standard-dark;
-
-      @supports (backdrop-filter: blur(1rem)) or
-        (-webkit-backdrop-filter: blur(1rem)) {
-        @include navigation-bar-background-filtered-dark;
-
-        @media (prefers-reduced-transparency: reduce) {
-          @include navigation-bar-background-standard-dark;
-        }
-      }
     }
   }
 
@@ -126,18 +129,12 @@ $webkit-filter: saturate(180%) blur(20px);
     height: 100vh;
     justify-content: center;
     transition: left 0.4s;
-    background-color: $background-color-elevated-colored;
     overflow: hidden;
+
+    @include navigation-bar-background;
 
     @include bpk-breakpoint-mobile {
       width: 100vw;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      border-right: 0.1rem transparent solid;
-      border-color: $primary-color;
-      border-color: var(--primary-color, $primary-color);
-      background-color: $background-color-elevated-colored-invert;
     }
 
     &--open {
