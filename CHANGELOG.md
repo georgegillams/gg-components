@@ -1,5 +1,9 @@
 # Changelog
 
+## 19.6.4
+
+- Fixed: Feature cards will now use the `title` as the `aria-label` if one is not provided explicitly.
+
 ## 19.6.3
 
 - Fixed: Skeletons will now adjust position without forcing pre-CSS layout.

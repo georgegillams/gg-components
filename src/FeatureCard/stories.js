@@ -10,7 +10,6 @@ export default { title: 'Feature card', component: FeatureCard };
 
 export const Default = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"
@@ -18,7 +17,7 @@ export const Default = () => (
     imageSrc={image}
   />
 );
-export const Narrow = () => (
+export const WithCustomAriaLabel = () => (
   <FeatureCard
     ariaLabel="This is the aria label"
     layout={FEATURE_CARD_LAYOUTS.narrow}
@@ -29,9 +28,20 @@ export const Narrow = () => (
     imageSrc={image}
   />
 );
+WithCustomAriaLabel.storyName = 'With custom ariaLabel';
+
+export const Narrow = () => (
+  <FeatureCard
+    layout={FEATURE_CARD_LAYOUTS.narrow}
+    annotations={['23', 'Jan']}
+    href="/test"
+    title="Title here"
+    imageBorder="orchid"
+    imageSrc={image}
+  />
+);
 export const NarrowCompact = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     layout={FEATURE_CARD_LAYOUTS.narrowCompact}
     annotations={['23', 'Jan']}
     href="/test"
@@ -42,7 +52,6 @@ export const NarrowCompact = () => (
 );
 export const NarrowCompactNoImage = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     layout={FEATURE_CARD_LAYOUTS.narrowCompact}
     annotations={['23', 'Jan']}
     href="/test"
@@ -54,7 +63,6 @@ NarrowCompactNoImage.storyName = 'Narrow Compact - No Image';
 
 export const WithFillImage = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     fillImageSrc={backgroundImage}
     href="/test"
@@ -65,7 +73,6 @@ export const WithFillImage = () => (
 );
 export const WithBannerColour = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"
@@ -76,7 +83,6 @@ export const WithBannerColour = () => (
 );
 export const WithoutImage = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"
@@ -86,7 +92,6 @@ export const WithoutImage = () => (
 );
 export const Light = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"
@@ -97,7 +102,6 @@ export const Light = () => (
 );
 export const Disabled = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"
@@ -108,7 +112,6 @@ export const Disabled = () => (
 );
 export const WithHref = () => (
   <FeatureCard
-    ariaLabel="This is the aria label"
     annotations={['23', 'Jan']}
     href="/test"
     title="Title here"

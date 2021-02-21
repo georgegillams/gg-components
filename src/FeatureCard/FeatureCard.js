@@ -172,7 +172,7 @@ const FeatureCard = React.forwardRef((props, ref) => {
 
   return (
     <Card
-      aria-label={ariaLabel}
+      aria-label={ariaLabel || title}
       className={classNameFinal.join(' ')}
       disabled={disabled}
       onHoverChanged={setHovering}
